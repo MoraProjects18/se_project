@@ -1,0 +1,22 @@
+{
+  "name": "se_project",
+  "version": "1.0.0",
+  "description": "Software Engineering Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PasinduYeshan/se_project.git"
+  },
+  "author": "SE_Group2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PasinduYeshan/se_project/issues"
+  },
+  "homepage": "https://github.com/PasinduYeshan/se_project#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.3"
+  }
+}
