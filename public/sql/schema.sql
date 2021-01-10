@@ -1,6 +1,6 @@
-create database emission_db;
+create database emission_test;
 
-use emission_db;
+use emission_test;
 
 CREATE TABLE useracc(user_id int(15) unsigned NOT NULL AUTO_INCREMENT primary key, email varchar(100), password varchar(255), NIC varchar(12), first_name varchar(200), last_name varchar(200),user_type varchar(30));
 
