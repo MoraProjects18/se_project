@@ -1,5 +1,13 @@
+const ejs = require("ejs");
 const Invoice = require("../models/invoice.js");
 const invoice = new Invoice();
+
+exports.getInvoice = async (req, res) => {
+  data = {
+    dataFound: false,
+  };
+  res.render("./cashier/payment.ejs", data);
+};
 
 exports.payInvoice = async (req, res) => {
   const invoice_id = await invoice.searchInvoice(req.body);

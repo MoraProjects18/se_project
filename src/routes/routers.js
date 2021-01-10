@@ -1,5 +1,6 @@
 const express = require("express");
-const router = express.Router();
+const cashierRouter = express.Router();
+const receptionsitRouter = express.Router();
 
 //Controllers
 const cashierController = require("../controllers/cashier");
@@ -7,8 +8,11 @@ const cashierController = require("../controllers/cashier");
 //Customer
 
 //Receptionist
+receptionsitRouter.get("/", cashierController.getInvoice);
 
 //Cashier
-router.post("/invoice", cashierController.payInvoice);
+cashierRouter.get("/", cashierController.getInvoice);
+cashierRouter.post("/invoice", cashierController.payInvoice);
 
-module.exports = router;
+module.exports = cashierRouter;
+module.exports = receptionsitRouter;
