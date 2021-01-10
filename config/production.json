@@ -1,0 +1,8 @@
+{
+  "database_credentials": {
+    "host": "www.exapmle.com",
+    "user": "name",
+    "passowrd": "password",
+    "database": "database-name"
+  }
+}

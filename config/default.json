@@ -1,0 +1,8 @@
+{
+  "database": {
+    "host": "default",
+    "user": "default",
+    "passowrd": "default",
+    "database": "default"
+  }
+}
