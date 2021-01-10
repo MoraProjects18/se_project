@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
-    <link rel="stylesheet" href="../../../public/css/custom.css" media="screen" title = "no title" charset = "utf-8">
+    
+    <link rel="stylesheet" href="./css/custom.css" media="screen" title = "no title" charset = "utf-8">
     <title>Cashier Page</title>
 </head>
 <body>
@@ -73,47 +76,52 @@
         </form>
     </div>
 
-    <div class="container px-5 text-center cent">
-        <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
-            <h5 class="card-header">Invoice</h5>
-    
-            <div class="card-body">
-                <!-- <h5 class="card-title">Invoice ID</h5>
-                <p class="card-text">4545212</p> -->
-                <div class="form-group row">
-                    <label for="card_invoice" class="col-sm-4 col-form-label text-left">Invoice Number :</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control detailInput" id="card_invoice" value="456113123" disabled>
-                    </div>
-                    <!-- <button type="submit" class="btn btn-grad mb-2">Search</button> -->
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12">
-            <h5 class="card-header">Invoice</h5>
-    
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="card_invoice" class="col-sm-4 col-form-label text-left">Invoice Number :</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control detailInput" id="card_invoice" value="456113123" disabled>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <button type="submit" class="btn mt-5 btn-grad btn-grad-confirm ">Confirm Payment</button>
+    <% if(data.datafound) { %>
+        <div class="container px-5 text-center cent">
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
+                <h5 class="card-header">Invoice</h5>
+        
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Invoice ID</h5>
+                    <p class="card-text">4545212</p> -->
+                    <div class="form-group row">
+                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Invoice Number :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_invoice" value="456113123" disabled>
                         </div>
-                        <div class="col-md-4 text-right">
-                            <button type="submit" class="btn my-5 btn-grad btn-grad-delete ">Close</button>
-                        </div>
+                        <!-- <button type="submit" class="btn btn-grad mb-2">Search</button> -->
                     </div>
                     
                 </div>
             </div>
+        
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12">
+                <h5 class="card-header">Invoice</h5>
+        
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Invoice Number :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_invoice" value="456113123" disabled>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button type="submit" class="btn mt-5 btn-grad btn-grad-confirm ">Confirm Payment</button>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <button type="submit" class="btn my-5 btn-grad btn-grad-delete ">Close</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    
         </div>
-
-    </div>
+    
+    
+    <% } %>
+    
 
     
     
