@@ -7,10 +7,10 @@ INSERT INTO `useracc` (`user_id`, `email`, `password`, `NIC`, `first_name`, `las
 INSERT INTO `useracc` (`user_id`, `email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES (NULL, 'receptionist1@gmail.com', 'password', '97265455V', 'receptionist1', '1receptionist', 'Staff');
 INSERT INTO `useracc` (`user_id`, `email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES (NULL, 'reportissuer1@gmail.com', 'password', '97265455V', 'reportissuer1', '1reportissuert', 'Staff');
 
-INSERT INTO `customer` (`user_id`, `license_number`) VALUES ('1', '1234568');
-INSERT INTO `customer` (`user_id`, `license_number`) VALUES ('2', '1238888');
-INSERT INTO `customer` (`user_id`, `license_number`) VALUES ('3', '1234569');
-INSERT INTO `customer` (`user_id`, `license_number`) VALUES ('4', '1234567');
+INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('1', '1234568','1');
+INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('2', '1238888','1');
+INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('3', '1234569','1');
+INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('4', '1234567','1');
 
 INSERT INTO `branch` (`branch_name`, `branch_address`, `contact_no`) VALUES ('Athurugiriya', '175/3C,Malambe Road,Pore,Athurugiriya', '0773920271');
 INSERT INTO `branch` (`branch_name`, `branch_address`, `contact_no`) VALUES ('Avissawella', 'No.140.Ukwatta,Avissawella. ', '0772998385');
@@ -22,7 +22,7 @@ INSERT INTO `staff` (`user_id`, `employee_id`, `role`, `branch_id`) VALUES ('6',
 INSERT INTO `staff` (`user_id`, `employee_id`, `role`, `branch_id`) VALUES ('7', '2', 'Receptionist', '1');
 INSERT INTO `staff` (`user_id`, `employee_id`, `role`, `branch_id`) VALUES ('8', '3', 'Report Issuer', '1');
 
-INSERT INTO `admin` (`user_id`, `admin_id`) VALUES ('5', '1');
+INSERT INTO `adminacc` (`user_id`, `admin_id`) VALUES ('5', '1');
 
 
 
