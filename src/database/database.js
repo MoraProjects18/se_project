@@ -38,6 +38,8 @@ class Database {
         );
     });
   }
+
+  read() {}
 }
 
 module.exports = Database;
