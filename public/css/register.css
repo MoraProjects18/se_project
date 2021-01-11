@@ -34,7 +34,7 @@ body{
 }
 
 .login-content{
-	display: flex;
+	display: grid;
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
@@ -49,14 +49,14 @@ form{
 }
 
 .login-content img{
-    height: 180px;
+    height: 120px;
 }
 
 .login-content h2{
-	margin: 15px 0;
+    /* margin: 0px 0px 15px 0px; */
 	color: #333;
 	text-transform: uppercase;
-	font-size: 2.9rem;
+	font-size: 2.1rem;
 }
 
 .login-content .input-div{
@@ -85,7 +85,7 @@ form{
 
 .input-div > div{
     position: relative;
-	height: 45px;
+	height: 35px;
 }
 
 .input-div > div > h5{
@@ -181,6 +181,22 @@ a:hover{
 .btn:hover{
 	background-position: right;
 }
+
+.btn.transparent {
+	margin: 0;
+	background: none;
+	border: 2px solid rgb(3, 20, 6);
+	width: 130px;
+	height: 35px;
+	font-weight: 600;
+	font-size: 0.8rem;
+	color: black;
+	display: inline;
+  }
+
+.btn.transparent:hover:hover {
+	background-color:#d1eae2;
+  }
 
 a{
     display: block;
