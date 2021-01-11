@@ -6,6 +6,8 @@ const path = require("path");
 const authRouter = require("./routes/auth");
 const cashierRouter = require("./routes/routers");
 const reportRouter = require("./routes/emission_report");
+const receptionistRouter = require("./routes/routers");
+
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/register", authRouter);
 app.use("/cashier", cashierRouter);
 app.use("/report", reportRouter);
+app.use("/receptionist", receptionistRouter);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
