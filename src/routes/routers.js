@@ -1,18 +1,21 @@
+const cashierController = require("../controllers/cashier");
+const reportController = require("../controllers/emission_report");
+
 const express = require("express");
 const cashierRouter = express.Router();
 const receptionsitRouter = express.Router();
 
 //Controllers
-const cashierController = require("../controllers/cashier");
 
 //Customer
 
 //Receptionist
-receptionsitRouter.get("/", cashierController.getInvoice);
+// receptionsitRouter.get("/", cashierController.getInvoice);
 
 //Cashier
-cashierRouter.get("/", cashierController.getInvoice);
-cashierRouter.post("/invoice", cashierController.payInvoice);
+cashierRouter.get("/", cashierController.getInvoicePage);
+cashierRouter.get("/invoice", cashierController.searchInvoice);
+
+// router.get("/", reportController.getreportPage);
 
 module.exports = cashierRouter;
-module.exports = receptionsitRouter;
