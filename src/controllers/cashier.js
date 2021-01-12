@@ -1,17 +1,47 @@
 const ejs = require("ejs");
 const Invoice = require("../models/invoice.js");
-const invoice = new Invoice();
+const invoiceModel = new Invoice();
 
-exports.getInvoice = async (req, res) => {
+// const ServiceOrder = require("../models/serviceOrder.js");
+// const serviceOrderModel = new ServiceOrder();
+
+// const User = require("../models/user.js");
+// const userModel = new User();
+
+exports.getInvoicePage = async (req, res) => {
   data = {
     dataFound: false,
   };
+
   res.render("./cashier/payment.ejs", data);
 };
 
-exports.payInvoice = async (req, res) => {
-  const invoice_id = await invoice.searchInvoice(req.body);
+exports.searchInvoice = async (req, res) => {
+  // const invoice = await invoiceModel.getInvoice(req.body);
+  // const service_order = await serviceOrderModel.getServiceOrder(
+  //   invoice.service_order_id
+  // );
+  // const user = await UserModel.findUser(service_order.user_id);
+
+  // data = {
+  //   invoice_id: invoice.invoice_id,
+  //   NIC: user.NIC,
+  //   service_order_id: service_order.id,
+  //   vehicle_number: service_order.vehicle_number,
+  //   start_date: service_order.start_date,
+  //   end_date: service_order.end_date,
+  //   first_name: user.first_name,
+  //   last_name: user.last_name,
+  // };
+  data = {
+    dataFound: true,
+    invoice_id: 12313,
+  };
+  console.log("Get invoice workds");
+  res.render("./cashier/payment.ejs", data);
 };
+
+exports.payInvoice = async (req, res) => {};
 
 exports.createInvoice = async (req, res) => {
   const result = await invoice.createInvoice(req.body);
