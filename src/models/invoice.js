@@ -58,7 +58,7 @@ class Invoice {
   }
 
   //Search invoice
-  async searchInvoice(data) {}
+  async getInvoice(data) {}
 }
 
 module.exports = Invoice;

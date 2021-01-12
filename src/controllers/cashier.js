@@ -10,7 +10,7 @@ exports.getInvoice = async (req, res) => {
 };
 
 exports.payInvoice = async (req, res) => {
-  const invoice_id = await invoice.searchInvoice(req.body);
+  const invoice_id = await invoice.getInvoice(req.body);
 };
 
 exports.createInvoice = async (req, res) => {
