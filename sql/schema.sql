@@ -1,5 +1,10 @@
-create database emission_test_db;
-use emission_test_db;
+create database emission_test;
+
+use emission_test;
+
+create database emission_db;
+
+use emission_db;
 
 CREATE TABLE useracc(user_id int(15) unsigned NOT NULL AUTO_INCREMENT primary key, email varchar(100), password varchar(255), NIC varchar(12), first_name varchar(200), last_name varchar(200),user_type varchar(30));
 
@@ -23,4 +28,8 @@ CREATE TABLE ticket(ticket_id int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY K
 
 alter table ticket AUTO_INCREMENT=1001;
 alter table invoice AUTO_INCREMENT=1001;
+<<<<<<< HEAD
 alter table service_order AUTO_INCREMENT=1001;
+=======
+alter table service_order AUTO_INCREMENT=1001;
+>>>>>>> lahiru
