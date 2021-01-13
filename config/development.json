@@ -4,7 +4,7 @@
     "port": "8090",
     "user": "root",
     "password": "",
-    "database": "ecodb",
+    "database": "emission_test_db",
     "connectionLimit": 5
   }
 }
