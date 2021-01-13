@@ -11,10 +11,10 @@ class Ticket {
         _schema.set(
             this,
             Joi.object({
-                user_id: Joi.number().min(1).max(10).required(),
-                status: Joi.string().min(4).max(6).required(),
-                start_time: Joi.date().greater('now').required(),
-                end_time: Joi.date().greater('now').allow('', null),
+                user_id:Joi.number(),
+                status:Joi.string(),
+                start_time:Joi.date(),
+                end_time:Joi.date(),
             }).options({ abortEarly: false })
         );
 
@@ -44,4 +44,4 @@ class Ticket {
     }
 }
 
-module.exports = ServiceOrder;
+module.exports = Ticket;
