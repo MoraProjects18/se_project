@@ -14,12 +14,12 @@ class Database {
       _connectionError.set(this, true);
     }
 
-    _getResults.set(this, (error, results, fields) => {
+    _getResults.set(this, (error, results) => {
       if (error) {
         console.log(error);
-        resolve({ error: true });
+        return { error: true };
       }
-      resolve({ error: false, result: results });
+      return { error: false, result: results };
     });
   }
 
@@ -37,7 +37,9 @@ class Database {
             typeof values[0] === "object" ? "?" : "(?)"
           }`,
           [tableName, columns, values],
-          _getResults.get(this)(error, results, fields)
+          (error, results, fields) => {
+            resolve(_getResults.get(this)(error, results));
+          }
         );
     });
   }
@@ -54,7 +56,9 @@ class Database {
             limit.length == 0 ? `` : `LIMIT ?`
           }`,
           [columns, tableName, action[0], action[2], sort, limit],
-          _getResults.get(this)(error, results, fields)
+          (error, results, fields) => {
+            resolve(_getResults.get(this)(error, results));
+          }
         );
     });
   }
@@ -93,7 +97,9 @@ class Database {
             sort,
             limit,
           ],
-          _getResults.get(this)(error, results, fields)
+          (error, results, fields) => {
+            resolve(_getResults.get(this)(error, results));
+          }
         );
     });
   }
@@ -110,7 +116,9 @@ class Database {
             )
             .join("")} WHERE ?? ${action[1]} ?`,
           [tableName, ...updates, action[0], action[2]],
-          _getResults.get(this)(error, results, fields)
+          (error, results, fields) => {
+            resolve(_getResults.get(this)(error, results));
+          }
         );
     });
   }
@@ -123,7 +131,9 @@ class Database {
         .query(
           `DELETE FROM ?? WHERE ?? ${action[1]} ?`,
           [tableName, action[0], action[2]],
-          _getResults.get(this)(error, results, fields)
+          (error, results, fields) => {
+            resolve(_getResults.get(this)(error, results));
+          }
         );
     });
   }
@@ -133,11 +143,9 @@ class Database {
     return new Promise((resolve) => {
       _pool
         .get(this)
-        .query(
-          `CALL ??(?)`,
-          [name, args],
-          _getResults.get(this)(error, results, fields)
-        );
+        .query(`CALL ??(?)`, [name, args], (error, results, fields) => {
+          resolve(_getResults.get(this)(error, results));
+        });
     });
   }
 }
