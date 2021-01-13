@@ -11,10 +11,10 @@ class Ticket {
         _schema.set(
             this,
             Joi.object({
-                user_id:Joi.number(),
-                status:Joi.string(),
-                start_time:Joi.date(),
-                end_time:Joi.date(),
+                user_id:Joi.number().required(),
+                status:Joi.string().min(4).max(6).required(),
+                start_time:Joi.date().required(),
+                end_time:Joi.date().required(),
             }).options({ abortEarly: false })
         );
 

@@ -4,11 +4,9 @@
     "port": "3306",
     "user": "root",
     "password": "",
-<<<<<<< HEAD
-    "database": "emission",
-=======
+
     "database": "emission_test_db",
->>>>>>> dilshan
+
     "connectionLimit": 5
   }
 }
