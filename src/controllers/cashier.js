@@ -17,33 +17,31 @@ exports.getInvoicePage = async (req, res) => {
 };
 
 exports.searchInvoice = async (req, res) => {
-  const invoice = await invoiceModel.getInvoice(req.body);
-  if (invoice.error == false) {
-    const service_order_id = invoice.result[0].service_order_id;
+  const invoiceR = await invoiceModel.getInvoice(req.body);
+  const invoice = invoiceR.result[0];
+  if (invoice.length != 0) {
+    const service_order_id = invoice.service_order_id;
     const soUser = await invoiceModel.getSOUser(service_order_id);
-    console.log("This is service_order:", soUser);
+
+    const sou = soUser.result[0];
+
+    data = {
+      invoice_id: invoice.invoice_id,
+      NIC: sou.NIC,
+      service_order_id: invoice.service_order_id,
+      vehicle_number: sou.vehicle_number,
+      start_date: sou.start_date,
+      end_date: sou.end_date,
+      first_name: sou.first_name,
+      last_name: sou.last_name,
+      status: sou.status,
+    };
+  } else {
+    data = {
+      dataFound: false,
+      error: invoiceR.error,
+    };
   }
-
-  // const service_order = await serviceOrderModel.getServiceOrder(
-  //   invoice.service_order_id
-  // );
-  // const user = await UserModel.findUser(service_order.user_id);
-
-  // data = {
-  //   invoice_id: invoice.invoice_id,
-  //   NIC: user.NIC,
-  //   service_order_id: service_order.id,
-  //   vehicle_number: service_order.vehicle_number,
-  //   start_date: service_order.start_date,
-  //   end_date: service_order.end_date,
-  //   first_name: user.first_name,
-  //   last_name: user.last_name,
-  // };
-
-  data = {
-    dataFound: true,
-    invoice_id: 12313,
-  };
   res.render("./cashier/payment.ejs", data);
 };
 

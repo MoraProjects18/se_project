@@ -13,7 +13,7 @@ class Invoice {
       this,
       Joi.object({
         // invoice_id: Joi.number().required(),
-        service_order_id: Joi.string().required(),
+        service_order_id: Joi.number().required(),
         payment_amount: Joi.number().required(),
       })
     );
@@ -68,10 +68,9 @@ class Invoice {
       .readSingleTable(
         "invoice",
         ["invoice_id", "service_order_id", "payment_amount"],
-        ["invoice_id", "=", "1"],
+        ["invoice_id", "=", data.invoice_id],
         ["invoice_id"]
       );
-
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -89,7 +88,6 @@ class Invoice {
 
   //Search invoice
   async getSOUser(data) {
-    console.log("Service ID:", data); //service_order_id
     // let valid = await _validateSearch.get(this)(data);
     // if (valid.error) {
     //   return new Promise((resolve) => resolve({ validationError: valid }));
@@ -99,7 +97,7 @@ class Invoice {
       .get(this)
       .readMultipleTable(
         "service_order",
-        "outer",
+        "inner",
         ["useracc", "user_id"],
         [
           "service_order_id",
@@ -108,10 +106,10 @@ class Invoice {
           "status",
           "first_name",
           "last_name",
-        ]
+          "NIC",
+        ],
+        ["service_order_id", "=", data]
       );
-
-    console.log("This is the result:", result);
 
     return new Promise((resolve) => {
       let obj = {
