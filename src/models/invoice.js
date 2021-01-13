@@ -12,7 +12,7 @@ class Invoice {
     _schemaNew.set(
       this,
       Joi.object({
-        invoice_id: Joi.string().required(),
+        invoice_id: Joi.number().required(),
         service_order_id: Joi.string().required(),
         payment_amount: Joi.number().required(),
       })
@@ -25,7 +25,7 @@ class Invoice {
     _schemaSearch.set(
       this,
       Joi.object({
-        invoice_id: Joi.string().required(),
+        invoice_id: Joi.number().required(),
       })
     );
 
@@ -58,7 +58,38 @@ class Invoice {
   }
 
   //Search invoice
-  async getInvoice(data) {}
+  async getInvoice(data) {
+    console.log(data);
+    let valid = await _validateSearch.get(this)(data);
+    if (valid.error) {
+      return new Promise((resolve) => resolve({ validationError: valid }));
+    }
+
+    result = await _database
+      .get(this)
+      .readSingleTable(
+        "invoice",
+        "*",
+        ["invoice_id", "=", "1"],
+        ["invoice_id"],
+        [1]
+      );
+
+    console.log("This is the result:", result);
+
+    // return new Promise((resolve) => {
+    //   let obj = {
+    //     connectionError: _database.get(this).connectionError,
+    //   };
+
+    //   if (result.error) {
+    //     obj.error = true;
+    //   } else {
+    //     obj.error = false;
+    //     obj.result = result;
+    //   }
+    // });
+  }
 }
 
 module.exports = Invoice;

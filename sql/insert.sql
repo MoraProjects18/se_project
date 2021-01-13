@@ -48,7 +48,7 @@ INSERT INTO `service_order` (`service_order_id`, `user_id`, `vehicle_number`, `s
 INSERT INTO `service_order` (`service_order_id`, `user_id`, `vehicle_number`, `start_date`, `end_date`, `status`) VALUES ('3', '4', 'WR6574', '2021-02-10 13:21:46', '2021-02-10 13:51:46', 'Open');
 INSERT INTO `service_order` (`service_order_id`, `user_id`, `vehicle_number`, `start_date`, `end_date`, `status`) VALUES ('4', '3', 'NR7456', '2021-02-25 10:15:00', '2021-01-20 10:45:00', 'Open');
 
-INSERT INTO `invoice` (`invoice_id`, `service_order_id`, `payment_amount`) VALUES ('1', '1', '400');
-INSERT INTO `invoice` (`invoice_id`, `service_order_id`, `payment_amount`) VALUES ('2', '2', '400');
-INSERT INTO `invoice` (`invoice_id`, `service_order_id`, `payment_amount`) VALUES ('3', '3', '400');
-INSERT INTO `invoice` (`invoice_id`, `service_order_id`, `payment_amount`) VALUES ('4', '4', '400');
+INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ( '1', '400');
+INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ( '2', '400');
+INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ( '3', '400');
+INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ( '4', '400');

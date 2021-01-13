@@ -14,7 +14,8 @@ const receptionsitRouter = express.Router();
 
 //Cashier
 cashierRouter.get("/", cashierController.getInvoicePage);
-cashierRouter.get("/invoice", cashierController.searchInvoice);
+cashierRouter.post("/invoice", cashierController.searchInvoice);
+cashierRouter.post("/test", cashierController.createInvoice);
 
 // router.get("/", reportController.getreportPage);
 

@@ -17,7 +17,7 @@ exports.getInvoicePage = async (req, res) => {
 };
 
 exports.searchInvoice = async (req, res) => {
-  // const invoice = await invoiceModel.getInvoice(req.body);
+  const invoice = await invoiceModel.getInvoice(req.body);
   // const service_order = await serviceOrderModel.getServiceOrder(
   //   invoice.service_order_id
   // );
@@ -33,18 +33,19 @@ exports.searchInvoice = async (req, res) => {
   //   first_name: user.first_name,
   //   last_name: user.last_name,
   // };
+  console.log(invoice);
   data = {
     dataFound: true,
     invoice_id: 12313,
   };
-  console.log("Get invoice workds");
-  res.render("./cashier/payment.ejs", data);
+  // res.render("./cashier/payment.ejs", data);
 };
 
 exports.payInvoice = async (req, res) => {};
 
 exports.createInvoice = async (req, res) => {
-  const result = await invoice.createInvoice(req.body);
+  console.log(req.body);
+  const result = await invoiceModel.createInvoice(req.body);
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
