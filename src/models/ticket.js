@@ -11,10 +11,10 @@ class Ticket {
         _schema.set(
             this,
             Joi.object({
-                user_id:Joi.number().required(),
-                status:Joi.string().min(4).max(6).required(),
-                start_time:Joi.date().required(),
-                end_time:Joi.date().required(),
+                user_id:Joi.number(),
+                status:Joi.string().min(4).max(6),
+                start_time:Joi.date(),
+                end_time:Joi.date(),
             }).options({ abortEarly: false })
         );
 
@@ -25,6 +25,7 @@ class Ticket {
 
     async Initiate(data) {
         //validate data
+        console.log(data);
         let result = await _validate.get(this)(data);
         if (result.error)
             return new Promise((resolve) => resolve({ validationError: result }));

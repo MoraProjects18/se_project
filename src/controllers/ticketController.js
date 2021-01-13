@@ -11,6 +11,7 @@ exports.getTicketPage = async (req, res) => {
     res.render("../views/ticket/createTicket.ejs", data);
 };
 exports.createTicket = async (req, res) => {
+    console.log(req.body);
     const result = await ticket.Initiate(req.body);
     if (result.validationError)
         return res.status(400).send(result.validationError);
