@@ -18,6 +18,12 @@ exports.getInvoicePage = async (req, res) => {
 
 exports.searchInvoice = async (req, res) => {
   const invoice = await invoiceModel.getInvoice(req.body);
+  if (invoice.error == false) {
+    const service_order_id = invoice.result[0].service_order_id;
+    const soUser = await invoiceModel.getSOUser(service_order_id);
+    console.log("This is service_order:", soUser);
+  }
+
   // const service_order = await serviceOrderModel.getServiceOrder(
   //   invoice.service_order_id
   // );
@@ -33,18 +39,17 @@ exports.searchInvoice = async (req, res) => {
   //   first_name: user.first_name,
   //   last_name: user.last_name,
   // };
-  console.log(invoice);
+
   data = {
     dataFound: true,
     invoice_id: 12313,
   };
-  // res.render("./cashier/payment.ejs", data);
+  res.render("./cashier/payment.ejs", data);
 };
 
 exports.payInvoice = async (req, res) => {};
 
 exports.createInvoice = async (req, res) => {
-  console.log(req.body);
   const result = await invoiceModel.createInvoice(req.body);
   if (result.validationError)
     return res.status(400).send(result.validationError);

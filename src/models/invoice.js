@@ -12,7 +12,7 @@ class Invoice {
     _schemaNew.set(
       this,
       Joi.object({
-        invoice_id: Joi.number().required(),
+        // invoice_id: Joi.number().required(),
         service_order_id: Joi.string().required(),
         payment_amount: Joi.number().required(),
       })
@@ -36,14 +36,13 @@ class Invoice {
 
   //Create new Invoice put in service order
   async createInvoice(data) {
-    //Validate data
-    let result = await _validate.get(this)(data);
-    if (result.error) {
+    let valid = await _validate.get(this)(data);
+    if (valid.error) {
       return new Promise((resolve) => resolve({ validationError: result }));
     }
 
     //Call create function of DB
-    result = await _database
+    const result = await _database
       .get(this)
       .create("invoice", Object.keys(data), Object.values(data));
 
@@ -59,36 +58,74 @@ class Invoice {
 
   //Search invoice
   async getInvoice(data) {
-    console.log(data);
     let valid = await _validateSearch.get(this)(data);
     if (valid.error) {
       return new Promise((resolve) => resolve({ validationError: valid }));
     }
 
-    result = await _database
+    const result = await _database
       .get(this)
       .readSingleTable(
         "invoice",
-        "*",
+        ["invoice_id", "service_order_id", "payment_amount"],
         ["invoice_id", "=", "1"],
-        ["invoice_id"],
-        [1]
+        ["invoice_id"]
+      );
+
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+
+      if (result.error) {
+        obj.error = true;
+      } else {
+        obj.error = false;
+        obj.result = result.result;
+      }
+      resolve(obj);
+    });
+  }
+
+  //Search invoice
+  async getSOUser(data) {
+    console.log("Service ID:", data); //service_order_id
+    // let valid = await _validateSearch.get(this)(data);
+    // if (valid.error) {
+    //   return new Promise((resolve) => resolve({ validationError: valid }));
+    // }
+
+    const result = await _database
+      .get(this)
+      .readMultipleTable(
+        "service_order",
+        "outer",
+        ["useracc", "user_id"],
+        [
+          "service_order_id",
+          "vehicle_number",
+          "start_date",
+          "status",
+          "first_name",
+          "last_name",
+        ]
       );
 
     console.log("This is the result:", result);
 
-    // return new Promise((resolve) => {
-    //   let obj = {
-    //     connectionError: _database.get(this).connectionError,
-    //   };
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
 
-    //   if (result.error) {
-    //     obj.error = true;
-    //   } else {
-    //     obj.error = false;
-    //     obj.result = result;
-    //   }
-    // });
+      if (result.error) {
+        obj.error = false;
+      } else {
+        obj.error = false;
+        obj.result = result.result;
+      }
+      resolve(obj);
+    });
   }
 }
 
