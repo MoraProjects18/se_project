@@ -2,6 +2,14 @@ const ejs = require("ejs");
 const Ticket = require("../models/ticket.js");
 const ticket = new Ticket();
 
+
+exports.getTicketPage = async (req, res) => {
+    data = {
+        dataFound: false,
+    };
+
+    res.render("../views/ticket/createTicket.ejs", data);
+};
 exports.createTicket = async (req, res) => {
     const result = await ticket.Initiate(req.body);
     if (result.validationError)
