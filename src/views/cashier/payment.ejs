@@ -18,12 +18,15 @@
         </div>
         <div class="col-md-8 col-md-offset-3 text-center center">
             <div class="container py-4 text-center" id ="invoice_search">
-                <form class="form-inline text-center" action="/cashier/invoice" method="post">
+                <form class="form-inline text-center" action="/cashier/" method="post">
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="inputInvoice" class="sr-only">Enter Invoice Number</label>
-                        <input type="text" class="form-control inputField" id="inputInvoice" placeholder="Enter Invoice Number">
+                        <input type="text" class="form-control inputField" name = "invoice_id" id="inputInvoice" placeholder="Enter Invoice Number">
+                        <% if(data.error.status){ %>
+                            <h2> <% data.error.message %> </h2>
+                        <% } %>
                     </div>
-                    <a href="cashier/"><button type="submit" class="btn btn-grad mb-2 btn-grad-confirm ">Search</button></a>
+                    <button type="submit" class="btn btn-grad mb-2 btn-grad-confirm ">Search</button>
                 </form>
             </div>
         </div>
@@ -128,8 +131,6 @@
             </div>
     
         </div>
-    
-    
     <% } %>
     
 

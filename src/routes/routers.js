@@ -1,13 +1,10 @@
 const cashierController = require("../controllers/cashier");
 const reportController = require("../controllers/emission_report");
 
-
-
 const express = require("express");
 const cashierRouter = express.Router();
 
 // //Customer
-
 
 //Receptionist
 // receptionsitRouter.get("/", cashierController.getInvoice);
@@ -15,10 +12,9 @@ const cashierRouter = express.Router();
 //Cashier
 cashierRouter.get("/", cashierController.getInvoicePage);
 cashierRouter.post("/", cashierController.searchInvoice);
-//cashierRouter.get("/invoice", cashierController.searchInvoice);
-// cashierRouter.post("/test", cashierController.createInvoice);
+cashierRouter.post("/invoice/pay", cashierController.payInvoice);
+cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
 
 // router.get("/", reportController.getreportPage);
-
 
 module.exports = cashierRouter;

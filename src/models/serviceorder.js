@@ -94,7 +94,7 @@ class ServiceOrder {
       .get(this)
       .update(
         "service_order",
-        ["status", "closed", "end_date", getDate()],
+        ["status", "Closed", "end_date", getDate()],
         ["service_order_id", "=", data.service_order_id]
       );
 
@@ -118,7 +118,7 @@ class ServiceOrder {
       .get(this)
       .update(
         "service_order",
-        ["status", "paid"],
+        ["status", "Paid"],
         ["service_order_id", "=", data.service_order_id]
       );
 
