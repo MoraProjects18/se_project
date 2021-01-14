@@ -52,6 +52,7 @@ class User {
         data.last_name,
         data.license_number,
       ]);
+    // .create("useracc", Object.keys(data), Object.values(data));
 
     return new Promise((resolve) => {
       let obj = {

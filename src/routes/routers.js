@@ -3,18 +3,17 @@ const reportController = require("../controllers/emission_report");
 
 const express = require("express");
 const cashierRouter = express.Router();
-const receptionsitRouter = express.Router();
 
-//Controllers
-
-//Customer
+// //Customer
 
 //Receptionist
 // receptionsitRouter.get("/", cashierController.getInvoice);
 
 //Cashier
 cashierRouter.get("/", cashierController.getInvoicePage);
-cashierRouter.get("/invoice", cashierController.searchInvoice);
+cashierRouter.post("/", cashierController.searchInvoice);
+cashierRouter.post("/invoice/pay", cashierController.payInvoice);
+cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
 
 // router.get("/", reportController.getreportPage);
 
