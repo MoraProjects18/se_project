@@ -99,6 +99,32 @@ class ServiceOrder {
     });
   }
 
+  async GetMySO(data) {
+
+    const result = await _database
+      .get(this)
+      .readMultipleTable(
+        "useracc",
+        "inner",
+        ["service_order", "user_id"],
+        [
+          "service_order_id",
+          "vehicle_number",
+          "start_date",
+          "end_date",
+          "status",
+        ],
+        ["NIC", "=", data.NIC]
+      );
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false , obj.result = result.result);
+      resolve(obj);
+    });
+  }
+
 }
 
 //function to get date and time return format 2021-1-13 18:24:57

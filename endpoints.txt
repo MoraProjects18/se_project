@@ -31,3 +31,10 @@ an invalide SO id.
 Used to get the SO detail by its ID.
 ****Reminder - Need to validate when invalid id entered
 
+>>>GET - localhost:3000/customer/getmyso
+{
+    "NIC": "972654872V"
+}
+This is used to get all the invoice history of a customer.
+Can be used by receptionist or customer.
+
