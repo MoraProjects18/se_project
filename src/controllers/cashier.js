@@ -1,6 +1,8 @@
 const ejs = require("ejs");
 const Invoice = require("../models/invoice.js");
+const ServiceOrder = require("../models/serviceorder.js");
 const invoiceModel = new Invoice();
+const SOModel = new ServiceOrder();
 
 // const ServiceOrder = require("../models/serviceOrder.js");
 // const serviceOrderModel = new ServiceOrder();
@@ -18,6 +20,12 @@ exports.getInvoicePage = async (req, res) => {
 
 exports.searchInvoice = async (req, res) => {
   const invoiceR = await invoiceModel.getInvoice(req.body);
+  // if (invoiceR.validationError)
+  //   return res.status(400).send(invoiceR.validationError);
+  // if (invoiceR.connectionError)
+  //   return res.status(500).send("Internal Server Error!");
+  // if (invoiceR.error) return res.status(400).send("Bad Request!");
+  // res.status(200).send("Payment Confirmed");
   const invoice = invoiceR.result[0];
   if (invoice.length != 0) {
     const service_order_id = invoice.service_order_id;
@@ -45,7 +53,16 @@ exports.searchInvoice = async (req, res) => {
   res.render("./cashier/payment.ejs", data);
 };
 
-exports.payInvoice = async (req, res) => {};
+exports.payInvoice = async (req, res) => {
+  const data = req.body;
+  const result = await SOModel.paySO(data);
+  if (result.validationError)
+    return res.status(400).send(result.validationError);
+  if (result.connectionError)
+    return res.status(500).send("Internal Server Error!");
+  if (result.error) return res.status(400).send("Bad Request!");
+  res.status(200).send("Payment Confirmed");
+};
 
 exports.createInvoice = async (req, res) => {
   const result = await invoiceModel.createInvoice(req.body);
