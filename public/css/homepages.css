@@ -46,6 +46,16 @@ hr.solid {
 
 /* --------------footer------------------------ */
 
+.centerEmail{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(68, 55, 55);
+  text-align: center;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+
 .footer {
         
         left: 0;
