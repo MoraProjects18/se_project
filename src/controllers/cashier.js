@@ -24,9 +24,9 @@ exports.searchInvoice = async (req, res) => {
   if (invoiceR.validationError) {
     data = {
       error: {
-        status: true,
         message: invoiceR.validationError.error.message,
       },
+      value: invoiceR.validationError.value,
     };
     // return res.status(400).send(invoiceR.validationError);
     return res.render("./cashier/payment.ejs", data);
@@ -36,7 +36,6 @@ exports.searchInvoice = async (req, res) => {
     return res.status(500).send("Internal Server Error!");
   if (invoiceR.error) return res.status(400).send("Bad Request!");
   // res.status(200).send("Payment Confirmed");
-  console.log(invoiceR);
 
   if (invoiceR.result.length != 0) {
     const invoice = invoiceR.result[0];
@@ -47,9 +46,6 @@ exports.searchInvoice = async (req, res) => {
 
     data = {
       dataFound: true,
-      error: {
-        status: false,
-      },
       invoice_id: invoice.invoice_id,
       NIC: sou.NIC,
       service_order_id: invoice.service_order_id,
@@ -79,9 +75,9 @@ exports.payInvoice = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
-  res.status(200).send("Payment Confirmed");
+    return res.status(500).send({ message: "Internal Server Error!" });
+  if (result.error) return res.status(400).send();
+  res.status(200).send({ message: "Payment Confirmed" });
 };
 
 exports.closeServiceOrder = async (req, res) => {
@@ -90,9 +86,9 @@ exports.closeServiceOrder = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
-  res.status(200).send("Service Order Closed");
+    return res.status(500).send({ message: "Internal Server Error!" });
+  if (result.error) return res.status(400).send({ message: "Bad Request!" });
+  res.status(200).send({ message: "Service Order Closed" });
 };
 
 exports.createInvoice = async (req, res) => {

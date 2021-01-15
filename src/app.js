@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const config = require("config");
+
+checkEnvironmentVariable("database_credentials.password");
+checkEnvironmentVariable("jwtPrivateKey");
+checkEnvironmentVariable("email_transporter_credentials.auth.user");
+checkEnvironmentVariable("email_transporter_credentials.auth.pass");
 
 //Routers
 const authRouter = require("./routes/auth");
@@ -18,12 +24,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/register", authRouter);
-app.use("/test", async (req, res) => {
-  const database = new Database();
-  const result = await database.delete("contact_no", ["user_id", "=", "5"]);
-  res.status(200).send(result);
-});
+app.use("/auth", authRouter);
 app.use("/cashier", cashierRouter);
 app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
@@ -33,3 +34,10 @@ app.use("/customer",customerRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+function checkEnvironmentVariable(envName) {
+  if (!config.has(envName)) {
+    console.log(new Error(`${envName} (Enviroment Variable) is not defined`));
+    process.exit(1);
+  }
+}
