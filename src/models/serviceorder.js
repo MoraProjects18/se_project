@@ -157,6 +157,21 @@ class ServiceOrder {
       resolve(obj);
     });
   }
+
+  //gives all the details of so of today
+  async TodaySO() {
+    const result = await _database
+      .get(this)
+      .call("get_todayso");
+      //console.log(result.result[0]);
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+      resolve(obj);
+    });
+  }
 }
 
 //function to get date and time return format 2021-1-13 18:24:57

@@ -16,3 +16,13 @@ BEGIN
     COMMIT;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+  CREATE PROCEDURE get_todayso()
+    BEGIN
+       SELECT service_order_id,NIC,first_name,last_name,vehicle_number,start_date,end_date, status
+       FROM emission_test.useracc INNER JOIN emission_test.service_order 
+       ON emission_test.useracc.user_id=emission_test.service_order.user_id
+       WHERE DATE(start_date) = CURDATE();
+    END$$
+  DELIMITER ;

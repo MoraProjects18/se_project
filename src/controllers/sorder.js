@@ -49,4 +49,35 @@ exports.getbyidSO = async (req, res) => {
     res.status(200).send(result.result);
   };
 
+  exports.gettodaySO = async (req, res) => {
+    const result = await sorder.TodaySO();
+    //console.log(result);
+    if (result.validationError)
+      return res.status(400).send(result.validationError);
+    if (result.connectionError)
+      return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+      
+    if (result.resultData != 0) {
+      var strng=JSON.stringify(result.resultData);
+      var mydata =  JSON.parse(strng);
+  
+      data = {
+            dataFound: true,
+            sorder: mydata
+      }
+    } else {
+      data = {
+        dataFound: false,
+        error: {
+          status: false,
+          message: "No data to show",
+        },
+      };
+    }
+    console.log(data);
+    res.render("./receptionist/todayso.ejs", data);
+
+  };
+
   

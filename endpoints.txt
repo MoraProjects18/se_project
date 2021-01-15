@@ -38,3 +38,5 @@ Used to get the SO detail by its ID.
 This is used to get all the invoice history of a customer.
 Can be used by receptionist or customer.
 
+http://localhost:3000/receptionist/sorder/gettodayso
+Use this to get the service orders opened today by receptionist
