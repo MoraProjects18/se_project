@@ -1,4 +1,5 @@
 const ejs = require("ejs");
+var $ = require('jquery');
 const Ticket = require("../models/ticket.js");
 const ticket = new Ticket();
 
