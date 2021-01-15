@@ -13,6 +13,9 @@ const authRouter = require("./routes/auth");
 const Database = require("./database/database");
 const cashierRouter = require("./routes/routers");
 const reportRouter = require("./routes/emission_report");
+
+const path = require('path');
+
 const receptionistRouter = require("./routes/receptionist");
 const ticketRouter = require("./routes/ticket");
 const customerRouter = require("./routes/customer")
@@ -20,6 +23,7 @@ const customerRouter = require("./routes/customer")
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "../public")));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,6 +34,11 @@ app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
 app.use("/ticket",ticketRouter);
 app.use("/customer",customerRouter);
+
+
+
+
+
 
 
 const port = process.env.PORT || 3000;
