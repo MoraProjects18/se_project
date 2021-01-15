@@ -1,0 +1,350 @@
+[33mcommit ed61ed817fe9c48a01a9470c7719d1a8653a4528[m[33m ([m[1;36mHEAD -> [m[1;32myeshan[m[33m, [m[1;31morigin/roshi[m[33m, [m[1;31morigin/dev[m[33m, [m[1;32mroshi[m[33m, [m[1;32mdev[m[33m)[m
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Thu Jan 14 12:45:09 2021 +0530
+
+    ejs test
+
+[33mcommit db185e83917218357a05d402679548c66dcd9fc8[m
+Merge: accbfcf 461a608
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 23:47:01 2021 +0530
+
+    Merge branch 'hithru' into roshi
+
+[33mcommit 461a608c7f2b3ad81ee33d3fe0fb5896841d73fd[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 22:58:35 2021 +0530
+
+    Create ticket Page created
+
+[33mcommit accbfcfab67b1ff4799a85f4fcbadcd90cab7e02[m
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 20:34:37 2021 +0530
+
+    Closing a SO and searching by ID
+
+[33mcommit 6461eb0e2c6948552d48b8c6324b652d4bd6f1c2[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 19:16:03 2021 +0530
+
+    view function created
+
+[33mcommit 54287650e47b2196f1a331d28236b7a04c52d1d9[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 19:01:12 2021 +0530
+
+    ticket create build
+
+[33mcommit d774b5f99d9e54f67d4341812ad59ad52c95571f[m
+Merge: 339bd27 ff1964f
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 16:41:25 2021 +0530
+
+    Merge branch 'yeshan' into roshi
+
+[33mcommit 4f9e28ee0ae9d45b855b4239ae07d4294135cd57[m
+Merge: 2e428d0 6dfa674
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 16:12:56 2021 +0530
+
+    merge branch dilshan
+
+[33mcommit 2e428d06b5d045cfd58403ab9488255668efec95[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 16:10:20 2021 +0530
+
+    ticket basic structure
+
+[33mcommit ff1964ffb1a1f5ab2bcbc4aa0574def9166ed684[m[33m ([m[1;31morigin/yeshan[m[33m)[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 15:54:56 2021 +0530
+
+    Form routing to be checked
+
+[33mcommit 16b2dd8489dea794d89d55d789471eb89c170346[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Wed Jan 13 14:28:38 2021 +0530
+
+    ticket model Created
+
+[33mcommit d5e835b24825835502517900eae35f8460271f29[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 14:23:32 2021 +0530
+
+    Error Fixed in Invoice Model in searching multiple table not checked
+
+[33mcommit 339bd273cda89fdd6e279661e9a63cffe9ec342d[m
+Merge: 0dafe6d 6dfa674
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 13:42:39 2021 +0530
+
+    Merge branch 'dev' into roshi
+
+[33mcommit 0abc6692db23c7fdd3e045472eeace6581bd4c02[m
+Merge: 7f0e1e6 6dfa674
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 11:07:56 2021 +0530
+
+    Merging issue fixed
+
+[33mcommit 7f0e1e612524de025f427c4ff3c2f4db4d65f51c[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 11:01:09 2021 +0530
+
+    Error handling
+
+[33mcommit 6dfa6746b3b30b5a579a7437f82d27b76018f8a8[m
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Wed Jan 13 10:53:03 2021 +0530
+
+    resolve a bug in database class
+
+[33mcommit 0dafe6dcc7068cd5949b15814aaba77660d5c982[m
+Merge: 2d76dbd 33d75a5
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 10:40:47 2021 +0530
+
+    Merge branch 'dev' into roshi
+
+[33mcommit 9ed11abbfd472d89fdbf13675ae02235b1312418[m
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Wed Jan 13 08:47:00 2021 +0530
+
+    pull content of dev branch
+
+[33mcommit 521a8a38f8681e82447d1ea0e53bab05d022ff41[m
+Merge: 0021c0e 33d75a5
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Wed Jan 13 08:43:50 2021 +0530
+
+    pull dev branch
+
+[33mcommit 0021c0ee69ed09e436e5816249c5006aacf2d79c[m
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Wed Jan 13 08:21:17 2021 +0530
+
+    make a test router
+
+[33mcommit 33d75a574621a5f1ae998bb780cb160019578242[m
+Merge: 1cac7c1 f689a97
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 03:05:47 2021 +0530
+
+    Merge branch 'yeshan' into dev
+
+[33mcommit 1cac7c159eacf81ba0dc6c7d8998dd328022397d[m
+Merge: dac05c7 5b25056
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 03:05:35 2021 +0530
+
+    Merge branch 'dilshan' into dev
+
+[33mcommit f689a97b7a17a95601983aa3e2da8dabc741daeb[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Wed Jan 13 02:15:25 2021 +0530
+
+    Cashier bugs corrected
+
+[33mcommit 5b250566222a76d9be3c044b50b2ce64a0a21745[m
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Tue Jan 12 23:46:13 2021 +0530
+
+    Complete database class
+
+[33mcommit c90bd50c196c43818679b7650249de8444acf05c[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Tue Jan 12 22:42:59 2021 +0530
+
+    .
+
+[33mcommit 9058fa766c8ae28f8e14e481d8788b3cf1c01b8f[m
+Merge: b9312da 2d76dbd
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Tue Jan 12 20:35:05 2021 +0530
+
+    Merge branch 'roshi' of https://github.com/MoraProjects18/se_project into roshi
+
+[33mcommit 7868a6170f16c9f50e2860f3c1cea725cf2f56f0[m
+Author: DilshanSenarath <dilshan99news@gmail.com>
+Date:   Mon Jan 11 21:51:02 2021 +0530
+
+    Initial commit for test
+
+[33mcommit 2d76dbd7cf17c851539e55f7c0baef5a85a10047[m
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Mon Jan 11 20:15:43 2021 +0530
+
+    initiate sorder endpoint
+
+[33mcommit 7234bf0ed8294df71cce4595a9a26fe3bc8c822e[m
+Merge: 3b07c2a 859b738
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Mon Jan 11 13:53:54 2021 +0530
+
+    Merge branch 'main' into roshi
+
+[33mcommit 3b07c2a8c879d1afedbc0edf7f7c176341b7a3e3[m
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Mon Jan 11 13:35:17 2021 +0530
+
+    Register Page
+
+[33mcommit 7ca2d6eeeba04100464b39cf553c921dcac032f4[m
+Author: roshinie <roshinie.18@cse.mrt.ac.lk>
+Date:   Mon Jan 11 11:02:35 2021 +0530
+
+    Login page
+
+[33mcommit b9312da04d5c8b7beaaf731afbec923303ec657c[m
+Merge: 55495e9 9beb9f5
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Mon Jan 11 10:36:46 2021 +0530
+
+    lahiru branch merge
+
+[33mcommit 55495e9485bfe944d33deb32e139293e071c931c[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Mon Jan 11 10:35:04 2021 +0530
+
+    initial
+
+[33mcommit 568a2166e2f81e60806a59a5e3a796c38323bcdd[m
+Merge: 859b738 1a635fb
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Mon Jan 11 01:10:41 2021 +0530
+
+    merge from branch yeshan
+
+[33mcommit dac05c73e36e09d95f89c4ab796f11263733ffcf[m
+Merge: 71fe50d 1a635fb
+Author: PasinduYeshan <61885844+PasinduYeshan@users.noreply.github.com>
+Date:   Mon Jan 11 00:17:55 2021 +0530
+
+    Merge pull request #3 from MoraProjects18/yeshan
+    
+    Yeshan
+
+[33mcommit 1a635fbccb92336112489f5cf09d674fc16d3627[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Mon Jan 11 00:14:18 2021 +0530
+
+    EJS added
+
+[33mcommit 9beb9f5576f0327028228ccefd91b270ee4e2d57[m
+Author: LahiruKumaraHewagama <lahiruhewagama98@gmail.com>
+Date:   Sun Jan 10 23:12:48 2021 +0530
+
+    Database name  changing
+
+[33mcommit e589c7c36ba1bb5cd5fa8e2662defe2a92680e57[m
+Merge: d5b778f b3174f1
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sun Jan 10 21:33:13 2021 +0530
+
+    Merge branch 'charuka' into yeshan
+
+[33mcommit d5b778f088dddf80abc917994135fd940f68005b[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sun Jan 10 21:31:46 2021 +0530
+
+    Invoice Model create function, Cashier controller and route
+
+[33mcommit b3174f1d9db6db5a4d2b261d151fb3b13a6505b0[m[33m ([m[1;31morigin/charuka[m[33m)[m
+Author: Charuka Rathnayaka <62426265+charuka-rathnayaka@users.noreply.github.com>
+Date:   Sun Jan 10 21:25:42 2021 +0530
+
+    Update package.json
+
+[33mcommit a6fc4072f2f7cd57bbbbbb9f72fe7bf929b183fc[m
+Author: Charuka Rathnayaka <62426265+charuka-rathnayaka@users.noreply.github.com>
+Date:   Sun Jan 10 21:25:10 2021 +0530
+
+    Update package.json
+
+[33mcommit e6bde24c5080fd6ce5008a0ac8346cb44d058d6f[m
+Author: charuka <charuka.18@cse.mrt.ac.lk>
+Date:   Sun Jan 10 21:22:27 2021 +0530
+
+    Rendering report page
+
+[33mcommit b938848e4a0aa8ab0c2ad114bb00f61434073a64[m
+Author: LahiruKumaraHewagama <lahiruhewagama98@gmail.com>
+Date:   Sun Jan 10 20:42:41 2021 +0530
+
+    Database changing
+
+[33mcommit 4321ad67172079dc5ed567c3e0c6b4de73ea0458[m
+Author: LahiruKumaraHewagama <lahiruhewagama98@gmail.com>
+Date:   Sun Jan 10 19:51:33 2021 +0530
+
+    customer and staff home pages
+
+[33mcommit 859b738f197a2aca59e9cf11687f1992ecdea4a3[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: c406a7d 71fe50d
+Author: PasinduYeshan <61885844+PasinduYeshan@users.noreply.github.com>
+Date:   Sun Jan 10 13:06:13 2021 +0530
+
+    Merge pull request #2 from PasinduYeshan/dev
+    
+    Dev
+
+[33mcommit 71fe50dbe5c94a8c03e1e70e1e425564cf6d7e77[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sun Jan 10 13:03:07 2021 +0530
+
+    Project Structure changed and Authentication
+
+[33mcommit cfd49d6c2076c44cdf4aea2b8d5b3bcd9235d396[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sat Jan 9 22:32:36 2021 +0530
+
+    Readme
+
+[33mcommit fe00c9a3d595f9c36a7ec48f28aa983ea077cfe2[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sat Jan 9 22:29:30 2021 +0530
+
+    Customer profile and Staff profile
+
+[33mcommit ed4d5d428b6a744f90a29967ba7ee2032db5e434[m
+Merge: fbdbe71 0eab354
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sat Jan 9 21:46:56 2021 +0530
+
+    Merge branch 'charuka' of https://github.com/PasinduYeshan/se_project into charuka
+
+[33mcommit fbdbe7149a494d22c3fc9f1120097ff331c0caeb[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Sat Jan 9 21:46:38 2021 +0530
+
+    .
+
+[33mcommit 0eab3540ed02062d6ae5b5b822ff27d959b29d69[m
+Author: Hithru <56365929+Hithru@users.noreply.github.com>
+Date:   Sat Jan 9 20:40:06 2021 +0530
+
+    Database insert update
+
+[33mcommit 25426164f06596fe48af2ed8ed4206812d2284d1[m
+Author: charuka <charuka.18@cse.mrt.ac.lk>
+Date:   Sat Jan 9 17:39:37 2021 +0530
+
+    Database schema insert
+
+[33mcommit bc92dfaee3e40dcf51f4b4d92f297186ed2a0fda[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Fri Jan 8 01:53:29 2021 +0530
+
+    Sql Schema is added assest/sql
+
+[33mcommit c406a7de970b9d34ee57e4d56f5ee91b499ec360[m[33m ([m[1;32mmain[m[33m)[m
+Author: PasinduYeshan <pasindua.18@cse.mrt.ac.lk>
+Date:   Fri Jan 8 01:44:24 2021 +0530
+
+    Initialize SE project
+
+[33mcommit 177ab117c0cd8b7fed17c79a1ebcbca2fdf706d6[m
+Author: PasinduYeshan <61885844+PasinduYeshan@users.noreply.github.com>
+Date:   Thu Jan 7 23:10:02 2021 +0530
+
+    Initial commit

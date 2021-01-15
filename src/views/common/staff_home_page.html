@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>staff home page</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../../../public/css/homepages.css">
+    <!-- JavaScript and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../../../public/assets/logo.png" alt="logo" />SL Emission Testing
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <hr class="solid">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ticket details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Initiate order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Invoice payment </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Issue report </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"> Add employee </a>
+                    </li>
+
+
+                </ul>
+                <a class="nav-link " href="#">
+                    <i class="fas fa-user-circle " style='font-size:30px;color:rgb(6, 138, 37)'></i>
+                </a>
+                <button type="button" class="btn btn-success btn-large " id="signout">Log out</button>
+                <hr class="solid">
+            </div>
+        </div>
+    </nav>
+    <div class="Center">
+
+        <div class="container">
+            <div class="row ">
+                <br>
+                <div class="col-sm-4 ">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <h1>WELCOME </h1>
+                    <br>
+
+                    <p>SL Emission Testing is the pioneer in air quality management and eco solutions in Sri Lanka and is a
+                        part of the diversified conglomerate, LAUGFS Holdings.</p>
+
+                    <h4>Always try to give better service to your customers !! </h4>
+
+
+                </div>
+                <div class="col-sm-8 ">
+
+                    <div class="slider">
+
+                        <div id="img">
+                            <img src="../../../public/assets/logo.png" class="responsive_auto">
+                        </div>
+
+                    </div>
+
+                    <script>
+                        var images = ['../../../public/assets/logo.png'];
+                        var x = 0;
+                        var imgs = document.getElementById('img');
+                        setInterval(slider, 2000);
+
+                        function slider() {
+                            if (x < images.length) {
+                                x = x + 1;
+                            } else {
+                                x = 1;
+                            }
+
+                            imgs.innerHTML = "<img src=" + images[x - 1] + " class=\"responsive_auto\">";
+
+                        }
+
+                    </script>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <br>
+    <br>
+    <div class="footer">
+
+        <div class="container">
+           
+            <div class="row">
+
+                <div class="col-sm">
+                    <br>
+                    <br>
+                    <br>
+                    <h3>We're here to help our customers</h3>
+
+                </div>
+                <div class="col-sm">
+                    <br>
+
+                    <h3>Contact Details</h3>
+                    <br>
+                    <div class="row" id="contactus">
+                        <p>
+
+                            <i class='fas fa-phone'></i> Tel phone : (+94) 72 312 3234 </p>
+                        <p>
+                            <i class='fas fa-envelope'></i> Email :
+                            <a href=""> SLEmissionTesting@gmail.com</a>
+                        </p>
+
+                    </div>
+                    <div class="container">
+                        <div class="row">
+
+                            <div>
+                                <ul class="social-network social-circle">
+
+                                    <li>
+                                        <a href="#" class="icoFacebook" title="Facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icoTwitter" title="Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icoGoogle" title="Google +">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-sm">
+                    <br>
+                    <br>
+
+                    <h3>SL Emission Testing </h3>
+                    <img src="../../../public/assets/logo.png" class="responsive_second">
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <hr class="solid">
+                <div class="col-md-12 copy ">
+
+                    <p class="text-center">&copy; Copyright 2021 - SL Emission Testing. All rights reserved.</p>
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+
+
+</body>

@@ -1,3 +1,4 @@
+
 const express=require("express");
 const router=express.Router();
 let ejs = require('ejs');
@@ -97,6 +98,5 @@ exports.viewreport= async (req, res) => {
    res.redirect(htmlurl);
     
 };
-
 
    

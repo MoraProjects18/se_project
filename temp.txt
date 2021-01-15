@@ -1,0 +1,104 @@
+database.readSingleTable(
+    "users",
+    ["first_name", "email"],
+    ["first_name", "like", "%a%"], <== where first_name like '%a%'
+    "first_name",
+    [5, 5] <== get five rows after first five rows
+  );
+
+  database.readSingleTable(
+    "users",
+    "*",
+    ["first_name", "=", "Kasun"], <== where first_name='Kasun'
+    "first_name",
+    [5] <== get five rows
+  );
+
+  database.readSingleTable(
+    "users",
+    ["first_name", "email"],
+    ["age", "<=", "85"],
+    ["first_name","second_name"],
+    5 <== get five rows
+  );
+
+  database.readMultipleTable(
+    "useracc",
+    "outer",
+    ["contact_no", "user_id"],
+    ["first_name", "contact_no"],
+    ["first_name", "like", "%a%"],
+    ["first_name"],
+    [3]
+  );
+
+
+  database.update(
+    "contact_no",
+    ["contact_no", "0775555444"],
+    ["user_id", "=", "1"]
+  );
+
+  
+
+*Create Stored procedure for complex queries. Make sure to save it into a file*
+  DELIMITER $$
+  CREATE PROCEDURE get_clients()
+    BEGIN
+        SELECT * FROM clients;
+    END$$
+  DELIMITER;
+
+use call() method to execute stored procedures
+call("get_clients");
+
+  
+
+
+  DELIMITER $$
+  CREATE PROCEDURE get_clients_by_state( state CHAR(2) )
+    BEGIN
+        SELECT * FROM clients c WHERE c.state = state;
+    END$$
+  DELIMITER;
+
+use call() method to execute stored procedures
+call("get_clients",["active"]);
+
+
+###  Render ejs files  ###
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", { showValidity: false, error: {}, value: {} });
+});
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", {
+    showValidity: true,
+    error: { first_name: "Invalid string" },
+    value: {
+      first_name: "Riin",
+      last_name: "Ezque",
+      email: "example@gmail.com",
+    },
+  });
+});
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", {
+    showValidity: false,
+    error: {},
+    value: {
+      first_name: "Riin",
+      last_name: "Ezque",
+      email: "example@gmail.com",
+      password: "13546",
+    },
+    disabled: {
+      first_name: true,
+      last_name: true,
+      email: true,
+      password: true,
+    },
+  });
+});
