@@ -4,6 +4,7 @@ const path = require("path");
 const config = require("config");
 const cookieParser = require("cookie-parser");
 
+//Environment Variables
 checkEnvironmentVariable("database_credentials.password", "mysql_password");
 checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
 checkEnvironmentVariable(
@@ -39,6 +40,9 @@ app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
 app.use("/ticket",ticketRouter);
 app.use("/customer",customerRouter);
+
+
+
 
 
 const port = process.env.PORT || 3000;
