@@ -1,7 +1,7 @@
 {
   "database_credentials": {
     "host": "localhost",
-    "user": "new_user",
+    "user": "root",
     "port":"3306",
     "password": "1111",
     "database": "emission_db",
