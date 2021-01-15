@@ -14,6 +14,15 @@
     border-radius: 50px !important;
 }
    
+#active{font-size:17px;
+  color:rgb(13, 126, 41);
+  font-weight: bold;
+}
+
+#deactive{font-size:17px;
+    color:rgb(137, 137, 137);
+    
+  }
 /* ----------------bg---------------------- */
 /* bg images */
 .responsive {
@@ -43,6 +52,8 @@ hr.solid {
   .copy{
     font-size:10px;
 }
+
+
 
 /* --------------footer------------------------ */
 

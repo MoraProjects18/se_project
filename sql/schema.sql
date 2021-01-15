@@ -1,6 +1,10 @@
 CREATE DATABASE emission_test;
 USE emission_test;
 
+create database emission_db;
+
+use emission_db;
+
 CREATE TABLE useracc(user_id int(15) unsigned NOT NULL AUTO_INCREMENT primary key, email varchar(100), password varchar(255), NIC varchar(12), first_name varchar(200), last_name varchar(200),user_type varchar(30));
 
 CREATE TABLE branch(branch_id int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY  , branch_name varchar(20), branch_address varchar(100), contact_no varchar(15));

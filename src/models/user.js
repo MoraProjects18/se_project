@@ -37,7 +37,7 @@ class User {
     //call create function of database class
     result = await _database
       .get(this)
-      .create("users", Object.keys(data), Object.values(data));
+      .create("useracc", Object.keys(data), Object.values(data));
 
     return new Promise((resolve) => {
       let obj = {
