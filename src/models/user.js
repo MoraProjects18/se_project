@@ -1,66 +1,91 @@
-const Joi = require("joi");
 const bcrypt = require("bcrypt");
-const passwordComplexity = require("joi-password-complexity").default;
+const Joi = require("joi");
+const _ = require("lodash");
 const Database = require("../database/database");
 const _database = new WeakMap();
-const _schema = new WeakMap();
-const _validate = new WeakMap();
 
 class User {
   constructor() {
     _database.set(this, new Database());
-
-    _schema.set(
-      this,
-      Joi.object({
-        first_name: Joi.string().min(3).max(200).required().label("First Name"),
-        last_name: Joi.string().min(3).max(200).required().label("Last Name"),
-        email: Joi.string().min(5).max(255).email().required().label("Email"),
-        password: passwordComplexity(),
-        NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
-        license_number: Joi.string()
-          .length(8)
-          .required()
-          .label("License Number"),
-      }).options({ abortEarly: false })
-    );
-
-    _validate.set(this, (object) => {
-      return _schema.get(this).validate(object);
-    });
   }
 
-  async register(data) {
-    //validate data
-    let result = await _validate.get(this)(data);
-    if (result.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
+  get databaseConnection() {
+    return _database.get(this);
+  }
 
-    //encrypt the password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(data.password, salt);
-    data.password = hashedPassword;
+  async login(data) {
+    const validateResults = Joi.object({
+      email: Joi.string().min(5).max(255).email().required().label("Email"),
+      password: Joi.string().required().label("Password"),
+    }).validate(data);
 
-    //call register_new_customer stored procedure
-    result = await _database
+    if (validateResults.error)
+      return new Promise((resolve) =>
+        resolve({ validationError: validateResults.error })
+      );
+
+    if (_database.get(this).connectionError)
+      return new Promise((resolve) => resolve({ connectionError: true }));
+
+    const userData = await _database
       .get(this)
-      .call("register_new_customer", [
-        data.email,
-        data.password,
-        data.NIC,
-        data.first_name,
-        data.last_name,
-        data.license_number,
-      ]);
+      .readSingleTable(
+        "useracc",
+        ["user_id", "first_name", "last_name", "user_type", "password"],
+        ["email", "=", data.email]
+      );
 
-    return new Promise((resolve) => {
-      let obj = {
-        userData: result.result[0][0],
-        connectionError: _database.get(this).connectionError,
-      };
-      result.error ? (obj.error = true) : (obj.error = false);
-      resolve(obj);
-    });
+    if (userData.error || !userData.result[0])
+      return new Promise((resolve) => resolve({ allowAccess: false }));
+
+    const isCompare = await bcrypt.compare(
+      data.password,
+      userData.result[0]["password"]
+    );
+
+    if (!isCompare)
+      return new Promise((resolve) => resolve({ allowAccess: false }));
+
+    if (userData.result[0]["user_type"] === "customer") {
+      const customerData = await _database
+        .get(this)
+        .readSingleTable(
+          "customer",
+          ["email_verification"],
+          ["user_id", "=", userData.result[0]["user_id"]]
+        );
+
+      if (customerData.error || !customerData.result[0])
+        return new Promise((resolve) => resolve({ allowAccess: false }));
+
+      userData.result[0]["email_verification"] =
+        customerData.result[0]["email_verification"];
+
+      return new Promise((resolve) =>
+        resolve({
+          allowAccess: true,
+          tokenData: _.pick(userData.result[0], [
+            "user_id",
+            "first_name",
+            "last_name",
+            "user_type",
+            "email_verification",
+          ]),
+        })
+      );
+    }
+
+    return new Promise((resolve) =>
+      resolve({
+        allowAccess: true,
+        tokenData: _.pick(userData.result[0], [
+          "user_id",
+          "first_name",
+          "last_name",
+          "user_type",
+        ]),
+      })
+    );
   }
 }
 
