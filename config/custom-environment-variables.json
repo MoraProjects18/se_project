@@ -1,5 +1,5 @@
 {
   "database_credentials": {
-    "password": "mysql_new_user_password"
+    "password": "mysql_root_password"
   }
 }
