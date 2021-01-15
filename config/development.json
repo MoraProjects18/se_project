@@ -1,10 +1,10 @@
 {
   "database_credentials": {
     "host": "localhost",
-    "port": "3306",
-    "user": "root",
-    "password": "",
-    "database": "emission_test",
+    "user": "new_user",
+    "port":"3306",
+    "password": "1111",
+    "database": "emission_db",
     "connectionLimit": 5
   }
 }
