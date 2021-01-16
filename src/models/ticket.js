@@ -16,8 +16,9 @@ class Ticket {
             Joi.object({
                 user_id:Joi.number().required(),
                 status:Joi.string().min(4).max(6).required(),
-                start_time:Joi.date().required(),
-                end_time:Joi.date().required(),
+                branch_id:Joi.number().required(),
+                start_time: Joi.string().min(10).max(30).required(),
+
             }).options({ abortEarly: false })
         );
 
@@ -102,7 +103,20 @@ class Ticket {
         });
     }
 
-
+    async TodaySO() {
+        const result = await _database
+            .get(this)
+            .call("get_todayso");
+        //console.log(result.result[0]);
+        return new Promise((resolve) => {
+            let obj = {
+                connectionError: _database.get(this).connectionError,
+            };
+            result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+            resolve(obj);
+        });
+    }
+}
 
 }
 

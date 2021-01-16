@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../common/head', {title:"Receptionist"}); %>
+</head>
+
+<body>
+<div class="container">
+    <h2>TICKET OPENED TODAY</h2><br>
+    <div class="card-columns">
+        <% if(data.dataFound){ %>
+            <% for(var so of sorder){ %>
+
+                <div class="card border-success">
+                    <div class="card-header bg-success border-success font-weight-bolder">
+                        Service Order ID : <%= so.service_order_id %>
+                    </div>
+                    <div class="card-body" style="background-color: #b2e4bd;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">NIC &emsp;: <%=so.NIC%></li>
+                            <li class="list-group-item">Name &emsp;: <%= so.first_name +" "+ so.last_name %></li>
+                            <li class="list-group-item">Vehicle &emsp;: <%= so.vehicle_number %></li>
+                            <li class="list-group-item">Date &emsp;: <%= so.start_date %></li>
+                            <li class="list-group-item">Status &emsp;: <%= so.status %></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            <% } %>
+        <% } else {%>
+            <div><h4><%= data.error.message%></h4></div>
+        <% } %>
+    </div>
+</div>
+
+</body>
+</html>
