@@ -1,82 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../../node_modules/bootstrap/dist/bootstrap.min.css" integrity="sha" media="screen" title = "no title" charset = "utf-8"> -->
-    
-    <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
-    <title>Cashier Page</title>
+    <%- include('../common/head', {title:"Cashier"}); %>
 </head>
+
 <body>
     
-    <nav class="navbar navbar-default bg-dark">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
-          </div>
-      
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-            </ul>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-left">
-            <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
-            </li>
-        </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    </nav>
     <div class="row">
         <div class="col-sm-1 col-md-2">
 
         </div>
         <div class="col-md-8 col-md-offset-3 text-center center">
             <div class="container py-4 text-center" id ="invoice_search">
-                <form class="form-inline text-center">
+                <form class="form-inline text-center" action="/cashier/" method="post">
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="inputInvoice" class="sr-only">Enter Invoice Number</label>
-                        <input type="text" class="form-control inputField" id="inputInvoice" placeholder="Enter Invoice Number">
+                        <input type="text" 
+                        class= "form-control <%= typeof data.error !== 'undefined' ? `inputField is-invalid bg-red` : `form-control inputField` %> "
+                        name = "invoice_id" id="inputInvoice" placeholder="Enter Invoice Number"
+                        value = <%= typeof data.value !== 'undefined' ? data.value.invoice_id : "" %>>
+                        
                     </div>
+
                     <button type="submit" class="btn btn-grad mb-2 btn-grad-confirm ">Search</button>
+                    <div class="<%= typeof data.error !== 'undefined' ? `px-1` : "" %>"><%= typeof data.error !== 'undefined' ? data.error.message : "" %></div>
                 </form>
             </div>
         </div>
@@ -84,30 +31,9 @@
             
         </div>
     </div>
+   
 
-    <!-- <div class="container">
-        <div class="row text-center">
-            <div col-12 col-md-6 mb-3>
-            </div>
-            <div class="col-md-3 text-center">
-                <div class="input-group py-2">
-                    <input type="text" class="form-control" placeholder="Invoice Number" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary btn-grad-confirm" type="button" id="button-addon2">Search</button>
-                    </div>
-                  </div>
-            </div>
-            <div col-12 col-md-6 mb-3>
-                
-            </div>
-        </div>
-    </div> -->
-    
-    
-    
-    
-
-    <% if(true){ %>
+    <% if(data.dataFound){ %>
         <div class="container px-5 text-center cent">
             <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
                 <h5 class="card-header">Invoice</h5>
@@ -116,19 +42,19 @@
                     <div class="form-group row">
                         <label for="card_invoice" class="col-sm-4 col-form-label text-left">Invoice Number :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %> disabled>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">NIC :</label>
+                        <label for="card_nic" class="col-sm-4 col-form-label text-left">NIC :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="card_nic" value= "<%= data.NIC %>"" disabled>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Payment Amount :</label>
+                        <label for="card_pay" class="col-sm-4 col-form-label text-left">Payment Amount :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="card_pay" value= "<%= data.payment_amount %>"" disabled>
                         </div>
                     </div>
                     
@@ -142,55 +68,57 @@
                     <div class="form-group row">
                         <label for="card_invoice" class="col-sm-4 col-form-label text-left">Service Order ID :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value="sdfsdf" disabled>
+                            <input type="text" class="form-control detailInput" id="service_order" value="<%= data.service_order_id %>" disabled>
                         </div>
                     </div>
+                    
                     <div class="form-group row">
                         <label for="card_invoice" class="col-sm-4 col-form-label text-left">NIC :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="nic" value= "<%= data.NIC %>"" disabled>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Payment Amount :</label>
+                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">First Name :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="first_name" value= "<%= data.first_name %>"" disabled>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Payment Amount :</label>
+                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Last name :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_invoice" value= "<%= data.invoice_id %>"" disabled>
+                            <input type="text" class="form-control detailInput" id="last_name" value= "<%= data.last_name %> disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_invoice" class="col-sm-4 col-form-label text-left">Status :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="status" value= "<%= data.status %>"" disabled>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="col-md-8">
-                            <button type="submit" class="btn mt-5 btn-grad btn-grad-confirm ">Confirm Payment</button>
+                            <button type="submit" class="btn mt-5 btn-grad btn-grad-confirm "
+                            id = "payBtn"
+                            <%= data.status == 'Paid' ? `disabled` : "" %>
+                            >Confirm Payment</button>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button type="submit" class="btn my-5 btn-grad btn-grad-delete ">Close</button>
+                            <button type="submit" class="btn my-5 btn-grad btn-grad-delete "
+                            id = "closeBtn"
+                            <%= data.status == 'Closed' ? `disabled` : "" %>
+                            >Close</button>
                         </div>
                     </div>
                 </div>
             </div>
     
         </div>
-    
-    
     <% } %>
 
-
-
-
-
-    <input id="datetimepicker" type="text" >
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#dateTimePicker').datetimepicker();
-        });
-    </script>
-
+        <script type="text/javascript" src="/js/payment.js"></script>
+    
 
 </body>
 </html>

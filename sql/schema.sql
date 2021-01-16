@@ -28,8 +28,4 @@ CREATE TABLE ticket(ticket_id int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY K
 
 alter table ticket AUTO_INCREMENT=1001;
 alter table invoice AUTO_INCREMENT=1001;
-<<<<<<< HEAD
 alter table service_order AUTO_INCREMENT=1001;
-=======
-alter table service_order AUTO_INCREMENT=1001;
->>>>>>> lahiru
