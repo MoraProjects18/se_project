@@ -102,3 +102,11 @@ app.get("/test", (req, res) => {
     },
   });
 });
+
+Create environment variables
+In C: cmd
+
+setx mysql_password ""   //Or your password
+setx jwtPrivateKey "Mykey"
+setx email_address "test@gmail.com"
+setx email_password "password"
