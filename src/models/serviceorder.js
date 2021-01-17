@@ -3,8 +3,10 @@ const Database = require("../database/database");
 const _database = new WeakMap();
 const _schema = new WeakMap();
 const _schemaID = new WeakMap();
+const _schemaNIC = new WeakMap();
 const _validate = new WeakMap();
 const _validateID = new WeakMap();
+const _validateNIC = new WeakMap();
 
 class ServiceOrder {
   constructor() {
@@ -15,9 +17,9 @@ class ServiceOrder {
       Joi.object({
         user_id: Joi.number().min(1).max(10).required(),
         vehicle_number: Joi.string().min(5).max(30).required(),
-        start_date: Joi.date().greater("now").required(),
-        end_date: Joi.date().greater("now").allow("", null), //end date time should be update when closing the so
-        status: Joi.string().min(1).max(30).required(),
+        start_date: Joi.date().required(),
+        end_date: Joi.date().allow("", null), //end date time should be update when closing the so
+        payment_amount: Joi.number().min(2).max(10000).required(),
       }).options({ abortEarly: false })
     );
 
@@ -35,26 +37,40 @@ class ServiceOrder {
     _validateID.set(this, (object) => {
       return _schemaID.get(this).validate(object);
     });
+    //used to validate NIC
+    _schemaNIC.set(
+      this,
+      Joi.object({
+        NIC: Joi.string().min(10).max(12).required(),
+      })
+    );
+
+    _validateNIC.set(this, (object) => {
+      return _schemaNIC.get(this).validate(object);
+    });
   }
 
   async Initiate(data) {
-    //validate data
     let result = await _validate.get(this)(data);
     if (result.error)
       return new Promise((resolve) => resolve({ validationError: result }));
-
-    //call create function of database class
-    result = await _database
-      .get(this)
-      .create("service_order", Object.keys(data), Object.values(data));
-
-    return new Promise((resolve) => {
-      let obj = {
-        connectionError: _database.get(this).connectionError,
-      };
-      result.error ? (obj.error = true) : (obj.error = false);
-      resolve(obj);
-    });
+      //call initiate_so stored procedure
+      result = await _database
+        .get(this)
+        .call("initiate_so", [
+          data.user_id,
+          data.vehicle_number,
+          data.start_date,
+          data.payment_amount
+        ]);
+        return new Promise((resolve) => {
+          let obj = {
+            data: result.result[0][0],
+            connectionError: _database.get(this).connectionError,
+          };
+          result.error ? (obj.error = true) : (obj.error = false);
+          resolve(obj);
+        });
   }
 
   async GetById(data) {
@@ -131,29 +147,17 @@ class ServiceOrder {
     });
   }
 
-  async GetMySO(data) {
+  async GetFailedSO(data) {
     const result = await _database
-      .get(this)
-      .readMultipleTable(
-        "useracc",
-        "inner",
-        ["service_order", "user_id"],
-        [
-          "service_order_id",
-          "vehicle_number",
-          "start_date",
-          "end_date",
-          "status",
-        ],
-        ["NIC", "=", data.NIC]
-      );
+    .get(this)
+    .call("get_failedso", [
+      data.NIC]
+    )
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
-      result.error
-        ? (obj.error = true)
-        : ((obj.error = false), (obj.result = result.result));
+      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
       resolve(obj);
     });
   }
@@ -163,12 +167,50 @@ class ServiceOrder {
     const result = await _database
       .get(this)
       .call("get_todayso");
-      //console.log(result.result[0]);
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
       result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+      resolve(obj);
+    });
+  }
+  async GetCustomer(data) {
+    let validateR = await _validateNIC.get(this)(data);
+    if (validateR.error)
+      return new Promise((resolve) => resolve({ validationError: validateR }));
+
+    //call readSingleTable function of database class
+    const result = await _database
+      .get(this)
+      .readSingleTable("useracc", ["user_id","NIC","first_name","last_name","email"], [
+        "NIC",
+        "=",
+        data.NIC,
+      ]);
+      //console.log(result);
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
+      resolve(obj);
+    });
+  }
+  async GetVehicle(data) {
+    //call readSingleTable function of database class
+    const result = await _database
+      .get(this)
+      .readSingleTable("vehicle", "*", [
+        "user_id",
+        "=",
+        data,
+      ]);
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
       resolve(obj);
     });
   }

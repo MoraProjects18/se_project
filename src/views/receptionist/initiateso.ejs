@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../common/head', {title:"Receptionist"}); %>
+</head>
+
+<body>
+    <div class="d-flex pt-5 pb-3 justify-content-center">
+        <form class="form-inline" action="/receptionist/" method="post">
+            <div class="form-group mx-3 mb-2">
+                <input type="text" 
+                class= "form-control"
+                name = "NIC" id="inputNIC" placeholder="Customer NIC">
+            </div>
+            <button type="submit" class="btn btn-info mb-2">SEARCH CUSTOMER</button>
+          </form>
+    </div>
+
+    <% if(data.dataFound){ %>
+        <div class="container px-5 text-center cent">
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
+                <h5 class="card-header">Customer Details</h5>
+        
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="card_userid" class="col-sm-4 col-form-label text-left">User ID :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_userid" value= "<%= data.customer.user_id %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_nic" class="col-sm-4 col-form-label text-left">NIC :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_nic" value= "<%= data.customer.NIC %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_name" class="col-sm-4 col-form-label text-left">Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= data.customer.first_name + data.customer.last_name %>"  disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="card_email" class="col-sm-4 col-form-label text-left">Email :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_email" value= "<%= data.customer.email %>"  disabled>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12">
+                <h5 class="card-header">Vehicle Details</h5>
+        
+                <div class="card-body">
+                    
+                    <div class="table-responsive">
+                        <table class="table table-success table-sm table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Registration No:</th>
+                                <th>Engine No:</th>
+                                <th>Model No:</th>
+                                <th>Model:</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vehicledetail">
+                        <% for(var x of vehicle){ %>
+                            <tr>
+                                <td><%= x.registration_number %></td>
+                                <td><%= x.engine_number %></td>
+                                <td><%= x.model_number %></td>
+                                <td><%= x.model %></td>
+                            </tr>
+                        <% } %> 
+                        </tbody>
+                        </table>
+                    </div>
+
+                    <div class="container pt-4" style="text-align: -webkit-center;">
+                        <h5>Add New Vehicle</h5>
+                        <div class="input-group mb-3 pt-2">
+                          <input id="user" type="number" class="form-control" placeholder="User ID">
+                          <input id="regno" type="text" class="form-control" placeholder="Registration No">
+                          <input id="engineno" type="text" class="form-control" placeholder="Engine No">
+                          <input id="modelno" type="text" class="form-control" placeholder="Model No">
+                          <input id="model" type="text" class="form-control" placeholder="Model">
+                          <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">ADD</button>  
+                           </div>
+                        </div>
+                </div>
+            </div>      
+        </div>
+
+        <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
+            <h5 class="card-header">Service Order</h5>
+    
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="form_userid" class="col-sm-4 col-form-label text-left">User ID :</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control detailInput" id="form_userid" value= "<%= data.customer.user_id %>"  disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="form_vehicle" class="col-sm-4 col-form-label text-left">Vehicle :</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="selectvehicle">
+                        <% for(var y of vehicle){ %>
+                          <option><%= y.registration_number %></option>
+                        <% } %> 
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="form_pay" class="col-sm-4 col-form-label text-left">Pay Amount :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control detailInput" id="form_pay">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block" id="startso">Initiate Service Order</button>
+            </div>
+        </div>
+    <% } %>
+      
+    
+    <script type="text/javascript" src="/js/so_initiate.js" ></script>
+</body>
+</html>
