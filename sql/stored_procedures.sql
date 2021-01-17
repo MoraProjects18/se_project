@@ -27,3 +27,23 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE register_new_staff(
+	email varchar(100),
+    password varchar(255),
+    NIC varchar(12),
+    first_name varchar(200),
+    last_name varchar(200),
+    role varchar(15),
+    branch_id int(10)
+)
+BEGIN
+	START TRANSACTION;
+		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (email,password,NIC,first_name,last_name,"staff");
+		INSERT INTO staff(user_id,role,branch_id) VALUES (LAST_INSERT_ID(),license_number);
+        
+        SELECT user_id,first_name,last_name,user_type FROM useracc WHERE user_id=LAST_INSERT_ID();
+    COMMIT;
+END $$
+DELIMITER ;

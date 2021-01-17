@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const config = require("config");
 
+
 checkEnvironmentVariable("database_credentials.password");
 checkEnvironmentVariable("jwtPrivateKey");
 checkEnvironmentVariable("email_transporter_credentials.auth.user");
@@ -17,6 +18,7 @@ const receptionistRouter = require("./routes/receptionist");
 const ticketRouter = require("./routes/ticket");
 const customerRouter = require("./routes/customer");
 const staffRouter = require("./routes/staff");
+const adminRouter = require("./routes/admin");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "../public")));
@@ -30,7 +32,8 @@ app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
 app.use("/ticket",ticketRouter);
 app.use("/customer",customerRouter);
-app.use("/staff",staffRouter)
+app.use("/staff",staffRouter);
+app.use("/admin",adminRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
