@@ -22,20 +22,20 @@
                 <div class="e-profile">
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
-                    <form class="form" novalidate="">
+                    <form class="form" action="/staff/staff_profile" method="POST" novalidate="">
                         <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="name" placeholder="John Smith" value="John">
+                                    <input class="form-control" type="text" name="name" placeholder="John Smith" value=<%= user.first_name %>>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="username" placeholder="johnny.s" value="Smith">
+                                    <input class="form-control" type="text" name="username" placeholder="johnny.s" value=<%= user.last_name %>>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" placeholder="user@example.com" disabled>
+                                    <input class="form-control inputD" type="text" placeholder="user@example.com" value=<%= user.email %> disabled>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" name="name" placeholder="NIC" value="10997214538" disabled>
+                                    <input class="form-control inputD" type="text" name="name" placeholder="NIC" value=<%= user.NIC %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -65,13 +65,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Staff ID</label>
-                                    <input class="form-control inputD" type="text" name="name" placeholder="Staff ID" value="10997214538" disabled>
+                                    <input class="form-control inputD" type="text" name="name" placeholder="Staff ID" value=<%= staff.employee_id %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Role</label>
-                                    <input class="form-control" type="text" name="username" placeholder="role" value="Cashier" disabled>
+                                    <input class="form-control" type="text" name="username" placeholder="role" value=<%= staff.role %> disabled>
                                     </div>
                                 </div>
                             </div>

@@ -16,3 +16,14 @@ BEGIN
     COMMIT;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE show_user_profile(
+    user_id int(15),
+)
+BEGIN
+    START TRANSACTION;
+    SELECT * FROM user WHERE user_id=user_id;
+END$$
+
+DELIMITER ;

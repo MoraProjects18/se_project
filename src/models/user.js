@@ -63,6 +63,30 @@ class User {
       resolve(obj);
     });
   }
+
+  async show_profile(data) {
+    //validate data
+    let result = await _validate.get(this)(data);
+    if (result.error)
+      return new Promise((resolve) => resolve({ validationError: result }));
+
+    //call show_user_profile stored procedure
+    result = await _database
+      .get(this)
+      .call("show_user_profile", [
+        data.user_id
+      ]);
+    // .create("useracc", Object.keys(data), Object.values(data));
+
+    return new Promise((resolve) => {
+      let obj = {
+        userData: result.result[0][0],
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false);
+      resolve(obj);
+    });
+  }
 }
 
 module.exports = User;
