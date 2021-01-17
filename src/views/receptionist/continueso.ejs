@@ -12,7 +12,7 @@
                 class= "form-control"
                 name = "NIC" id="inputNIC" placeholder="Customer NIC">
             </div>
-            <button type="submit" class="btn btn-info mb-2">SEARCH SERVICE ORDER</button>
+            <button type="submit" class="btn btn-success mb-2">SEARCH SERVICE ORDER</button>
           </form>
     </div>
 
@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label for="card_name" class="col-sm-4 col-form-label text-left">Name :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= data.customer.first_name + data.customer.last_name %>"  disabled>
+                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= `${data.customer.first_name}  ${data.customer.last_name}` %>"  disabled>
                         </div>
                     </div>
 

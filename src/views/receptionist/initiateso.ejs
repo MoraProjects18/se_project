@@ -6,13 +6,13 @@
 
 <body>
     <div class="d-flex pt-5 pb-3 justify-content-center">
-        <form class="form-inline" action="/receptionist/" method="post">
+        <form class="form-inline" action="/receptionist/initiate" method="post">
             <div class="form-group mx-3 mb-2">
                 <input type="text" 
                 class= "form-control"
                 name = "NIC" id="inputNIC" placeholder="Customer NIC">
             </div>
-            <button type="submit" class="btn btn-info mb-2">SEARCH CUSTOMER</button>
+            <button type="submit" class="btn btn-success mb-2">SEARCH CUSTOMER</button>
           </form>
     </div>
 
@@ -37,7 +37,7 @@
                     <div class="form-group row">
                         <label for="card_name" class="col-sm-4 col-form-label text-left">Name :</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= data.customer.first_name + data.customer.last_name %>"  disabled>
+                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= `${data.customer.first_name}  ${data.customer.last_name}` %>"  disabled>
                         </div>
                     </div>
 
@@ -82,13 +82,13 @@
                     <div class="container pt-4" style="text-align: -webkit-center;">
                         <h5>Add New Vehicle</h5>
                         <div class="input-group mb-3 pt-2">
-                          <input id="user" type="number" class="form-control" placeholder="User ID">
+                          <input id="user" type="number" class="form-control" placeholder="User ID" value="<%= data.customer.user_id %>" disabled>
                           <input id="regno" type="text" class="form-control" placeholder="Registration No">
                           <input id="engineno" type="text" class="form-control" placeholder="Engine No">
                           <input id="modelno" type="text" class="form-control" placeholder="Model No">
                           <input id="model" type="text" class="form-control" placeholder="Model">
                           <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">ADD</button>  
+                            <button class="btn btn-primary" type="submit" id="add">ADD</button>  
                            </div>
                         </div>
                 </div>
@@ -125,8 +125,9 @@
             </div>
         </div>
     <% } %>
-      
-    
+    <% if(data.error.status){ %>
+        <div class="d-flex justify-content-center"><p class="text-danger"><%= data.error.message %></p></div>
+    <% } %>
     <script type="text/javascript" src="/js/so_initiate.js" ></script>
 </body>
 </html>

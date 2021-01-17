@@ -30,7 +30,7 @@ class ServiceOrder {
     _schemaID.set(
       this,
       Joi.object({
-        service_order_id: Joi.number().required(),
+        service_order_id: Joi.number().min(1000).required(),
       })
     );
 
@@ -76,34 +76,37 @@ class ServiceOrder {
   async GetById(data) {
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
+      return new Promise((resolve) => resolve({ validationError: validateResult }));
 
-    //call readSingleTable function of database class
-    const resultdata = await _database
+    const result = await _database
       .get(this)
-      .readSingleTable("service_order", "*", [
-        "service_order_id",
-        "=",
-        data.service_order_id,
-      ]);
-    //console.log(resultdata);
-    return new Promise((resolve) => {
-      let obj = {
-        connectionError: _database.get(this).connectionError,
-      };
-      resultdata.error
-        ? (obj.error = true)
-        : ((obj.error = false), (obj.result = resultdata.result));
-      //console.log(obj);
-      resolve(obj);
-    });
+      .readMultipleTable(
+        "service_order",
+        "inner",
+        ["invoice", "service_order_id"],
+        [
+          "service_order_id",
+          "user_id",
+          "end_date",
+          "invoice_id",
+          "payment_amount"
+        ],
+        ["service_order_id", "=", data.service_order_id]
+      );
+      return new Promise((resolve) => {
+        let obj = {
+          connectionError: _database.get(this).connectionError,
+        };
+        result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
+        resolve(obj);
+      });
   }
 
   async Close(data) {
     //validate the so id
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
+      return new Promise((resolve) => resolve({ validationError: validateResult }));
 
     //call update function of database class
     const result = await _database
@@ -127,7 +130,7 @@ class ServiceOrder {
     //validate the so id
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
+      return new Promise((resolve) => resolve({ validationError: validateResult }));
 
     //call update function of database class
     const result = await _database
