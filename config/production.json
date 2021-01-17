@@ -4,5 +4,14 @@
     "user": "name",
     "passowrd": "password",
     "database": "database-name"
+  },
+  "email_transporter_credentials": {
+    "host": "smtp.example.com",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "username",
+      "pass": "password"
+    }
   }
 }
