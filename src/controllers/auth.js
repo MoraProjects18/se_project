@@ -7,12 +7,23 @@ exports.login = async (req, res) => {
   const result = await user.login(req.body);
 
   if (result.validationError)
-    return res.status(400).send(result.validationError);
+    return res.status(400).render("common/login.ejs", {
+      alert: {
+        type: "danger",
+        msg: "Email is invalid. Enter a valid email address!",
+      },
+    });
 
   if (result.connectionError)
     return res.status(500).send("Internal Server Error!");
 
-  if (!result.allowAccess) return res.status(401).send("Unauthorized client");
+  if (!result.allowAccess)
+    return res.status(401).render("common/login.ejs", {
+      alert: {
+        type: "danger",
+        msg: "Access Denied! Unauthorized Client",
+      },
+    });
 
   const cookieOption = {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
@@ -28,4 +39,10 @@ exports.login = async (req, res) => {
     .send("Login successfull!");
 
   //res.redirect("home page url");
+};
+
+exports.getLoginPage = (req, res) => {
+  res.status(200).render("common/login.ejs", {
+    alert: false,
+  });
 };

@@ -15,7 +15,7 @@ class Customer extends User {
       first_name: Joi.string().min(3).max(200).required().label("First Name"),
       last_name: Joi.string().min(3).max(200).required().label("Last Name"),
       email: Joi.string().min(5).max(255).email().required().label("Email"),
-      password: passwordComplexity(),
+      password: passwordComplexity(undefined, "Password"),
       NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
       license_number: Joi.string().length(8).required().label("License Number"),
     });

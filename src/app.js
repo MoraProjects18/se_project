@@ -17,12 +17,11 @@ checkEnvironmentVariable(
 
 //Routers
 const authRouter = require("./routes/auth");
-const customerRouter = require("./routes/customer");
 const cashierRouter = require("./routes/routers");
 const reportRouter = require("./routes/emission_report");
 const receptionistRouter = require("./routes/receptionist");
 const ticketRouter = require("./routes/ticket");
-const customerRouter = require("./routes/customer")
+const customerRouter = require("./routes/customer");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -37,9 +36,8 @@ app.use("/customer", customerRouter);
 app.use("/cashier", cashierRouter);
 app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
-app.use("/ticket",ticketRouter);
-app.use("/customer",customerRouter);
-
+app.use("/ticket", ticketRouter);
+app.use("/customer", customerRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

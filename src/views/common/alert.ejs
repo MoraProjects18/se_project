@@ -1,0 +1,6 @@
+<div class="alert alert-<%= typeof alert.type !== "undefined" ? alert.type : "undefined" %>  alert-dismissible fade show m-3" role="alert">
+    <%= typeof alert.msg !== "undefined" ? alert.msg : "undefined" %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
