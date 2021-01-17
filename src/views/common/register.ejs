@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Register Form</title>
-	<link rel="stylesheet" type="text/css" href="../../../public/css/register.css">
+    <%- include('../partials/heads/head'); %>    
+	<link rel="stylesheet" type="text/css" href="/css/register.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 </head>
+
 <body>
-	<img class="wave" src="../../../public/images/wavenew.png">
+	<img class="wave" src="/images/wavenew.png">
 	<div class="container">
                 
 		<div class="img">
-			<img src="../../../public/images/reg.svg">
+			<img src="/images/reg.svg">
 		</div>
 		<div class="login-content">
             <div id="toggle">
@@ -25,7 +27,7 @@
                 </button>
             </div>
 			<form action="/register" method="POST" >
-				<img src="../../../public/images/logo.png">
+				<img src="/images/logo.png">
                 <h2 class="title">Register</h2>
                 
            		<div class="input-div one">
@@ -73,13 +75,13 @@
                 <input id = "stfbtn" type="submit" class="btn" value="Register as staff" />   -->
 				<div class="content">
 					<h3>Already have an account ?</h3>
-                    <a class="nav-link" href="./login.html">
+                    <a class="nav-link" href="/login">
                         LOGIN HERE
                     </a>
 				</div>
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="../../../public/scripts/register.js"></script>
+    <script type="text/javascript" src="/scripts/register.js"></script>
 </body>
 </html>
