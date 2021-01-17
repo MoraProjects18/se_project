@@ -19,7 +19,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE show_user_profile(
-    user_id int(15),
+    user_id int(15)
 )
 BEGIN
     START TRANSACTION;
