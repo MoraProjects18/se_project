@@ -104,10 +104,10 @@ class Ticket {
         });
     }
 
-    async TodaySO() {
+    async TodayTicket() {
         const result = await _database
             .get(this)
-            .call("get_todayso");
+            .call("get_user_tickets");
         //console.log(result.result[0]);
         return new Promise((resolve) => {
             let obj = {

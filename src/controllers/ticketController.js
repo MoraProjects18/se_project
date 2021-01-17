@@ -23,7 +23,7 @@ exports.createTicket = async (req, res) => {
 };
 
 
-exports.gettodaySO = async (req, res) => {
+exports.getUserTicket = async (req, res) => {
     const result = await ticket.TodayTicket();
     //console.log(result);
     if (result.validationError)
@@ -38,7 +38,7 @@ exports.gettodaySO = async (req, res) => {
 
         data = {
             dataFound: true,
-            sorder: mydata
+            ticket: mydata
         }
     } else {
         data = {
@@ -50,6 +50,6 @@ exports.gettodaySO = async (req, res) => {
         };
     }
     console.log(data);
-    res.render("./ticket/todayTicket.ejs", data);
+    res.render("./ticket/viewTicketTable.ejs", data);
 
 };

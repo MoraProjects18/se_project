@@ -5,7 +5,7 @@ const config = require("config");
 const cookieParser = require("cookie-parser");
 
 //Environment Variables
-checkEnvironmentVariable("database_credentials.password", "mysql_password");
+/*checkEnvironmentVariable("database_credentials.password", "mysql_password");
 checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
 checkEnvironmentVariable(
   "email_transporter_credentials.auth.user",
@@ -14,7 +14,7 @@ checkEnvironmentVariable(
 checkEnvironmentVariable(
   "email_transporter_credentials.auth.pass",
   "email_password"
-);
+);*/
 
 
 //Routers
@@ -46,9 +46,9 @@ app.use("/customer", customerRouter);
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-function checkEnvironmentVariable(envPath, envName) {
+/*function checkEnvironmentVariable(envPath, envName) {
   if (!config.has(envPath)) {
     console.log(new Error(`${envName} (Enviroment Variable) is not defined`));
     process.exit(1);
   }
-}
+}*/
