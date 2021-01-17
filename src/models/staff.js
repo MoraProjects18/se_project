@@ -10,7 +10,7 @@ class Staff {
   constructor() {
     _database.set(this, new Database());
 
-    _schema.set(this, {
+    _schema.set(this, Joi.object ({
         first_name: Joi.string().min(3).max(200).required().label("First Name"),
         last_name: Joi.string().min(3).max(200).required().label("Last Name"),
         email: Joi.string().min(5).max(255).email().required().label("Email"),
@@ -18,7 +18,8 @@ class Staff {
         NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
         role: Joi.string().required().label("role"),
         branch_id: Joi.string().required().label("branch id")
-      });
+      }).options({ abortEarly: false })
+      );
 
     _validate.set(this, (object) => {
       return _schema.get(this).validate(object);
