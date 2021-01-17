@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/heads/head'); %>
+ </head>
+
+<body>
+
+    <header>
+        <%- include('../partials/navs/nav'); %>
+    </header>
+
+    
+    <div class="Center">
+
+        <div class="container">
+            <div class="row ">
+                <br>
+                <div class="col-sm-4 ">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <h1>WELCOME </h1>
+                    <br>
+
+                    <p>SL Emission Testing is the pioneer in air quality management and eco solutions in Sri Lanka and is a
+                        part of the diversified conglomerate, LAUGFS Holdings.</p>
+
+                    <h4>Always try to give better service to your customers !! </h4>
+
+
+                </div>
+                <div class="col-sm-8 ">
+
+                    <div class="slider">
+
+                        <div id="img">
+                            <img src="/images/logo.png" class="responsive_auto">
+                        </div>
+
+                    </div>
+
+                    <script>
+                        var images = ['/images/logo.png'];
+                        var x = 0;
+                        var imgs = document.getElementById('img');
+                        setInterval(slider, 2000);
+
+                        function slider() {
+                            if (x < images.length) {
+                                x = x + 1;
+                            } else {
+                                x = 1;
+                            }
+
+                            imgs.innerHTML = "<img src=" + images[x - 1] + " class=\"responsive_auto\">";
+
+                        }
+
+                    </script>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <br>
+    <br><br>
+    <br><br>
+    
+
+    <footer>
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
+
+
+</body>
+</html>

@@ -14,6 +14,15 @@
     border-radius: 50px !important;
 }
    
+#active{font-size:17px;
+  color:rgb(13, 126, 41);
+  font-weight: bold;
+}
+
+#deactive{font-size:17px;
+    color:rgb(137, 137, 137);
+    
+  }
 /* ----------------bg---------------------- */
 /* bg images */
 .responsive {
@@ -44,7 +53,19 @@ hr.solid {
     font-size:10px;
 }
 
+
+
 /* --------------footer------------------------ */
+
+.centerEmail{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(68, 55, 55);
+  text-align: center;
+  border-style: solid;
+  border-radius: 20px;
+}
+
 
 .footer {
         

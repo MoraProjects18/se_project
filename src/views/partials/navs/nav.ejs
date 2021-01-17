@@ -1,0 +1,42 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="" >
+            <img src="/images/logo.png" alt="logo" />SL Emission Testing 
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <hr class="solid">
+
+            <ul class="navbar-nav ms-auto">
+               
+                <% nav.forEach(function(nav) { %>
+                    <li>
+                        <li class="nav-item">
+                            <a class="nav-link " id="<%=nav.status%>" href="/<%=nav.path%>"><%=nav.page%></a>
+                        </li>              
+                                       
+                        <% }); %>
+              
+            </ul>
+            <a class="nav-link " href="/<%=profile%>">
+                <i class="fas fa-user-circle " style='font-size:30px;color:rgb(6, 138, 37)'></i>
+            </a>
+            <button type="button" class="btn btn-success btn-large " id="signout" onclick="logout()" >Log out</button>
+            <hr class="solid">
+        </div>
+    </div>
+</nav>
+
+<script>
+document.getElementById("signout").onclick = function () {
+    location.href = "/register";
+};
+</script>
+
+
+
