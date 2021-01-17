@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 create database emission_test_db;
 
 use emission_test_db;
+=======
+CREATE DATABASE emission_test;
+USE emission_test;
+>>>>>>> 85284b22654849bafd5e9a01aa2da9f2592091db
 
 
 CREATE TABLE useracc(user_id int(15) unsigned NOT NULL AUTO_INCREMENT primary key, email varchar(100), password varchar(255), NIC varchar(12), first_name varchar(200), last_name varchar(200),user_type varchar(30));

@@ -1,0 +1,97 @@
+<div class="footer">
+
+    <div class="container">
+       
+        <div class="row">
+
+            <div class="col-sm">
+                <br>
+                <br>
+                <br>
+                <h3>We're here to help our customers</h3>
+
+            </div>
+            <div class="col-sm">
+                <br>
+
+                <h3>Contact Details</h3>
+                <br>
+                <div class="row" id="contactus">
+                    <p>
+
+                        <i class='fas fa-phone'></i> Tel phone : (+94) 72 312 3234 </p>
+                    <p>
+                        <i class='fas fa-envelope'></i> Email :
+                        <a href=""> SLEmissionTesting@gmail.com</a>
+                    </p>
+
+                </div>
+                <div class="container">
+                    <div class="row">
+
+                        <div>
+                            <ul class="social-network social-circle">
+
+                                <li>
+                                    <a href="#" class="icoFacebook" title="Facebook">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="icoTwitter" title="Twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="icoGoogle" title="Google +">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm">
+                <br>
+                <br>
+
+                <h3>SL Emission Testing </h3>
+                <img src="/images/logo.png" class="responsive_second">
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <hr class="solid">
+            <div class="col-md-12 copy ">
+
+                <p class="text-center">&copy; Copyright 2021 - SL Emission Testing. All rights reserved.</p>
+            </div>
+        </div>
+        <br>
+
+    </div>
+</div>
+
+<script>
+
+    var images = ['/images/logo.png'];
+    var x = 0;
+    var imgs = document.getElementById('img');
+    setInterval(slider, 2000);
+
+    function slider() {
+        if (x < images.length) {
+            x = x + 1;
+        } else {
+            x = 1;
+        }
+
+        imgs.innerHTML = "<img src=" + images[x - 1] + " class=\"responsive_auto\">";
+    }
+
+</script>
