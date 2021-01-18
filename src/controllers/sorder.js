@@ -4,7 +4,7 @@ const Invoice = require("../models/invoice.js");
 const Vehicle = require("../models/vehicle.js");
 const sorder = new ServiceOrder();
 const invoice = new Invoice();
-const vehicle = new Vehicle();
+const vehicleModel = new Vehicle();
 
 exports.getinitiatePage = async (req, res) => {
   data = {
@@ -32,12 +32,12 @@ exports.getSearchPage = async (req, res) => {
 
 exports.initiateSO = async (req, res) => {
   const result = await sorder.Initiate(req.body);
-  const received = JSON.parse(JSON.stringify(result.data));
   if (result.validationError)
-    return res.status(400).send(result.validationError);
+    return res.status(400).send(result.validationError.error.message);
   if (result.connectionError)
     return res.status(500).send("Internal Server Error!");
   if (result.error) return res.status(400).send("Bad Request!");
+  const received = JSON.parse(JSON.stringify(result.data));
   res.status(200).send(received);
 };
 
@@ -128,16 +128,6 @@ exports.getbyidSO = async (req, res) => {
       res.render("./receptionist/searchso.ejs", data);
 };
 
-  exports.closeSO = async (req, res) => {
-    const result = await sorder.Close(req.body);
-    if (result.validationError)
-      return res.status(400).send(result.validationError);
-    if (result.connectionError)
-      return res.status(500).send("Internal Server Error!");
-    if (result.error) return res.status(400).send("Bad Request!");
-    res.status(200).send(`Service Order with ID ${req.body.service_order_id} Closed successfully..`);
-  };
-
   exports.getmySO = async (req, res) => {
     const result = await sorder.GetMySO(req.body);
     if (result.validationError)
@@ -150,8 +140,6 @@ exports.getbyidSO = async (req, res) => {
 
   exports.gettodaySO = async (req, res) => {
     const result = await sorder.TodaySO();
-    if (result.validationError)
-      return res.status(400).send(result.validationError);
     if (result.connectionError)
       return res.status(500).send("Internal Server Error!");
     if (result.error) return res.status(400).send("Bad Request!");
@@ -168,7 +156,7 @@ exports.getbyidSO = async (req, res) => {
         dataFound: false,
         error: {
           status: false,
-          message: "No data to show",
+          message: "No any Service Orders opened yet",
         },
       };
     }
@@ -191,7 +179,7 @@ exports.getbyidSO = async (req, res) => {
       
     if (result.resultData != 0) {
       var customerdata =  JSON.parse(JSON.stringify(result.resultData[0]));
-      const vehicle = await sorder.GetVehicle(customerdata.user_id);
+      const vehicle = await vehicleModel.GetVehicle(customerdata.user_id);
       var vehicledata = JSON.parse(JSON.stringify(vehicle.resultData))
       data = {
             dataFound: true,
@@ -208,14 +196,13 @@ exports.getbyidSO = async (req, res) => {
           },
         };
       }
-      //console.log(data);
       res.render("./receptionist/initiateso.ejs", data);
   };
 
   exports.postvehicle= async (req, res) => {
-    const result = await vehicle.AddVehicle(req.body);
+    const result = await vehicleModel.AddVehicle(req.body);
     if (result.validationError)
-      return res.status(400).send({ status :"fail" , message: result.validationError });
+      return res.status(400).send(result.validationError.error.message);
     if (result.connectionError)
       return res.status(500).send("Internal Server Error!");
     if (result.error) return res.status(400).send("Bad Request!");

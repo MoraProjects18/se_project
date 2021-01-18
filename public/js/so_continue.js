@@ -1,20 +1,23 @@
 $(document).ready(function(){
     $("#so_cts").click(function(){
       const so_id = $(this).val();
-      $.post(
-            "/receptionist/sorder/continue",
-            {
-              service_order_id   :parseInt(so_id),
-            },
-            function (data, status) {
-              if (status=="success"){
-                if(!alert("Service Order " + so_id+ " continued Successfully")){
-                  $("#so_cts").prop("disabled",true);
-                } 
-              } else {
-                alert("Error occured Try Again");
-              }
-            }
-        );
+
+      $.ajax({
+        type: "POST",
+        url: "/receptionist/sorder/continue",
+        data:      {
+                      service_order_id   :parseInt(so_id),
+                    },
+        dataType: "json",
+        success: function(data,status) {
+          if(!alert("Service Order " + so_id+ " continued Successfully")){
+            location.reload(true);
+            $("#so_cts").prop("disabled",true);
+          } 
+        },
+        error: function(data,status){
+            alert(data.responseText+ "\nTry Again")    
+        }
+    });    
   });
 });

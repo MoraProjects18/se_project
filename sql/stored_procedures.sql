@@ -37,7 +37,7 @@ CREATE PROCEDURE initiate_so(
 )
 BEGIN
 	START TRANSACTION;
-		INSERT INTO service_order(user_id,vehicle_number,start_date,status) VALUES (user_id,vehicle_number,start_date,"open");
+		INSERT INTO service_order(user_id,vehicle_number,start_date,status) VALUES (user_id,vehicle_number,start_date,"Open");
 		INSERT INTO invoice(service_order_id,payment_amount) VALUES (LAST_INSERT_ID(),payment_amount);
         
         SELECT service_order_id,invoice_id FROM invoice WHERE invoice_id=LAST_INSERT_ID();
@@ -46,9 +46,9 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-  CREATE PROCEDURE get_failedso( NIC varchar(12))
+  CREATE PROCEDURE get_failedso( nic_val varchar(12))
     BEGIN
        SELECT service_order_id,vehicle_number,start_date,end_date, status
-		FROM useracc natural inner join service_order where NIC= NIC and status="failed";
+		FROM useracc natural inner join service_order where NIC= nic_val and status="Failed";
     END$$
   DELIMITER ;

@@ -16,7 +16,6 @@ receptionistRouter.get("/sorder/search", sorderController.getSearchPage);
 receptionistRouter.post("/sorder/search", sorderController.getbyidSO);
 receptionistRouter.post("/addvehicle", sorderController.postvehicle);
 
-//receptionistRouter.put("/sorder/close",sorderController.closeSO);
 
 
 module.exports = receptionistRouter;

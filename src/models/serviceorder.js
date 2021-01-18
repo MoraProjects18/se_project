@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const Database = require("../database/database");
+const datetime = require("../utils/datetime");
 const _database = new WeakMap();
 const _schema = new WeakMap();
 const _schemaID = new WeakMap();
@@ -41,7 +42,7 @@ class ServiceOrder {
     _schemaNIC.set(
       this,
       Joi.object({
-        NIC: Joi.string().min(10).max(12).required(),
+        NIC: Joi.string().alphanum().min(10).max(12).required(),
       })
     );
 
@@ -113,7 +114,7 @@ class ServiceOrder {
       .get(this)
       .update(
         "service_order",
-        ["status", "Closed", "end_date", getDate()],
+        ["status", "Closed", "end_date", datetime()],
         ["service_order_id", "=", data.service_order_id]
       );
 
@@ -165,7 +166,7 @@ class ServiceOrder {
     });
   }
 
-  //gives all the details of so of today
+  //gives all the details of the today opened so
   async TodaySO() {
     const result = await _database
       .get(this)
@@ -178,12 +179,12 @@ class ServiceOrder {
       resolve(obj);
     });
   }
+
   async GetCustomer(data) {
     let validateR = await _validateNIC.get(this)(data);
     if (validateR.error)
       return new Promise((resolve) => resolve({ validationError: validateR }));
 
-    //call readSingleTable function of database class
     const result = await _database
       .get(this)
       .readSingleTable("useracc", ["user_id","NIC","first_name","last_name","email"], [
@@ -191,7 +192,6 @@ class ServiceOrder {
         "=",
         data.NIC,
       ]);
-      //console.log(result);
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -200,34 +200,6 @@ class ServiceOrder {
       resolve(obj);
     });
   }
-  async GetVehicle(data) {
-    //call readSingleTable function of database class
-    const result = await _database
-      .get(this)
-      .readSingleTable("vehicle", "*", [
-        "user_id",
-        "=",
-        data,
-      ]);
-    return new Promise((resolve) => {
-      let obj = {
-        connectionError: _database.get(this).connectionError,
-      };
-      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
-      resolve(obj);
-    });
-  }
-}
-
-//function to get date and time return format 2021-1-13 18:24:57
-function getDate() {
-  var today = new Date();
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date + " " + time;
-  return dateTime;
 }
 
 module.exports = ServiceOrder;

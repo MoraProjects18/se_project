@@ -40,10 +40,23 @@ class Vehicle {
           result.error ? (obj.error = true) : (obj.error = false);
           resolve(obj);
         });
+    }
+    async GetVehicle(data) {
+      const result = await _database
+        .get(this)
+        .readSingleTable("vehicle", "*", [
+          "user_id",
+          "=",
+          data,
+        ]);
+      return new Promise((resolve) => {
+        let obj = {
+          connectionError: _database.get(this).connectionError,
+        };
+        result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
+        resolve(obj);
+      });
   }
-
-
-
-
 };
-  module.exports = Vehicle;
+
+module.exports = Vehicle;
