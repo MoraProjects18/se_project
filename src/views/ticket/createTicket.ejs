@@ -123,7 +123,14 @@
                 <div class="form-group row">
                     <label for="card_invoice" class="col-sm-4 col-form-label text-left">Start Time :</label>
                     <div class="col-sm-8">
-                        <input data-format="yyyy-MM-dd hh:mm" type="text" class="form-control detailInput" id="start_time"  name="start_time" >
+                        <input type="text" class="form-control detailInput" id="start_date"  name="start_date" >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="card_invoice" class="col-sm-4 col-form-label text-left">Start Time :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control detailInput" id="start_time"  name="start_time" >
                     </div>
                 </div>
 
@@ -143,18 +150,26 @@
     </div>
 
     <script>
-
-        jQuery('#start_time').datetimepicker({
+        jQuery('#start_date').datetimepicker({
             onGenerate:function( ct ){
                 jQuery(this).find('.xdsoft_date.xdsoft_weekend')
                     .addClass('xdsoft_disabled');
             },
-            format:'Y.m.d h:m',
+            format:'Y-m-d',
 
             minDate: 0,
             inline: true,
-            allowTimes: ['9:00', '9:30', '11:30', '12:00', '12:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00'],
-            weekends:['16.01.2021','02.01.2014','03.01.2014','04.01.2014','05.01.2014','06.01.2014']
+            timepicker:false,
+        });
+
+        jQuery('#start_time').datetimepicker({
+            inline: true,
+            datepicker:false,
+            format:'H:i',
+            allowTimes:[
+                '12:00', '13:00', '15:00',
+                '17:00', '17:05', '17:20', '19:00', '20:00'
+            ]
         });
 
 

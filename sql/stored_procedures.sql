@@ -21,9 +21,9 @@ END $$
 DELIMITER $$
 CREATE PROCEDURE get_user_tickets()
 BEGIN
-  SELECT ticket_id,user_id,status,start_time,branch_id,branch_name
+  SELECT ticket_id,user_id,status,start_time,branch_id,branch_name,start_date
      FROM emission_test_db.ticket natural join emission_test_db.branch
-     WHERE DATE(user_id) = 3;
+     WHERE user_id = 3;
 END $$
 DELIMITER ;
 
@@ -32,6 +32,6 @@ CREATE PROCEDURE get_today_tickets()
 BEGIN
   SELECT ticket_id,user_id,status,start_time,branch_id,email
      FROM emission_test_db.ticket natural join emission_test_db.useracc
-     WHERE DATE(start_time) = CURDATE();
+     WHERE DATE(start_time) = CURDATE() ORDER BY DATETIME(start_time);
 END $$
 DELIMITER ;

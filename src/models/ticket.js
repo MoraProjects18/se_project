@@ -18,7 +18,8 @@ class Ticket {
                 user_id: Joi.number().required(),
                 status: Joi.string().min(4).max(6).required(),
                 branch_id: Joi.number().required(),
-                start_time: Joi.string().min(10).max(30).required(),
+                start_date: Joi.date().required(),
+                start_time: Joi.string().min(4).max(6).required(),
 
             }).options({abortEarly: false})
         );

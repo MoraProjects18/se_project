@@ -24,7 +24,7 @@ CREATE TABLE service_order(service_order_id int unsigned NOT NULL AUTO_INCREMENT
 
 CREATE TABLE invoice(invoice_id int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY  , service_order_id int unsigned, payment_amount decimal, FOREIGN KEY(service_order_id) REFERENCES service_order(service_order_id));
 
-CREATE TABLE ticket(ticket_id int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY , user_id int(15) unsigned, status varchar(10), start_time varchar(30), branch_id int(10) unsigned, FOREIGN KEY(user_id) REFERENCES customer(user_id), FOREIGN KEY(branch_id) REFERENCES branch(branch_id));
+CREATE TABLE ticket(ticket_id int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY , user_id int(15) unsigned, status varchar(10), start_date date, start_time time, branch_id int(10) unsigned, FOREIGN KEY(user_id) REFERENCES customer(user_id), FOREIGN KEY(branch_id) REFERENCES branch(branch_id));
 
 alter table ticket AUTO_INCREMENT=1001;
 alter table invoice AUTO_INCREMENT=1001;
