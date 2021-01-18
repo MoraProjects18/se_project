@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
-    <link rel="stylesheet" href="../../../public/css/custom.css" media="screen" title = "no title" charset = "utf-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+    <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
     
     <title>Profile Page</title>
 </head>
@@ -22,20 +22,20 @@
                 <div class="e-profile">
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
-                    <form class="form" action="/staff/staff_profile" method="POST" novalidate="">
+                    <form class="form" action="/staff/edit_profile" method="POST" novalidate="">
                         <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="name"  value=<%= staff.first_name %>>
+                                    <input class="form-control" type="text" name="first_name"  value=<%= staff.first_name %>>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="username"  value=<%= staff.last_name %>>
+                                    <input class="form-control" type="text" name="last_name"  value=<%= staff.last_name %>>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text"  value=<%= staff.email %> disabled>
+                                    <input class="form-control inputD" type="text" name="email" value=<%= staff.email %> >
                                     </div>
                                 </div>
                             </div>
@@ -51,13 +51,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" name="name"  value=<%= staff.NIC %> disabled>
+                                    <input class="form-control inputD" type="text" value=<%= staff.NIC %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="username"  value="0777453588">
+                                    <input class="form-control" type="text" name="contact_no"  value=<%=staff1.contact_no %>>
                                     </div>
                                 </div>
                             </div>
@@ -65,18 +65,25 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Staff ID</label>
-                                    <input class="form-control inputD" type="text" name="name"  value=<%= staff.employee_id %> disabled>
+                                    <input class="form-control inputD" type="text" name="e_id" value=<%= staff.employee_id %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Role</label>
-                                    <input class="form-control" type="text" name="username"  value=<%= staff.role %> disabled>
+                                    <input class="form-control" type="text" value=<%= staff.role %> disabled>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                        <form action="/staff/change_pass" method="POST">
                         <div class="row">
                         <div class="col-12 col-sm-6 mb-3">
                             <div class="mb-2"><b>Change Password</b></div>
@@ -84,7 +91,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Current Password</label>
-                                    <input class="form-control" type="password" >
+                                    <input class="form-control" name="current_password" type="password" >
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +99,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>New Password</label>
-                                    <input class="form-control" type="password" >
+                                    <input class="form-control" name="new_password" type="password" >
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +107,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                    <input class="form-control" type="password" ></div>
+                                    <input class="form-control" name="confirm_password" type="password" ></div>
                                 </div>
                             </div>
                         </div>
@@ -110,14 +117,14 @@
                         </div>
                         <div class="row">
                         <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Save Changes</button>
+                            <button class="btn btn-primary" type="submit">Change Paasword</button>
                         </div>
-                        <div class="px-xl-3">
+                        <!-- <div class="px-xl-3">
                             <button class="btn btn-block btn-secondary">
                                 <i class="fa fa-sign-out"></i>
                                 <span>Logout</span>
                             </button>
-                        </div>
+                        </div> -->
                         </div>
                     </form>
 

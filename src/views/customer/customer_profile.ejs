@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
-    <link rel="stylesheet" href="../../../public/css/custom.css" media="screen" title = "no title" charset = "utf-8">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+    <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
+
     <title>Profile Page</title>
 </head>
 <body>
@@ -60,7 +60,7 @@
                 </ul> -->
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
-                    <form class="form" action="/customer/customer_profile" method="POST" novalidate="">
+                    <form class="form" action="/customer/edit_profile" method="POST" novalidate="">
                         <div class="row">
                         <div class="col">
                             <div class="row">
@@ -81,7 +81,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" name="email" value=<%= customer.email %> disabled>
+                                    <input class="form-control inputD" type="text" name="email" value=<%= customer.email %> >
                                     </div>
                                 </div>
                             </div>
@@ -95,12 +95,19 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="username" placeholder="Contact Number" value="0777453588">
+                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" value=<%= customer1.contact_no %>>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                            </div>
+                    </form>
+                    </div>
+                    <form action="/customer/change_pass" method="POST">
                         <div class="row">
                         <div class="col-12 col-sm-6 mb-3">
                             <div class="mb-2"><b>Change Password</b></div>
@@ -153,14 +160,14 @@
                         </div>
                         <div class="row">
                         <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" name="save" type="submit">Save Changes</button>
+                            <button class="btn btn-primary" type="submit">Change Password</button>
                         </div>
-                        <div class="px-xl-3">
+                        <!-- <div class="px-xl-3">
                             <button class="btn btn-block btn-secondary">
                                 <i class="fa fa-sign-out"></i>
                                 <span>Logout</span>
                             </button>
-                        </div>
+                        </div> -->
                         </div>
                     </form>
 

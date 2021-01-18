@@ -27,7 +27,30 @@ exports.showProfile = async (req, res) => {
     //   .cookie("ets-auth-token", token, cookieOption)
     //   .status(200)
     //   .send(result);
-    console.log(result.result[0][0]);
-    res.render("../views/staff/staff_profile.ejs",{staff: result.result[0][0]})
-  
+     console.log(result.result[0][0]);
+    res.render("../views/staff/staff_profile.ejs",{staff: result.result[0][0], staff1: result.result[1][0]})
+  };
+
+  exports.editProfile = async (req,res) => {
+    console.log(req.body);
+    const result = await staff.edit_profile(req.body);
+    if (result.validationError)
+        return res.status(400).send(result.validationError);
+    if (result.connectionError)
+        return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+    res.status(200).send("Query is inserted!");
+  };
+
+  exports.changePass = async (req,res) => {
+    console.log(req.body);
+    const result = await staff.change_pass(req.body);
+    if (result== "Incorrect Password")
+        return res.status(200).send("Incorrect password");
+    if (result.validationError)
+        return res.status(400).send(result.validationError);
+    if (result.connectionError)
+        return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+    res.status(200).send("Query is inserted!");
   };
