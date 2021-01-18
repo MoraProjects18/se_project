@@ -14,6 +14,7 @@ exports.getAddEmployeePage = async (req, res) =>{
 }
 
 exports.registerUser = async (req, res) => {
+console.log(req.body);
   const result = await staff.register(req.body);
   if (result.validationError)
     return res.status(400).send(result.validationError);
@@ -25,12 +26,6 @@ exports.registerUser = async (req, res) => {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     httpOnly: true,
   };
-
-  const payload = result.userData;
-  const token = jwt.sign(
-    JSON.parse(JSON.stringify(payload)),
-    config.get("jwtPrivateKey")
-  );
 
   res
     .cookie("ets-auth-token", token, cookieOption)
