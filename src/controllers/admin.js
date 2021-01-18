@@ -27,11 +27,17 @@ console.log(req.body);
     httpOnly: true,
   };
 
-  res
-    .cookie("ets-auth-token", token, cookieOption)
-    .status(200)
-    .send("Query Inserted!");
+//   const payload = result.userData;
+//   const token = jwt.sign(
+//     JSON.parse(JSON.stringify(payload)),
+//     config.get("jwtPrivateKey")
+//   );
 
+//   res
+//     .cookie("ets-auth-token", token, cookieOption)
+//     .status(200)
+//     .send("Query Inserted!");
+res.status(200).send("Query inserted");
   
 };
 

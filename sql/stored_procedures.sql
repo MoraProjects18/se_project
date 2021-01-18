@@ -31,6 +31,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE register_new_staff(
     user_id int(10),
+    employee_id varchar(15),
 	email varchar(100),
     password varchar(255),
     NIC varchar(12),
@@ -42,7 +43,7 @@ CREATE PROCEDURE register_new_staff(
 BEGIN
 	START TRANSACTION;
 		INSERT INTO useracc(user_id,email,password,NIC,first_name,last_name,user_type) VALUES (user_id,email,password,NIC,first_name,last_name,"staff");
-		INSERT INTO staff(user_id,role,branch_id) VALUES (user_id,role,branch_id);
+		INSERT INTO staff(user_id,employee_id,role,branch_id) VALUES (user_id,employee_id,role,branch_id);
         
         -- SELECT user_id,first_name,last_name,user_type FROM useracc WHERE user_id=LAST_INSERT_ID();
     COMMIT;

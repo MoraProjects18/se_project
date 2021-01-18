@@ -12,6 +12,7 @@ class Staff {
 
     _schema.set(this, Joi.object ({
         user_id: Joi.string().required().label("user_id"),
+        employee_id: Joi.string().required().label("employee_id"),
         first_name: Joi.string().min(3).max(200).required().label("First Name"),
         last_name: Joi.string().min(3).max(200).required().label("Last Name"),
         email: Joi.string().min(5).max(255).email().required().label("Email"),
@@ -43,6 +44,7 @@ class Staff {
       .get(this)
       .call("register_new_staff", [
         data.user_id,
+        data.employee_id,
         data.email,
         data.password,
         data.NIC,
@@ -54,7 +56,7 @@ class Staff {
 
     return new Promise((resolve) => {
       let obj = {
-        userData: result.result[0][0],
+        userData: result.result[0],
         connectionError: _database.get(this).connectionError,
       };
       result.error ? (obj.error = true) : (obj.error = false);
