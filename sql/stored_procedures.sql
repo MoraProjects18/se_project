@@ -18,12 +18,34 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE show_user_profile(
+CREATE PROCEDURE show_staff_profile(
     user_id int(15)
 )
 BEGIN
     START TRANSACTION;
-    SELECT * FROM user WHERE user_id=user_id;
+    SELECT * FROM useracc NATURAL JOIN staff WHERE user_id=user_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE show_customer_profile(
+    id int(15)
+)
+BEGIN
+    START TRANSACTION;
+    SELECT * FROM useracc NATURAL JOIN customer WHERE user_id=id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE show_customer_profile(
+    user_id int(15)
+)
+BEGIN
+    START TRANSACTION;
+    SELECT * FROM user NATURAL JOIN customer WHERE user_id=user_id;
 END$$
 
 DELIMITER ;

@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const config = require("config");
-const Staff = require("../models/staff");
-const staff = new Staff();
+const Customer = require("../models/customer");
+const customer = new Customer();
 
 exports.showProfile = async (req, res) => {
-    const result = await staff.show_profile(6); // user_id has to be given as parameter. It has to be fetched from token.
+    const result = await customer.show_profile(1); // user_id has to be given as parameter. It has to be fetched from token.
     if (result.validationError)
       return res.status(400).send(result.validationError);
     if (result.connectionError)
@@ -28,6 +28,6 @@ exports.showProfile = async (req, res) => {
     //   .status(200)
     //   .send(result);
     console.log(result.result[0][0]);
-    res.render("../views/staff/staff_profile.ejs",{staff: result.result[0][0]})
+    res.render("../views/customer/customer_profile.ejs",{customer: result.result[0][0]})
   
   };

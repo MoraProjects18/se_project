@@ -60,20 +60,20 @@
                 </ul> -->
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
-                    <form class="form" novalidate="">
+                    <form class="form" action="/customer/customer_profile" method="POST" novalidate="">
                         <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="name" placeholder="John Smith" value="John">
+                                    <input class="form-control" type="text" name="first_name"  value=<%= customer.first_name %>>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="username" placeholder="johnny.s" value="Smith">
+                                    <input class="form-control" type="text" name="last_name"  value=<%= customer.last_name %>>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" placeholder="user@example.com" disabled>
+                                    <input class="form-control inputD" type="text" name="email" value=<%= customer.email %> disabled>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" name="name" placeholder="NIC" value="10997214538" disabled>
+                                    <input class="form-control inputD" type="text" name="NIC"  value=<%= customer.NIC %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -108,7 +108,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Current Password</label>
-                                    <input class="form-control" type="password" placeholder="••••••">
+                                    <input class="form-control" type="password" name="current_password" >
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>New Password</label>
-                                    <input class="form-control" type="password" placeholder="••••••">
+                                    <input class="form-control" type="password" name="new_password">
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                    <input class="form-control" type="password" placeholder="••••••"></div>
+                                    <input class="form-control" type="password" name="confirm_password"></div>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="row">
                         <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Save Changes</button>
+                            <button class="btn btn-primary" name="save" type="submit">Save Changes</button>
                         </div>
                         <div class="px-xl-3">
                             <button class="btn btn-block btn-secondary">
