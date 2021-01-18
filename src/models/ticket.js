@@ -104,10 +104,25 @@ class Ticket {
         });
     }
 
-    async TodayTicket() {
+    async UserTicket() {
         const result = await _database
             .get(this)
             .call("get_user_tickets");
+        //console.log(result.result[0]);
+        return new Promise((resolve) => {
+            let obj = {
+                connectionError: _database.get(this).connectionError,
+            };
+            result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+            resolve(obj);
+        });
+
+    }
+
+    async TodayTicket() {
+        const result = await _database
+            .get(this)
+            .call("get_today_tickets");
         //console.log(result.result[0]);
         return new Promise((resolve) => {
             let obj = {

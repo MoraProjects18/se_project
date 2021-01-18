@@ -6,22 +6,21 @@
 
 <body>
 <div class="container">
-    <h2>TICKET OPENED TODAY</h2><br>
+    <h2>Tickets Open Today</h2><br>
     <div class="card-columns">
         <% if(data.dataFound){ %>
-            <% for(var so of sorder){ %>
+            <% for(var ti of ticket){ %>
 
                 <div class="card border-success">
                     <div class="card-header bg-success border-success font-weight-bolder">
-                        Service Order ID : <%= so.service_order_id %>
+                        Ticket ID : <%= ti.ticket_id %>
                     </div>
                     <div class="card-body" style="background-color: #b2e4bd;">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">NIC &emsp;: <%=so.NIC%></li>
-                            <li class="list-group-item">Name &emsp;: <%= so.first_name +" "+ so.last_name %></li>
-                            <li class="list-group-item">Vehicle &emsp;: <%= so.vehicle_number %></li>
-                            <li class="list-group-item">Date &emsp;: <%= so.start_date %></li>
-                            <li class="list-group-item">Status &emsp;: <%= so.status %></li>
+                            <li class="list-group-item">User Email&emsp;&emsp;&emsp;: <%=ti.email%></li>
+
+                            <li class="list-group-item">Date and Time&emsp;: <%= ti.start_time %></li>
+                            <li class="list-group-item">Status&emsp; &emsp;   &emsp;    &emsp;: <%= ti.status %></li>
                         </ul>
                     </div>
                 </div>

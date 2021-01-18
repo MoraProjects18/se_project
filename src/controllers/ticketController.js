@@ -24,7 +24,7 @@ exports.createTicket = async (req, res) => {
 
 
 exports.getUserTicket = async (req, res) => {
-    const result = await ticket.TodayTicket();
+    const result = await ticket.UserTicket();
     //console.log(result);
     if (result.validationError)
         return res.status(400).send(result.validationError);
@@ -51,5 +51,37 @@ exports.getUserTicket = async (req, res) => {
     }
     console.log(data);
     res.render("./ticket/viewTicketTable.ejs", data);
+
+};
+
+
+exports.getTodayTicket = async (req, res) => {
+    const result = await ticket.TodayTicket();
+    //console.log(result);
+    if (result.validationError)
+        return res.status(400).send(result.validationError);
+    if (result.connectionError)
+        return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+
+    if (result.resultData != 0) {
+        var strng=JSON.stringify(result.resultData);
+        var mydata =  JSON.parse(strng);
+
+        data = {
+            dataFound: true,
+            ticket: mydata
+        }
+    } else {
+        data = {
+            dataFound: false,
+            error: {
+                status: false,
+                message: "No data to show",
+            },
+        };
+    }
+    console.log(data);
+    res.render("./ticket/todayTicket.ejs", data);
 
 };
