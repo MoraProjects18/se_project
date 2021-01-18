@@ -29,13 +29,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="first_name"  value=<%= staff.first_name %>>
+                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' required value=<%= staff.first_name %>>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="last_name"  value=<%= staff.last_name %>>
+                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' required value=<%= staff.last_name %>>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" name="email" value=<%= staff.email %> >
+                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' required value=<%= staff.email %>>
                                     </div>
                                 </div>
                             </div>
@@ -51,13 +51,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" value=<%= staff.NIC %> disabled>
+                                    <input class="form-control inputD" type="text" onkeyup='check();' value=<%= staff.NIC %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="contact_no"  value=<%=staff1.contact_no %>>
+                                    <input class="form-control" type="text" name="contact_no" id="contact_no" onkeyup='check();' required value=<%=staff1.contact_no %>>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                <button class="btn btn-primary" id="save" type="submit">Save Changes</button>
                             </div>
                         </form>
                     </div>
@@ -91,7 +91,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Current Password</label>
-                                    <input class="form-control" name="current_password" type="password" >
+                                    <input class="form-control" name="current_password" type="password" required>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>New Password</label>
-                                    <input class="form-control" name="new_password" type="password" >
+                                    <input class="form-control" name="new_password" id="new_password" type="password" onkeyup='check();' required>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                    <input class="form-control" name="confirm_password" type="password" ></div>
+                                    <input class="form-control" name="confirm_password" id="confirm_password" type="password" onkeyup='check();' required ></div>
+                                    <span id='message'></span>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +118,7 @@
                         </div>
                         <div class="row">
                         <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Change Paasword</button>
+                            <button class="btn btn-primary" id="change" type="submit">Change Paasword</button>
                         </div>
                         <!-- <div class="px-xl-3">
                             <button class="btn btn-block btn-secondary">
@@ -144,4 +145,27 @@
     </div>
     
 </body>
+<script>
+    var check = function() {
+    if(document.getElementById('new_password').value=="" || document.getElementById('confirm_password').value==""){
+     document.getElementById('message').innerHTML="";
+    }else if (document.getElementById('new_password').value ==
+    document.getElementById('confirm_password').value ) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    document.getElementById("change").disabled=false;
+  } 
+  else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    document.getElementById("change").disabled=true;
+  }
+  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" ){
+      document.getElementById('save').disabled=true;
+  }
+  else{
+      document.getElementById('save').disabled=false;
+  }
+}
+</script>
 </html>

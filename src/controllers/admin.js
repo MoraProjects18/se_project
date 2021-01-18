@@ -10,7 +10,7 @@ exports.getAddEmployeePage = async (req, res) =>{
     data = {
         dataFound: false,
     };
-    res.render("../views/admin/add_employee.ejs",data);
+    res.render("../views/admin/add_employee1.ejs",data);
 }
 
 exports.registerUser = async (req, res) => {

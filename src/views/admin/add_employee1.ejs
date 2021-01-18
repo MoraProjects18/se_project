@@ -60,20 +60,35 @@
                 </ul> -->
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
-                    <form class="form" action="/customer/edit_profile" method="POST" novalidate="">
+                    <form class="form" action="/admin/addStaff" method="POST" novalidate="">
+                        <h2>ADD EMPLOYEE</h2>
                         <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                    <label>USER ID</label>
+                                    <input class="form-control" type="text" name="user_id" id="user_id" onkeyup='check();' placeholder="User ID" required >
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>EMPLOYEE ID</label>
+                                    <input class="form-control" type="text" name="employee_id" id="employee_id" onkeyup='check();' placeholder="Employee ID" required >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' required value=<%= customer.first_name %>>
+                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' placeholder="First Name"required >
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' required value=<%= customer.last_name %>>
+                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' placeholder="Last Name" required >
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +96,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' required value=<%= customer.email %> >
+                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' placeholder="EMAIL" required >
                                     </div>
                                 </div>
                             </div>
@@ -89,13 +104,37 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" name="NIC" value=<%= customer.NIC %> disabled>
+                                    <input class="form-control inputD" type="text" id="NIC" name="NIC" onkeyup='check();' placeholder="NIC"requiured>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeyup='check();' required value=<%= customer1.contact_no %>>
+                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeyup='check();'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Role</label>
+                                    <input class="form-control inputD" type="text" name="role" id="role" onkeyup='check();' placeholder="Role" required >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Branch ID</label>
+                                    <input class="form-control inputD" type="text" name="branch_id" id="branch_id" onkeyup='check();' placeholder="Branch ID" required >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="form-control" type="password" id="password" name="password" onkeyup='check();' placeholder="Password" required >
                                     </div>
                                 </div>
                             </div>
@@ -103,81 +142,10 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" id="save" type="submit">Save Changes</button>
+                                <button class="btn btn-primary" id="save" type="submit" disabled>ADD EMPLOYEE</button>
                             </div>
                     </form>
                     </div>
-                    <form action="/customer/change_pass" method="POST">
-                        <div class="row">
-                        <div class="col-12 col-sm-6 mb-3">
-                            <div class="mb-2"><b>Change Password</b></div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                    <label>Current Password</label>
-                                    <input class="form-control" type="password" name="current_password" required >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                    <label>New Password</label>
-                                    <input class="form-control" type="password" id="new_password" name="new_password" onkeyup='check();' required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                    <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                    <input class="form-control" type="password" id="confirm_password" name="confirm_password" onkeyup='check();' required></div>
-                                    <span id='message'></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                            <!-- <div class="mb-2"><b>Keeping in Touch</b></div>
-                            <div class="row">
-                            <div class="col">
-                                <label>Email Notifications</label>
-                                <div class="custom-controls-stacked px-2">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
-                                    <label class="custom-control-label" for="notifications-blog">Blog posts</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                    <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                    <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                                </div>
-                                </div>
-                            </div>
-                            </div> -->
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" id="change" type="submit">Change Password</button>
-                        </div>
-                        <!-- <div class="px-xl-3">
-                            <button class="btn btn-block btn-secondary">
-                                <i class="fa fa-sign-out"></i>
-                                <span>Logout</span>
-                            </button>
-                        </div> -->
-                        </div>
-                    </form>
-
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
 
         <div class="col-12 col-md-3 mb-3">
             
@@ -198,20 +166,8 @@
 </body>
 <script>
     var check = function() {
-    if(document.getElementById('new_password').value=="" || document.getElementById('confirm_password').value==""){
-     document.getElementById('message').innerHTML="";
-    }else if (document.getElementById('new_password').value ==
-    document.getElementById('confirm_password').value ) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
-    document.getElementById("change").disabled=false;
-  } 
-  else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
-    document.getElementById("change").disabled=true;
-  }
-  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" ){
+        
+  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" || document.getElementById('user_id').value=="" || document.getElementById('employee_id').value=="" || document.getElementById('NIC').value=="" || document.getElementById('role').value=="" || document.getElementById('branch_id').value=="" || document.getElementById('password').value==""){
       document.getElementById('save').disabled=true;
   }
   else{
