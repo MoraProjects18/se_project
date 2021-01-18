@@ -56,7 +56,7 @@ class Staff {
 
     return new Promise((resolve) => {
       let obj = {
-        userData: result.result[0],
+        // userData: result.result[0],
         connectionError: _database.get(this).connectionError,
       };
       result.error ? (obj.error = true) : (obj.error = false);
