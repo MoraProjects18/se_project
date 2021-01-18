@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
     <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
 
-    <title>Profile Page</title>
+    <title>ADD EMPLOYEE || ADMIN</title>
 </head>
 <body>
     <div class="container">
@@ -104,13 +104,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" id="NIC" name="NIC" onkeyup='check();' placeholder="NIC"requiured>
+                                    <input class="form-control inputD" type="text" id="NIC" name="NIC" onkeyup='check();' pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$" maxlength="12" placeholder="NIC" requiured>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeyup='check();'>
+                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeypress="return onlyNumberKey(event)" pattern="[0-9]{10}" maxlength="10" onkeyup='check();'>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Password</label>
-                                    <input class="form-control" type="password" id="password" name="password" onkeyup='check();' placeholder="Password" required >
+                                    <input class="form-control" type="password" id="password" name="password" onkeyup='check();' placeholder="Password" pattern="(?=.*\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required >
                                     </div>
                                 </div>
                             </div>
@@ -165,6 +165,7 @@
     
 </body>
 <script>
+
     var check = function() {
         
   if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" || document.getElementById('user_id').value=="" || document.getElementById('employee_id').value=="" || document.getElementById('NIC').value=="" || document.getElementById('role').value=="" || document.getElementById('branch_id').value=="" || document.getElementById('password').value==""){
@@ -174,5 +175,13 @@
       document.getElementById('save').disabled=false;
   }
 }
+function onlyNumberKey(evt) { 
+          
+          // Only ASCII charactar in that range allowed 
+          var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+          if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+              return false; 
+          return true; 
+      } 
 </script>
 </html>
