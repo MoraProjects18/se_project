@@ -94,7 +94,7 @@ app.get('/createTicket', function (req, res) {
   res.render('ticket/createTicket', {
     nav: nav,
     profile: profile,
-  title:title
+    title:title
 });
 });
 
