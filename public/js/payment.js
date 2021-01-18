@@ -9,6 +9,7 @@ $("#payBtn").click(function () {
     },
     function (data, status) {
       $("#status").val("Paid");
+      $("#payBtn").attr("disabled", "disabled");
       alert("Data: " + data.message + "\nStatus: " + status);
     }
   );
@@ -24,6 +25,7 @@ $("#closeBtn").click(function () {
     },
     function (data, status) {
       $("#status").val("Closed");
+      $("#closeBtn").attr("disabled", "disabled");
       alert("Data: " + data.message + "\nStatus: " + status);
     }
   );

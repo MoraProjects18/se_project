@@ -107,6 +107,7 @@ class Invoice {
           "first_name",
           "last_name",
           "NIC",
+          "email",
         ],
         ["service_order_id", "=", data]
       );
