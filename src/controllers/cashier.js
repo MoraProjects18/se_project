@@ -1,4 +1,5 @@
 const ejs = require("ejs");
+const Email = require("../utils/email");
 const Invoice = require("../models/invoice.js");
 const ServiceOrder = require("../models/serviceorder.js");
 const invoiceModel = new Invoice();
@@ -71,13 +72,23 @@ exports.searchInvoice = async (req, res) => {
 
 exports.payInvoice = async (req, res) => {
   const data = req.body;
-  const result = await SOModel.paySO(data);
+  // const result = await SOModel.paySO(data);
+  const result = true;
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
     return res.status(500).send({ message: "Internal Server Error!" });
   if (result.error) return res.status(400).send();
   res.status(200).send({ message: "Payment Confirmed" });
+
+  const soUser = await invoiceModel.getSOUser(data.service_order_id);
+  console.log(soUser);
+  const email = new Email();
+  await email.send(
+    soUser.email,
+    `${soUser.service_order_id} payment details`,
+    `Payment of ${soUser.service_order_id} is confirmed`
+  );
 };
 
 exports.closeServiceOrder = async (req, res) => {

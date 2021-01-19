@@ -13,7 +13,7 @@ BEGIN
 		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (email,password,NIC,first_name,last_name,"customer");
 		INSERT INTO customer(user_id,license_number) VALUES (LAST_INSERT_ID(),license_number);
         
-        SELECT user_id,first_name,last_name,user_type FROM useracc WHERE user_id=LAST_INSERT_ID();
+        SELECT user_id,email FROM useracc WHERE user_id=LAST_INSERT_ID();
     COMMIT;
 END $$
 DELIMITER ;
