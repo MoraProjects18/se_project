@@ -1,16 +1,35 @@
 const ejs = require("ejs");
 var $ = require('jquery');
 const Ticket = require("../models/ticket.js");
-const ticket = new Ticket();
-
+const ticket = new Ticket()
 
 exports.getTicketPage = async (req, res) => {
+    var result = await ticket.GetBranch();
+
+    if (result.connectionError)
+        return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+
     data = {
         dataFound: false,
+        branch : result.result
     };
 
     res.render("../views/ticket/createTicket.ejs", data);
 };
+
+exports.getTimes = async (req, res) => {
+    var result = await ticket.GetTime(req.query.branch_id,req.query.start_id);
+
+    if (result.connectionError)
+        return res.status(500).send("Internal Server Error!");
+    if (result.error) return res.status(400).send("Bad Request!");
+
+
+
+    res.search(result.result);
+};
+
 exports.createTicket = async (req, res) => {
     console.log(req.body);
     const result = await ticket.Initiate(req.body);

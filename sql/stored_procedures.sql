@@ -35,3 +35,17 @@ BEGIN
      WHERE DATE(start_time) = CURDATE() ORDER BY DATETIME(start_time);
 END $$
 DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE get_timeslots(
+branch_id int ,
+start_date date
+)
+
+BEGIN
+  SELECT start_time
+     FROM emission_test_db.ticket
+     WHERE branch_id = branch_id AND start_date = start_date ;
+END $$
+DELIMITER ;

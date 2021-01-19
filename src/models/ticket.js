@@ -63,26 +63,40 @@ class Ticket {
     }
 
 
-    async GetByUserId(data) {
-        let validateResult = await _validateID.get(this)(data);
-        if (validateResult.error)
-            return new Promise((resolve) => resolve({validationError: result}));
+    async GetBranch() {
 
-        //call readSingleTable function of database class
         const resultdata = await _database
             .get(this)
-            .readSingleTable("ticket", "*", ["user_id", "=", data.user_id]);
+            .readSingleTable("branch", ["branch_id","branch_name"] );
         //console.log(resultdata);
+
         return new Promise((resolve) => {
             let obj = {
                 connectionError: _database.get(this).connectionError,
             };
             resultdata.error ? (obj.error = true) : (obj.error = false, obj.result = resultdata.result);
+
             //console.log(obj);
             resolve(obj);
         });
     }
+    async GetTime(branch_id,start_date) {
 
+        const resultdata = await _database
+            .get(this)
+            .call("get_timeslot",[branch_id,start_date]);
+        //console.log(resultdata);
+
+        return new Promise((resolve) => {
+            let obj = {
+                connectionError: _database.get(this).connectionError,
+            };
+            resultdata.error ? (obj.error = true) : (obj.error = false, obj.result = resultdata.result);
+
+            //console.log(obj);
+            resolve(obj);
+        });
+    }
     async Close(data) {
         //validate the ticket id
         let validateResult = await _validateID.get(this)(data);
