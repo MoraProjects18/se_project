@@ -16,5 +16,6 @@ cashierRouter.post("/invoice/pay", cashierController.payInvoice);
 cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
 
 // router.get("/", reportController.getreportPage);
+cashierRouter.get("/home", cashierController.home);
 
 module.exports = cashierRouter;

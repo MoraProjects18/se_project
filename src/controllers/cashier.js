@@ -6,15 +6,19 @@ const SOModel = new ServiceOrder();
 
 // const ServiceOrder = require("../models/serviceOrder.js");
 // const serviceOrderModel = new ServiceOrder();
-
 // const User = require("../models/user.js");
 // const userModel = new User();
+
+
+exports.home = async (req, res) => { 
+  res.render("./common/staff_home_page.ejs", { usertype: "cashier", activepage: "Home",title:"customer home"});
+};
+
 
 exports.getInvoicePage = async (req, res) => {
   data = {
     dataFound: false,
   };
-
   res.render("./cashier/payment.ejs", data);
 };
 
@@ -41,7 +45,6 @@ exports.searchInvoice = async (req, res) => {
     const invoice = invoiceR.result[0];
     const service_order_id = invoice.service_order_id;
     const soUser = await invoiceModel.getSOUser(service_order_id);
-
     const sou = soUser.result[0];
 
     data = {

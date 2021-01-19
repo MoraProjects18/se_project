@@ -6,6 +6,15 @@ const Email = require("../utils/email");
 const Customer = require("../models/customer");
 const customer = new Customer();
 
+const Ticket = require("../models/ticket.js");
+const ticket = new Ticket()
+
+exports.home = async (req, res) => { 
+  res.render("./common/customer_home_page.ejs", { usertype: "customer", activepage: "Home" ,title:"customer home"});
+};
+
+
+
 exports.registerUser = async (req, res) => {
   const result = await customer.register(req.body);
   if (result.validationError)
@@ -68,4 +77,25 @@ exports.confirmMail = async (req, res) => {
   } else {
     res.status(400).send("You have already confirmed the email address!");
   }
+};
+
+
+exports.getTicketPage = async (req, res) => {
+  var result = await ticket.GetBranch();
+
+  if (result.connectionError)
+    return res.status(500).send("Internal Server Error!");
+  if (result.error) return res.status(400).send("Bad Request!");
+
+  data = {
+    dataFound: false,
+    branch : result.result,
+    usertype: "customer",
+    activepage: "Create Ticket",
+    title:"Create Ticket"
+  };
+
+
+  res.render("../views/ticket/createTicket.ejs", data);
+
 };

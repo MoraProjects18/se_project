@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('../common/head', {title:"Customer"}); %>
+    <%- include('../partials/heads/head'); %>
 </head>
 
-<body>
-<div class="container">
+<body class="d-flex flex-column min-vh-100">
+
+<header>
+    <%- include('../partials/navs/nav'); %>
+</header>
+
+<div class="Center">
     <h2>Your Tickets</h2><br>
     <div class="card-columns">
         <% if(data.dataFound){ %>

@@ -24,6 +24,7 @@ exports.isCustomerRole = (req, res, next) => {
 
 exports.isStaffRole = (req, res, next) => {
   if (req.user["user_type"] === "staff") {
+    
     next();
   } else {
     res.status(403).send("Forbidden");
