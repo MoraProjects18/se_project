@@ -1,6 +1,5 @@
-create database emission_test;
-
-use emission_test;
+CREATE DATABASE emission_test;
+USE emission_test;
 
 create database emission_db;
 

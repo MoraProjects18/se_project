@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <%- include('../common/head', {title:"Cashier"}); %>
 </head>
 
 <body>
-    
+    <header>
+        <%- include('../partials/navs/nav'); %>
+    </header>
+
     <div class="row">
         <div class="col-sm-1 col-md-2">
 
@@ -117,7 +120,14 @@
         </div>
     <% } %>
 
+ 
+    <footer>
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
+
+
         <script type="text/javascript" src="/js/payment.js"></script>
+
     
 
 </body>
