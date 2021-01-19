@@ -92,7 +92,7 @@ class Staff {
 
   }
 
-  async edit_profile(data) {
+  async edit_profile(data,user_id) {
     //validate data
     let result = await _validate.get(this)(data);
 
@@ -103,7 +103,7 @@ class Staff {
     // call register_new_staff stored procedure
     result = await _database
       .get(this)
-      .call("update_user",[6,data.email,data.first_name,data.last_name,data.contact_no]);
+      .call("update_user",[user_id,data.email,data.first_name,data.last_name,data.contact_no]);
 
       return new Promise((resolve) => {
         let obj = {
@@ -115,7 +115,7 @@ class Staff {
   }
 
 
-  async change_pass(data) {
+  async change_pass(data,user_id) {
     //validate data
     let result = await _validate.get(this)(data);
     // if (result.error)
@@ -124,7 +124,7 @@ class Staff {
     let c_password= "";
     c_password = await _database
     .get(this)
-    .readSingleTable("useracc","password",["user_id","=",6]);
+    .readSingleTable("useracc","password",["user_id","=",user_id]);
     
     const salt = await bcrypt.genSalt(10);
     c_password=c_password.result[0].password;

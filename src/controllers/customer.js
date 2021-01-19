@@ -34,7 +34,7 @@ exports.showProfile = async (req, res) => {
 
   exports.editProfile = async (req,res) => {
     console.log(req.body);
-    const result = await customer.edit_profile(req.body);
+    const result = await customer.edit_profile(req.body,1);
     if (result.validationError)
         return res.status(400).send(result.validationError);
     if (result.connectionError)
@@ -45,7 +45,7 @@ exports.showProfile = async (req, res) => {
 
   exports.changePass = async (req,res) => {
     // console.log(req.body);
-    const result = await customer.change_pass(req.body);
+    const result = await customer.change_pass(req.body,1);
     console.log(result);
     if (result== "Incorrect Password")
         return res.status(200).send("Incorrect password");
