@@ -15,9 +15,9 @@ exports.getTicketPage = async (req, res) => {
         branch : result.result
     };
 
-    res.render("../views/ticket/createTicket.ejs", data);
+    res.render("../views/ticket/createTicket.ejs",data);
 };
-
+//{usertype: "customer",activepage:"home",title:"customer home"}
 exports.getTimes = async (req, res) => {
     var result = await ticket.GetTime(req.query.branch_id,req.query.start_id);
 

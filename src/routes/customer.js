@@ -5,4 +5,5 @@ const router = express.Router();
 router.post("/register", customerController.registerUser);
 router.get("/register/confirm/:email", customerController.confirmMail);
 
+
 module.exports = router;
