@@ -12,16 +12,16 @@ checkEnvironmentVariable("email_transporter_credentials.auth.user");
 checkEnvironmentVariable("email_transporter_credentials.auth.pass");
 
 //Environment Variables(dev)
-checkEnvironmentVariable("database_credentials.password", "mysql_password");
-checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.user",
-  "email_address"
-);
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.pass",
-  "email_password"
-);
+// checkEnvironmentVariable("database_credentials.password", "mysql_password");
+// checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
+// checkEnvironmentVariable(
+//   "email_transporter_credentials.auth.user",
+//   "email_address"
+// );
+// checkEnvironmentVariable(
+//   "email_transporter_credentials.auth.pass",
+//   "email_password"
+// );
 //
 
 //Routers
@@ -31,7 +31,6 @@ const cashierRouter = require("./routes/routers");
 const reportRouter = require("./routes/emission_report");
 const receptionistRouter = require("./routes/receptionist");
 const ticketRouter = require("./routes/ticket");
-const customerRouter = require("./routes/customer");
 const staffRouter = require("./routes/staff");
 const adminRouter = require("./routes/admin");
 const { title } = require("process"); //????
@@ -319,8 +318,8 @@ app.get('/getsodetails', function (req, res) {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-function checkEnvironmentVariable(envPath, envName) {
-  if (!config.has(envPath)) {
+function checkEnvironmentVariable(envName) {
+  if (!config.has(envName)) {
     console.log(new Error(`${envName} (Enviroment Variable) is not defined`));
     process.exit(1);
   }

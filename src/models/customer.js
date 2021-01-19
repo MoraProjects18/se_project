@@ -11,7 +11,7 @@ const _database = new WeakMap();
 class Customer extends User {
   constructor() {
     super();
-
+    _database.set(this, new Database());
     //all data fields of a customer
    _schema.set(this, Joi.object ({
         user_id: Joi.string().required().label("user_id"),
