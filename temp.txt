@@ -64,3 +64,50 @@ call("get_clients");
 
 use call() method to execute stored procedures
 call("get_clients",["active"]);
+
+
+###  Render ejs files  ###
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", { showValidity: false, error: {}, value: {} });
+});
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", {
+    showValidity: true,
+    error: { first_name: "Invalid string" },
+    value: {
+      first_name: "Riin",
+      last_name: "Ezque",
+      email: "example@gmail.com",
+    },
+  });
+});
+
+app.get("/test", (req, res) => {
+  res.render("./test.ejs", {
+    showValidity: false,
+    error: {},
+    value: {
+      first_name: "Riin",
+      last_name: "Ezque",
+      email: "example@gmail.com",
+      password: "13546",
+    },
+    disabled: {
+      first_name: true,
+      last_name: true,
+      email: true,
+      password: true,
+    },
+  });
+});
+
+
+Create environment variables
+In C: cmd
+
+setx mysql_password ""   //Or your password
+setx jwtPrivateKey "Mykey"
+setx email_address "test@gmail.com"
+setx email_password "password"

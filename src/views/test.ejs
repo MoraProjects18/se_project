@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./common/head', {title:"Test Page"}); %>
+  </head>
+  <body>
+    <form action="">
+      <div class="container">
+        <%- include('./common/input', {customClass:"className",name:"first_name",label:"First Name",placeholder:"Enter First Name",type:"text"}); %>
+        <%- include('./common/input', {customClass:"className",name:"last_name",label:"Last Name",placeholder:"Enter Last Name",type:"text"}); %>
+        <%- include('./common/input', {customClass:"className",name:"email",label:"Email",type:"email"}); %>
+        <%- include('./common/input', {customClass:"className",name:"password",label:"Password",type:"password"}); %>
+      </div>
+    </form>
+    
+  </body>
+</html>

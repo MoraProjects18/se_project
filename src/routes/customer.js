@@ -1,8 +1,10 @@
+const customerController = require("../controllers/customer");
 const express = require("express");
-const customerRouter = express.Router();
-const sorderController = require("../controllers/sorder");
+const router = express.Router();
 
-//Customer
-customerRouter.get("/getmyso", sorderController.getmySO);
+router.post("/register", customerController.registerUser);
+router.get("/register/confirm/:email", customerController.confirmMail);
 
-module.exports = customerRouter;
+router.get("/home", customerController.home);
+
+module.exports = router;

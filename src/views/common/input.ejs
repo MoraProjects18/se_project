@@ -1,0 +1,15 @@
+<div class="form-group <%= typeof customClass !== 'undefined' ? customClass : "" %> ">
+    <label for=<%= typeof name !== 'undefined' ? name : "" %>><%= typeof label !== 'undefined' ? label : "undefined" %> </label>
+    <input
+      type=<%= typeof type !== 'undefined' ? type : "" %>
+      class="form-control <%= typeof error[name] !== 'undefined' ? "is-invalid" : (typeof showValidity !== 'undefined' && showValidity ? "is-valid" : "") %>"
+      id=<%= typeof name !== 'undefined' ? name : "" %>
+      value="<%= typeof value[name] !== 'undefined' ? value[name] : "" %>"
+      name=<%= typeof name !== 'undefined' ? name : null %>
+      placeholder="<%= typeof placeholder !== 'undefined' ? placeholder : "" %>"
+      <% if(typeof disabled[name] !== 'undefined' && disabled[name]){ %>
+        disabled 
+      <% } %> 
+    />
+    <div class=<%= typeof error[name] !== 'undefined' ? "invalid-feedback" : "" %>><%= typeof error[name] !== 'undefined' ? error[name] : "" %></div>
+  </div>

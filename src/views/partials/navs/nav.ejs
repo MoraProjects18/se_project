@@ -1,5 +1,164 @@
 
 
+ <% if(usertype == "customer" ){ %>
+
+    <% if( activepage== "Home"){ 
+        var nav = [ 
+        { page: 'Home', path: "/customer/home",status : "active" },
+        { page: 'Service order details', path: "",status : "deactive" },
+        { page: 'Ticket details', path: "",status : "deactive" },
+        { page: 'Profile', path: "",status : "deactive" }]    
+    } %>
+
+    <% if( activepage== "Service order details"){ 
+        var nav = [ 
+        { page: 'Home', path: "/customer/home",status : "deactive" },
+        { page: 'Service order details', path: "",status : "active" },
+        { page: 'Ticket details', path: "",status : "deactive" },
+        { page: 'Profile', path: "",status : "deactive" }]    
+    } %>
+
+    <% if( activepage== "Ticket details"){ 
+        var nav = [ 
+        { page: 'Home', path: "/customer/home",status : "deactive" },
+        { page: 'Service order details', path: "",status : "deactive" },
+        { page: 'Ticket details', path: "",status : "active" },
+        { page: 'Profile', path: "",status : "deactive" }]    
+    } %>
+
+    <% if( activepage== "Profile"){ 
+        var nav = [ 
+        { page: 'Home', path: "/customer/home",status : "deactive" },
+        { page: 'Service order details', path: "",status : "deactive" },
+        { page: 'Ticket details', path: "",status : "deactive" },
+        { page: 'Profile', path: "",status : "active" }]    
+    } %>
+
+ 
+
+  <% } else{ %>  
+
+        
+        <% if( usertype == "admin"){ %>
+
+            <% if( activepage== "Home"){
+                var nav = [
+                { page: 'Home', path: "admin_home_page" ,status : "active" },
+                { page: 'Add employee', path:"Add_employee" ,status : "deactive" },
+                { page: 'Profile', path: "",status : "deactive" }]  
+            } %>
+    
+            <% if( activepage== "Invoice Payment"){
+                var nav = [
+                { page: 'Home', path: "cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "",status : "active" } , 
+                { page: 'Profile', path: "",status : "deactive" }]  
+            } %>
+    
+            <% if( activepage== "Profile"){
+                var nav = [
+                { page: 'Home', path: "cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "",status : "deactive" } , 
+                { page: 'Profile', path: "",status : "active" }]  
+            } %>
+            
+           
+        <%  } %>
+
+
+        <% if( usertype == "cashier"){ %>
+        
+            <% if( activepage== "Home"){
+                var nav = [
+                { page: 'Home', path: "cashier/home",status : "active" },
+                { page: 'Invoice Payment', path: "",status : "deactive" } , 
+                { page: 'Profile', path: "",status : "deactive" }]  
+            } %>
+
+            <% if( activepage== "Invoice Payment"){
+                var nav = [
+                { page: 'Home', path: "cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "",status : "active" } , 
+                { page: 'Profile', path: "",status : "deactive" }]  
+            } %>
+
+            <% if( activepage== "Profile"){
+                var nav = [
+                { page: 'Home', path: "cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "",status : "deactive" } , 
+                { page: 'Profile', path: "",status : "active" }]  
+            } %>
+           
+        <%  } %>
+   
+
+        <% if( usertype == "receptionist"){ %>
+
+            <% if( activepage== "Home"){
+                var nav = [
+                { page: 'Home', path: "receptionist/home" ,status : "active" },
+                { page: 'Ticket details', path: "" ,status : "deactive" }, 
+                { page: 'Initiate service order', path: "" ,status : "deactive" },
+                { page: 'Profile', path: "" ,status : "deactive" }]  
+            } %>
+
+            <% if( activepage== "Ticket details"){
+                var nav = [
+                { page: 'Home', path: "receptionist/home" ,status : "active" },
+                { page: 'Ticket details', path: "" ,status : "deactive" }, 
+                { page: 'Initiate service order', path: "" ,status : "deactive" },
+                { page: 'Profile', path: "" ,status : "deactive" }]   
+            } %>
+
+            <% if( activepage== "Initiate service order"){
+                var nav = [
+                { page: 'Home', path: "receptionist/home" ,status : "active" },
+                { page: 'Ticket details', path: "" ,status : "deactive" }, 
+                { page: 'Initiate service order', path: "" ,status : "deactive" },
+                { page: 'Profile', path: "" ,status : "deactive" }]   
+            } %>
+
+            <% if( activepage== "Profile"){
+                var nav = [
+                { page: 'Home', path: "receptionist/home" ,status : "deactive" },
+                { page: 'Ticket details', path: "" ,status : "deactive" }, 
+                { page: 'Initiate service order', path: "" ,status : "deactive" },
+                { page: 'Profile', path: "" ,status : "active" }]   
+            } %>
+      
+        <%  } %>
+
+        
+        <% if(usertype == "reportissuer"){ %>
+
+            <% if( activepage== "Home"){
+                var nav = [
+                { page: 'Home', path: "reportissuer/home" ,status : "active" },
+                { page: 'Issue Report', path: "" ,status : "deactive" }, 
+                { page: 'Profile', path: "" ,status : "deactive" }]  
+            } %>
+
+            <% if( activepage== "Issue Report"){
+                var nav = [
+                { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
+                { page: 'Issue Report', path: "" ,status : "active" }, 
+                { page: 'Profile', path: "" ,status : "deactive" }]   
+            } %>
+
+            <% if( activepage== "Profile"){
+                var nav = [
+                { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
+                { page: 'Issue Report', path: "" ,status : "deactive" }, 
+                { page: 'Profile', path: "" ,status : "active" }]   
+            } %>
+      
+        <%  } %>
+
+    
+ <% } %>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="" >
@@ -17,15 +176,13 @@
                 <% nav.forEach(function(nav) { %>
                     <li>
                         <li class="nav-item">
-                            <a class="nav-link " id="<%=nav.status%>" href="/<%=nav.path%>"><%=nav.page%></a>
+                            <a class="nav-link " id="<%=nav.status%>" href="<%=nav.path%>"><%=nav.page%></a>
                         </li>              
                                        
                         <% }); %>
               
             </ul>
-            <a class="nav-link " href="/<%=profile%>">
-                <i class="fas fa-user-circle " style='font-size:30px;color:rgb(6, 138, 37)'></i>
-            </a>
+          
             <button type="button" class="btn btn-success btn-large " id="signout" onclick="logout()" >Log out</button>
             <hr class="solid">
         </div>
@@ -33,8 +190,9 @@
 </nav>
 
 <script>
+
 document.getElementById("signout").onclick = function () {
-    location.href = "/register";
+    location.href = "";
 };
 </script>
 

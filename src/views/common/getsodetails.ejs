@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../partials/heads/head'); %>  
+  <%- include('../partials/heads/head', {title:"Cashier"}); %>  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Service Order Details</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Ticket Details</a>
-    </li>
-  </ul> 
-</nav>
-<br>
+<body class="d-flex flex-column min-vh-100">
 
+  
+  <header>
+    <%- include('../partials/navs/nav',); %>
+  </header>
+   
 <div class="container">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Enter the NIC here" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -31,6 +24,9 @@
       </div>
 </div>
 
+<footer class="mt-auto">
+  <%- include('../partials/footers/staff_footer'); %>
+</footer>
 </body>
 </html>
 

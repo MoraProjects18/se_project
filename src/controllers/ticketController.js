@@ -8,7 +8,7 @@ exports.getTicketPage = async (req, res) => {
         dataFound: false,
     };
 
-    res.render("../views/ticket/createTicket.ejs", data);
+    res.render("../views/ticket/createTicket.ejs", data,);
 };
 exports.createTicket = async (req, res) => {
     console.log(req.body);

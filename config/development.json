@@ -1,12 +1,14 @@
 {
   "database_credentials": {
     "host": "localhost",
-    "port": "3306",
     "user": "root",
-    "password": "",
-
-    "database": "emission_test_db",
-
+    "password": "Lahiru7*",
+    "database": "emission_test",
     "connectionLimit": 5
+  },
+  "email_transporter_credentials": {
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "secure": true
   }
 }
