@@ -9,10 +9,23 @@ const user = new User();
 exports.registerUser = async (req, res) => {
   const result = await user.register(req.body);
   if (result.validationError)
-    return res.status(400).send(result.validationError);
+    return res.status(400).render("common/login.ejs", {
+      alert: {
+        type: "danger",
+        msg: "Email is invalid. Enter a valid email address!",
+      },
+    });
+
   if (result.connectionError)
     return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
+
+  if (!result.allowAccess)
+    return res.status(401).render("common/login.ejs", {
+      alert: {
+        type: "danger",
+        msg: "Access Denied! Unauthorized Client",
+      },
+    });
 
   const cookieOption = {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
@@ -44,4 +57,10 @@ exports.registerUser = async (req, res) => {
   } catch (ex) {
     console.log(ex);
   }
+};
+
+exports.getLoginPage = (req, res) => {
+  res.status(200).render("common/login.ejs", {
+    alert: false,
+  });
 };

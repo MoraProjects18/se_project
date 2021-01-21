@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+    <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
+    
+    <title>Profile Page</title>
+</head>
+<body>
+    <div class="container">
+    <div class="row flex-lg-nowrap">
+    <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+    </div>
+
+    <div class="col">
+        <div class="row">
+        <div class="col mb-3">
+            <div class="card shadowBox">
+            <div class="card-body">
+                <div class="e-profile">
+                <div class="tab-content pt-3 ">
+                    <div class="tab-pane active">
+                    <form class="form" action="/staff/edit_profile" method="POST" novalidate="">
+                        <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>First Name</label>
+                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' required value=<%= staff.first_name %>>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' required value=<%= staff.last_name %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' required value=<%= staff.email %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>NIC</label>
+                                    <input class="form-control inputD" type="text" onkeyup='check();' value=<%= staff.NIC %> disabled>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input class="form-control" type="text" name="contact_no" id="contact_no" onkeyup='check();' required value=<%=staff1.contact_no %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Staff ID</label>
+                                    <input class="form-control inputD" type="text" name="e_id" value=<%= staff.employee_id %> disabled>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Role</label>
+                                    <input class="form-control" type="text" value=<%= staff.role %> disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" id="save" type="submit">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                        <form action="/staff/change_pass" method="POST">
+                        <div class="row">
+                        <div class="col-12 col-sm-6 mb-3">
+                            <div class="mb-2"><b>Change Password</b></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input class="form-control" name="current_password" type="password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>New Password</label>
+                                    <input class="form-control" name="new_password" id="new_password" type="password" onkeyup='check();' required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                    <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                                    <input class="form-control" name="confirm_password" id="confirm_password" type="password" onkeyup='check();' required ></div>
+                                    <span id='message'></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                            
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary" id="change" type="submit">Change Paasword</button>
+                        </div>
+                        <!-- <div class="px-xl-3">
+                            <button class="btn btn-block btn-secondary">
+                                <i class="fa fa-sign-out"></i>
+                                <span>Logout</span>
+                            </button>
+                        </div> -->
+                        </div>
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3 mb-3">
+        </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    
+</body>
+<script>
+    var check = function() {
+    if(document.getElementById('new_password').value=="" || document.getElementById('confirm_password').value==""){
+     document.getElementById('message').innerHTML="";
+    }else if (document.getElementById('new_password').value ==
+    document.getElementById('confirm_password').value ) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    document.getElementById("change").disabled=false;
+  } 
+  else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    document.getElementById("change").disabled=true;
+  }
+  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" ){
+      document.getElementById('save').disabled=true;
+  }
+  else{
+      document.getElementById('save').disabled=false;
+  }
+}
+</script>
+</html>

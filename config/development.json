@@ -12,10 +12,7 @@
   "email_transporter_credentials": {
     "host": "smtp.gmail.com",
     "port": 465,
-    "secure": true,
-    "auth": {
-      "user": "",
-      "pass": ""
-    }
-  }
+    "secure": true
+  },
+  "site_name": "http://localhost:3000"
 }

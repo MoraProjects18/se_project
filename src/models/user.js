@@ -63,6 +63,8 @@ class User {
       resolve(obj);
     });
   }
+
+  
 }
 
 module.exports = User;
