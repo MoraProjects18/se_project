@@ -11,12 +11,13 @@ class Report {
 
 
   }
-  async update_so_state(SO_id){
+  async update_so_state(SO_id,state_test){
+    var today = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const update_so=await await _database
     .get(this)
     .update(
       "service_order",
-      ["status", "Closed"],
+      ["status",state_test ,"end_date",today],
       ["service_order_id", "=", SO_id]
     );
     return update_so;

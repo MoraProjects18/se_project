@@ -1,8 +1,8 @@
 {
   "database_credentials": {
     "host": "localhost",
-    "user": "root",
-    "database": "emission_test_db",
+    "user": "new_user",
+    "database": "emission_db",
     "connectionLimit": 5
   },
   "email_transporter_credentials": {
