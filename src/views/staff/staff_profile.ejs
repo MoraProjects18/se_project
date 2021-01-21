@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+    <%- include('../partials/heads/head',{title: 'user profile' }); %>
     <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
     
     <title>Profile Page</title>
 </head>
 <body>
+    <header>
+        <%- include('../partials/navs/nav' ,{
+        activepage: "Profile",
+        title: "profile",}); %>
+    </header>
     <div class="container">
     <div class="row flex-lg-nowrap">
     <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
@@ -71,7 +74,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Role</label>
-                                    <input class="form-control" type="text" value=<%= staff.role %> disabled>
+                                    <input class="form-control" type="text" value=<%= staff.user_type %> disabled>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +82,7 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" id="save" type="submit">Save Changes</button>
+                                <button class="btn btn-primary my-1" id="save" type="submit">Save Changes</button>
                             </div>
                         </form>
                     </div>

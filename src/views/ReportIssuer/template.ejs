@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/report_template.css" media="screen" title = "no title" charset = "utf-8">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2 col-sm-10 col-sm-offset-2 col-xs-12 brandSection">
+                <div class="row">
+                
+                    <div class="col-md-12 col-sm-12 header">
+                        <div class="col-md-3 col-sm-3 headerLeft">
+                            <h1>Emission Test Certificate</h1>
+                        </div>
+                        <div class="col-md-9 col-sm-9 headerRight">
+                            <p>Emission Center</p>
+                            <p>mail@emiision.com</p>
+                            <p>077 1111111</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-sm-12 content"> 
+                        <h4>SERVICE ORDER - <strong> <%= SO_id %></strong></h4>
+                        <div>Issued Date : <strong><%= reportdata['issue_date'] %></strong></div>
+                        
+                        <p> </p>
+                        <span><div>Expire Date : <strong><%= reportdata['valid_date'] %></strong></div></span>
+                    </div>
+                    <div class="col-md-12 col-sm-12 panelPart">
+                      
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 panelPart">
+                              <div class="panel panel-default">
+                                  <div class="panel-body">
+                                      Service Order Details 
+                                  </div>
+                                  <div class="panel-footer">
+                                      <div class="row">
+                                          
+                                          <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <p>Service Order ID : <strong><%= reportdata['service_order_id'] %></strong></p>
+                                            <p>Certificate Number : <strong><%= reportdata['certificate_NO'] %></strong></p>
+                                            <p>Test Number : <strong><%= reportdata['test_No'] %></strong></p>
+                                            <p>Inspector ID : <strong><%= reportdata['inspector_id'] %></strong></p>
+                                            <p>Customer Name : <strong><%= so_data.result[0]['first_name']+" "+  so_data.result[0]['last_name']%></strong></p>
+                                            <p>Customer NIC : <strong><%= so_data.result[0]['NIC'] %></strong></p>
+                                            <p>Customer License number : <strong><%= so_data.result[0]['license_number'] %></strong></p>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 panelPart">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        Vehicle Details
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="row">
+                                            
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                              
+                                              <p>Registration Number : <strong><%= reportdata['vehical_reg_NO'] %></strong></p>
+                                              <p>Engine Number : <strong><%= reportdata['vehical_eng_NO'] %></strong></p>
+                                              <p>Chassis Number : <strong><%= reportdata['vehical_chassis_NO'] %></strong></p>
+                                              <p>Vehicle Class : <strong><%= reportdata['vehical_class'] %></strong></p>
+                                              <p>Fuel Type : <strong><%= reportdata['fuel_type'] %></strong></p>
+                                              <p>Company : <strong><%= reportdata['make'] %></strong></p>
+                                              <p>Model : <strong><%= reportdata['model'] %></strong></p>
+                                              <p>Year of Manufacture : <strong><%= reportdata['year_menu'] %></strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 tableSection">
+                            <h1>Test Results</h1>
+                            <table class="table text-center">
+                              <thead>
+                                <tr class="tableHead">
+                                  <th style="width:30px;">Checkup</th>
+                                  <th style="width:250px;">Description</th>
+                                  <th style="width:100px;text-align:center;">Required Range</th>
+                                  <th style="width:100px;text-align:center;">Result</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Carbondioxide Level (CO2) </td>
+                                  <td>0.00 - 5.00</td>
+                                  <%if (reportdata['co2_percentage'] < 5.0) { %>
+                                   
+                                    
+                                  <td><div class='testpass'><%= reportdata['co2_percentage'] %></div></td>
+                                  
+                                  <% }else{ %>
+                                    <td><div class='testfail'><%= reportdata['co2_percentage'] %></div></td>
+                                  <% } %>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Oxygen Level (O2) </td>
+                                  <td>5.00 < </td>
+                                  <% if (5 < reportdata['o2_percentage'] ) { %>
+
+                                    <td><div class='testpass'><%= reportdata['o2_percentage'] %></div></td>
+                                    
+                                    <% }else{ %>
+                                      <td><div class='testfail'><%= reportdata['o2_percentage'] %></div></td>
+                                    <% } %>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>CarbonMonoxide Level (CO) </td>
+                                  <td>0.00 - 0.70</td>
+                                  <% if (reportdata['co_percentage'] < 0.7 ) { %>
+
+                                    <td><div class='testpass'><%= reportdata['co_percentage'] %></div></td>
+                                    
+                                    <% }else{ %>
+                                      <td><div class='testfail'><%= reportdata['co_percentage'] %></div></td>
+                                    <% } %>
+                                  
+                                </tr>
+                                
+                                </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="col-md-12 col-sm-12 lastSectionleft "> 
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 Sectionleft">
+                                    <div class='imagelogo'>
+                                      <%if ( reportdata['test_status']==1) { %>
+                                      <img class='ecofriendlogo'src="/images/eco_friendly_logo.jpg" width="200" height="150" alt="Eco Friendly logo" >
+                                      <%  } else{ %>
+                                        <img class='ecofriendlogo'src="/images/not_eco_friendly_logo.jpg" width="200" height="150" alt="Eco Friendly logo" >
+                                        <% } %>
+                                    
+                                      </div>
+                                    
+                                    <span><i>Emission Testing Service Sri Lanka</i> </span>
+                                </div>
+                                <div class="col-md-6 col-sm-6"> 
+                                  <div class="panel panel-default">
+                                      <div class="panel-body lastPanel">
+                                          Test Status
+                                      </div>
+                                      <div class="panel-footer lastFooter">
+                                          <div class="row"> 
+                                            <%if ( reportdata['test_status']==1) { %>
+                                              <div class="col-md-5-statuspass">                                              
+                                               <h3>PASSED</h3>                                                 
+                                              </div>
+                                              <%  } else{ %>
+                                                <div class="col-md-5-statusfail">                                              
+                                                  <h3>FAILED</h3>                                                 
+                                                 </div>
+                                                <% } %>
+                                              
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>      
+</body>
+</html>

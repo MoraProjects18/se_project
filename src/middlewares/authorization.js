@@ -47,8 +47,8 @@ exports.isStaffRole = (req, res, next) => {
   }
 };
 
-exports.isCashierfRole = (req, res, next) => {
-  if (req.user["user_type"] === "cashier") {
+exports.isCashierRole = (req, res, next) => {
+  if (req.user["user_type"] === "Cashier") {
     next();
   } else {
     res.status(403).render("common/errorpage", {

@@ -13,7 +13,6 @@ exports.getAddEmployeePage = async (req, res) => {
 };
 
 exports.registerUser = async (req, res) => {
-  console.log(req.body);
   const result = await staff.register(req.body);
   if (result.validationError)
     return res.status(400).send(result.validationError);

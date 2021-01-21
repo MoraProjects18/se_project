@@ -3,13 +3,17 @@
     "host": "localhost",
     "port": "3306",
     "user": "root",
+    "password": "",
     "database": "emission_test_db",
     "connectionLimit": 5
   },
   "email_transporter_credentials": {
     "host": "smtp.gmail.com",
     "port": 465,
-    "secure": true
-  },
-  "site_name": "http://localhost:3000"
+    "secure": true,
+    "auth": {
+      "user": "",
+      "pass": ""
+    }
+  }
 }
