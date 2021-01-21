@@ -1,5 +1,5 @@
 const cashierController = require("../controllers/cashier");
-const reportController = require("../controllers/emission_report");
+const staffController = require("../controllers/staff");
 const authorization = require("../middlewares/authorization");
 
 const express = require("express");
@@ -13,5 +13,8 @@ cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
 
 // router.get("/", reportController.getreportPage);
 cashierRouter.get("/home", cashierController.home);
+cashierRouter.get("/profile", staffController.showProfile);
+cashierRouter.post("/profile", staffController.editProfile);
+cashierRouter.post("/profile/password", staffController.changePass);
 
 module.exports = cashierRouter;
