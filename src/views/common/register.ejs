@@ -17,20 +17,11 @@
         <img src="/images/reg.svg" />
       </div>
       <div class="login-content">
-        <!-- <div id="toggle">
-          <h3>REGISTER AS</h3><br>
-          <button class="btn transparent" id="customer" onclick="hide()">
-            Customer
-          </button>
-          <button class="btn transparent" id="staff" onclick="show()">
-            Staff Member
-          </button>
-        </div> -->
         <form action="/customer/register" class="form" method="POST" autocomplete="off">
           <img src="/images/logo.png" />
           <h2 class="title">Register</h2>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["first_name"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["first_name"] !== 'undefined' ? "error" : "accept") : "" %> ">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["first_name"] !== 'undefined' ? (value["first_name"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["first_name"] !== 'undefined' ? "error" : "accept") : "" %> ">
             <div class="i">
               <i class="fas fa-user"></i>
             </div>
@@ -41,7 +32,7 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["first_name"] !== 'undefined' ? error["first_name"] : "") : "" %></p>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["last_name"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["last_name"] !== 'undefined' ? "error" : "accept") : "" %>">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["last_name"] !== 'undefined' ? (value["last_name"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["last_name"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-user"></i>
             </div>
@@ -52,7 +43,7 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["last_name"] !== 'undefined' ? error["last_name"] : "") : "" %></p>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["NIC"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["NIC"] !== 'undefined' ? "error" : "accept") : "" %>">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["NIC"] !== 'undefined' ? (value["NIC"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["NIC"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-id-card"></i>
             </div>
@@ -63,7 +54,7 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["NIC"] !== 'undefined' ? error["NIC"] : "") : "" %></p>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["license_number"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["license_number"] !== 'undefined' ? "error" : "accept") : "" %>">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["license_number"] !== 'undefined' ? (value["license_number"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["license_number"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-car"></i>
             </div>
@@ -74,7 +65,7 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["license_number"] !== 'undefined' ? error["license_number"] : "") : "" %></p>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["email"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? "error" : "accept") : "" %>">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["email"] !== 'undefined' ? (value["email"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-envelope"></i>
             </div>
@@ -85,7 +76,7 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? error["email"] : "") : "" %></p>
 
-          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["password"] !== 'undefined' ? "focus" : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? "error" : "accept") : "" %>">
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["password"] !== 'undefined' ? (value["password"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-lock"></i>
             </div>
@@ -97,11 +88,6 @@
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? error["password"] : "") : "" %></p>
          
           <button type="submit" class="btn" id="cstbtn">Register</button>
-          <!-- <button type="submit" class="btn" id="stfbtn">
-            Register as staff
-          </button> -->
-          <!-- <input id = "cstbtn" type="submit" class="btn" value="Register" />
-                <input id = "stfbtn" type="submit" class="btn" value="Register as staff" />   -->
           <div class="content">
             <h3>Already have an account ?</h3>
             <a class="nav-link" href="/auth/login"> LOGIN HERE </a>
