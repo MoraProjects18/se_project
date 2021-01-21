@@ -44,7 +44,7 @@
         { page: 'Service order details', path: "",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
         { page: 'Tickets Details', path: "",status : "deactive" },
-        { page: 'Profile', path: "",status : "active" }]    
+        { page: 'Profile', path: "/customer/profile",status : "active" }]    
     } %>
 
  
@@ -83,23 +83,24 @@
         
             <% if( activepage== "Home"){
                 var nav = [
-                { page: 'Home', path: "cashier/home",status : "active" },
-                { page: 'Invoice Payment', path: "",status : "deactive" } , 
-                { page: 'Profile', path: "",status : "deactive" }]  
+                { page: 'Home', path: "/cashier/home",status : "active" },
+                { page: 'Invoice Payment', path: "/cashier/invoice",status : "deactive" } , 
+                { page: 'Profile', path: "/cashier/profile", status : "deactive" }]  
             } %>
 
             <% if( activepage== "Invoice Payment"){
                 var nav = [
-                { page: 'Home', path: "cashier/home",status : "deactive" },
-                { page: 'Invoice Payment', path: "",status : "active" } , 
-                { page: 'Profile', path: "",status : "deactive" }]  
+                { page: 'Home', path: "/cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "/cashier/invoice",status : "active" } , 
+                { page: 'Profile', path: "/cashier/profile", status : "deactive" }]   
             } %>
 
             <% if( activepage== "Profile"){
+                
                 var nav = [
-                { page: 'Home', path: "cashier/home",status : "deactive" },
-                { page: 'Invoice Payment', path: "",status : "deactive" } , 
-                { page: 'Profile', path: "",status : "active" }]  
+                { page: 'Home', path: "/cashier/home",status : "deactive" },
+                { page: 'Invoice Payment', path: "/cashier/invoice",status : "deactive" } , 
+                { page: 'Profile', path: "/cashier/profile", status : "active" }]  
             } %>
            
         <%  } %>
