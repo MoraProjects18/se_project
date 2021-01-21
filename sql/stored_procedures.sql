@@ -22,11 +22,11 @@ DELIMITER ;
 -- Show Staff Profile
 DELIMITER $$
 CREATE PROCEDURE show_staff_profile(
-    user_id int(15)
+    id int(15)
 )
 BEGIN
     START TRANSACTION;
-    SELECT * FROM useracc NATURAL JOIN staff WHERE user_id=user_id;
+    SELECT * FROM useracc NATURAL JOIN staff WHERE user_id=id;
     SELECT contact_no FROM contact_no WHERE user_id=id;
 END$$
 
