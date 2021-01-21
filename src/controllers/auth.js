@@ -17,7 +17,11 @@ exports.registerUser = async (req, res) => {
     });
 
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
 
   if (!result.allowAccess)
     return res.status(401).render("common/login.ejs", {
@@ -41,22 +45,15 @@ exports.registerUser = async (req, res) => {
   res
     .cookie("ets-auth-token", token, cookieOption)
     .status(200)
-    .send("Query Inserted!");
+    .redirect(`/${result.tokenData["user_type"]}/home`);
+};
 
-  try {
-    const htmlContent = await fileReader(
-      path.join(__dirname, "../views/test.txt")
-    );
-    const email = new Email();
-    await email.send(
-      req.body.email,
-      "ETC - Email Confirmation",
-      "",
-      htmlContent.data
-    );
-  } catch (ex) {
-    console.log(ex);
-  }
+exports.logout = (req, res) => {
+  const cookieOption = {
+    expires: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+  res.cookie("ets-auth-token", "", cookieOption).status(200).redirect("/home/");
 };
 
 exports.getLoginPage = (req, res) => {
