@@ -2,6 +2,7 @@ const customerController = require("../controllers/customer");
 const express = require("express");
 const customerRouter = express.Router();
 const sorderController = require("../controllers/sorder");
+const router = express.Router();
 
 //Customer
 customerRouter.get("/getmyso", sorderController.getmySO);

@@ -8,7 +8,6 @@ const Email = require("../utils/email");
 const Customer = require("../models/customer");
 const customer = new Customer();
 const jwt = require("jsonwebtoken");
-const config = require("config");
 
 const Ticket = require("../models/ticket.js");
 const ticket = new Ticket();
