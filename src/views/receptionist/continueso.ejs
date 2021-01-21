@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/heads/head', {title:"Receptionist"}); %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <div class="d-flex pt-5 pb-3 justify-content-center">
+        <form class="form-inline" action="/receptionist/sorder/failed" method="post">
+            <div class="form-group mx-3 mb-2">
+                <input type="text" 
+                class= "form-control" style=" border: solid; color: darkgreen;"
+                name = "NIC" id="inputNIC" placeholder="Customer NIC">
+            </div>
+            <button type="submit" class="btn btn-success mb-2">SEARCH SERVICE ORDER</button>
+          </form>
+    </div>
+
+    <% if(data.dataFound){ %>
+        <div class="container px-5 text-center cent">
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
+                <h5 class="card-header">Customer Details</h5>
+        
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="card_userid" class="col-sm-4 col-form-label text-left">User ID :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_userid" value= "<%= data.customer.user_id %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_nic" class="col-sm-4 col-form-label text-left">NIC :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_nic" value= "<%= data.customer.NIC %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_name" class="col-sm-4 col-form-label text-left">Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_name" value= "<%= `${data.customer.first_name}  ${data.customer.last_name}` %>"  disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="card_email" class="col-sm-4 col-form-label text-left">Email :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="card_email" value= "<%= data.customer.email %>"  disabled>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <% if(available.length!= 0){ %>
+            <% for(var x of available){ %>
+            <div class="card shadow p-3 mb-5 bg-white rounded col-md-12 col-sm-12 ">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="card_so_id" class="col-sm-4 col-form-label text-left">Service Order ID :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="so<%= x.service_order_id %>" value= "<%= x.service_order_id %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_vehicle" class="col-sm-4 col-form-label text-left">Vehicle Number :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="vehicle<%= x.service_order_id %>" value= "<%= x.vehicle_number %>" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_date" class="col-sm-4 col-form-label text-left">Start Date :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="date<%= x.service_order_id %>" value= "<%= (new Date(x.start_date)).toLocaleString() %>"  disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="card_status" class="col-sm-4 col-form-label text-left">Status:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control detailInput" id="state<%= x.service_order_id %>" value= "<%= x.status %>"  disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-danger" id="so_cts" value="<%= x.service_order_id %>" >Continue Service Order</button>
+                </div>
+            </div>
+            <% } %>
+            <% } else {%>
+                <div><p><strong>No any failed service orders</strong></p></div>
+            <% } %>
+        </div>   
+    <% } %>
+    <% if(data.error.status){ %>
+        <div class="d-flex justify-content-center"><p class="text-danger"><strong><%= data.error.message %></strong></p></div>
+    <% } %>
+
+    <footer class="mt-auto">
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
+    
+    <script type="text/javascript" src="/js/so_continue.js" ></script>
+</body>
+</html>
