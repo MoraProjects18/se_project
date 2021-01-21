@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-// const fileReader = require("../utils/file-reader");
 const path = require("path");
 const Email = require("../utils/email");
 const config = require("config");

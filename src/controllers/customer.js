@@ -27,8 +27,18 @@ exports.registerUser = async (req, res) => {
     return res.status(400).render("common/register", obj);
   }
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+
+  if (result.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
 
   try {
     const salt = await bcrypt.genSalt(10);
@@ -68,17 +78,39 @@ exports.confirmMail = async (req, res) => {
   const result = await customer.verifyEmail(req.params.email, req.query.id);
 
   if (result.validationError)
-    return res.status(400).send(result.validationError);
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Indentification details are incorrect",
+    });
 
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
 
-  if (result.error) return res.status(400).send("Bad request!");
+  if (result.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
 
   if (result.repeatingRequest)
-    return res.status(400).send("You have already confirmed email!");
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "You have already confirm the email",
+    });
 
-  if (result.notValid) return res.status(406).send("Data is not acceptable!");
+  if (result.notValid)
+    return res.status(406).render("common/errorpage", {
+      title: "Error",
+      status: "406",
+      message: "Data is not acceptable",
+    });
 
   res.status(200).redirect("/auth/login");
 };

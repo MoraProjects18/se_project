@@ -1,87 +1,100 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Register Form</title>
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <img class="wave" src="/images/wavenew.png" />
+    <div class="container">
+      <div class="img">
+        <img src="/images/reg.svg" />
+      </div>
+      <div class="login-content">
+        <form action="/customer/register" class="form" method="POST" autocomplete="off">
+          <img src="/images/logo.png" />
+          <h2 class="title">Register</h2>
 
-<head>
-    <%- include('../partials/heads/head'); %>    
-	<link rel="stylesheet" type="text/css" href="/css/register.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	
-</head>
-
-<body>
-	<img class="wave" src="/images/wavenew.png">
-	<div class="container">
-                
-		<div class="img">
-			<img src="/images/reg.svg">
-		</div>
-		<div class="login-content">
-            <div id="toggle">
-                <!-- <h3>REGISTER AS</h3><br> -->
-                <button class="btn transparent" id="customer" onclick="hide()">
-                Customer
-                </button>
-                <button class="btn transparent" id="staff" onclick="show()">
-                Staff Member
-                </button>
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["first_name"] !== 'undefined' ? (value["first_name"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["first_name"] !== 'undefined' ? "error" : "accept") : "" %> ">
+            <div class="i">
+              <i class="fas fa-user"></i>
             </div>
-			<form action="/register" method="POST" >
-				<img src="/images/logo.png">
-                <h2 class="title">Register</h2>
-                
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>First Name</h5>
-           		   		<input type="text" class="input">
-           		   </div>
-                </div>
+            <div class="div">
+              <h5>First Name</h5>
+              <input type="text" name="first_name" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["first_name"] !== 'undefined' ? value["first_name"] : "") : "" %>" />
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["first_name"] !== 'undefined' ? error["first_name"] : "") : "" %></p>
 
-                <div class="input-div one" id="empid">
-                    <div class="i">
-                            <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div" >
-                            <h5>Employee ID</h5>
-                            <input type="text" class="input">
-                    </div>
-                 </div>   
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["last_name"] !== 'undefined' ? (value["last_name"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["last_name"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Last Name</h5>
+              <input type="text" name="last_name" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["last_name"] !== 'undefined' ? value["last_name"] : "") : "" %>" />
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["last_name"] !== 'undefined' ? error["last_name"] : "") : "" %></p>
 
-                 <div class="input-div one">
-                    <div class="i">
-                            <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                            <h5>Email</h5>
-                            <input type="text" class="input">
-                    </div>
-                 </div>   
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["NIC"] !== 'undefined' ? (value["NIC"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["NIC"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <div class="div">
+              <h5>NIC</h5>
+              <input type="text" name="NIC" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["NIC"] !== 'undefined' ? value["NIC"] : "") : "" %>" />
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["NIC"] !== 'undefined' ? error["NIC"] : "") : "" %></p>
 
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Password</h5>
-           		    	<input type="password" class="input">
-            	   </div>
-                </div>
-                <button type = "submit" class="btn" id="cstbtn">Register</button>
-                <button type="submit" class="btn" id="stfbtn">Register as staff</button>
-                <!-- <input id = "cstbtn" type="submit" class="btn" value="Register" />
-                <input id = "stfbtn" type="submit" class="btn" value="Register as staff" />   -->
-				<div class="content">
-					<h3>Already have an account ?</h3>
-                    <a class="nav-link" href="/login">
-                        LOGIN HERE
-                    </a>
-				</div>
-            </form>
-        </div>
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["license_number"] !== 'undefined' ? (value["license_number"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["license_number"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-car"></i>
+            </div>
+            <div class="div">
+              <h5>License Number</h5>
+              <input type="text" name="license_number" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["license_number"] !== 'undefined' ? value["license_number"] : "") : "" %>"/>
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["license_number"] !== 'undefined' ? error["license_number"] : "") : "" %></p>
+
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["email"] !== 'undefined' ? (value["email"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="div">
+              <h5>Email</h5>
+              <input type="text" name="email" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["email"] !== 'undefined' ? value["email"] : "") : "" %>"/>
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? error["email"] : "") : "" %></p>
+
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["password"] !== 'undefined' ? (value["password"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Password</h5>
+              <input type="password" name="password" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["password"] !== 'undefined' ? value["password"] : "") : "" %>"/>
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? error["password"] : "") : "" %></p>
+         
+          <button type="submit" class="btn" id="cstbtn">Register</button>
+          <div class="content">
+            <h3>Already have an account ?</h3>
+            <a class="nav-link" href="/auth/login"> LOGIN HERE </a>
+          </div>
+        </form>
+      </div>
     </div>
     <script type="text/javascript" src="/scripts/register.js"></script>
-</body>
+  </body>
 </html>
