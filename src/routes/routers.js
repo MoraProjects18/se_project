@@ -7,28 +7,16 @@ const cashierRouter = express.Router();
 
 //Cashier
 cashierRouter.get(
-  "/invoice",
-  authorization.tokenAuthorize,
-  authorization.isCashierRole,
-  cashierController.getInvoicePage
+  "/invoice",cashierController.getInvoicePage
 );
 cashierRouter.post(
-  "/invoice",
-  authorization.tokenAuthorize,
-  authorization.isCashierRole,
-  cashierController.searchInvoice
+  "/invoice",cashierController.searchInvoice
 );
 cashierRouter.post(
-  "/invoice/pay",
-  authorization.tokenAuthorize,
-  authorization.isCashierRole,
-  cashierController.payInvoice
+  "/invoice/pay",cashierController.payInvoice
 );
 cashierRouter.post(
-  "/invoice/close",
-  authorization.tokenAuthorize,
-  authorization.isCashierRole,
-  cashierController.closeServiceOrder
+  "/invoice/close",cashierController.closeServiceOrder
 );
 
 module.exports = cashierRouter;
