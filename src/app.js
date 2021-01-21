@@ -43,7 +43,8 @@ app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
 app.use("/ticket", ticketRouter);
 app.use("/home", guestRouter);
-
+app.use("/staff",staffRouter);
+app.use("/admin",adminRouter);
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

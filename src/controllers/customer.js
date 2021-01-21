@@ -116,7 +116,7 @@ exports.confirmMail = async (req, res) => {
 };
 
 exports.showProfile = async (req, res) => {
-  const result = await customer.show_profile(1); // user_id has to be given as parameter. It has to be fetched from token.
+  const result = await customer.show_profile(req['user']['user_id']); // user_id has to be given as parameter. It has to be fetched from token.
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
@@ -147,7 +147,7 @@ exports.showProfile = async (req, res) => {
 
 exports.editProfile = async (req, res) => {
   console.log(req.body);
-  const result = await customer.edit_profile(req.body, 1);
+  const result = await customer.edit_profile(req.body, req['user']['user_id']);
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
@@ -158,7 +158,7 @@ exports.editProfile = async (req, res) => {
 
 exports.changePass = async (req, res) => {
   // console.log(req.body);
-  const result = await customer.change_pass(req.body, 1);
+  const result = await customer.change_pass(req.body, req['user']['user_id']);
   console.log(result);
   if (result == "Incorrect Password")
     return res.status(200).send("Incorrect password");
