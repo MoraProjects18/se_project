@@ -22,7 +22,7 @@ DELIMITER ;
 -- Show Staff Profile
 DELIMITER $$
 CREATE PROCEDURE show_staff_profile(
-    user_id int(15)
+    id int(15)
 )
 BEGIN
     START TRANSACTION;
