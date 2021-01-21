@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('../partials/heads/head'); %>
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand:700"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/css/errorpage.css" />
+  </head>
 
-<head>
-	<%- include('../partials/heads/head'); %>              
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:700" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="/css/errorpage.css" />
+  <body>
+    <div id="notfound">
+      <div class="notfound">
+        <div class="notfound-bg">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h1>oops!</h1>
 
-	
-</head>
+        <h2>
+          Error <%=status ? status : "undefined" %> : <%=message ? message :
+          "undefined" %>
+        </h2>
+        <!-- <h2>Error 404 : Page Not Found</h2> -->
 
-<body>
+        <br /><br />
+        <button
+          type="button"
+          class="btn btn-success btn-large"
+          id="back"
+          onclick="goBack()"
+        >
+          GO BACK
+        </button>
+      </div>
+    </div>
 
-	<div id="notfound">
-		<div class="notfound">
-			<div class="notfound-bg">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-			<h1>oops!</h1>
-			
-		    <h2>Error <%=status ? status : "undefined" %> : <%=massage ? massage : "undefined" %></h2> 
-			<!-- <h2>Error 404 : Page Not Found</h2> -->
-			
-			<br><br>
-			<button type="button" class="btn btn-success btn-large " id="back" onclick="goBack()" >GO BACK</button>
-			
-		</div>
-	</div>
-
-		<script>
-			function goBack() {
-			  window.history.back();
-			}
-		</script>
-
-</body>
-
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
 </html>

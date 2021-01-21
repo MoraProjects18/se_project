@@ -13,33 +13,18 @@ class Customer extends User {
     super();
     _database.set(this, new Database());
     //all data fields of a customer
-    _schema.set(
-      this,
-      Joi.object({
-        user_id: Joi.string().required().label("user_id"),
-        first_name: Joi.string().min(3).max(200).required().label("First Name"),
-        last_name: Joi.string().min(3).max(200).required().label("Last Name"),
-        email: Joi.string().min(5).max(255).email().required().label("Email"),
-        password: passwordComplexity(),
-        NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
-        license_number: Joi.string()
-          .length(8)
-          .required()
-          .label("License Number"),
-      }).options({ abortEarly: false })
-    );
-    // _schema.set(this, {
-    //   first_name: Joi.string().min(3).max(200).required().label("First Name"),
-    //   last_name: Joi.string().min(3).max(200).required().label("Last Name"),
-    //   email: Joi.string().min(5).max(255).email().required().label("Email"),
-    //   password: passwordComplexity(undefined, "Password"),
-    //   NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
-    //   license_number: Joi.string().length(8).required().label("License Number"),
-    // });
+    _schema.set(this, {
+      first_name: Joi.string().min(3).max(200).required().label("First Name"),
+      last_name: Joi.string().min(3).max(200).required().label("Last Name"),
+      email: Joi.string().min(5).max(255).email().required().label("Email"),
+      password: passwordComplexity(undefined, "Password"),
+      NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
+      license_number: Joi.string().length(8).required().label("License Number"),
+    });
 
     //joi validate function
-    _validate.set(this, (object) => {
-      return _schema.get(this).validate(object);
+    _validate.set(this, (object, schema) => {
+      return schema.validate(object);
     });
   }
 
@@ -170,7 +155,10 @@ class Customer extends User {
 
   async edit_profile(data, user_id) {
     //validate data
-    let result = await _validate.get(this)(data);
+    let result = await _validate.get(this)(
+      data,
+      Joi.object(_schema.get(this)).options({ abortEarly: false })
+    );
 
     // if (result.error)
     //   return new Promise((resolve) => resolve({ validationError: result }));
@@ -197,7 +185,10 @@ class Customer extends User {
 
   async change_pass(data, user_id) {
     //validate data
-    let result = await _validate.get(this)(data);
+    let result = await _validate.get(this)(
+      data,
+      Joi.object(_schema.get(this)).options({ abortEarly: false })
+    );
     // if (result.error)
     //   return new Promise((resolve) => resolve({ validationError: result }));
 

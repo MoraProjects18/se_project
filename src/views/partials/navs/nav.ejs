@@ -167,6 +167,22 @@
       
         <%  } %>
 
+        <% if(usertype == "guest"){ %>
+
+            <% if( activepage== "Home"){
+                var nav = [
+                { page: 'Home', path: "/home" ,status : "active" },
+                { page: 'Time Slots', path: "" ,status : "deactive" }]  
+            } %>
+
+            <% if( activepage== "Time Slots"){
+                var nav = [
+                { page: 'Home', path: "/home" ,status : "deactive" },
+                { page: 'Time Slots', path: "" ,status : "active" }]   
+            } %>
+      
+        <%  } %>
+
     
  <% } %>
 
@@ -195,8 +211,11 @@
                         <% }); %>
               
             </ul>
-          
-            <button type="button" class="btn btn-success btn-large " id="signout" onclick="logout()" >Log out</button>
+            <% if (usertype==='guest') {%> 
+                <a type="button" class="btn btn-success btn-large " id="signin" href="/auth/login" >Login</a>
+            <% }else{ %> 
+                <a type="button" class="btn btn-success btn-large " id="signout" href="/auth/logout" >Log out</a>
+            <% } %> 
             <hr class="solid">
         </div>
     </div>

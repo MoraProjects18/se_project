@@ -2,7 +2,6 @@
   "database_credentials": {
     "host": "localhost",
     "user": "root",
-    "password": "",
     "database": "emission_test_db",
     "connectionLimit": 5
   },
