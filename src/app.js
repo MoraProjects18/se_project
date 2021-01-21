@@ -5,20 +5,20 @@ const config = require("config");
 const cookieParser = require("cookie-parser");
 
 // Environment Variables
-checkEnvironmentVariable("database_credentials.password", "mysql_password");
-checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.user",
-  "email_address"
-);
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.pass",
-  "email_password"
-);
+// checkEnvironmentVariable("database_credentials.password", "mysql_password");
+// checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
+// checkEnvironmentVariable(
+//   "email_transporter_credentials.auth.user",
+//   "email_address"
+// );
+// checkEnvironmentVariable(
+//   "email_transporter_credentials.auth.pass",
+//   "email_password"
+// );
 
 //Routers
 const authRouter = require("./routes/auth");
-const cashierRouter = require("./routes/routers");
+const cashierRouter = require("./routes/cashier");
 const reportRouter = require("./routes/emission_report");
 const receptionistRouter = require("./routes/receptionist");
 const ticketRouter = require("./routes/ticket");
