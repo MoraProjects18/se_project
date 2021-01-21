@@ -13,8 +13,8 @@ cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
 
 // router.get("/", reportController.getreportPage);
 cashierRouter.get("/home", cashierController.home);
-cashierRouter.get("/profile", staffController.showProfile);
-cashierRouter.post("/profile", staffController.editProfile);
-cashierRouter.post("/profile/password", staffController.changePass);
+cashierRouter.get("/profile",authorization.tokenAuthorize, staffController.showProfile);
+cashierRouter.post("/profile",authorization.tokenAuthorize, staffController.editProfile);
+cashierRouter.post("/change_pass",authorization.tokenAuthorize, staffController.changePass);
 
 module.exports = cashierRouter;
