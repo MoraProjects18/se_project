@@ -48,7 +48,7 @@ exports.isEmailVerified = (req, res, next) => {
 };
 
 exports.isAlreadyLogin = (req, res, next) => {
-  if (req.user["email_verification"]) {
+  if (!req.cookies["ets-auth-token"]) {
     next();
   } else {
     res.status(300).send("You have already logged in");

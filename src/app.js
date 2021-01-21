@@ -25,7 +25,6 @@ const cookieParser = require("cookie-parser");
 
 //Routers
 const authRouter = require("./routes/auth");
-const customerRouter = require("./routes/customer");
 const cashierRouter = require("./routes/routers");
 const reportRouter = require("./routes/emission_report");
 const receptionistRouter = require("./routes/receptionist");
@@ -33,6 +32,7 @@ const ticketRouter = require("./routes/ticket");
 const staffRouter = require("./routes/staff");
 const adminRouter = require("./routes/admin");
 const { title } = require("process"); //????
+const customerRouter = require("./routes/customer");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

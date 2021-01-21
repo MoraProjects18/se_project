@@ -15,5 +15,8 @@ module.exports = customerRouter;
 
 router.get("/home", customerController.home);
 router.get("/createTicket", customerController.getTicketPage);
+router.post("/register", customerController.registerUser);
+router.get("/register", customerController.getRegisterPage);
+router.get("/register/confirm/:email", customerController.confirmMail);
 
 module.exports = router;
