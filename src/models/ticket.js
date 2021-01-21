@@ -81,7 +81,7 @@ class Ticket {
         });
     }
     async GetTime(branch_id,start_date) {
-
+        console.log(branch_id);
         const resultdata = await _database
             .get(this)
             .call("get_timeslot",[branch_id,start_date]);
@@ -119,10 +119,11 @@ class Ticket {
         });
     }
 
-    async UserTicket() {
+    async UserTicket(user_id) {
+        //console.log(user_id);
         const result = await _database
             .get(this)
-            .call("get_user_tickets");
+            .call("get_user_tickets",user_id);
         //console.log(result.result[0]);
         return new Promise((resolve) => {
             let obj = {
@@ -134,10 +135,10 @@ class Ticket {
 
     }
 
-    async TodayTicket() {
+    async TodayTicket(branch_id) {
         const result = await _database
             .get(this)
-            .call("get_today_tickets");
+            .call("get_today_tickets",branch_id);
         //console.log(result.result[0]);
         return new Promise((resolve) => {
             let obj = {

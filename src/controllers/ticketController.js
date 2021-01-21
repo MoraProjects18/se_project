@@ -1,7 +1,11 @@
 const ejs = require("ejs");
 var $ = require('jquery');
 const Ticket = require("../models/ticket.js");
-const ticket = new Ticket()
+const Staff = require("../models/staff.js");
+const ticket = new Ticket();
+const staff = new Staff();
+const User = require("../models/user");
+const user = new User();
 
 exports.getTicketPage = async (req, res) => {
     var result = await ticket.GetBranch();
@@ -21,7 +25,8 @@ exports.getTicketPage = async (req, res) => {
 };
 //{usertype: "customer",activepage:"home",title:"customer home"}
 exports.getTimes = async (req, res) => {
-    var result = await ticket.GetTime(req.query.branch_id,req.query.start_id);
+    console.log(req.query.branch_id);
+    var result = await ticket.GetTime(req.query.branch_id,req.query.start_date);
 
     if (result.connectionError)
         return res.status(500).send("Internal Server Error!");
@@ -34,50 +39,25 @@ exports.getTimes = async (req, res) => {
 
 exports.createTicket = async (req, res) => {
     console.log(req.body);
+    console.log(req.user.user_id);
+    req.body.user_id = req.user.user_id;
+    console.log(req.body);
     const result = await ticket.Initiate(req.body);
     if (result.validationError)
         return res.status(400).send(result.validationError);
     if (result.connectionError)
         return res.status(500).send("Internal Server Error!");
     if (result.error) return res.status(400).send("Bad Request!");
-    res.status(200).send("Query is inserted!");
+    res
+        .status(200)
+        .redirect(`/customer/ticketDetails`);
 };
 
-
-exports.getUserTicket = async (req, res) => {
-    const result = await ticket.UserTicket();
-    //console.log(result);
-    if (result.validationError)
-        return res.status(400).send(result.validationError);
-    if (result.connectionError)
-        return res.status(500).send("Internal Server Error!");
-    if (result.error) return res.status(400).send("Bad Request!");
-
-    if (result.resultData != 0) {
-        var strng=JSON.stringify(result.resultData);
-        var mydata =  JSON.parse(strng);
-
-        data = {
-            dataFound: true,
-            ticket: mydata
-        }
-    } else {
-        data = {
-            dataFound: false,
-            error: {
-                status: false,
-                message: "No data to show",
-            },
-        };
-    }
-    console.log(data);
-    res.render("./ticket/viewTicketTable.ejs", data);
-
-};
 
 
 exports.getTodayTicket = async (req, res) => {
-    const result = await ticket.TodayTicket();
+    const data = await staff.get_branch_id(req.user.user_id);
+    const result = await ticket.TodayTicket(data[0]);
     //console.log(result);
     if (result.validationError)
         return res.status(400).send(result.validationError);
@@ -91,14 +71,20 @@ exports.getTodayTicket = async (req, res) => {
 
         data = {
             dataFound: true,
-            ticket: mydata
+            ticket: mydata,
+            usertype: "receptionist",
+            activepage: "Ticket details",
+            title: "Tickets Details",
         }
     } else {
         data = {
             dataFound: false,
+            usertype: "receptionist",
+            activepage: "Ticket details",
+            title: "Tickets Details",
             error: {
                 status: false,
-                message: "No data to show",
+                message: "No Tickets for Today",
             },
         };
     }
@@ -106,3 +92,6 @@ exports.getTodayTicket = async (req, res) => {
     res.render("./ticket/todayTicket.ejs", data);
 
 };
+
+
+

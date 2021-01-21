@@ -2,6 +2,7 @@ const customerController = require("../controllers/customer");
 const express = require("express");
 const router = express.Router();
 const sorderController = require("../controllers/sorder");
+
 const authorization = require("../middlewares/authorization");
 
 router.get("/getmyso", sorderController.getmySO);
@@ -15,7 +16,13 @@ router.post(
 );
 router.get("/register/confirm/:email", customerController.confirmMail);
 router.get("/home", customerController.home);
+
+
 router.get("/createTicket", customerController.getTicketPage);
+
+
+router.get("/ticketDetails",authorization.tokenAuthorize, customerController.getUserTicket);
+
 router.get(
   "/register",
   authorization.isAlreadyLogin,

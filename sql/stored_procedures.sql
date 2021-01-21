@@ -90,20 +90,24 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE PROCEDURE get_user_tickets()
+CREATE PROCEDURE get_user_tickets(
+user_id int
+)
 BEGIN
   SELECT ticket_id,user_id,status,start_time,branch_id,branch_name,start_date
      FROM emission_test_db.ticket natural join emission_test_db.branch
-     WHERE user_id = 3;
+     WHERE user_id = user_id AND status = "Open" ORDER BY start_date;
 END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE get_today_tickets()
+CREATE PROCEDURE get_today_tickets(
+    branch_id int
+)
 BEGIN
   SELECT ticket_id,user_id,status,start_time,branch_id,email
      FROM emission_test_db.ticket natural join emission_test_db.useracc
-     WHERE DATE(start_time) = CURDATE() ORDER BY DATETIME(start_time);
+     WHERE DATE(start_date) = CURDATE() ORDER BY DATETIME(start_time);
 END $$
 DELIMITER ;
 

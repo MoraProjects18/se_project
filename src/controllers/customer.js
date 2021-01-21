@@ -187,3 +187,39 @@ exports.getTicketPage = async (req, res) => {
 
   res.render("../views/ticket/createTicket.ejs", data);
 };
+
+
+exports.getUserTicket = async (req, res) => {
+  const user_id = req.user.user_id;
+  const result = await ticket.UserTicket(user_id);
+  //console.log(result);
+  if (result.validationError)
+    return res.status(400).send(result.validationError);
+  if (result.connectionError)
+    return res.status(500).send("Internal Server Error!");
+  if (result.error) return res.status(400).send("Bad Request!");
+
+  if (result.resultData != 0) {
+    var strng=JSON.stringify(result.resultData);
+    var mydata =  JSON.parse(strng);
+
+    data = {
+      dataFound: true,
+      ticket: mydata,
+      usertype: "customer",
+      activepage: "Ticket details",
+      title: "Tickets Details",
+    }
+  } else {
+    data = {
+      dataFound: false,
+      error: {
+        status: false,
+        message: "No data to show",
+      },
+    };
+  }
+  console.log(data);
+  res.render("./ticket/viewTicketTable.ejs", data);
+
+};

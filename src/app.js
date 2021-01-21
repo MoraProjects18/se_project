@@ -5,7 +5,7 @@ const config = require("config");
 const cookieParser = require("cookie-parser");
 
 // Environment Variables
-checkEnvironmentVariable("database_credentials.password", "mysql_password");
+
 checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
 checkEnvironmentVariable(
   "email_transporter_credentials.auth.user",

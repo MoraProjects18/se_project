@@ -1,6 +1,6 @@
 {
   "database_credentials": {
-    "password": "mysql_password"
+    "password": "mysql_root_password"
   },
   "jwtPrivateKey": "jwtPrivateKey",
   "email_transporter_credentials": {
