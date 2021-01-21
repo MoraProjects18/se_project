@@ -6,15 +6,43 @@ const express = require("express");
 const cashierRouter = express.Router();
 
 //Cashier
-cashierRouter.get("/invoice", cashierController.getInvoicePage);
-cashierRouter.post("/invoice", cashierController.searchInvoice);
-cashierRouter.post("/invoice/pay", cashierController.payInvoice);
-cashierRouter.post("/invoice/close", cashierController.closeServiceOrder);
+cashierRouter.get(
+  "/invoice",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.getInvoicePage
+);
+cashierRouter.post(
+  "/invoice",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.searchInvoice
+);
+cashierRouter.post(
+  "/invoice/pay",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.payInvoice
+);
+cashierRouter.post(
+  "/invoice/close",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.closeServiceOrder
+);
 
 // router.get("/", reportController.getreportPage);
-cashierRouter.get("/home", cashierController.home);
-cashierRouter.get("/profile",authorization.tokenAuthorize, staffController.showProfile);
-cashierRouter.post("/profile",authorization.tokenAuthorize, staffController.editProfile);
-cashierRouter.post("/change_pass",authorization.tokenAuthorize, staffController.changePass);
+cashierRouter.get(
+  "/home",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.home
+);
+cashierRouter.get(
+  "/profile",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  staffController.showProfile
+);
 
 module.exports = cashierRouter;

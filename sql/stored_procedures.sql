@@ -27,7 +27,7 @@ CREATE PROCEDURE show_staff_profile(
 BEGIN
     START TRANSACTION;
     SELECT * FROM useracc NATURAL JOIN staff WHERE user_id=user_id;
-    SELECT contact_no FROM contact_no WHERE user_id=id;
+    SELECT contact_no FROM contact_no WHERE user_id=user_id;
 END$$
 
 DELIMITER ;
@@ -81,8 +81,8 @@ CREATE PROCEDURE update_user(
 )
 BEGIN
 	START TRANSACTION;
-		UPDATE useracc SET email=email, first_name=first_name, last_name=last_name WHERE user_id=id;
-        UPDATE contact_no SET contact_no=contact_no WHERE user_id=id;
+		UPDATE useracc SET email=email, first_name=first_name, last_name=last_name WHERE user_id=user_id;
+        UPDATE contact_no SET contact_no=contact_no WHERE user_id=user_id;
     COMMIT;
 END $$
 DELIMITER ;
