@@ -2,10 +2,12 @@ const ticketController = require("../controllers/ticketController");
 const express = require("express");
 const router = express.Router();
 
-router.get("/viewTicket", ticketController.getUserTicket);
-router.get("/todayTicket", ticketController.getTodayTicket);
-router.get("/createTicket", ticketController.getTicketPage);
-router.post("/create", ticketController.createTicket);
+const authorization = require("../middlewares/authorization");
+
+
+
+
+router.post("/create",authorization.tokenAuthorize, ticketController.createTicket);
 
 router.get("/gettimeslot", ticketController.getTimes);
 

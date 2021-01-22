@@ -157,5 +157,30 @@ class Staff {
     }
    
   }
+
+    async get_branch_id(user_id) {
+        //validate data
+
+
+        // if (result.error)
+        //   return new Promise((resolve) => resolve({ validationError: result }));
+
+
+        // call register_new_staff stored procedure
+        result = await _database
+            .get(this)
+            .readSingleTable("staff",[branch_id],["user_id", "=",user_id]);
+
+        return new Promise((resolve) => {
+            let obj = {
+                connectionError: _database.get(this).connectionError,
+            };
+            result.error ? (obj.error = true) : (obj.error = false, obj.result = result.result);
+
+            //console.log(obj);
+            resolve(obj);
+        });
+    }
+
 }
 module.exports = Staff;

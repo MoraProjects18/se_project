@@ -1,3 +1,6 @@
+const express = require("express");
+const router = express.Router();
+const ejs = require("ejs");
 
 const express=require("express");
 const router=express.Router();
@@ -94,14 +97,3 @@ exports.postreport= async (req, res) => {
    res.redirect(pdfurl);
     
 };
-
-exports.viewreport= async (req, res) => {
-    var SO_id=req.body['SO_id'];
-    console.log(req.body);
-  
-   var htmlurl='/report/get_report/'+SO_id+'/html';
-   res.redirect(htmlurl);
-    
-};
-
-   

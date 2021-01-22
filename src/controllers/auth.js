@@ -1,11 +1,13 @@
 const jwt = require("jsonwebtoken");
+const fileReader = require("../utils/file-reader");
+const path = require("path");
+const Email = require("../utils/email");
 const config = require("config");
 const User = require("../models/user");
 const user = new User();
 
-exports.login = async (req, res) => {
-  const result = await user.login(req.body);
-
+exports.registerUser = async (req, res) => {
+  const result = await user.register(req.body);
   if (result.validationError)
     return res.status(400).render("common/login.ejs", {
       alert: {
@@ -34,8 +36,11 @@ exports.login = async (req, res) => {
     httpOnly: true,
   };
 
-  const payload = JSON.parse(JSON.stringify(result.tokenData));
-  const token = jwt.sign(payload, config.get("jwtPrivateKey"));
+  const payload = result.userData;
+  const token = jwt.sign(
+    JSON.parse(JSON.stringify(payload)),
+    config.get("jwtPrivateKey")
+  );
 
   res
     .cookie("ets-auth-token", token, cookieOption)
