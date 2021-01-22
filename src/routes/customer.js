@@ -15,7 +15,14 @@ router.post(
 );
 router.get("/register/confirm/:email", customerController.confirmMail);
 router.get("/home", customerController.home);
+
+
 router.get("/createTicket", customerController.getTicketPage);
+
+router.post("/cancelTicket", customerController.cancelTicket);
+
+router.get("/ticketDetails",authorization.tokenAuthorize, customerController.getUserTicket);
+
 router.get(
   "/register",
   authorization.isAlreadyLogin,

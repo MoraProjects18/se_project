@@ -1,6 +1,15 @@
 const express = require("express");
 const receptionistRouter = express.Router();
 const sorderController = require("../controllers/sorder");
+const ticketController = require("../controllers/ticketController");
+
+//Receptionist
+receptionistRouter.get("/sorder/getbyid", sorderController.getbyidSO);
+receptionistRouter.get("/get", sorderController.getSOPage);
+receptionistRouter.post("/sorder/initiate", sorderController.initiateSO);
+receptionistRouter.put("/sorder/close",sorderController.closeSO);
+receptionistRouter.get("/ticket/todayTicket", ticketController.getTodayTicket);
+
 const staffController = require("../controllers/staff");
 const authorization = require("../middlewares/authorization");
 
@@ -18,6 +27,5 @@ receptionistRouter.get("/sorder/search", authorization.tokenAuthorize,authorizat
 receptionistRouter.post("/sorder/search", authorization.tokenAuthorize,authorization.isReceptionistsRole,sorderController.getbyidSO);
 receptionistRouter.post("/addvehicle", authorization.tokenAuthorize,authorization.isReceptionistsRole,sorderController.postvehicle);
 receptionistRouter.get("/profile",authorization.tokenAuthorize,authorization.isReceptionistsRole,staffController.showProfile);
-
 
 module.exports = receptionistRouter;

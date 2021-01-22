@@ -7,7 +7,7 @@
         { page: 'Home', path: "/customer/home",status : "active" },
         { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
-        { page: 'Tickets Details', path: "",status : "deactive" },
+        { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
         { page: 'Profile', path: "",status : "deactive" }]    
     } %>
 
@@ -16,7 +16,7 @@
         { page: 'Home', path: "/customer/home",status : "deactive" },
         { page: 'Service order details', path: "/customer/getmyso",status : "active" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
-        { page: 'Tickets Details', path: "",status : "deactive" },
+        { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
         { page: 'Profile', path: "",status : "deactive" }]    
     } %>
 
@@ -25,7 +25,7 @@
         { page: 'Home', path: "/customer/home",status : "deactive" },
         { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "active" },
-        { page: 'Tickets Details', path: "",status : "deactive" },
+        { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
         { page: 'Profile', path: "",status : "deactive" }]    
     } %>
 
@@ -34,7 +34,7 @@
             { page: 'Home', path: "/customer/home",status : "deactive" },
             { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
             { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
-            { page: 'Tickets Details', path: "",status : "active" },
+            { page: 'Tickets Details', path: "/customer/ticketDetails",status : "active" },
             { page: 'Profile', path: "",status : "deactive" }]
     } %>
 
@@ -43,8 +43,11 @@
         { page: 'Home', path: "/customer/home",status : "deactive" },
         { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
-        { page: 'Tickets Details', path: "",status : "deactive" },
+
+        { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
+        { page: 'Profile', path: "",status : "active" }  
         { page: 'Profile', path: "/customer/profile",status : "active" }]    
+
     } %>
 
  
@@ -111,18 +114,23 @@
             <% if( activepage== "Home"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "active" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
+
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
+
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
                 { page: 'Search', path: "/receptionist/sorder/search" ,status : "deactive" },
                 { page: 'Profile', path: "/receptionist/profile" ,status : "deactive" }]  
+
             } %>
 
             <% if( activepage== "Ticket details"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "active" },
+
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "active" },
+
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
@@ -144,7 +152,8 @@
             <% if( activepage== "Continue Service Order"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
+
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "active" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
@@ -172,17 +181,21 @@
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
                 { page: 'Search', path: "/receptionist/sorder/search" ,status : "active" },
                 { page: 'Profile', path: "/receptionist/profile" ,status : "deactive" }]   
+
             } %>
 
             <% if( activepage== "Profile"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
+
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
                 { page: 'Ticket details', path: "" ,status : "deactive" },
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
                 { page: 'Search', path: "/receptionist/sorder/search" ,status : "deactive" },
                 { page: 'Profile', path: "/receptionist/profile" ,status : "active" }]   
+
             } %>
       
         <%  } %>

@@ -55,6 +55,27 @@ body {
   );
 }
 
+.btn-grad-cancel {
+  background-image: linear-gradient(
+
+          to right,
+          #ac1111 0%,
+          #ce1a2f 51%,
+          #d01726 100%
+  );
+  padding: 12px 45px;
+  max-height: 43px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+
+
+}
+
 .btn-grad {
   padding: 10px 10px;
   max-height: 45px;
