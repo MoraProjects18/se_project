@@ -1,4 +1,7 @@
 -- Register New Customer
+use emission_test_db;
+drop procedure if exists register_new_customer;
+
 DELIMITER $$
 CREATE PROCEDURE register_new_customer(
 	email varchar(100),
@@ -19,6 +22,9 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- Show today service orders
+drop procedure if exists get_todayso;
+
 DELIMITER $$
   CREATE PROCEDURE get_todayso()
     BEGIN
@@ -27,8 +33,10 @@ DELIMITER $$
        ON emission_test.useracc.user_id=emission_test.service_order.user_id
        WHERE DATE(start_date) = CURDATE();
     END$$
-  DELIMITER ;
+DELIMITER ;
 
+-- initiate new service order
+drop procedure if exists initiate_so;
 
 DELIMITER $$
 CREATE PROCEDURE initiate_so(
@@ -43,7 +51,12 @@ BEGIN
 		INSERT INTO invoice(service_order_id,payment_amount) VALUES (LAST_INSERT_ID(),payment_amount);
         
         SELECT service_order_id,invoice_id FROM invoice WHERE invoice_id=LAST_INSERT_ID();
+END $$
+DELIMITER ;
+
 -- Show Staff Profile
+drop procedure if exists show_staff_profile;
+
 DELIMITER $$
 CREATE PROCEDURE show_staff_profile(
     user_id int(15)
@@ -57,6 +70,8 @@ END$$
 DELIMITER ;
 
 -- Show Customer Profile
+drop procedure if exists show_customer_profile;
+
 DELIMITER $$
 CREATE PROCEDURE show_customer_profile(
     user_id int(15)
@@ -71,6 +86,8 @@ DELIMITER ;
 
 
 -- Registre New Staff
+drop procedure if exists register_new_staff;
+
 DELIMITER $$
 CREATE PROCEDURE register_new_staff(
     user_id int(10),
@@ -94,7 +111,9 @@ BEGIN
 END $$
 DELIMITER ;
 
---Update user Profile
+-- Update user Profile
+drop procedure if exists update_user;
+
 DELIMITER $$
 CREATE PROCEDURE update_user(
     id int(10),
@@ -111,6 +130,9 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- get failed service orders
+drop procedure if exists get_failedso;
+
 DELIMITER $$
   CREATE PROCEDURE get_failedso( nic_val varchar(12))
     BEGIN
@@ -119,6 +141,7 @@ DELIMITER $$
     END$$
   DELIMITER ;
 
+drop procedure if exists get_user_tickets;
 
 DELIMITER $$
 CREATE PROCEDURE get_user_tickets(
@@ -129,24 +152,26 @@ BEGIN
      FROM emission_test_db.ticket natural join emission_test_db.branch
      WHERE user_id = user_id AND status = "Open" ORDER BY start_date;
 
-  UPDATE tikcet SET status= "closed" WHERE DATE(start_date) < CURDATE();
 END $$
 DELIMITER ;
 
+-- drop procedure if exists get_today_tickets;
 
-DELIMITER $$
-CREATE PROCEDURE get_today_tickets(
-    branch_id int
-)
-BEGIN
-  SELECT ticket_id,user_id,status,start_time,branch_id,email
-     FROM emission_test_db.ticket natural join emission_test_db.useracc
-     WHERE DATE(start_date) = CURDATE() ORDER BY DATETIME(start_time);
+-- DELIMITER $$
+-- CREATE PROCEDURE get_today_tickets(
+--     branch_id int
+-- )
+-- BEGIN
+--   SELECT ticket_id,user_id,status,start_time,branch_id,email
+--      FROM emission_test_db.ticket natural join emission_test_db.useracc
+--      WHERE start_date = CURDATE() ORDER BY start_time;
+    
 
-  UPDATE tikcet SET status= "closed" WHERE DATE(start_date) < CURDATE();
-END $$
-DELIMITER ;
+-- END $$
+-- DELIMITER ;
 
+
+drop procedure if exists get_timeslots;
 
 DELIMITER $$
 CREATE PROCEDURE get_timeslots(

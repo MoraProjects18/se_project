@@ -53,3 +53,4 @@ INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1002', '4
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1003', '400');
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1004', '400');
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1005', '400');
+
