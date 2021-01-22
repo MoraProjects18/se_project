@@ -6,6 +6,13 @@ const sorder = new ServiceOrder();
 const invoice = new Invoice();
 const vehicleModel = new Vehicle();
 
+exports.getHomePage = async (req, res) => {
+  res.render("./common/staff_home_page.ejs", {
+    usertype: "receptionist",
+    activepage: "Home",
+    title: "Receptionist Home",
+  });
+};
 exports.getinitiatePage = async (req, res) => {
   data = {
       dataFound: false,
@@ -43,7 +50,6 @@ exports.initiateSO = async (req, res) => {
 
 exports.continueSO = async (req, res) => {
   const result = await sorder.paySO(req.body);
-  console.log(result);
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
@@ -129,13 +135,26 @@ exports.getbyidSO = async (req, res) => {
 };
 
   exports.getmySO = async (req, res) => {
-    const result = await sorder.GetMySO(req.body);
-    if (result.validationError)
-      return res.status(400).send(result.validationError);
+    const result = await sorder.GetMySO(req["user"]["user_id"]);
     if (result.connectionError)
       return res.status(500).send("Internal Server Error!");
     if (result.error) return res.status(400).send("Bad Request!");
-    res.status(200).send(result.result);
+    if (result.resultData != 0) {
+      var sodata=JSON.parse(JSON.stringify(result.resultData));
+      data = {
+            dataFound: true,
+            sorder: sodata
+      }
+    } else {
+      data = {
+        dataFound: false,
+        error: {
+          status: true,
+          message: "No Any Service Order History",
+        },
+      };
+    }
+    res.render("./customer/getmyso.ejs", data);
   };
 
   exports.gettodaySO = async (req, res) => {

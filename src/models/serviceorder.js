@@ -16,7 +16,7 @@ class ServiceOrder {
     _schema.set(
       this,
       Joi.object({
-        user_id: Joi.number().min(1).max(10).required(),
+        user_id: Joi.number().min(1).required(),
         vehicle_number: Joi.string().min(5).max(30).required(),
         start_date: Joi.date().required(),
         end_date: Joi.date().allow("", null), //end date time should be update when closing the so
@@ -199,6 +199,37 @@ class ServiceOrder {
       result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
       resolve(obj);
     });
+  }
+
+  async GetMySO(data) {
+    // let validateResult = await _validateID.get(this)(data);
+    // if (validateResult.error)
+    //   return new Promise((resolve) => resolve({ validationError: validateResult }));
+
+    const result = await _database
+      .get(this)
+      .readMultipleTable(
+        "service_order",
+        "inner",
+        ["invoice", "service_order_id"],
+        [
+          "service_order_id",
+          "vehicle_number",
+          "start_date",
+          "end_date",
+          "status",
+          "invoice_id",
+          "payment_amount"
+        ],
+        ["user_id", "=", data]
+      );
+      return new Promise((resolve) => {
+        let obj = {
+          connectionError: _database.get(this).connectionError,
+        };
+        result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
+        resolve(obj);
+      });
   }
 }
 

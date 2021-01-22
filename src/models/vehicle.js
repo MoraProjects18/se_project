@@ -11,7 +11,7 @@ class Vehicle {
     _schema.set(
       this,
       Joi.object({
-        user_id: Joi.number().min(1).max(10).required(),
+        user_id: Joi.number().min(1).required(),
         registration_number: Joi.string().required(),
         engine_number: Joi.string().allow("", null),
         model_number: Joi.string().allow("", null),

@@ -59,7 +59,7 @@ exports.isCashierRole = (req, res, next) => {
   }
 };
 
-exports.isReceptionistsfRole = (req, res, next) => {
+exports.isReceptionistsRole = (req, res, next) => {
   if (req.user["user_type"] === "receptionist") {
     next();
   } else {
