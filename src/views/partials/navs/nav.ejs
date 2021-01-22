@@ -148,21 +148,21 @@
             <% if( activepage== "Home"){
                 var nav = [
                 { page: 'Home', path: "reportissuer/home" ,status : "active" },
-                { page: 'Issue Report', path: "" ,status : "deactive" }, 
+                { page: 'Issue Report', path: "report" ,status : "deactive" }, 
                 { page: 'Profile', path: "" ,status : "deactive" }]  
             } %>
 
             <% if( activepage== "Issue Report"){
                 var nav = [
                 { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
-                { page: 'Issue Report', path: "" ,status : "active" }, 
+                { page: 'Issue Report', path: "report" ,status : "active" }, 
                 { page: 'Profile', path: "" ,status : "deactive" }]   
             } %>
 
             <% if( activepage== "Profile"){
                 var nav = [
                 { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
-                { page: 'Issue Report', path: "" ,status : "deactive" }, 
+                { page: 'Issue Report', path: "report" ,status : "deactive" }, 
                 { page: 'Profile', path: "" ,status : "active" }]   
             } %>
       
@@ -172,14 +172,7 @@
 
             <% if( activepage== "Home"){
                 var nav = [
-                { page: 'Home', path: "/home" ,status : "active" },
-                { page: 'Time Slots', path: "" ,status : "deactive" }]  
-            } %>
-
-            <% if( activepage== "Time Slots"){
-                var nav = [
-                { page: 'Home', path: "/home" ,status : "deactive" },
-                { page: 'Time Slots', path: "" ,status : "active" }]   
+                { page: 'Home', path: "/home" ,status : "active" }]  
             } %>
       
         <%  } %>

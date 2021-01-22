@@ -40,7 +40,11 @@ exports.searchInvoice = async (req, res) => {
   }
 
   if (invoiceR.connectionError)
-    return res.status(500).send("Internal Server Error!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
   if (invoiceR.error) return res.status(400).send("Bad Request!");
   // res.status(200).send("Payment Confirmed");
 
@@ -81,7 +85,11 @@ exports.payInvoice = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send({ message: "Internal Server Error!" });
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
   if (result.error) return res.status(400).send();
   res.status(200).send({ message: "Payment Confirmed" });
   const soUser = await invoiceModel.getSOUser(data.service_order_id);
@@ -99,7 +107,11 @@ exports.closeServiceOrder = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send({ message: "Internal Server Error!" });
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
   if (result.error) return res.status(400).send({ message: "Bad Request!" });
   res.status(200).send({ message: "Service Order Closed" });
 };
@@ -109,7 +121,16 @@ exports.createInvoice = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+  if (result.error)
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
   res.status(200).send("New invoice is added!");
 };

@@ -22,7 +22,7 @@ DELIMITER ;
 -- Show Staff Profile
 DELIMITER $$
 CREATE PROCEDURE show_staff_profile(
-    id int(15)
+    user_id int(15)
 )
 BEGIN
     START TRANSACTION;
@@ -35,12 +35,12 @@ DELIMITER ;
 -- Show Customer Profile
 DELIMITER $$
 CREATE PROCEDURE show_customer_profile(
-    id int(15)
+    user_id int(15)
 )
 BEGIN
     START TRANSACTION;
     SELECT * FROM useracc NATURAL JOIN customer WHERE user_id=user_id;
-     SELECT contact_no FROM contact_no WHERE user_id=user_id;
+    SELECT contact_no FROM contact_no WHERE user_id=user_id;
 END$$
 
 DELIMITER ;
@@ -90,20 +90,29 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE PROCEDURE get_user_tickets()
+CREATE PROCEDURE get_user_tickets(
+user_id int
+)
 BEGIN
   SELECT ticket_id,user_id,status,start_time,branch_id,branch_name,start_date
      FROM emission_test_db.ticket natural join emission_test_db.branch
-     WHERE user_id = 3;
+     WHERE user_id = user_id AND status = "Open" ORDER BY start_date;
+
+  UPDATE tikcet SET status= "closed" WHERE DATE(start_date) < CURDATE();
 END $$
 DELIMITER ;
 
+
 DELIMITER $$
-CREATE PROCEDURE get_today_tickets()
+CREATE PROCEDURE get_today_tickets(
+    branch_id int
+)
 BEGIN
   SELECT ticket_id,user_id,status,start_time,branch_id,email
      FROM emission_test_db.ticket natural join emission_test_db.useracc
-     WHERE DATE(start_time) = CURDATE() ORDER BY DATETIME(start_time);
+     WHERE DATE(start_date) = CURDATE() ORDER BY DATETIME(start_time);
+
+  UPDATE tikcet SET status= "closed" WHERE DATE(start_date) < CURDATE();
 END $$
 DELIMITER ;
 
