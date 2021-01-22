@@ -4,10 +4,11 @@ const router = express.Router();
 
 const authorization = require("../middlewares/authorization");
 
-
-
-
-router.post("/create",authorization.tokenAuthorize, ticketController.createTicket);
+router.post(
+  "/create",
+  authorization.tokenAuthorize,
+  ticketController.createTicket
+);
 
 router.get("/gettimeslot", ticketController.getTimes);
 

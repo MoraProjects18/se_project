@@ -1,8 +1,53 @@
 const reportController = require("../controllers/emission_report");
+const staffController = require("../controllers/staff");
 const express = require("express");
 const router = express.Router();
+const authorization = require("../middlewares/authorization");
 
-router.get("/", reportController.getreportPage);
+router.get(
+  "/report",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  reportController.getreportPage
+);
+//router.get("/json/:id", reportController.getjson);
+router.get(
+  "/get_report/:id/html",
 
+  reportController.getreporthtml
+);
+router.get(
+  "/get_report/:id/pdf",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  reportController.getreportpdf
+);
+
+router.post(
+  "/get_final_report",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  reportController.postreport
+);
+router.post(
+  "/view_final_report",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  reportController.viewreport
+);
+
+router.get(
+  "/home",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  reportController.home
+);
+
+router.get(
+  "/profile",
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
+  staffController.showProfile
+);
 
 module.exports = router;

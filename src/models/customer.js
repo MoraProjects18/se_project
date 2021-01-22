@@ -20,6 +20,7 @@ class Customer extends User {
       password: passwordComplexity(undefined, "Password"),
       NIC: Joi.string().min(10).max(12).required().label("NIC Number"),
       license_number: Joi.string().length(8).required().label("License Number"),
+      contact_no: Joi.string().min(9).required().label("Contact Number"),
     });
 
     //joi validate function
@@ -52,6 +53,7 @@ class Customer extends User {
       data.first_name,
       data.last_name,
       data.license_number,
+      data.contact_no,
     ]);
 
     return new Promise((resolve) => {

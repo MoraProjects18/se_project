@@ -45,7 +45,7 @@
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
 
         { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
-        { page: 'Profile', path: "",status : "active" }  
+        { page: 'Profile', path: "",status : "active" },  
         { page: 'Profile', path: "/customer/profile",status : "active" }]    
 
     } %>
@@ -189,7 +189,6 @@
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
 
                 { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
@@ -205,23 +204,23 @@
 
             <% if( activepage== "Home"){
                 var nav = [
-                { page: 'Home', path: "reportissuer/home" ,status : "active" },
-                { page: 'Issue Report', path: "report" ,status : "deactive" }, 
-                { page: 'Profile', path: "" ,status : "deactive" }]  
+                { page: 'Home', path: "/reportissuer/home" ,status : "active" },
+                { page: 'Issue Report', path: "/reportissuer/report" ,status : "deactive" }, 
+                { page: 'Profile', path: "/reportissuer/profile" ,status : "deactive" }]  
             } %>
 
             <% if( activepage== "Issue Report"){
                 var nav = [
-                { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
-                { page: 'Issue Report', path: "report" ,status : "active" }, 
-                { page: 'Profile', path: "" ,status : "deactive" }]   
+                { page: 'Home', path: "/reportissuer/home" ,status : "deactive" },
+                { page: 'Issue Report', path: "/reportissuer/report" ,status : "active" }, 
+                { page: 'Profile', path: "/reportissuer/profile" ,status : "deactive" }]   
             } %>
 
             <% if( activepage== "Profile"){
                 var nav = [
-                { page: 'Home', path: "reportissuer/home" ,status : "deactive" },
-                { page: 'Issue Report', path: "report" ,status : "deactive" }, 
-                { page: 'Profile', path: "" ,status : "active" }]   
+                { page: 'Home', path: "/reportissuer/home" ,status : "deactive" },
+                { page: 'Issue Report', path: "/reportissuer/report" ,status : "deactive" }, 
+                { page: 'Profile', path: "/reportissuer/profile" ,status : "active" }]   
             } %>
       
         <%  } %>
@@ -255,11 +254,10 @@
             <ul class="navbar-nav ms-auto">
                
                 <% nav.forEach(function(nav) { %>
-                    <li>
                         <li class="nav-item">
                             <a class="nav-link " id="<%=nav.status%>" href="<%=nav.path%>"><%=nav.page%></a>
                         </li>              
-                                       
+                                
                         <% }); %>
               
             </ul>

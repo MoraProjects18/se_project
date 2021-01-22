@@ -29,16 +29,16 @@
                         <th scope="col">Operation</th>
                     </tr>
                     </thead>
-                    <tbody id='SO_table_body'>
+                    <tbody id='Ticket_table_body'>
 
                     <% for(var ti of ticket){ %>
                         <tr>
 
                             <td style="padding-top: 25px"> <%=ti.branch_name%></td>
-                            <td style="padding-top: 25px"> <%= (ti.start_date).substring(0, 10) %></td>
+                            <td style="padding-top: 25px"> <%= data.moment(ti.start_date).format('Do MMMM, YYYY');  %></td>
                             <td style="padding-top: 25px"> <%= (ti.start_time).substring(0,5) %></td>
                             <td style="padding-top: 25px"> <%=ti.status%></td>
-                            <td style="justify-content: right"> <form action="/customer//cancelTicket" method="POST"><input hidden name="ticket_id" id="ticket_id" value="<%=ti.ticket_id%>"><button class=" btn-grad-cancel" type = "submit">Cancel</button></form></td>
+                            <td style="justify-content: right"> <form action="/customer/cancelTicket" method="POST"><input hidden name="ticket_id" id="ticket_id" value="<%=ti.ticket_id%>"><button class=" btn-grad-cancel" type = "submit">Cancel</button></form></td>
                         </tr>
                     <% } %>
 

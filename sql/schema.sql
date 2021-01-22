@@ -9,7 +9,7 @@ CREATE TABLE useracc(
     email varchar(255) UNIQUE NOT NULL,
     first_name varchar(200) NOT NULL,
     last_name varchar(200) NOT NULL,
-    NIC varchar(12) NOT NULL,
+    NIC varchar(12) UNIQUE NOT NULL,
     user_type varchar(30) NOT NULL,
     password varchar(255) NOT NULL);
 

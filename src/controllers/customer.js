@@ -8,7 +8,7 @@ const Email = require("../utils/email");
 const Customer = require("../models/customer");
 const customer = new Customer();
 const jwt = require("jsonwebtoken");
-
+const moment = require("moment");
 const Ticket = require("../models/ticket.js");
 const ticket = new Ticket();
 
@@ -116,7 +116,7 @@ exports.confirmMail = async (req, res) => {
 };
 
 exports.showProfile = async (req, res) => {
-  const result = await customer.show_profile(req['user']['user_id']); // user_id has to be given as parameter. It has to be fetched from token.
+  const result = await customer.show_profile(req["user"]["user_id"]); // user_id has to be given as parameter. It has to be fetched from token.
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
@@ -147,7 +147,7 @@ exports.showProfile = async (req, res) => {
 
 exports.editProfile = async (req, res) => {
   console.log(req.body);
-  const result = await customer.edit_profile(req.body, req['user']['user_id']);
+  const result = await customer.edit_profile(req.body, req["user"]["user_id"]);
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
@@ -158,7 +158,7 @@ exports.editProfile = async (req, res) => {
 
 exports.changePass = async (req, res) => {
   // console.log(req.body);
-  const result = await customer.change_pass(req.body, req['user']['user_id']);
+  const result = await customer.change_pass(req.body, req["user"]["user_id"]);
   console.log(result);
   if (result == "Incorrect Password")
     return res.status(200).send("Incorrect password");
@@ -188,7 +188,6 @@ exports.getTicketPage = async (req, res) => {
   res.render("../views/ticket/createTicket.ejs", data);
 };
 
-
 exports.getUserTicket = async (req, res) => {
   const user_id = req.user.user_id;
   const result = await ticket.UserTicket(user_id);
@@ -200,8 +199,8 @@ exports.getUserTicket = async (req, res) => {
   if (result.error) return res.status(400).send("Bad Request!");
 
   if (result.resultData != 0) {
-    var strng=JSON.stringify(result.resultData);
-    var mydata =  JSON.parse(strng);
+    var strng = JSON.stringify(result.resultData);
+    var mydata = JSON.parse(strng);
 
     data = {
       dataFound: true,
@@ -209,10 +208,15 @@ exports.getUserTicket = async (req, res) => {
       usertype: "customer",
       activepage: "Ticket details",
       title: "Tickets Details",
-    }
+      moment: moment,
+    };
   } else {
     data = {
       dataFound: false,
+      usertype: "customer",
+      activepage: "Ticket details",
+      title: "Tickets Details",
+      moment: moment,
       error: {
         status: false,
         message: "No data to show",
@@ -221,7 +225,6 @@ exports.getUserTicket = async (req, res) => {
   }
 
   res.render("./ticket/viewTicketTable.ejs", data);
-
 };
 
 exports.cancelTicket = async (req, res) => {
@@ -233,7 +236,5 @@ exports.cancelTicket = async (req, res) => {
   if (result.connectionError)
     return res.status(500).send("Internal Server Error!");
   if (result.error) return res.status(400).send("Bad Request!");
-  res
-      .status(200)
-      .redirect(`/customer/ticketDetails`);
+  res.status(200).redirect(`/customer/ticketDetails`);
 };

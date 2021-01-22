@@ -1,0 +1,171 @@
+html {
+  -webkit-print-color-adjust: exact;
+}
+
+body {
+  background-color: #e8eee8;
+  background-size: 21cm 29.7cm;
+}
+.brandSection {
+  background-color: #33d168;
+  border: 1px solid #417482;
+}
+.headerLeft h1 {
+  color: #fff;
+  margin: 0px;
+  font-size: 28px;
+}
+
+.header {
+  border-bottom: 2px solid #0a3617;
+  padding: 10px;
+}
+.headerRight p {
+  padding-top: 10px;
+  margin: 0px;
+  font-size: 10px;
+  color: #4d5a5c;
+  text-align: right;
+}
+.contentSection {
+  background-color: #fff;
+  padding: 0px;
+}
+.content {
+  background-color: #fff;
+  padding: 20px;
+}
+.content h1 {
+  font-size: 22px;
+  margin: 0px;
+}
+.content p {
+  margin: 0px;
+  font-size: 11px;
+}
+.content span {
+  font-size: 14px;
+  color: #722927;
+}
+.panelPart {
+  background-color: #fff;
+}
+.panel-body {
+  background-color: #33d168;
+  color: #fff;
+  padding: 5px;
+}
+.panel-footer {
+  background-color: #fff;
+}
+.panel-footer h1 {
+  font-size: 20px;
+  padding: 15px;
+  border: 1px dotted #dddddd;
+}
+.panel-footer p {
+  font-size: 13px;
+  background-color: #f6f6f6;
+  padding: 5px;
+}
+.tableSection {
+  background-color: #fff;
+}
+.tableSection h1 {
+  font-size: 18px;
+  margin: 0px;
+}
+th {
+  background-color: #33d168;
+  color: #fff;
+}
+.table {
+  padding-bottom: 10px;
+  margin: 0px;
+  border: 1px solid #dddddd;
+}
+td:nth-child(2) {
+  text-align: left;
+}
+td {
+  height: 100%;
+}
+.bg {
+  background-color: #f00;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lastSectionleft {
+  background-color: #fff;
+  padding-top: 20px;
+}
+.Sectionleft p {
+  border: 1px solid #dddddd;
+  height: 140px;
+  padding: 5px;
+}
+.Sectionleft span {
+  color: #42c55e;
+}
+.lastPanel {
+  text-align: center;
+}
+.panelLastLeft p,
+.panelLastRight p {
+  font-size: 11px;
+  padding: 5px 2px 5px 10px;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
+.col-md-5-statuspass {
+  text-align: center;
+  color: green;
+
+  margin: 20px;
+  border: 1px solid rgb(67, 168, 36);
+}
+
+.col-md-5-statusfail {
+  text-align: center;
+  color: red;
+
+  margin: 20px;
+  border: 1px solid rgb(199, 62, 62);
+}
+.imagelogo {
+  align-content: center;
+}
+image {
+  padding-left: 30px;
+}
+.ecofriendlogo {
+  align-items: center;
+  padding-top: 0px;
+  padding-inline-start: 80px;
+}
+.testpass {
+  color: rgb(37, 145, 27);
+  font-weight: bold;
+}
+
+.testfail {
+  color: red;
+  font-weight: bold;
+}
+.reportheadpart {
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-fresh-green-civilized-city-background-design-skygrasslandgreencivilizationcity-backgroundenvironmentally-friendly-image_70036.jpg");
+  background-color: #9c5050;
+}
+
+@media print {
+  @page {
+    size: A3 portrait;
+    margin: 0;
+  }
+}

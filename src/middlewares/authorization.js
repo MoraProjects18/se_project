@@ -48,7 +48,7 @@ exports.isStaffRole = (req, res, next) => {
 };
 
 exports.isCashierRole = (req, res, next) => {
-  if (req.user["user_type"] === "Cashier") {
+  if (req.user["user_type"] === "cashier") {
     next();
   } else {
     res.status(403).render("common/errorpage", {
@@ -71,8 +71,8 @@ exports.isReceptionistsRole = (req, res, next) => {
   }
 };
 
-exports.isReportIssuerfRole = (req, res, next) => {
-  if (req.user["user_type"] === "reportIssuer") {
+exports.isReportIssuerRole = (req, res, next) => {
+  if (req.user["user_type"] === "reportissuer") {
     next();
   } else {
     res.status(403).render("common/errorpage", {

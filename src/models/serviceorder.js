@@ -55,29 +55,31 @@ class ServiceOrder {
     let result = await _validate.get(this)(data);
     if (result.error)
       return new Promise((resolve) => resolve({ validationError: result }));
-      //call initiate_so stored procedure
-      result = await _database
-        .get(this)
-        .call("initiate_so", [
-          data.user_id,
-          data.vehicle_number,
-          data.start_date,
-          data.payment_amount
-        ]);
-        return new Promise((resolve) => {
-          let obj = {
-            data: result.result[0][0],
-            connectionError: _database.get(this).connectionError,
-          };
-          result.error ? (obj.error = true) : (obj.error = false);
-          resolve(obj);
-        });
+    //call initiate_so stored procedure
+    result = await _database
+      .get(this)
+      .call("initiate_so", [
+        data.user_id,
+        data.vehicle_number,
+        data.start_date,
+        data.payment_amount,
+      ]);
+    return new Promise((resolve) => {
+      let obj = {
+        data: result.result[0][0],
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error ? (obj.error = true) : (obj.error = false);
+      resolve(obj);
+    });
   }
 
   async GetById(data) {
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: validateResult }));
+      return new Promise((resolve) =>
+        resolve({ validationError: validateResult })
+      );
 
     const result = await _database
       .get(this)
@@ -90,24 +92,28 @@ class ServiceOrder {
           "user_id",
           "end_date",
           "invoice_id",
-          "payment_amount"
+          "payment_amount",
         ],
         ["service_order_id", "=", data.service_order_id]
       );
-      return new Promise((resolve) => {
-        let obj = {
-          connectionError: _database.get(this).connectionError,
-        };
-        result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
-        resolve(obj);
-      });
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error
+        ? (obj.error = true)
+        : ((obj.error = false), (obj.resultData = result.result));
+      resolve(obj);
+    });
   }
 
   async Close(data) {
     //validate the so id
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: validateResult }));
+      return new Promise((resolve) =>
+        resolve({ validationError: validateResult })
+      );
 
     //call update function of database class
     const result = await _database
@@ -131,7 +137,9 @@ class ServiceOrder {
     //validate the so id
     let validateResult = await _validateID.get(this)(data);
     if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: validateResult }));
+      return new Promise((resolve) =>
+        resolve({ validationError: validateResult })
+      );
 
     //call update function of database class
     const result = await _database
@@ -152,30 +160,28 @@ class ServiceOrder {
   }
 
   async GetFailedSO(data) {
-    const result = await _database
-    .get(this)
-    .call("get_failedso", [
-      data.NIC]
-    )
+    const result = await _database.get(this).call("get_failedso", [data.NIC]);
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
-      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+      result.error
+        ? (obj.error = true)
+        : ((obj.error = false), (obj.resultData = result.result[0]));
       resolve(obj);
     });
   }
 
   //gives all the details of the today opened so
   async TodaySO() {
-    const result = await _database
-      .get(this)
-      .call("get_todayso");
+    const result = await _database.get(this).call("get_todayso");
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
-      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result[0]);
+      result.error
+        ? (obj.error = true)
+        : ((obj.error = false), (obj.resultData = result.result[0]));
       resolve(obj);
     });
   }
@@ -187,16 +193,18 @@ class ServiceOrder {
 
     const result = await _database
       .get(this)
-      .readSingleTable("useracc", ["user_id","NIC","first_name","last_name","email"], [
-        "NIC",
-        "=",
-        data.NIC,
-      ]);
+      .readSingleTable(
+        "useracc",
+        ["user_id", "NIC", "first_name", "last_name", "email", "user_type"],
+        ["NIC", "=", data.NIC]
+      );
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
-      result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
+      result.error
+        ? (obj.error = true)
+        : ((obj.error = false), (obj.resultData = result.result));
       resolve(obj);
     });
   }
@@ -219,17 +227,19 @@ class ServiceOrder {
           "end_date",
           "status",
           "invoice_id",
-          "payment_amount"
+          "payment_amount",
         ],
         ["user_id", "=", data]
       );
-      return new Promise((resolve) => {
-        let obj = {
-          connectionError: _database.get(this).connectionError,
-        };
-        result.error ? (obj.error = true) : (obj.error = false , obj.resultData = result.result);
-        resolve(obj);
-      });
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+      result.error
+        ? (obj.error = true)
+        : ((obj.error = false), (obj.resultData = result.result));
+      resolve(obj);
+    });
   }
 }
 

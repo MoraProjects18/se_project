@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-8 offset-5 ">
 
-                        <button type="submit" class="btn mt-5 btn-grad btn-grad-create " >Create Ticket</button>
+                        <button type="submit" class="btn mt-5 btn-grad btn-grad-create" id="submit" >Create Ticket</button>
                     </div>
                 </div>
 
@@ -82,18 +82,13 @@
 
             },
             format:'Y-m-d',
-            minDate: 0,
+            minDate: '+1970/01/02',
             inline: false,
             timepicker:false,
         });
 
 
-        jQuery('#start_time').datetimepicker({
-            inline: false,
-            datepicker:false,
-            format:'H:i',
-            allowTimes:['9:00','9:30','10:00','10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00' , '16:30']
-        });
+
 
 
         function ajaxCall(method, url, async, callback) {
@@ -108,29 +103,55 @@
         }
 
 
-        document.getElementById("start_date").addEventListener("change", loadTime());
-        document.getElementById("branch_id").addEventListener("change", loadTime());
+       document.getElementById("branch_id").onchange = loadTime;
+        document.getElementById("start_date").onchange = loadTime;
+        
         function loadTime() {
+        
             let branch_id = document.getElementById("branch_id").value;
-            console.log("work3",branch_id);
-            let date = document.getElementById("start_date").value;
-            console.log("work",date);
-            if (date){
+            
+            let start_date = document.getElementById("start_date").value;
+
+            console.log(branch_id,start_date);
+            
+            if (start_date){
                 console.log("else working");
                 let result = ajaxCall(
                     "GET",
-                    `/ticket/getAvailableTime?branch_id=${branch_id}&date=${date}`,
-                    true
+                    `/ticket/gettimeslot?branch_id=${branch_id}&start_date=${start_date}`,
+                    true,
+                    (responseText)=>{
+                        let times = ['9:00','9:30','10:00','10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00' , '16:30','17:00'];
+                        let data = JSON.parse(responseText);
+                        let timeArray = data[0]
+                        timeArray.map((time) => {
+                            console.log(times);
+                            console.log(time.start_time.substring(0,5));
+                            let index = times.indexOf(time.start_time.substring(0,5));
+                            times.splice(index,1);
+                            
+                        })
+                        console.log("Times array:",times);
+                       
+                        if (times.length === 0){
+                            document.getElementById("start_time").disabled = true;
+                            document.getElementById("submit").disabled = true;
+                            return;
+                        }
+                        jQuery('#start_time').datetimepicker({
+                            inline: false,
+                            datepicker:false,
+                            format:'H:i',
+                            allowTimes:times
+                        });
+                    }
                 );
-
             }
             else {
                 console.log("if work");
 
             }
         }
-        document.getElementById("start_date").addEventListener("change", loadTime());
-
 
 
         /*$("#start_date,#branch_id").onchange(function(){

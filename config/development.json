@@ -1,18 +1,21 @@
 {
   "database_credentials": {
     "host": "localhost",
-    "port": "3306",
-    "user": "root",
+    "user": "emissioncenter",
     "database": "emission_test_db",
+    "password":"password",
     "connectionLimit": 5
   },
+  "jwtPrivateKey":"test",
   "email_transporter_credentials": {
     "host": "smtp.gmail.com",
     "port": 465,
     "secure": true,
-    "auth": {
-      "user": "",
-      "pass": ""
+    "auth":{
+      "user":"emissiontestcenter18@gmail.com",
+      "pass":"@Password123"
     }
-  }
+  },
+  "time-period":"1",
+  "site_name": "http://localhost:3000"
 }

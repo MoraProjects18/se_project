@@ -3,6 +3,7 @@ const receptionistRouter = express.Router();
 const sorderController = require("../controllers/sorder");
 const staffController = require("../controllers/staff");
 const authorization = require("../middlewares/authorization");
+const ticketController = require("../controllers/ticketController");
 
 //Receptionist
 receptionistRouter.get(
@@ -76,6 +77,13 @@ receptionistRouter.get(
   authorization.tokenAuthorize,
   authorization.isReceptionistsRole,
   staffController.showProfile
+);
+
+receptionistRouter.get(
+  "/ticket/todayticket",
+  authorization.tokenAuthorize,
+  authorization.isReceptionistsRole,
+  ticketController.getTodayTicket
 );
 
 module.exports = receptionistRouter;

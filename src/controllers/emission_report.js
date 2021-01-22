@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const ejs = require("ejs");
+let ejs = require("ejs");
 
 const Report = require("../models/report");
 const report = new Report();
 
 let settings = { method: "Get" };
 exports.getreportPage = async (req, res) => {
-  console.log("here");
+  //console.log("here");
   const service_order = await report.get_SO_details();
 
   var moment = require("moment");
 
   var serviceorders = service_order.result;
   console.log(serviceorders);
-  res.render("./ReportIssuer/EmissionReport.ejs", {
+  res.render("./reportissuer/EmissionReport.ejs", {
     name: "charuka",
     serviceorders: serviceorders,
     moment: moment,
@@ -42,13 +42,13 @@ exports.getjson= async (req, res) => {
 exports.getreporthtml = async (req, res) => {
   var SO_id = req.params.id;
   const so_result = await report.get_SO(SO_id);
-  console.log(so_result.result[0]);
+  //console.log(so_result.result[0]);
 
   var test_resu = await report.get_test(SO_id);
-  console.log(test_resu.error);
+  //console.log(test_resu.error);
 
   if (test_resu.length != 0 && !test_resu.error) {
-    res.render("./ReportIssuer/template.ejs", {
+    res.render("./reportissuer/template.ejs", {
       reportdata: test_resu,
       SO_id: SO_id,
       so_data: so_result,
@@ -72,7 +72,7 @@ exports.getreporthtml = async (req, res) => {
 exports.getreportpdf = async (req, res) => {
   var SO_id = req.params.id;
   var test_resu = await report.get_test(SO_id);
-  console.log(test_resu);
+  //console.log(test_resu);
   if (test_resu.length != 0 && !test_resu.error) {
     var pdf = await report.get_report_pdf(SO_id);
     if (test_resu.test_status == 1) {
@@ -101,6 +101,22 @@ exports.getreportpdf = async (req, res) => {
 exports.postreport = async (req, res) => {
   var SO_id = req.body["SO_id"];
 
-  var pdfurl = "/report/get_report/" + SO_id + "/pdf";
+  var pdfurl = "/reportissuer/get_report/" + SO_id + "/pdf";
   res.redirect(pdfurl);
+};
+
+exports.viewreport = async (req, res) => {
+  var SO_id = req.body["SO_id"];
+  //console.log(req.body);
+
+  var htmlurl = "/reportissuer/get_report/" + SO_id + "/html";
+  res.redirect(htmlurl);
+};
+
+exports.home = async (req, res) => {
+  res.render("./common/staff_home_page.ejs", {
+    usertype: "reportissuer",
+    activepage: "Home",
+    title: "Report Issuer home",
+  });
 };

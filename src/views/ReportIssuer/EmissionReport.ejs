@@ -16,7 +16,7 @@
     <br>
 
     <div class="container mt-4">
-        <form>
+        <form method="Post">
             <div class="mb-3">
                 <div class="form-group">
                    <!-- <div class="row">
@@ -45,9 +45,9 @@
             <br>
             <div class="row justify-content-md-center">
                 <div class="col col-lg-2">
-            <button type="submit" class="btn btn-primary btn" formaction="/report/view_final_report">View Report</button>
+            <button type="submit" class="btn btn-primary btn" formaction="/reportissuer/view_final_report">View Report</button>
             </div><div class="col col-lg-2">
-            <button type="submit" class="btn btn-primary btn" formaction="/report/get_final_report">Print Report</button>
+            <button type="submit" class="btn btn-primary btn" formaction="/reportissuer/get_final_report">Print Report</button>
         </div></div></form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -70,7 +70,7 @@
         <tbody id='SO_table_body'>
           
          <% for (var i=0;i<serviceorders.length;i++){ %>
-             <% if ((serviceorders[i].status=="Payed") || (serviceorders[i].status=="Open")){ %>
+             <% if ((serviceorders[i].status=="Paid") || (serviceorders[i].status=="Open")){ %>
             <tr>
             <td> <%= serviceorders[i].service_order_id %></td>
             <td> <%= serviceorders[i].first_name %></td>

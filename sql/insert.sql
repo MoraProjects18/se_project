@@ -1,4 +1,21 @@
+create user 'emissioncenter'@'localhost' identified by 'password';
+grant all on emission_test_db.* to 'emissioncenter'@'localhost';
+
 use emission_test_db;
+
+DELETE FROM `useracc`;
+DELETE FROM `customer`;
+DELETE FROM `branch`;
+DELETE FROM `staff`;
+DELETE FROM `adminacc`;
+DELETE FROM `ticket`;
+DELETE FROM `contact_no`;
+DELETE FROM `vehicle`;
+DELETE FROM `service_order`;
+DELETE FROM `invoice`;
+
+
+
 
 INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('charuka@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654872V', 'charuka', 'rathnayaka', 'customer');
 INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('pasindu@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654889V', 'pasindu', 'abeysinghe', 'customer');
@@ -35,6 +52,10 @@ INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('1', '0772343123');
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('2', '0772345671');
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('3', '0774597234');
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('4', '0774567123');
+INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('5', '0772343123');
+INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('6', '0772345671');
+INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('7', '0774597234');
+INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('8', '0774567123');
 
 INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('KJ1832', '1', 'WGHF1234N13245U', 'VX120', 'Car');
 INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('GH7895', '2', 'LGFF132N13245U', 'CS345', 'Car');

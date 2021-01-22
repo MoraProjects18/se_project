@@ -76,6 +76,17 @@
           </div>
           <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["email"] !== 'undefined' ? error["email"] : "") : "" %></p>
 
+          <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["contact_no"] !== 'undefined' ? (value["contact_no"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["contact_no"] !== 'undefined' ? "error" : "accept") : "" %>">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Contact Number</h5>
+              <input type="text" name="contact_no" class="input" value="<%= typeof value !== 'undefined' ? (typeof value["contact_no"] !== 'undefined' ? value["contact_no"] : "") : "" %>"/>
+            </div>
+          </div>
+          <p class="error-msg"><%= typeof error !== 'undefined' ? (typeof error["contact_no"] !== 'undefined' ? error["contact_no"] : "") : "" %></p>
+
           <div class="input-div one <%= typeof value !== 'undefined' ? (typeof value["password"] !== 'undefined' ? (value["password"]!=="" ? "focus" : "") : "") : "" %> <%= typeof error !== 'undefined' ? (typeof error["password"] !== 'undefined' ? "error" : "accept") : "" %>">
             <div class="i">
               <i class="fas fa-lock"></i>
@@ -95,6 +106,6 @@
         </form>
       </div>
     </div>
-    <script type="text/javascript" src="/scripts/register.js"></script>
+    <script type="text/javascript" src="/js/register.js"></script>
   </body>
 </html>
