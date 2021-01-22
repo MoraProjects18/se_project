@@ -74,10 +74,12 @@
     </div>
     </div>
     <script>
+
         jQuery('#start_date').datetimepicker({
             onGenerate:function( ct ){
                 jQuery(this).find('.xdsoft_date.xdsoft_weekend')
                     .addClass('xdsoft_disabled');
+
             },
             format:'Y-m-d',
             minDate: 0,
@@ -105,24 +107,30 @@
             xhttp.send();
         }
 
-        document.getElementById("branch_id").addEventListener("onChange", loadTime);
 
-        document.getElementById("start_date").addEventListener("onChange", loadTime);
-
+        document.getElementById("start_date").addEventListener("change", loadTime());
+        document.getElementById("branch_id").addEventListener("change", loadTime());
         function loadTime() {
             let branch_id = document.getElementById("branch_id").value;
+            console.log("work3",branch_id);
             let date = document.getElementById("start_date").value;
-            console.log("work")
-            let result = ajaxCall(
-                "GET",
-                `/ticket/getAvailableTime?branch_id=${branch_id}&date=${date}`,
-                true,
-                (responseText) => {
+            console.log("work",date);
+            if (date){
+                console.log("else working");
+                let result = ajaxCall(
+                    "GET",
+                    `/ticket/getAvailableTime?branch_id=${branch_id}&date=${date}`,
+                    true
+                );
 
-                }
-            );
+            }
+            else {
+                console.log("if work");
+
+            }
         }
-        loadTime();
+        document.getElementById("start_date").addEventListener("change", loadTime());
+
 
 
         /*$("#start_date,#branch_id").onchange(function(){

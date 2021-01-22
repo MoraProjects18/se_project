@@ -38,10 +38,9 @@ exports.getTimes = async (req, res) => {
 };
 
 exports.createTicket = async (req, res) => {
-    console.log(req.body);
-    console.log(req.user.user_id);
+
     req.body.user_id = req.user.user_id;
-    console.log(req.body);
+
     const result = await ticket.Initiate(req.body);
     if (result.validationError)
         return res.status(400).send(result.validationError);

@@ -4,6 +4,7 @@ const path = require("path");
 const config = require("config");
 const cookieParser = require("cookie-parser");
 
+
 // Environment Variables
 
 checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
@@ -15,6 +16,7 @@ checkEnvironmentVariable(
   "email_transporter_credentials.auth.pass",
   "email_password"
 );
+
 
 //Routers
 const authRouter = require("./routes/auth");
@@ -43,6 +45,7 @@ app.use("/report", reportRouter);
 app.use("/receptionist", receptionistRouter);
 app.use("/ticket", ticketRouter);
 app.use("/home", guestRouter);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

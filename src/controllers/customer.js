@@ -219,7 +219,21 @@ exports.getUserTicket = async (req, res) => {
       },
     };
   }
-  console.log(data);
+
   res.render("./ticket/viewTicketTable.ejs", data);
 
+};
+
+exports.cancelTicket = async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const result = await ticket.Close(data);
+  if (result.validationError)
+    return res.status(400).send(result.validationError);
+  if (result.connectionError)
+    return res.status(500).send("Internal Server Error!");
+  if (result.error) return res.status(400).send("Bad Request!");
+  res
+      .status(200)
+      .redirect(`/customer/ticketDetails`);
 };

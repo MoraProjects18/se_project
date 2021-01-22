@@ -99,6 +99,7 @@ class Ticket {
     }
     async Close(data) {
         //validate the ticket id
+        console.log(data);
         let validateResult = await _validateID.get(this)(data);
         if (validateResult.error)
             return new Promise((resolve) => resolve({validationError: result}));
