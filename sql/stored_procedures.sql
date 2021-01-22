@@ -39,8 +39,8 @@ CREATE PROCEDURE show_customer_profile(
 )
 BEGIN
     START TRANSACTION;
-    SELECT * FROM useracc NATURAL JOIN customer WHERE user_id=id;
-     SELECT contact_no FROM contact_no WHERE user_id=id;
+    SELECT * FROM useracc NATURAL JOIN customer WHERE user_id=user_id;
+     SELECT contact_no FROM contact_no WHERE user_id=user_id;
 END$$
 
 DELIMITER ;
