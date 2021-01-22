@@ -38,6 +38,7 @@ class Database {
           }`,
           [tableName, columns, values],
           (error, results, fields) => {
+            console.log(error, results, fields);
             resolve(_getResults.get(this)(error, results));
           }
         );

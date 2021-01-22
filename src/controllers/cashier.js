@@ -27,7 +27,7 @@ exports.getInvoicePage = async (req, res) => {
 
 exports.searchInvoice = async (req, res) => {
   const invoiceR = await invoiceModel.getInvoice(req.body);
-
+//console.log(invoiceR);
   if (invoiceR.validationError) {
     data = {
       error: {
@@ -72,6 +72,7 @@ exports.searchInvoice = async (req, res) => {
       },
     };
   }
+  console.log(data);
   res.render("./cashier/payment.ejs", data);
 };
 
