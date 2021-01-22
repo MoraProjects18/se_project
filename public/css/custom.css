@@ -48,10 +48,10 @@ body {
 
 .btn-grad-create {
   background-image: linear-gradient(
-          to right,
-          #18ac11 0%,
-          #1ace38 51%,
-          #22a514 100%
+    to right,
+    #18ac11 0%,
+    #1ace38 51%,
+    #22a514 100%
   );
 }
 
@@ -76,9 +76,8 @@ body {
 
 }
 
-
 .btn-grad {
-  padding: 10px 45px;
+  padding: 10px 10px;
   max-height: 45px;
   text-align: center;
   text-transform: uppercase;
@@ -137,5 +136,3 @@ body {
   box-shadow: 0 0 10px #eee;
   border-radius: 10px;
 }
-
-

@@ -1,3 +1,6 @@
+const express = require("express");
+const router = express.Router();
+const ejs = require("ejs");
 
 const express=require("express");
 const router=express.Router();
@@ -16,7 +19,7 @@ exports.getreportPage= async (req, res) => {
     
     var serviceorders=service_order.result;
     console.log(serviceorders);
-    res.render('./ReportIssuer/EmissionReport.ejs',{'name':'charuka','serviceorders':serviceorders,'moment':moment});
+    res.render('./ReportIssuer/EmissionReport.ejs',{'name':'charuka','serviceorders':serviceorders,'moment':moment, 'title':'Emission Report','usertype':'reportissuer','activepage':"Issue Report"});
 };
 
 /*
@@ -48,10 +51,10 @@ exports.getreporthtml= async (req, res) => {
     res.render('./ReportIssuer/template.ejs',{'reportdata':test_resu,'SO_id':SO_id,"so_data":so_result,'test_completed':'yes'});
     }
     else if(test_resu.error){
-        res.status(401).send('Emission Test database not connected')
+        res.render('./common/errorpage.ejs',{'title':'Emission Report Error','status':502,'message':'Emission report database not connected!'});
     }
     else{
-        res.status(401).send('Emission Test is not completed')
+        res.render('./common/errorpage.ejs',{'title':'Emission Report Error','status':400,'message':'Emission Test is not completed!'});
        
     }
    
@@ -66,16 +69,21 @@ exports.getreportpdf= async (req, res) => {
     console.log(test_resu);
     if(test_resu.length!=0 && (!test_resu.error)){
             var pdf=await report.get_report_pdf(SO_id);
-            
-            var update_so= await report.update_so_state(SO_id);
+            if(test_resu.test_status==1){
+                var state_test='Closed'
+            }
+            else{
+                var state_test="Failed"
+            }
+            var update_so= await report.update_so_state(SO_id,state_test);
             res.contentType("application/pdf");
             res.send(pdf);
         }
     else if(test_resu.error){
-            res.status(401).send('Emission Test database not connected')
+        res.render('./common/errorpage.ejs',{'title':'Emission Report Error','status':502,'message':'Emission report database not connected!'});
         }
     else{
-        res.status(401).send('Emission Test is not completed')
+        res.render('./common/errorpage.ejs',{'title':'Emission Report Error','status':400,'message':'Emission Test is not completed!'});
       
     }
  
@@ -89,14 +97,3 @@ exports.postreport= async (req, res) => {
    res.redirect(pdfurl);
     
 };
-
-exports.viewreport= async (req, res) => {
-    var SO_id=req.body['SO_id'];
-    console.log(req.body);
-  
-   var htmlurl='/report/get_report/'+SO_id+'/html';
-   res.redirect(htmlurl);
-    
-};
-
-   

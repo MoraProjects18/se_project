@@ -10,11 +10,13 @@ const SOModel = new ServiceOrder();
 // const User = require("../models/user.js");
 // const userModel = new User();
 
-
-exports.home = async (req, res) => { 
-  res.render("./common/staff_home_page.ejs", { usertype: "cashier", activepage: "Home",title:"customer home"});
+exports.home = async (req, res) => {
+  res.render("./common/staff_home_page.ejs", {
+    usertype: "cashier",
+    activepage: "Home",
+    title: "cashier home",
+  });
 };
-
 
 exports.getInvoicePage = async (req, res) => {
   data = {
@@ -25,7 +27,7 @@ exports.getInvoicePage = async (req, res) => {
 
 exports.searchInvoice = async (req, res) => {
   const invoiceR = await invoiceModel.getInvoice(req.body);
-
+//console.log(invoiceR);
   if (invoiceR.validationError) {
     data = {
       error: {
@@ -70,22 +72,20 @@ exports.searchInvoice = async (req, res) => {
       },
     };
   }
+  console.log(data);
   res.render("./cashier/payment.ejs", data);
 };
 
 exports.payInvoice = async (req, res) => {
   const data = req.body;
-  // const result = await SOModel.paySO(data);
-  const result = true;
+  const result = await SOModel.paySO(data);
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
     return res.status(500).send({ message: "Internal Server Error!" });
   if (result.error) return res.status(400).send();
   res.status(200).send({ message: "Payment Confirmed" });
-
   const soUser = await invoiceModel.getSOUser(data.service_order_id);
-  console.log(soUser);
   const email = new Email();
   await email.send(
     soUser.email,
