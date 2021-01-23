@@ -23,6 +23,25 @@ exports.tokenAuthorize = (req, res, next) => {
   }
 };
 
+exports.isGuestUser = (req, res, next) => {
+  const token = req.cookies["ets-auth-token"];
+  if (!token) {
+    next();
+  } else {
+    try {
+      const payload = jwt.verify(token, config.get("jwtPrivateKey"));
+      console.log(payload);
+      req.user = payload;
+      res.redirect(`/${req.user["user_type"]}/home`);
+    } catch (ex) {
+      res.status(400).render("common/errorpage", {
+        title: "Error",
+        status: "400",
+        message: "Invalid token",
+      });
+    }
+  }
+};
 exports.isCustomerRole = (req, res, next) => {
   if (req.user["user_type"] === "customer") {
     next();

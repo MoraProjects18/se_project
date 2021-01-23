@@ -1,19 +1,9 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const app = express();
 const path = require("path");
 const config = require("config");
 const cookieParser = require("cookie-parser");
-
-checkEnvironmentVariable("database_credentials.password", "mysql_password");
-checkEnvironmentVariable("jwtPrivateKey", "jwtPrivateKey");
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.user",
-  "email_address"
-);
-checkEnvironmentVariable(
-  "email_transporter_credentials.auth.pass",
-  "email_password"
-);
 
 //Routers
 const authRouter = require("./routes/auth");
@@ -59,10 +49,3 @@ app.get("/*", (req, res) => {
     message: "Page Not Found",
   });
 });
-
-function checkEnvironmentVariable(path, envName) {
-  if (!config.has(path)) {
-    console.log(new Error(`${envName} (Enviroment Variable) is not defined`));
-    process.exit(1);
-  }
-}
