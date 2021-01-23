@@ -44,8 +44,14 @@ exports.createTicket = async (req, res) => {
 };
 
 exports.getTodayTicket = async (req, res) => {
-  const data = await staff.get_branch_id(req.user.user_id);
-  const result = await ticket.TodayTicket(data[0]);
+  console.log("here",req.user.user_id);
+  const data_branch = await staff.get_branch_id(req.user.user_id);
+
+  console.log("check",data_branch.result[0].branch_id);
+
+  const result = await ticket.TodayTicket(data_branch.result[0].branch_id);
+
+  console.log(result);
   //console.log(result);
   if (result.validationError)
     return res.status(400).send(result.validationError);
@@ -78,4 +84,16 @@ exports.getTodayTicket = async (req, res) => {
   }
   console.log(data);
   res.render("./ticket/todayTicket.ejs", data);
+};
+
+exports.confirmTicket = async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  const result = await ticket.Close(data);
+  if (result.validationError)
+    return res.status(400).send(result.validationError);
+  if (result.connectionError)
+    return res.status(500).send("Internal Server Error!");
+  if (result.error) return res.status(400).send("Bad Request!");
+  res.status(200).redirect(`/receptionist/ticket/todayTicket`);
 };

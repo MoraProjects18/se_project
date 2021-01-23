@@ -193,10 +193,11 @@ class Staff {
   }
 
   async get_branch_id(user_id) {
-    result = await _database
+    console.log("model work",user_id);
+    let result = await _database
       .get(this)
-      .readSingleTable("staff", [branch_id], ["user_id", "=", user_id]);
-
+      .readSingleTable("staff", "branch_id", ["user_id", "=", user_id]);
+    console.log(result);
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,

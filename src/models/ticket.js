@@ -138,7 +138,7 @@ class Ticket {
     const result = await _database
       .get(this)
       .call("get_today_tickets", branch_id);
-    //console.log(result.result[0]);
+    console.log(result.result[0]);
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,

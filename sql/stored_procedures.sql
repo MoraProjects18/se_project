@@ -192,9 +192,9 @@ CREATE PROCEDURE get_today_tickets(
     branch_id int
 )
 BEGIN
-  SELECT ticket_id,user_id,status,start_time,branch_id,email
+  SELECT ticket_id,user_id,status,start_time,branch_id,email,first_name
      FROM emission_test_db.ticket natural join emission_test_db.useracc
-     WHERE DATE(start_date) = CURDATE() AND branch_id = branch_id ORDER BY start_time;
+     WHERE start_date = CURDATE() AND branch_id = branch_id AND status="Open" ORDER BY start_time;
 
 END $$
 DELIMITER ;

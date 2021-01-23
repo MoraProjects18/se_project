@@ -11,5 +11,5 @@ router.post(
 );
 
 router.get("/gettimeslot", ticketController.getTimes);
-
+router.post("/confirmTicket",ticketController.confirmTicket);
 module.exports = router;
