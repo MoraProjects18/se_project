@@ -8,7 +8,7 @@
         { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
         { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
-        { page: 'Profile', path: "",status : "deactive" }]    
+        { page: 'Profile', path: "/customer/profile",status : "deactive" }]    
     } %>
 
     <% if( activepage== "Service order details"){ 
@@ -17,7 +17,7 @@
         { page: 'Service order details', path: "/customer/getmyso",status : "active" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
         { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
-        { page: 'Profile', path: "",status : "deactive" }]    
+        { page: 'Profile', path: "/customer/profile",status : "deactive" }]    
     } %>
 
     <% if( activepage== "Create Ticket"){
@@ -26,7 +26,7 @@
         { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
         { page: 'Create Ticket', path: "/customer/createTicket",status : "active" },
         { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
-        { page: 'Profile', path: "",status : "deactive" }]    
+        { page: 'Profile', path: "/customer/profile",status : "deactive" }]    
     } %>
 
     <% if( activepage== "Ticket details"){
@@ -35,7 +35,7 @@
             { page: 'Service order details', path: "/customer/getmyso",status : "deactive" },
             { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
             { page: 'Tickets Details', path: "/customer/ticketDetails",status : "active" },
-            { page: 'Profile', path: "",status : "deactive" }]
+            { page: 'Profile', path: "/customer/profile",status : "deactive" }]
     } %>
 
     <% if( activepage== "Profile"){ 
@@ -45,7 +45,7 @@
         { page: 'Create Ticket', path: "/customer/createTicket",status : "deactive" },
 
         { page: 'Tickets Details', path: "/customer/ticketDetails",status : "deactive" },
-        { page: 'Profile', path: "",status : "active" },  
+         
         { page: 'Profile', path: "/customer/profile",status : "active" }]    
 
     } %>
@@ -64,7 +64,7 @@
                 { page: 'Profile', path: "/admin/profile",status : "deactive" }]  
             } %>
     
-            <% if( activepage== "Invoice Payment"){
+            <% if( activepage== "Add Employee"){
                 var nav = [
                 { page: 'Home', path: "/admin/home",status : "deactive" },
                 { page: 'Add Employee', path:"/admin/addStaff",status : "active" } , 

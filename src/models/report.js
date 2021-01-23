@@ -2,7 +2,7 @@ const Database = require("../database/database");
 const _database = new WeakMap();
 const fetch = require("node-fetch");
 const puppeteer = require("puppeteer");
-
+const config = require("config");
 class Report {
   constructor() {
     _database.set(this, new Database());
@@ -21,7 +21,7 @@ class Report {
 
   async get_report_pdf(SO_id) {
     const url =
-      "http://localhost:3000/reportissuer/get_report/" + SO_id + "/html";
+      config.get("site_name") + "/reportissuer/get_report/" + SO_id + "/html";
 
     const browser = await puppeteer.launch({
       headless: true,
@@ -114,7 +114,8 @@ class Report {
     });
   }
   async get_test(SO_id) {
-    let url = "http://localhost:2000/report/json/" + SO_id;
+    let url =
+      config.get("existing_emission_system_url") + "/report/json/" + SO_id;
     let settings = { method: "Get" };
     try {
       let res_data = await fetch(url, settings)

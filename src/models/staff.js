@@ -42,12 +42,15 @@ class Staff {
 
   async register(data) {
     //validate data
+
     let result = await _validate.get(this)(
       data,
       Joi.object(_schema.get(this)).options({ abortEarly: false })
     );
     if (result.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
+      return new Promise((resolve) =>
+        resolve({ validationError: result.error })
+      );
 
     //encrypt the password
     const salt = await bcrypt.genSalt(10);

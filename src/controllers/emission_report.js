@@ -7,13 +7,12 @@ const report = new Report();
 
 let settings = { method: "Get" };
 exports.getreportPage = async (req, res) => {
-  //console.log("here");
   const service_order = await report.get_SO_details();
 
   var moment = require("moment");
 
   var serviceorders = service_order.result;
-  console.log(serviceorders);
+
   res.render("./reportissuer/EmissionReport.ejs", {
     name: "charuka",
     serviceorders: serviceorders,
@@ -42,10 +41,8 @@ exports.getjson= async (req, res) => {
 exports.getreporthtml = async (req, res) => {
   var SO_id = req.params.id;
   const so_result = await report.get_SO(SO_id);
-  //console.log(so_result.result[0]);
 
   var test_resu = await report.get_test(SO_id);
-  //console.log(test_resu.error);
 
   if (test_resu.length != 0 && !test_resu.error) {
     res.render("./reportissuer/template.ejs", {
@@ -72,7 +69,7 @@ exports.getreporthtml = async (req, res) => {
 exports.getreportpdf = async (req, res) => {
   var SO_id = req.params.id;
   var test_resu = await report.get_test(SO_id);
-  //console.log(test_resu);
+
   if (test_resu.length != 0 && !test_resu.error) {
     var pdf = await report.get_report_pdf(SO_id);
     if (test_resu.test_status == 1) {
@@ -107,7 +104,6 @@ exports.postreport = async (req, res) => {
 
 exports.viewreport = async (req, res) => {
   var SO_id = req.body["SO_id"];
-  //console.log(req.body);
 
   var htmlurl = "/reportissuer/get_report/" + SO_id + "/html";
   res.redirect(htmlurl);

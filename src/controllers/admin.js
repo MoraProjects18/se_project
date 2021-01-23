@@ -1,9 +1,12 @@
+const joiSupporter = require("../utils/joi-supporter");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const Email = require("../utils/email");
 const config = require("config");
 const Staff = require("../models/staff");
 const staff = new Staff();
+const Ticket = require("../models/ticket.js");
+const ticket = new Ticket();
 
 exports.home = async (req, res) => {
   res.render("./common/staff_home_page.ejs", {
@@ -14,34 +17,51 @@ exports.home = async (req, res) => {
 };
 
 exports.getAddEmployeePage = async (req, res) => {
+  const result = await ticket.GetBranch();
   data = {
     dataFound: false,
+    branch: result.result,
   };
-  res.render("../views/admin/add_employee1.ejs", data);
+  res.render("../views/admin/add_employee1.ejs", {
+    data: data,
+    title: "Add Employee",
+    usertype: "admin",
+    activepage: "Add Employee",
+  });
 };
 
 exports.registerUser = async (req, res) => {
   const result = await staff.register(req.body);
-  if (result.validationError)
-    return res.status(400).send(result.validationError);
-  if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
+  const branchR = await ticket.GetBranch();
+  const data = {
+    dataFound: false,
+    branch: branchR.result,
+  };
+
+  if (result.validationError) {
+    let obj = joiSupporter(result.validationError);
+    obj.data = data;
+    return res.status(400).render("../views/admin/add_employee1.ejs", obj);
+  }
+  if (result.connectionError) {
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+  }
+  if (result.error) {
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
+  }
 
   const cookieOption = {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     httpOnly: true,
   };
 
-  //   const payload = result.userData;
-  //   const token = jwt.sign(
-  //     JSON.parse(JSON.stringify(payload)),
-  //     config.get("jwtPrivateKey")
-  //   );
-
-  //   res
-  //     .cookie("ets-auth-token", token, cookieOption)
-  //     .status(200)
-  //     .send("Query Inserted!");
-  res.status(200).send("Query inserted");
+  res.redirect("/admin/addStaff");
 };

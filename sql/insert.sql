@@ -17,14 +17,14 @@ DELETE FROM `invoice`;
 
 
 
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('charuka@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654872V', 'charuka', 'rathnayaka', 'customer');
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('pasindu@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654889V', 'pasindu', 'abeysinghe', 'customer');
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('roshini@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654811V', 'roshini', 'jayasundara', 'customer');
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('charuka@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654872V', 'Charuka', 'Rathnayaka', 'customer');
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('pasindu@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654889V', 'Pasindu', 'Abeysinghe', 'customer');
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('roshini@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654811V', 'Roshini', 'Jayasundara', 'customer');
 INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('hithru@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654844V', 'Hithru', 'Alwis', 'customer');
 INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('admin1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654172V', 'admin1', '1admin', 'admin');
 INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('cashier1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654666V', 'cashier1', '1cashier', 'cashier');
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('receptionist1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '97265455V', 'receptionist1', '1receptionist', 'receptionist');
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('reportissuer1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '97265455V', 'reportissuer1', '1reportissuert', 'reportissuer');
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('receptionist1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654355V', 'receptionist1', '1receptionist', 'receptionist');
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('reportissuer1@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654155V', 'reportissuer1', '1reportissuert', 'reportissuer');
 
 INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('1', '1234568','1');
 INSERT INTO `customer` (`user_id`, `license_number`,`email_verification`) VALUES ('2', '1238888','1');
@@ -44,9 +44,9 @@ INSERT INTO `staff` (`user_id`, `employee_id`, `branch_id`) VALUES ('8', '103','
 INSERT INTO `adminacc` (`user_id`, `admin_id`) VALUES ('5', '1');
 
 
-INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('30', '1', 'closed', '2021-01-20', '17:00', '1');
-INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('31', '1', 'Open', '2021-01-22', '14:00', '3');
-INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('32', '1', 'closed', '2021-01-23', '17:00', '4');
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('1', '1', 'closed', '2021-02-20', '17:00', '1');
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('2', '3', 'Open', '2021-02-22', '14:00', '3');
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `status`, `start_date`, `start_time`, `branch_id`) VALUES ('3', '4', 'closed', '2021-02-23', '17:00', '4');
 
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('1', '0772343123');
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('2', '0772345671');
@@ -58,7 +58,7 @@ INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('7', '0774597234');
 INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('8', '0774567123');
 
 INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('KJ1832', '1', 'WGHF1234N13245U', 'VX120', 'Car');
-INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('GH7895', '2', 'LGFF132N13245U', 'CS345', 'Car');
+INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('GH7895', '2', 'LGFF132N13245U', 'CS345', 'MotorCycle');
 INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('WR6574', '4', 'XGDF134N12345W', 'GZ456', 'Car');
 INSERT INTO `vehicle` (`registration_number`, `user_id`, `engine_number`, `model_number`, `model`) VALUES ('NR7456', '3', 'DGBF1324U12345B', 'TR789', 'Car');
 

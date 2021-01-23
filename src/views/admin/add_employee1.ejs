@@ -1,63 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+     
+    <%- include('../partials/heads/head', {title : "Employee Registration"}); %> 
     <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
 
     <title>ADD EMPLOYEE || ADMIN</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <%- include('../partials/navs/nav' , {usertype: "admin",
+        activepage: "Add Employee"}); %>
+    </header>
     <div class="container">
     <div class="row flex-lg-nowrap">
-    <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
-        <!-- <div class="card p-3">
-        <div class="e-navlist e-navlist--active-bg">
-            <ul class="nav">
-            <li class="nav-item"><a class="nav-link px-2 active" href="./overview.html"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
-            <li class="nav-item"><a class="nav-link px-2" href="./users.html"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
-            <li class="nav-item"><a class="nav-link px-2" href="./settings.html"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
-            </ul>
-        </div>
-        </div> -->
+    <div class="col-12 col-md-3 mb-3" style="width: 200px;">
+
     </div>
 
     <div class="col">
         <div class="row">
-        <div class="col mb-3">
+        <div class="col mb-3 md-3">
             <div class="card shadowBox">
             <div class="card-body">
                 <div class="e-profile">
-                <!-- <div class="row">
-                    <div class="col-12 col-sm-auto mb-3">
-                    <div class="mx-auto" style="width: 140px;">
-                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                    <div class="text-center text-sm-left mb-2 mb-sm-0">
-                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-                        <p class="mb-0">@johnny.s</p>
-                        <div class="text-muted"><small>Last seen 2 hours ago</small></div>
-                        <div class="mt-2">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fa fa-fw fa-camera"></i>
-                            <span>Change Photo</span>
-                        </button>
-                        </div>
-                    </div>
-                    <div class="text-center text-sm-right">
-                        <span class="badge badge-secondary">administrator</span>
-                        <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
-                    </div>
-                    </div>
-                </div> -->
-                <!-- <ul class="nav nav-tabs">
-                    <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
-                </ul> -->
                 <div class="tab-content pt-3 ">
                     <div class="tab-pane active">
                     <form class="form" action="/admin/addStaff" method="POST" novalidate="">
@@ -76,13 +42,15 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' placeholder="First Name"required >
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="first_name" id="first_name" onkeyup='check();' required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? error['first_name'] : "") : "" %></div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' placeholder="Last Name" required >
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="last_name" id="last_name" onkeyup='check();' required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? error['last_name'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +58,9 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' placeholder="EMAIL" required >
+                                   
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['email'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="email" id="email" onkeyup='check();' required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['email'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['email'] !== 'undefined' ? error['email'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -98,13 +68,16 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>NIC</label>
-                                    <input class="form-control inputD" type="text" id="NIC" name="NIC" onkeyup='check();' pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$" maxlength="12" placeholder="NIC" requiured>
-                                    </div>
+                                    
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['NIC'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="NIC" id="NIC" onkeyup='check();' required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['NIC'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['NIC'] !== 'undefined' ? error['NIC'] : "") : "" %></div>
+                                </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeypress="return onlyNumberKey(event)" pattern="[0-9]{10}" maxlength="10" onkeyup='check();'>
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="contact_no" id="contact_no" onkeyup='check();'  required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? error['contact_no'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -112,23 +85,37 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Role</label>
-                                    <input class="form-control inputD" type="text" name="role" id="user_type" onkeyup='check();' placeholder="Role" required >
-                                    </div>
+                                    
+                                    <select type="text" class="form-control inputD" id="user_type"  name="user_type" onkeyup='check();' placeholder="Role" required>
+                                        <option value="cashier" > Cashier</option>
+                                        <option value="receptionist" > Receptionist</option>
+                                        <option value="reportissuer" > Report Issuer</option>
+                                            
+            
+                                    </select>
+                                </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                    <label>Branch ID</label>
-                                    <input class="form-control inputD" type="text" name="branch_id" id="branch_id" onkeyup='check();' placeholder="Branch ID" required >
-                                    </div>
+                                    <label>Branch Name</label>
+                                    
+                                    <select type="text" class="form-control inputD" id="branch_id"  name="branch_id" onkeyup='check();' placeholder="Branch ID"  required>
+                                        <% data.branch.forEach(function(each) {%>
+                                            <option value=<%=each.branch_id%> > <%=each.branch_name%> </option>
+                                            <%} );%>
+            
+                                    </select>
+                                </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Password</label>
-                                    <input class="form-control" type="password" id="password" name="password" onkeyup='check();' placeholder="Password" pattern="(?=.*\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required >
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['password'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" name="password" id="password" type="password" onkeyup='check();' required >
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['password'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['password'] !== 'undefined' ? error['password'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -136,34 +123,31 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" id="save" type="submit" disabled>ADD EMPLOYEE</button>
+                                <button class="btn mt-1 btn-primary" id="save" type="submit" disabled>ADD EMPLOYEE</button>
                             </div>
                     </form>
                     </div>
+                </div></div></div></div></div></div></div></div></div></div></div></div>
 
         <div class="col-12 col-md-3 mb-3">
-            
-            <!-- <div class="card">
-            <div class="card-body">
-                <h6 class="card-title font-weight-bold">Support</h6>
-                <p class="card-text">Get fast, free help from our friendly assistants.</p>
-                <button type="button" class="btn btn-primary">Contact Us</button>
-            </div>
-            </div> -->
-        </div>
+
         </div>
 
+        </div></div>
+
     </div>
-    </div>
-    </div>
-    
+    <br><br><br><br><br>
+
+   <footer class="mt-auto">
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
 </body>
 <script>
 
     var check = function() {
         
-  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" || document.getElementById('user_id').value=="" || document.getElementById('employee_id').value=="" || document.getElementById('NIC').value=="" || document.getElementById('role').value=="" || document.getElementById('branch_id').value=="" || document.getElementById('password').value==""){
-      document.getElementById('save').disabled=true;
+  if(document.getElementById('first_name').value=="" || document.getElementById('last_name').value=="" || document.getElementById('email').value=="" || document.getElementById('contact_no').value=="" || document.getElementById('employee_id').value=="" || document.getElementById('NIC').value=="" || document.getElementById('user_type').value=="" || document.getElementById('branch_id').value=="" || document.getElementById('password').value==""){
+      document.getElementById('save').disabled=false;
   }
   else{
       document.getElementById('save').disabled=false;

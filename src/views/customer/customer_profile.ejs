@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title = "no title" charset = "utf-8">
+    <%- include('../partials/heads/head' ,{title : 'Customer Profile'}); %>
     <link rel="stylesheet" href="/css/custom.css" media="screen" title = "no title" charset = "utf-8">
 
     <title>Profile Page</title>
 </head>
 <body>
+    <header>
+        <%- include('../partials/navs/nav' , {activepage : 'Profile', user_type : "customer"}); %>
+    </header>
     <div class="container">
     <div class="row flex-lg-nowrap">
     <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
@@ -67,13 +68,15 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>First Name</label>
-                                    <input class="form-control" type="text" name="first_name" id="first_name" onkeyup='check();' required value=<%= customer.first_name %>>
-                                    </div>
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="first_name" id="first_name" onkeyup='check();' required value="<%= typeof value !== 'undefined' ? (typeof value['first_name'] !== 'undefined' ? value['first_name'] : customer.first_name) : customer.first_name %>">
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['first_name'] !== 'undefined' ? error['first_name'] : "") : "" %></div>
+                                </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Last Name</label>
-                                    <input class="form-control" type="text" name="last_name" id="last_name" onkeyup='check();' required value=<%= customer.last_name %>>
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="last_name" id="last_name" onkeyup='check();' required value="<%= typeof value !== 'undefined' ? (typeof value['last_name'] !== 'undefined' ? value['last_name'] :customer.last_name ) : customer.last_name %>">
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['last_name'] !== 'undefined' ? error['last_name'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +84,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' required value=<%= customer.email %> >
+                                    <input class="form-control inputD" type="text" name="email" id="email" onkeyup='check();' disabled required value=<%= customer.email %> >
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +98,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input class="form-control" type="text" name="contact_no" placeholder="Contact Number" id="contact_no" onkeyup='check();' required value=<%= customer1.contact_no %>>
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" type="text" name="contact_no" id="contact_no" onkeyup='check();'  required value="<%= typeof value !== 'undefined' ? (typeof value['contact_no'] !== 'undefined' ? value['contact_no'] : customer1.contact_no) : customer1.contact_no %>">
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['contact_no'] !== 'undefined' ? error['contact_no'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +107,7 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" id="save" type="submit">Save Changes</button>
+                                <button class="btn mt-1 btn-primary" id="save" type="submit">Save Changes</button>
                             </div>
                     </form>
                     </div>
@@ -115,7 +119,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Current Password</label>
-                                    <input class="form-control" type="password" name="current_password" required >
+                                    <input class="form-control <%= typeof current_password_error !== 'undefined' ? `is-invalid` : "" %>" name="current_password" type="password" required>
+                                    <div class="<%= typeof current_password_error !== 'undefined' ? 'invalid-feedback' : "" %>"><%= typeof current_password_error !== 'undefined' ? "Old password is incorrect" : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +128,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>New Password</label>
-                                    <input class="form-control" type="password" id="new_password" name="new_password" onkeyup='check();' required>
+                                    <input class="form-control <%= typeof error !== 'undefined' ? (typeof error['new_password'] !== 'undefined' ? `is-invalid` : "is-valid") : "" %>" name="new_password" id="new_password" type="password" onkeyup='check();' required>
+                                    <div class=<%= typeof error !== 'undefined' ? (typeof error['new_password'] !== 'undefined' ? 'invalid-feedback': "") : "" %>><%= typeof error !== 'undefined' ? (typeof error['new_password'] !== 'undefined' ? error['new_password'] : "") : "" %></div>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +200,9 @@
     </div>
     </div>
     </div>
-    
+    <footer>
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
 </body>
 <script>
     var check = function() {

@@ -113,8 +113,8 @@ CREATE PROCEDURE register_new_staff(
 )
 BEGIN
 	START TRANSACTION;
-		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (user_id,email,password,NIC,first_name,last_name,user_type);
-		INSERT INTO staff(user_id,employee_id,role,branch_id) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
+		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (email,password,NIC,first_name,last_name,user_type);
+		INSERT INTO staff(user_id,employee_id,branch_id) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
         INSERT INTO contact_no(user_id,contact_no) VALUES (LAST_INSERT_ID(),contact_no);
     COMMIT;
 END $$
@@ -162,21 +162,6 @@ BEGIN
 
 END $$
 DELIMITER ;
-
--- drop procedure if exists get_today_tickets;
-
--- DELIMITER $$
--- CREATE PROCEDURE get_today_tickets(
---     branch_id int
--- )
--- BEGIN
---   SELECT ticket_id,user_id,status,start_time,branch_id,email
---      FROM emission_test_db.ticket natural join emission_test_db.useracc
---      WHERE start_date = CURDATE() ORDER BY start_time;
-    
-
--- END $$
--- DELIMITER ;
 
 
 drop procedure if exists get_timeslots;

@@ -45,19 +45,10 @@ exports.initiateSO = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError.error.message);
   if (result.connectionError)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "500",
-      message: "Internal Server Error",
-    });
-  if (result.error)
-    return res.status(400).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "Bad Request",
-    });
-  const received = JSON.parse(JSON.stringify(result.data));
+    return res.status(500).send("Internal Server Error!!");
+  if (result.error) return res.status(400).send("Bad Request!");
 
+  const received = JSON.parse(JSON.stringify(result.data));
   const SOUser = await invoice.getSOUser(received.service_order_id);
   const invoiceDetails = await invoice.getInvoice({
     invoice_id: received.invoice_id,
@@ -94,17 +85,8 @@ exports.continueSO = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "500",
-      message: "Internal Server Error",
-    });
-  if (result.error)
-    return res.status(400).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "Bad Request",
-    });
+    return res.status(500).send("Internal Server Error!!");
+  if (result.error) return res.status(400).send("Bad Request!");
   res
     .status(200)
     .send({ status: "success", message: "Service Order continued" });
@@ -329,17 +311,8 @@ exports.postvehicle = async (req, res) => {
   if (result.validationError)
     return res.status(400).send(result.validationError.error.message);
   if (result.connectionError)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "500",
-      message: "Internal Server Error",
-    });
-  if (result.error)
-    return res.status(400).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "Bad Request",
-    });
+    return res.status(500).send("Internal Server Error");
+  if (result.error) return res.status(400).send("Bad Request");
   res
     .status(200)
     .send({ status: "success", message: "Vehicle Added successfully" });

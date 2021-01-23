@@ -112,10 +112,10 @@
             
             let start_date = document.getElementById("start_date").value;
 
-            console.log(branch_id,start_date);
+            
             
             if (start_date){
-                console.log("else working");
+                
                 let result = ajaxCall(
                     "GET",
                     `/ticket/gettimeslot?branch_id=${branch_id}&start_date=${start_date}`,
@@ -125,13 +125,12 @@
                         let data = JSON.parse(responseText);
                         let timeArray = data[0]
                         timeArray.map((time) => {
-                            console.log(times);
-                            console.log(time.start_time.substring(0,5));
+                         
                             let index = times.indexOf(time.start_time.substring(0,5));
                             times.splice(index,1);
                             
                         })
-                        console.log("Times array:",times);
+                        
                        
                         if (times.length === 0){
                             document.getElementById("start_time").disabled = true;
@@ -148,23 +147,12 @@
                 );
             }
             else {
-                console.log("if work");
+                
 
             }
         }
 
 
-        /*$("#start_date,#branch_id").onchange(function(){
-            branch = $("#branch_id").val()
-            start_date = $("#start_date").val()
-            $.ajax({url: `/ticket/gettimeslot?branch_id=${branch}&start_date=${start_date}`, success: function(result){
-                    var timeslots = ['9:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00' ]
-
-
-
-                }});
-
-        });*/
 
     </script>
 <% } %>

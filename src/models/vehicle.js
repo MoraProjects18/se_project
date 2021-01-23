@@ -12,10 +12,10 @@ class Vehicle {
       this,
       Joi.object({
         user_id: Joi.number().min(1).required(),
-        registration_number: Joi.string().required(),
-        engine_number: Joi.string().required(),
-        model_number: Joi.string().required(),
-        model: Joi.string().required(),
+        registration_number: Joi.string().max(10).required(),
+        engine_number: Joi.string().max(20).required(),
+        model_number: Joi.string().max(20).required(),
+        model: Joi.string().max(20).required(),
       }).options({ abortEarly: false })
     );
 
