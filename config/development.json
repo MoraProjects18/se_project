@@ -18,5 +18,5 @@
   },
   "closing_period": "1",
   "site_name": "http://localhost:3000",
-  "existing_emission_system_url":"https://existing-eco-system.herokuapp.com"
+  "existing_emission_system_url":"http://localhost:2000"
 }

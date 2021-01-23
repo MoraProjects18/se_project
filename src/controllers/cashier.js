@@ -117,7 +117,7 @@ exports.searchInvoiceBySO = async (req, res) => {
       },
       value: {
         invoice_id: undefined,
-        service_order_id: soR.validationError.value.NIC,
+        service_order_id: soR.validationError.value.service_order_id,
       },
     };
     // return res.status(400).send(invoiceR.validationError);

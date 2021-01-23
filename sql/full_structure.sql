@@ -295,3 +295,4 @@ BEGIN
 END $$
 DELIMITER ;
 
+INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('administrator@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654172V', 'administrator', 'administrator', 'admin');

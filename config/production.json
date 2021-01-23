@@ -13,5 +13,8 @@
       "user": "username",
       "pass": "password"
     }
-  }
+  },
+  "closing_period": "sample_time",
+  "site_name": "http://example.com",
+  "existing_emission_system_url":"http://example1.com"
 }

@@ -15,7 +15,7 @@ class Invoice {
     _schemaNew.set(
       this,
       Joi.object({
-        service_order_id: Joi.number().required(),
+        service_order_id: Joi.number().min(1000).required(),
         payment_amount: Joi.number().required(),
       })
     );
@@ -27,7 +27,7 @@ class Invoice {
     _schemaSearch.set(
       this,
       Joi.object({
-        invoice_id: Joi.number().required(),
+        invoice_id: Joi.number().min(1000).required(),
       })
     );
 
@@ -38,7 +38,7 @@ class Invoice {
     _schemaSO.set(
       this,
       Joi.object({
-        service_order_id: Joi.number().required(),
+        service_order_id: Joi.number().min(1000).required(),
       })
     );
 
