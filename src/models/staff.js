@@ -140,7 +140,6 @@ class Staff {
       })
     );
     if (result.error) {
-      console.log("Validation error", result.error);
       return new Promise((resolve) =>
         resolve({ validationError: result.error })
       );
@@ -157,12 +156,6 @@ class Staff {
     const hashedPassword1 = await bcrypt.hash(data.new_password, salt);
     data.new_password = hashedPassword1;
     const validPassword = await bcrypt.compare(
-      data.current_password,
-      c_password
-    );
-    console.log(
-      "Passowrddddddd",
-      validPassword,
       data.current_password,
       c_password
     );
@@ -193,9 +186,9 @@ class Staff {
   }
 
   async get_branch_id(user_id) {
-    result = await _database
+    let result = await _database
       .get(this)
-      .readSingleTable("staff", [branch_id], ["user_id", "=", user_id]);
+      .readSingleTable("staff", "branch_id", ["user_id", "=", user_id]);
 
     return new Promise((resolve) => {
       let obj = {

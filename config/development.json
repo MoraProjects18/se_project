@@ -16,6 +16,6 @@
       "pass":"@Password123"
     }
   },
-  "time-period":"1",
+  "closing_period": "1",
   "site_name": "http://localhost:3000"
 }

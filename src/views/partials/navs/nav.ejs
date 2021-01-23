@@ -59,23 +59,23 @@
 
             <% if( activepage== "Home"){
                 var nav = [
-                { page: 'Home', path: "admin_home_page" ,status : "active" },
-                { page: 'Add employee', path:"Add_employee" ,status : "deactive" },
-                { page: 'Profile', path: "",status : "deactive" }]  
+                { page: 'Home', path: "/admin/home" ,status : "active" },
+                { page: 'Add Employee', path:"/admin/addStaff" ,status : "deactive" },
+                { page: 'Profile', path: "/admin/profile",status : "deactive" }]  
             } %>
     
             <% if( activepage== "Invoice Payment"){
                 var nav = [
-                { page: 'Home', path: "cashier/home",status : "deactive" },
-                { page: 'Invoice Payment', path: "",status : "active" } , 
-                { page: 'Profile', path: "",status : "deactive" }]  
+                { page: 'Home', path: "/admin/home",status : "deactive" },
+                { page: 'Add Employee', path:"/admin/addStaff",status : "active" } , 
+                { page: 'Profile', path:  "/admin/profile",status : "deactive" }]  
             } %>
     
             <% if( activepage== "Profile"){
                 var nav = [
-                { page: 'Home', path: "cashier/home",status : "deactive" },
-                { page: 'Invoice Payment', path: "",status : "deactive" } , 
-                { page: 'Profile', path: "",status : "active" }]  
+                { page: 'Home', path: "/admin/home",status : "deactive" },
+                { page: 'Add Employee', path:"/admin/addStaff",status : "deactive" } , 
+                { page: 'Profile', path:  "/admin/profile",status : "active" }]  
             } %>
             
            
@@ -141,7 +141,7 @@
             <% if( activepage== "Initiate Service Order"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "active" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },
@@ -164,7 +164,7 @@
             <% if( activepage== "Daily Log"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
+                { page: 'Ticket details', path: "/receptionist/ticket/todayTicket" ,status : "deactive" },
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "active" },
@@ -175,7 +175,7 @@
             <% if( activepage== "Search"){
                 var nav = [
                 { page: 'Home', path: "/receptionist/home" ,status : "deactive" },
-                { page: 'Ticket details', path: "" ,status : "deactive" },
+                { page: 'Ticket details', path:"/receptionist/ticket/todayTicket" ,status : "deactive" },
                 { page: 'Initiate Service Order', path: "/receptionist/initiate" ,status : "deactive" },
                 { page: 'Continue Service Order', path: "/receptionist/sorder/failed" ,status : "deactive" },
                 { page: 'Daily Log', path: "/receptionist/sorder/gettodayso" ,status : "deactive" },

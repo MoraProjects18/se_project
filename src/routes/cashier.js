@@ -18,6 +18,13 @@ cashierRouter.post(
   authorization.isCashierRole,
   cashierController.searchInvoice
 );
+
+cashierRouter.post(
+  "/searchInvoiceBySO",
+  authorization.tokenAuthorize,
+  authorization.isCashierRole,
+  cashierController.searchInvoiceBySO
+);
 cashierRouter.post(
   "/invoice/pay",
   authorization.tokenAuthorize,

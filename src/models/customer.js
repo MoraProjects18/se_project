@@ -150,7 +150,7 @@ class Customer extends User {
       result.error
         ? (obj.error = true)
         : ((obj.error = false), (obj.result = result.result));
-      //console.log(obj);
+
       resolve(obj);
     });
   }
@@ -208,7 +208,6 @@ class Customer extends User {
       data.current_password,
       c_password
     );
-    console.log(validPassword);
     if (validPassword) {
       const result = await _database
         .get(this)

@@ -25,24 +25,43 @@
         </div>
         <div class="col-md-8 col-md-offset-3 text-center center">
             <div class="container py-4 text-center" id="invoice_search">
-                <form class="form-inline text-center" action="/cashier/invoice" method="post">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <div
-                            class="<%= typeof data.error !== `undefined` ? `px-auto` : `invalid-feedback text-danger` %>">
-                            <p class="text-danger px-2">
-                                <%= typeof data.error !=='undefined' ? data.error.message : "" %>
-                            </p>
+                <form class="text-center"  method="post">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class=" form-group mx-sm-3 mb-2">
+                                <label for="inputInvoice" class="sr-only bg-red">Enter Invoice Number</label>
+                                <input type="text"
+                                    class="form-control <%= typeof data.error.invoice_id !== 'undefined' ? `inputField is-invalid` : ` inputField` %> "
+                                    name="invoice_id" id="inputInvoice" placeholder="Enter Invoice Number" value="<%=typeof data.value.invoice_id !=='undefined' ? data.value.invoice_id : "" %>">
+                                <div
+                                class="<%= typeof data.error.invoice_id !== `undefined` ? `invalid-feedback` : `` %>">
+                                <%= typeof data.error.invoice_id !=='undefined' ? data.error.invoice_id : "" %>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-grad mt-1 mx-2 btn-grad-create " formaction="/cashier/invoice">Search Invoice</button>
+                                </div>
+                                
+                            </div>
+        
                         </div>
-                        <label for="inputInvoice" class="sr-only bg-red">Enter Invoice Number</label>
-                        <input type="text"
-                            class="form-control <%= typeof data.error !== 'undefined' ? `inputField is-invalid bg-red` : ` inputField` %> "
-                            name="invoice_id" id="inputInvoice" placeholder="Enter Invoice Number" value=<%=typeof
-                            data.value !=='undefined' ? data.value.invoice_id : "" %>>
-                        <button type="submit" class="btn btn-grad mx-2 btn-grad-create ">Search Invoice</button>
-
+                        <div class="col-sm-6">
+                            <div class=" form-group mx-sm-3 mb-2">
+                                <label for="inputInvoice" class="sr-only bg-red">Enter Service Order Id Number</label>
+                                <input type="text"
+                                    class="form-control <%= typeof data.error.service_order_id !== 'undefined' ? `inputField is-invalid` : ` inputField` %> "
+                                    name="service_order_id" id="inputInvoice" placeholder="Enter Service Order Id Number" value="<%=typeof data.value.service_order_id !=='undefined' ? data.value.service_order_id : "" %>">
+                                <div
+                                class="<%= typeof data.error.service_order_id !== `undefined` ? `invalid-feedback` : `` %>">
+                                <%= typeof data.error.service_order_id !=='undefined' ? data.error.service_order_id : "" %>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-grad mt-1 mx-2 btn-grad-create " formaction="/cashier/searchInvoiceBySO">Search Invoice By Service Order</button>
+                                </div>
+                                
+                            </div>
+        
+                        </div>
                     </div>
-
-
 
                 </form>
             </div>

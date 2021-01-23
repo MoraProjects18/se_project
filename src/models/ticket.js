@@ -40,7 +40,7 @@ class Ticket {
 
   async Initiate(data) {
     //validate data
-    console.log(data);
+
     let result = await _validate.get(this)(data);
     if (result.error)
       return new Promise((resolve) => resolve({ validationError: result }));
@@ -63,7 +63,6 @@ class Ticket {
     const resultdata = await _database
       .get(this)
       .readSingleTable("branch", ["branch_id", "branch_name"]);
-    //console.log(resultdata);
 
     return new Promise((resolve) => {
       let obj = {
@@ -73,12 +72,10 @@ class Ticket {
         ? (obj.error = true)
         : ((obj.error = false), (obj.result = resultdata.result));
 
-      //console.log(obj);
       resolve(obj);
     });
   }
   async GetTime(branch_id, start_date) {
-    console.log(branch_id);
     const resultdata = await _database
       .get(this)
       .call("get_timeslots", [branch_id, start_date]);
@@ -96,19 +93,11 @@ class Ticket {
   }
   async Close(data) {
     //validate the ticket id
-    console.log(data);
-    let validateResult = await _validateID.get(this)(data);
-    if (validateResult.error)
-      return new Promise((resolve) => resolve({ validationError: result }));
 
     //call update function of database class
     const result = await _database
       .get(this)
-      .update(
-        "ticket",
-        ["status", "closed"],
-        ["ticket_id", "=", data.ticket_id]
-      );
+      .update("ticket", ["status", "Closed"], ["ticket_id", "=", data]);
 
     return new Promise((resolve) => {
       let obj = {
@@ -120,9 +109,8 @@ class Ticket {
   }
 
   async UserTicket(user_id) {
-    //console.log(user_id);
     const result = await _database.get(this).call("get_user_tickets", user_id);
-    //console.log(result.result[0]);
+
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -138,7 +126,7 @@ class Ticket {
     const result = await _database
       .get(this)
       .call("get_today_tickets", branch_id);
-    //console.log(result.result[0]);
+
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -173,4 +161,5 @@ class Ticket {
     });
   }
 }
+
 module.exports = Ticket;

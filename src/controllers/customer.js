@@ -146,7 +146,6 @@ exports.showProfile = async (req, res) => {
 };
 
 exports.editProfile = async (req, res) => {
-  console.log(req.body);
   const result = await customer.edit_profile(req.body, req["user"]["user_id"]);
   if (result.validationError)
     return res.status(400).send(result.validationError);
@@ -157,9 +156,8 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.changePass = async (req, res) => {
-  // console.log(req.body);
   const result = await customer.change_pass(req.body, req["user"]["user_id"]);
-  console.log(result);
+
   if (result == "Incorrect Password")
     return res.status(200).send("Incorrect password");
   if (result.validationError)
@@ -191,13 +189,20 @@ exports.getTicketPage = async (req, res) => {
 exports.getUserTicket = async (req, res) => {
   const user_id = req.user.user_id;
   const result = await ticket.UserTicket(user_id);
-  //console.log(result);
-  if (result.validationError)
-    return res.status(400).send(result.validationError);
-  if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
 
+  if (result.connectionError)
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+
+  if (result.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
   if (result.resultData != 0) {
     var strng = JSON.stringify(result.resultData);
     var mydata = JSON.parse(strng);
@@ -229,12 +234,20 @@ exports.getUserTicket = async (req, res) => {
 
 exports.cancelTicket = async (req, res) => {
   const data = req.body;
-  console.log(data);
+
   const result = await ticket.Close(data);
-  if (result.validationError)
-    return res.status(400).send(result.validationError);
   if (result.connectionError)
-    return res.status(500).send("Internal Server Error!");
-  if (result.error) return res.status(400).send("Bad Request!");
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+
+  if (result.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
   res.status(200).redirect(`/customer/ticketDetails`);
 };

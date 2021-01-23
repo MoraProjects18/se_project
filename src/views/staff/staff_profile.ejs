@@ -70,8 +70,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                    <label>Staff ID</label>
-                                    <input class="form-control inputD" type="text" name="e_id" value=<%= staff.employee_id %> disabled>
+                                    <label><%= typeof staff.employee_id !== 'undefined' ? 'Staff ID' : "Admin ID" %></label>
+                                    <input class="form-control inputD" type="text" name="e_id" value=<%= typeof staff.employee_id !== 'undefined' ? staff.employee_id : staff.admin_id %> disabled>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -151,6 +151,10 @@
     </div>
     </div>
     </div>
+
+    <footer class="mt-auto">
+        <%- include('../partials/footers/staff_footer'); %>
+    </footer>
     
 </body>
 <script>

@@ -5,6 +5,14 @@ const config = require("config");
 const Staff = require("../models/staff");
 const staff = new Staff();
 
+exports.home = async (req, res) => {
+  res.render("./common/staff_home_page.ejs", {
+    usertype: "admin",
+    activepage: "Home",
+    title: "Admin Home",
+  });
+};
+
 exports.getAddEmployeePage = async (req, res) => {
   data = {
     dataFound: false,

@@ -10,13 +10,11 @@ class Database {
       _pool.set(this, mysql.createPool(config.get("database_credentials")));
       _connectionError.set(this, false);
     } catch (ex) {
-      console.log(ex);
       _connectionError.set(this, true);
     }
 
     _getResults.set(this, (error, results) => {
       if (error) {
-        console.log(error);
         return { error: true };
       }
       return { error: false, result: results };

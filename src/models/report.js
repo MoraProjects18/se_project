@@ -57,8 +57,6 @@ class Report {
   }
 
   async get_SO_details() {
-    console.log(_database);
-
     var result = await _database
       .get(this)
       .readMultipleTable(
@@ -131,10 +129,8 @@ class Report {
             return [];
           }
         });
-      console.log(res_data);
       return res_data;
     } catch (error) {
-      console.log("error here");
       return { error: "Not Connected" };
     }
   }

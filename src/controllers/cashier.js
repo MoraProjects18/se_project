@@ -10,25 +10,39 @@ exports.home = async (req, res) => {
   res.render("./common/staff_home_page.ejs", {
     usertype: "cashier",
     activepage: "Home",
-    title: "cashier home",
+    title: "Cashier Home",
   });
 };
 
 exports.getInvoicePage = async (req, res) => {
   data = {
     dataFound: false,
+    error: {
+      invoice_id: undefined,
+      NIC: undefined,
+    },
+    value: {
+      invoice_id: undefined,
+      NIC: undefined,
+    },
   };
   res.render("./cashier/payment.ejs", data);
 };
 
 exports.searchInvoice = async (req, res) => {
-  const invoiceR = await invoiceModel.getInvoice(req.body);
+  const invoiceR = await invoiceModel.getInvoice({
+    invoice_id: req.body.invoice_id,
+  });
   if (invoiceR.validationError) {
     data = {
       error: {
-        message: invoiceR.validationError.error.message,
+        invoice_id: invoiceR.validationError.error.message,
+        NIC: undefined,
       },
-      value: invoiceR.validationError.value,
+      value: {
+        invoice_id: invoiceR.validationError.value.invoice_id,
+        NIC: undefined,
+      },
     };
     // return res.status(400).send(invoiceR.validationError);
     return res.status(400).render("./cashier/payment.ejs", data);
@@ -40,7 +54,12 @@ exports.searchInvoice = async (req, res) => {
       status: "500",
       message: "Internal Server Error",
     });
-  if (invoiceR.error) return res.status(400).send("Bad Request!");
+  if (invoiceR.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
 
   if (invoiceR.result.length != 0) {
     const invoice = invoiceR.result[0];
@@ -49,6 +68,14 @@ exports.searchInvoice = async (req, res) => {
     const sou = soUser.result[0];
 
     data = {
+      error: {
+        invoice_id: undefined,
+        NIC: undefined,
+      },
+      value: {
+        invoice_id: undefined,
+        NIC: undefined,
+      },
       dataFound: true,
       invoice_id: invoice.invoice_id,
       NIC: sou.NIC,
@@ -61,16 +88,97 @@ exports.searchInvoice = async (req, res) => {
       status: sou.status,
       payment_amount: invoice.payment_amount,
     };
+    res.status(200).render("./cashier/payment.ejs", data);
   } else {
     data = {
       dataFound: false,
       error: {
-        status: false,
-        message: "Invalid invoice number",
+        invoice_id: "Invalid invoice number",
+        NIC: undefined,
+      },
+      value: {
+        invoice_id: undefined,
+        NIC: undefined,
       },
     };
+    res.status(400).render("./cashier/payment.ejs", data);
   }
-  res.status(200).render("./cashier/payment.ejs", data);
+};
+
+exports.searchInvoiceBySO = async (req, res) => {
+  const soR = await invoiceModel.getInvoiceByServiceOrder({
+    service_order_id: req.body.service_order_id,
+  });
+  if (soR.validationError) {
+    data = {
+      error: {
+        invoice_id: undefined,
+        service_order_id: soR.validationError.error.message,
+      },
+      value: {
+        invoice_id: undefined,
+        service_order_id: soR.validationError.value.NIC,
+      },
+    };
+    // return res.status(400).send(invoiceR.validationError);
+    return res.status(400).render("./cashier/payment.ejs", data);
+  }
+
+  if (soR.connectionError)
+    return res.status(500).render("common/errorpage", {
+      title: "Error",
+      status: "500",
+      message: "Internal Server Error",
+    });
+  if (soR.error)
+    return res.status(400).render("common/errorpage", {
+      title: "Error",
+      status: "400",
+      message: "Bad Request",
+    });
+
+  if (soR.result.length != 0) {
+    const invoice = soR.result[0];
+    const service_order_id = invoice.service_order_id;
+    const soUser = await invoiceModel.getSOUser(service_order_id);
+    const sou = soUser.result[0];
+
+    data = {
+      error: {
+        invoice_id: undefined,
+        service_order_id: undefined,
+      },
+      value: {
+        invoice_id: undefined,
+        service_order_id: undefined,
+      },
+      dataFound: true,
+      invoice_id: invoice.invoice_id,
+      NIC: sou.NIC,
+      service_order_id: invoice.service_order_id,
+      vehicle_number: sou.vehicle_number,
+      start_date: sou.start_date,
+      end_date: sou.end_date,
+      first_name: sou.first_name,
+      last_name: sou.last_name,
+      status: sou.status,
+      payment_amount: invoice.payment_amount,
+    };
+    res.status(200).render("./cashier/payment.ejs", data);
+  } else {
+    data = {
+      dataFound: false,
+      error: {
+        invoice_id: undefined,
+        service_order_id: "Invalid Service Order ID",
+      },
+      value: {
+        invoice_id: undefined,
+        service_order_id: undefined,
+      },
+    };
+    res.status(400).render("./cashier/payment.ejs", data);
+  }
 };
 
 exports.payInvoice = async (req, res) => {

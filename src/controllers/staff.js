@@ -45,7 +45,7 @@ exports.showProfile = async (req, res) => {
 
 exports.editProfile = async (req, res) => {
   const result = await staff.edit_profile(req.body, req["user"]["user_id"]);
-  // console.log(result);
+
   if (result.validationError) {
     let obj = joiSupporter(result.validationError);
     const data = await staff.show_profile(req["user"]["user_id"]);
@@ -72,7 +72,6 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.changePass = async (req, res) => {
-  // console.log(req.body);
   const result = await staff.change_pass(req.body, req["user"]["user_id"]);
 
   if (result.current_password_error) {

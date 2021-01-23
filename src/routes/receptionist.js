@@ -80,10 +80,16 @@ receptionistRouter.get(
 );
 
 receptionistRouter.get(
-  "/ticket/todayticket",
+  "/ticket/todayTicket",
   authorization.tokenAuthorize,
   authorization.isReceptionistsRole,
   ticketController.getTodayTicket
 );
 
+receptionistRouter.get(
+  "/ticket/todayTicketData",
+  authorization.tokenAuthorize,
+  authorization.isReceptionistsRole,
+  ticketController.getTodayTicketData
+);
 module.exports = receptionistRouter;

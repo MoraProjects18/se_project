@@ -5,14 +5,16 @@ const _schemaNew = new WeakMap();
 const _schemaSearch = new WeakMap();
 const _validate = new WeakMap();
 const _validateSearch = new WeakMap();
+const _schemaSO = new WeakMap();
+const _validateSO = new WeakMap();
 
 class Invoice {
   constructor() {
     _database.set(this, new Database());
+
     _schemaNew.set(
       this,
       Joi.object({
-        // invoice_id: Joi.number().required(),
         service_order_id: Joi.number().required(),
         payment_amount: Joi.number().required(),
       })
@@ -31,6 +33,17 @@ class Invoice {
 
     _validateSearch.set(this, (object) => {
       return _schemaSearch.get(this).validate(object);
+    });
+
+    _schemaSO.set(
+      this,
+      Joi.object({
+        service_order_id: Joi.number().required(),
+      })
+    );
+
+    _validateSO.set(this, (object) => {
+      return _schemaSO.get(this).validate(object);
     });
   }
 
@@ -70,6 +83,36 @@ class Invoice {
         ["invoice_id", "service_order_id", "payment_amount"],
         ["invoice_id", "=", data.invoice_id],
         ["invoice_id"]
+      );
+    return new Promise((resolve) => {
+      let obj = {
+        connectionError: _database.get(this).connectionError,
+      };
+
+      if (result.error) {
+        obj.error = true;
+      } else {
+        obj.error = false;
+        obj.result = result.result;
+      }
+      resolve(obj);
+    });
+  }
+
+  async getInvoiceByServiceOrder(data) {
+    let valid = await _validateSO.get(this)(data);
+    if (valid.error) {
+      return new Promise((resolve) => resolve({ validationError: valid }));
+    }
+
+    const result = await _database
+      .get(this)
+      .readSingleTable(
+        "invoice",
+        ["invoice_id", "service_order_id", "payment_amount"],
+        ["service_order_id", "=", data.service_order_id],
+        ["service_order_id"],
+        [1]
       );
     return new Promise((resolve) => {
       let obj = {
