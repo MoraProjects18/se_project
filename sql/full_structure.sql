@@ -7,7 +7,7 @@ use emission_test_db;
 
 
 CREATE TABLE useracc(
-    user_id int AUTO_INCREMENT primary key, 
+    user_id int primary key AUTO_INCREMENT, 
     email varchar(255) UNIQUE NOT NULL,
     first_name varchar(200) NOT NULL,
     last_name varchar(200) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE useracc(
     password varchar(255) NOT NULL);
 
 CREATE TABLE branch(
-    branch_id int AUTO_INCREMENT PRIMARY KEY  , 
+    branch_id int PRIMARY KEY AUTO_INCREMENT, 
     branch_name varchar(50) NOT NULL, 
     branch_address varchar(255) NOT NULL, 
     contact_no varchar(15) NOT NULL);
@@ -85,10 +85,20 @@ alter table service_order AUTO_INCREMENT=1001;
 
 
 -- Stored Procedures
-
--- Register New Customer
 use emission_test_db;
 drop procedure if exists register_new_customer;
+drop procedure if exists get_todayso;
+drop procedure if exists show_staff_profile;
+drop procedure if exists initiate_so;
+drop procedure if exists show_customer_profile;
+drop procedure if exists register_new_staff;
+drop procedure if exists update_user;
+drop procedure if exists get_failedso;
+drop procedure if exists get_timeslots;
+
+
+-- Register New Customer
+
 
 DELIMITER $$
 CREATE PROCEDURE register_new_customer(
@@ -113,7 +123,6 @@ END $$
 DELIMITER ;
 
 -- Show today service orders
-drop procedure if exists get_todayso;
 
 DELIMITER $$
   CREATE PROCEDURE get_todayso()
@@ -126,7 +135,7 @@ DELIMITER $$
 DELIMITER ;
 
 -- initiate new service order
-drop procedure if exists initiate_so;
+
 
 DELIMITER $$
 CREATE PROCEDURE initiate_so(
@@ -146,7 +155,6 @@ END $$
 DELIMITER ;
 
 -- Show Staff Profile
-drop procedure if exists show_staff_profile;
 
 DELIMITER $$
 CREATE PROCEDURE show_staff_profile(
@@ -169,7 +177,6 @@ END$$
 DELIMITER ;
 
 -- Show Customer Profile
-drop procedure if exists show_customer_profile;
 
 DELIMITER $$
 CREATE PROCEDURE show_customer_profile(
@@ -185,7 +192,7 @@ DELIMITER ;
 
 
 -- Registre New Staff
-drop procedure if exists register_new_staff;
+
 
 DELIMITER $$
 CREATE PROCEDURE register_new_staff(
@@ -209,7 +216,6 @@ END $$
 DELIMITER ;
 
 -- Update user Profile
-drop procedure if exists update_user;
 
 DELIMITER $$
 CREATE PROCEDURE update_user(
@@ -227,7 +233,7 @@ END $$
 DELIMITER ;
 
 -- get failed service orders
-drop procedure if exists get_failedso;
+
 
 DELIMITER $$
   CREATE PROCEDURE get_failedso( nic_val varchar(12))
@@ -251,10 +257,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-
-
-
-drop procedure if exists get_timeslots;
 
 DELIMITER $$
 CREATE PROCEDURE get_timeslots(
