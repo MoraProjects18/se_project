@@ -69,7 +69,7 @@
         <tbody id='SO_table_body'>
           
          <% for (var i=0;i<serviceorders.length;i++){ %>
-             <% if ((serviceorders[i].status=="Payed") || (serviceorders[i].status=="Open")){ %>
+             <% if ((serviceorders[i].status=="Paid") || (serviceorders[i].status=="Open")){ %>
             <tr>
             <td> <%= serviceorders[i].service_order_id %></td>
             <td> <%= serviceorders[i].first_name %></td>
