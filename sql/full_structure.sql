@@ -118,7 +118,7 @@ BEGIN
 		INSERT INTO `customer`(`user_id`,`license_number`) VALUES (LAST_INSERT_ID(),license_number);
         INSERT INTO `contact_no`(`user_id`,`contact_no`) VALUES (LAST_INSERT_ID(),contact_no);
         
-        SELECT `user_id`,`first_name`,`last_name`,`user_type` FROM `useracc` WHERE `user_id`=LAST_INSERT_ID();
+        SELECT `user_id`,`first_name`,`last_name`,`user_type`,`email` FROM `useracc` WHERE `user_id`=LAST_INSERT_ID();
     COMMIT;
 
 END $$
@@ -287,7 +287,6 @@ END $$
 DELIMITER ;
 
 START TRANSACTION;
-	DELETE FROM `useracc`;
     ALTER TABLE `useracc` AUTO_INCREMENT = 1;
     INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('administrator@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654000V', 'Admin', 'Super', 'admin');
     INSERT INTO `adminacc` (`user_id`, `admin_id`) VALUES ('1', '1');

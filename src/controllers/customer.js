@@ -51,7 +51,7 @@ exports.registerUser = async (req, res) => {
       path.join(__dirname, "../views/email/email.ejs"),
       {
         siteName: config.get("site_name"),
-        email: result.userData["email"],
+        email: result.userData["`email`"],
         id: encryptedUserID,
       }
     );

@@ -13,7 +13,8 @@ router.get(
 
 router.get(
   "/get_report/:id/html",
-
+  authorization.tokenAuthorize,
+  authorization.isReportIssuerRole,
   reportController.getreporthtml
 );
 router.get(
