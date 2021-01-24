@@ -38,7 +38,6 @@ cashierRouter.post(
   cashierController.closeServiceOrder
 );
 
-// router.get("/", reportController.getreportPage);
 cashierRouter.get(
   "/home",
   authorization.tokenAuthorize,

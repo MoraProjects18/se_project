@@ -251,20 +251,7 @@ BEGIN
 END $$
 DELIMITER ;
 
--- drop procedure if exists get_today_tickets;
 
--- DELIMITER $$
--- CREATE PROCEDURE get_today_tickets(
---     branch_id int
--- )
--- BEGIN
---   SELECT ticket_id,user_id,status,start_time,branch_id,email
---      FROM emission_test_db.ticket natural join emission_test_db.useracc
---      WHERE start_date = CURDATE() ORDER BY start_time;
-    
-
--- END $$
--- DELIMITER ;
 
 
 drop procedure if exists get_timeslots;
@@ -295,4 +282,10 @@ BEGIN
 END $$
 DELIMITER ;
 
-INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('administrator@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654172V', 'administrator', 'administrator', 'admin');
+START TRANSACTION;
+	DELETE FROM `useracc`;
+    ALTER TABLE `useracc` AUTO_INCREMENT = 1;
+    INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('administrator@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654000V', 'Admin', 'Super', 'admin');
+    INSERT INTO `adminacc` (`user_id`, `admin_id`) VALUES ('1', '1');
+    INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('1', '0770000000');	
+COMMIT;

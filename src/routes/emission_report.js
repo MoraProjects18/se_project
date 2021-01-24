@@ -10,7 +10,7 @@ router.get(
   authorization.isReportIssuerRole,
   reportController.getreportPage
 );
-//router.get("/json/:id", reportController.getjson);
+
 router.get(
   "/get_report/:id/html",
 

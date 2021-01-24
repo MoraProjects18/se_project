@@ -31,7 +31,6 @@ exports.getTicketPage = async (req, res) => {
 
   res.render("../views/ticket/createTicket.ejs", data);
 };
-//{usertype: "customer",activepage:"home",title:"customer home"}
 exports.getTimes = async (req, res) => {
   var result = await ticket.GetTime(req.query.branch_id, req.query.start_date);
   if (result.connectionError)
@@ -48,7 +47,9 @@ exports.getTimes = async (req, res) => {
       message: "Bad Request",
     });
 
-  res.status(200).send(result.result);
+  res
+    .status(200)
+    .send({ data: result.result, times: config.get("ticket_time_slots") });
 };
 
 exports.createTicket = async (req, res) => {

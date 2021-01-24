@@ -33,13 +33,6 @@ exports.showProfile = async (req, res) => {
     staff: result.result[0][0],
     staff1: result.result[1][0],
     usertype: user_type,
-    // current_password_error: true,
-    // error: {
-    //   first_name: "Hey there",
-    // },
-    // value: {
-    //   first_name: "gooo",
-    // },
   });
 };
 

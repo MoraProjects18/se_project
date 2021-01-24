@@ -210,10 +210,6 @@ class ServiceOrder {
   }
 
   async GetMySO(data) {
-    // let validateResult = await _validateID.get(this)(data);
-    // if (validateResult.error)
-    //   return new Promise((resolve) => resolve({ validationError: validateResult }));
-
     const result = await _database
       .get(this)
       .readMultipleTable(
