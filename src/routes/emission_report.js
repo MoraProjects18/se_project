@@ -11,11 +11,8 @@ router.get(
   reportController.getreportPage
 );
 
-router.get(
-  "/get_report/:id/html",
+router.get("/get_report/:id/html", reportController.getreporthtml);
 
-  reportController.getreporthtml
-);
 router.get("/get_report/:id/pdf", reportController.getreportpdf);
 
 router.post(

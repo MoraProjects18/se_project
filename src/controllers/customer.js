@@ -112,7 +112,7 @@ exports.confirmMail = async (req, res) => {
       message: "Data is not acceptable",
     });
 
-  res.status(200).redirect("/auth/login");
+  res.status(200).redirect("/customer/home");
 };
 
 exports.showProfile = async (req, res) => {
