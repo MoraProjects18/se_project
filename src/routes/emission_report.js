@@ -17,12 +17,7 @@ router.get(
   authorization.isReportIssuerRole,
   reportController.getreporthtml
 );
-router.get(
-  "/get_report/:id/pdf",
-  authorization.tokenAuthorize,
-  authorization.isReportIssuerRole,
-  reportController.getreportpdf
-);
+router.get("/get_report/:id/pdf", reportController.getreportpdf);
 
 router.post(
   "/get_final_report",
