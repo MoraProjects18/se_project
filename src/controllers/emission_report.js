@@ -13,7 +13,7 @@ exports.getreportPage = async (req, res) => {
 
   var serviceorders = service_order.result;
 
-  res.render("./reportissuer/EmissionReport.ejs", {
+  res.render("reportissuer/EmissionReport.ejs", {
     name: "charuka",
     serviceorders: serviceorders,
     moment: moment,

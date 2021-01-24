@@ -283,7 +283,7 @@ exports.getUserTicket = async (req, res) => {
 exports.cancelTicket = async (req, res) => {
   const data = req.body;
 
-  const result = await ticket.Close(data);
+  const result = await ticket.Close(data.ticket_id);
   if (result.connectionError)
     return res.status(500).render("common/errorpage", {
       title: "Error",

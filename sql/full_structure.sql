@@ -50,7 +50,7 @@ CREATE TABLE vehicle(
 CREATE TABLE customer(
     user_id int PRIMARY KEY, 
     license_number char(8) NOT NULL,
-    email_verification boolean NOT NULL,
+    email_verification boolean default 0,
     FOREIGN KEY(user_id) REFERENCES useracc(user_id));
 
 CREATE TABLE service_order(
@@ -95,6 +95,7 @@ drop procedure if exists register_new_staff;
 drop procedure if exists update_user;
 drop procedure if exists get_failedso;
 drop procedure if exists get_timeslots;
+drop procedure if exists get_user_tickets;
 
 
 -- Register New Customer
@@ -112,11 +113,11 @@ CREATE PROCEDURE register_new_customer(
 )
 BEGIN
 	START TRANSACTION;
-		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (email,password,NIC,first_name,last_name,"customer");
-		INSERT INTO customer(user_id,license_number) VALUES (LAST_INSERT_ID(),license_number);
-        INSERT INTO contact_no(user_id,contact_no) VALUES (LAST_INSERT_ID(),contact_no);
+		INSERT INTO `useracc`(`email`,`password`,`NIC`,`first_name`,`last_name`,`user_type`) VALUES (email,password,NIC,first_name,last_name,"customer");
+		INSERT INTO `customer`(`user_id`,`license_number`) VALUES (LAST_INSERT_ID(),license_number);
+        INSERT INTO `contact_no`(`user_id`,`contact_no`) VALUES (LAST_INSERT_ID(),contact_no);
         
-        SELECT user_id,first_name,last_name,user_type FROM useracc WHERE user_id=LAST_INSERT_ID();
+        SELECT `user_id`,`first_name`,`last_name`,`user_type` FROM `useracc` WHERE `user_id`=LAST_INSERT_ID();
     COMMIT;
 
 END $$
@@ -127,9 +128,9 @@ DELIMITER ;
 DELIMITER $$
   CREATE PROCEDURE get_todayso()
     BEGIN
-       SELECT service_order_id,NIC,first_name,last_name,vehicle_number,start_date,end_date, status
+       SELECT `service_order_id`,`NIC`,`first_name`,`last_name`,`vehicle_number`,`start_date`,`end_date`, `status`
        FROM useracc INNER JOIN service_order 
-       ON useracc.user_id=service_order.user_id
+       ON `useracc`.user_id=`service_order`.user_id
        WHERE DATE(start_date) = CURDATE();
     END$$
 DELIMITER ;
@@ -208,9 +209,9 @@ CREATE PROCEDURE register_new_staff(
 )
 BEGIN
 	START TRANSACTION;
-		INSERT INTO useracc(email,password,NIC,first_name,last_name,user_type) VALUES (user_id,email,password,NIC,first_name,last_name,user_type);
-		INSERT INTO staff(user_id,employee_id,role,branch_id) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
-        INSERT INTO contact_no(user_id,contact_no) VALUES (LAST_INSERT_ID(),contact_no);
+		INSERT INTO `useracc`(`email`,`password`,`NIC`,`first_name`,`last_name`,`user_type`) VALUES (user_id,email,password,NIC,first_name,last_name,user_type);
+		INSERT INTO `staff`(`user_id`,`employee_id`,`role`,`branch_id`) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
+        INSERT INTO `contact_no`(`user_id`,`contact_no`) VALUES (LAST_INSERT_ID(),contact_no);
     COMMIT;
 END $$
 DELIMITER ;
@@ -241,9 +242,9 @@ DELIMITER $$
        SELECT service_order_id,vehicle_number,start_date,end_date, status
 		FROM useracc natural inner join service_order where NIC= nic_val and status="Failed";
     END$$
-  DELIMITER ;
+DELIMITER ;
 
-drop procedure if exists get_user_tickets;
+
 
 DELIMITER $$
 CREATE PROCEDURE get_user_tickets(
