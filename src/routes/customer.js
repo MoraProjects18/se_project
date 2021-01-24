@@ -28,11 +28,7 @@ router.post(
   authorization.isCustomerRole,
   customerController.changePass
 );
-router.get(
-  "/register",
-  authorization.isAlreadyLogin,
-  customerController.getRegisterPage
-);
+router.get("/register", customerController.getRegisterPage);
 router.post("/register", customerController.registerUser);
 router.get("/register/confirm/:email", customerController.confirmMail);
 router.get(
