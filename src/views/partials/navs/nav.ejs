@@ -56,8 +56,8 @@
 
             <% if( activepage== "Home"){
                 var nav = [
-                { page: 'Home', path: "admin_home_page" ,status : "active" },
-                { page: 'Add employee', path:"Add_employee" ,status : "deactive" },
+                { page: 'Home', path: "" ,status : "active" },
+                { page: 'Add employee', path:"" ,status : "deactive" },
                 { page: 'Profile', path: "",status : "deactive" }]  
             } %>
     
@@ -203,11 +203,10 @@
 
             <ul class="navbar-nav ms-auto">
                
-                <% nav.forEach(function(nav) { %>
-                    <li>
+                <% nav.forEach(function(nav) { %>                  
                         <li class="nav-item">
                             <a class="nav-link " id="<%=nav.status%>" href="<%=nav.path%>"><%=nav.page%></a>
-                        </li>              
+                        </li>            
                                        
                         <% }); %>
               
@@ -223,7 +222,6 @@
 </nav>
 
 <script>
-
 document.getElementById("signout").onclick = function () {
     location.href = "";
 };
