@@ -96,6 +96,7 @@ drop procedure if exists update_user;
 drop procedure if exists get_failedso;
 drop procedure if exists get_timeslots;
 drop procedure if exists get_user_tickets;
+drop procedure if exists get_today_tickets;
 
 
 -- Register New Customer
@@ -209,8 +210,8 @@ CREATE PROCEDURE register_new_staff(
 )
 BEGIN
 	START TRANSACTION;
-		INSERT INTO `useracc`(`email`,`password`,`NIC`,`first_name`,`last_name`,`user_type`) VALUES (user_id,email,password,NIC,first_name,last_name,user_type);
-		INSERT INTO `staff`(`user_id`,`employee_id`,`role`,`branch_id`) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
+		INSERT INTO `useracc`(`email`,`password`,`NIC`,`first_name`,`last_name`,`user_type`) VALUES (email,password,NIC,first_name,last_name,user_type);
+		INSERT INTO `staff`(`user_id`,`employee_id`,`branch_id`) VALUES (LAST_INSERT_ID(),employee_id,branch_id);
         INSERT INTO `contact_no`(`user_id`,`contact_no`) VALUES (LAST_INSERT_ID(),contact_no);
     COMMIT;
 END $$
