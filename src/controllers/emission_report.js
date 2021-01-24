@@ -23,21 +23,6 @@ exports.getreportPage = async (req, res) => {
   });
 };
 
-/*
-exports.getjson= async (req, res) => {
-    res.json(
-            {"body":
-                {"1":
-                    {"vehicle number":'km4567',"test_status":"Passed","Engine number":"456",
-                        "Test1":{"Carbon":"0.89","CO2":"0.87","CO":"0.14","O2":'0.31'},
-                        "Test2":{"Carbon":"0.77","CO2":"0.67","CO":"0.34","O2":'0.21'},
-                    }
-                }
-            }
-            );
-  };
-*/
-
 exports.getreporthtml = async (req, res) => {
   var SO_id = req.params.id;
   const so_result = await report.get_SO(SO_id);

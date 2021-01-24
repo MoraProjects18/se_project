@@ -110,7 +110,6 @@
         var serviceorders=JSON.parse('<%- JSON.stringify(serviceorders)%>');
         for(var j=0;j<serviceorders.length;j++){
             if(valuesel==(serviceorders[j]['service_order_id'])){
-                console.log('SO id exists');
                 if((serviceorders[j]['status']=='Paid')|| (serviceorders[j]['status']=='Closed') || (serviceorders[j]['status']=='Failed') ){
                     return true;}
                 else if (serviceorders[j]['status']=='Open') {
@@ -123,8 +122,6 @@
                 
             }
       }
-      
-      console.log('SO id does not exists');
       
       $('#so_message_id').html("Incorrect Service Order ID");
       return false;}

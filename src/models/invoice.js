@@ -131,11 +131,6 @@ class Invoice {
 
   //Search invoice
   async getSOUser(data) {
-    // let valid = await _validateSearch.get(this)(data);
-    // if (valid.error) {
-    //   return new Promise((resolve) => resolve({ validationError: valid }));
-    // }
-
     const result = await _database
       .get(this)
       .readMultipleTable(

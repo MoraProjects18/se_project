@@ -44,7 +44,6 @@ exports.searchInvoice = async (req, res) => {
         NIC: undefined,
       },
     };
-    // return res.status(400).send(invoiceR.validationError);
     return res.status(400).render("./cashier/payment.ejs", data);
   }
 
@@ -120,7 +119,6 @@ exports.searchInvoiceBySO = async (req, res) => {
         service_order_id: soR.validationError.value.service_order_id,
       },
     };
-    // return res.status(400).send(invoiceR.validationError);
     return res.status(400).render("./cashier/payment.ejs", data);
   }
 
@@ -200,13 +198,6 @@ exports.payInvoice = async (req, res) => {
     });
   res.status(200).send({ message: "Payment Confirmed" });
   const SOUser = await invoiceModel.getSOUser(data.service_order_id);
-  // const email = new Email();
-  // await email.send(
-  //   soUser.result[0].email,
-  //   `${soUser.result[0].service_order_id} payment details`,
-  //   ``,
-  //   `<h2>${soUser.result[0].service_order_id} service order's payment is sucessfull.</h2>`
-  // );
   const htmlContent = await ejs.renderFile(
     path.join(__dirname, "../views/cashier/payment_confirmation_email.ejs"),
     {

@@ -141,19 +141,11 @@ exports.showProfile = async (req, res) => {
     customer: result.result[0][0],
     customer1: result.result[1][0],
     usertype: user_type,
-    // current_password_error: true,
-    // error: {
-    //   first_name: "Hey there",
-    // },
-    // value: {
-    //   first_name: "gooo",
-    // },
   });
 };
 
 exports.editProfile = async (req, res) => {
   const result = await customer.edit_profile(req.body, req["user"]["user_id"]);
-  // console.log(result);
   if (result.validationError) {
     let obj = joiSupporter(result.validationError);
     const data = await customer.show_profile(req["user"]["user_id"]);
@@ -183,7 +175,6 @@ exports.editProfile = async (req, res) => {
 };
 
 exports.changePass = async (req, res) => {
-  // console.log(req.body);
   const result = await customer.change_pass(req.body, req["user"]["user_id"]);
 
   if (result.current_password_error) {

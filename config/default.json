@@ -1,1 +1,11 @@
-{}
+{
+    "database_credentials": {
+        "connectionLimit": 5
+      },
+      "jwtPrivateKey":"BRpGcRf_nLyj0",
+      "email_transporter_credentials": {
+        "port": 465,
+        "secure": true
+      }
+
+}

@@ -142,7 +142,7 @@ class Customer extends User {
       result.error
         ? (obj.error = true)
         : ((obj.error = false), (obj.result = result.result));
-      //console.log(obj);
+
       resolve(obj);
     });
   }
@@ -151,7 +151,6 @@ class Customer extends User {
     //validate data
     let result = await _validate.get(this)(
       data,
-      // Joi.object(_schema.get(this)).options({ abortEarly: false })
       Joi.object(
         _.pick(_schema.get(this), ["first_name", "last_name", "contact_no"])
       ).options({ abortEarly: false })
@@ -172,7 +171,7 @@ class Customer extends User {
         data.last_name,
         data.contact_no,
       ]);
-    // console.log(result);
+
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -181,71 +180,6 @@ class Customer extends User {
       resolve(obj);
     });
   }
-  /*
-  async change_pass(data, user_id) {
-    //validate data
-    let schema = {
-      new_password: _.pick(_schema.get(this), ["password"]).password,
-    };
-    // let result = await _validate.get(this)(
-    //   data,
-    //   //Joi.object(_schema.get(this)).options({ abortEarly: false })
-    // );
-    // if (result.error)
-    //   return new Promise((resolve) => resolve({ validationError: result }));
-    let result = await _validate.get(this)(
-      _.pick(data, ["new_password"]),
-      Joi.object(schema).options({
-        abortEarly: false,
-      })
-    );
-    if (result.error) {
-      console.log("Validation error", result.error);
-      return new Promise((resolve) =>
-        resolve({ validationError: result.error })
-      );
-    }
-
-    let c_password = "";
-    c_password = await _database
-      .get(this)
-      .readSingleTable("useracc", "password", ["user_id", "=", user_id]);
-
-    const salt = await bcrypt.genSalt(10);
-    c_password = c_password.result[0].password;
-
-    const hashedPassword1 = await bcrypt.hash(data.new_password, salt);
-    data.new_password = hashedPassword1;
-    const validPassword = await bcrypt.compare(
-      data.current_password,
-      c_password
-    );
-
-    if (validPassword) {
-      const result = await _database
-        .get(this)
-        .update(
-          "useracc",
-          ["password", data.new_password],
-          ["user_id", "=", user_id]
-        );
-      return new Promise((resolve) => {
-        let obj = {
-          connectionError: _database.get(this).connectionError,
-        };
-        result.error ? (obj.error = true) : (obj.error = false);
-        resolve(obj);
-      });
-    } else {
-      return new Promise((resolve) => {
-        let obj = {
-          connectionError: _database.get(this).connectionError,
-          current_password_error: true,
-        };
-        resolve(obj);
-      });
-    }
-  }*/
 
   async change_pass(data, user_id) {
     //validate data

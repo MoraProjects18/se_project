@@ -76,11 +76,6 @@
     <script>
 
         jQuery('#start_date').datetimepicker({
-            onGenerate:function( ct ){
-                jQuery(this).find('.xdsoft_date.xdsoft_weekend')
-                    .addClass('xdsoft_disabled');
-
-            },
             format:'Y-m-d',
             minDate: '+1970/01/02',
             inline: false,
@@ -121,9 +116,9 @@
                     `/ticket/gettimeslot?branch_id=${branch_id}&start_date=${start_date}`,
                     true,
                     (responseText)=>{
-                        let times = ['9:00','9:30','10:00','10:30', '11:00', '11:30', '12:00', '14:00', '14:30', '15:00', '15:30', '16:00' , '16:30','17:00'];
                         let data = JSON.parse(responseText);
-                        let timeArray = data[0]
+                        let times = data.times;
+                        let timeArray = data.data[0]
                         timeArray.map((time) => {
                          
                             let index = times.indexOf(time.start_time.substring(0,5));

@@ -30,7 +30,6 @@ exports.isGuestUser = (req, res, next) => {
   } else {
     try {
       const payload = jwt.verify(token, config.get("jwtPrivateKey"));
-      console.log(payload);
       req.user = payload;
       res.redirect(`/${req.user["user_type"]}/home`);
     } catch (ex) {
