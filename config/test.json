@@ -1,0 +1,42 @@
+{
+  "database_credentials": {
+    "host": "localhost",
+    "user": "root",
+    "database": "emission_test_db_testing",
+    "password": ""
+  },
+  "email_transporter_credentials": {
+    "host": "smtp.gmail.com",
+    "auth": {
+      "user": "emissiontestcenter18@gmail.com",
+      "pass": "@Password123"
+    }
+  },
+  "ticket_time_slots": [
+    "9:00",
+    "9:20",
+    "9:40",
+    "10:00",
+    "10:20",
+    "10:40",
+    "11:00",
+    "11:20",
+    "11:40",
+    "13:00",
+    "13:20",
+    "13:40",
+    "14:00",
+    "14:20",
+    "14:40",
+    "15:00",
+    "15:20",
+    "15:40",
+    "16:00",
+    "16:20",
+    "16:40",
+    "17:00"
+  ],
+  "closing_period": "1",
+  "site_name": "http://localhost:3000",
+  "existing_emission_system_url": "https://existing-eco-system.herokuapp.com"
+}
