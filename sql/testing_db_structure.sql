@@ -1,13 +1,13 @@
 -- Sechema of the database
 
 drop database if exists emission_test_db_testing;
-create database emission_test_db;
+create database emission_test_db_testing;
 
 use emission_test_db_testing;
 
 
 CREATE TABLE useracc(
-    user_id int primary key AUTO_INCREMENT, 
+    user_id int primary key AUTO_INCREMENT,
     email varchar(255) UNIQUE NOT NULL,
     first_name varchar(200) NOT NULL,
     last_name varchar(200) NOT NULL,
@@ -16,67 +16,67 @@ CREATE TABLE useracc(
     password varchar(255) NOT NULL);
 
 CREATE TABLE branch(
-    branch_id int PRIMARY KEY AUTO_INCREMENT, 
-    branch_name varchar(50) NOT NULL, 
-    branch_address varchar(255) NOT NULL, 
+    branch_id int PRIMARY KEY AUTO_INCREMENT,
+    branch_name varchar(50) NOT NULL,
+    branch_address varchar(255) NOT NULL,
     contact_no varchar(15) NOT NULL);
 
 CREATE TABLE staff(
-    user_id int PRIMARY KEY, 
-    employee_id varchar(15) NOT NULL, 
-    branch_id int, 
-    FOREIGN KEY(user_id) references useracc(user_id), 
+    user_id int PRIMARY KEY,
+    employee_id varchar(15) NOT NULL,
+    branch_id int,
+    FOREIGN KEY(user_id) references useracc(user_id),
     FOREIGN KEY(branch_id) references branch(branch_id));
 
 CREATE TABLE adminacc(
-    user_id int(15) PRIMARY KEY, 
-    admin_id varchar(15), 
+    user_id int(15) PRIMARY KEY,
+    admin_id varchar(15),
     FOREIGN KEY(user_id) references useracc(user_id));
 
 CREATE TABLE contact_no(
     user_id int,
     contact_no varchar(15),
-    PRIMARY KEY(user_id,contact_no), 
+    PRIMARY KEY(user_id,contact_no),
     FOREIGN KEY(user_id) REFERENCES useracc(user_id));
 
 CREATE TABLE vehicle(
-    registration_number varchar(10) PRIMARY KEY, 
-    user_id int, 
-    engine_number varchar(20) NOT NULL, 
-    model_number varchar(20) NOT NULL, 
-    model varchar(20) NOT NULL, 
+    registration_number varchar(10) PRIMARY KEY,
+    user_id int,
+    engine_number varchar(20) NOT NULL,
+    model_number varchar(20) NOT NULL,
+    model varchar(20) NOT NULL,
     FOREIGN KEY(user_id) REFERENCES useracc(user_id));
 
 CREATE TABLE customer(
-    user_id int PRIMARY KEY, 
+    user_id int PRIMARY KEY,
     license_number char(8) NOT NULL,
     email_verification boolean default 0,
     FOREIGN KEY(user_id) REFERENCES useracc(user_id));
 
 CREATE TABLE service_order(
-    service_order_id int PRIMARY KEY AUTO_INCREMENT, 
-    user_id int, 
-    vehicle_number varchar(10), 
-    start_date DateTime NOT NULL, 
-    end_date DateTime, 
-    status varchar(10) NOT NULL, 
+    service_order_id int PRIMARY KEY AUTO_INCREMENT,
+    user_id int,
+    vehicle_number varchar(10),
+    start_date DateTime NOT NULL,
+    end_date DateTime,
+    status varchar(10) NOT NULL,
     FOREIGN KEY(user_id) REFERENCES customer(user_id),
     FOREIGN KEY(vehicle_number) REFERENCES vehicle(registration_number));
 
 CREATE TABLE invoice(
-    invoice_id int PRIMARY KEY AUTO_INCREMENT, 
-    service_order_id int, 
-    payment_amount decimal(10,2), 
+    invoice_id int PRIMARY KEY AUTO_INCREMENT,
+    service_order_id int,
+    payment_amount decimal(10,2),
     FOREIGN KEY(service_order_id) REFERENCES service_order(service_order_id));
 
 CREATE TABLE ticket(
-    ticket_id int PRIMARY KEY AUTO_INCREMENT, 
-    user_id int, 
-    status varchar(10) NOT NULL, 
-    start_date date NOT NULL, 
-    start_time time NOT NULL, 
-    branch_id int, 
-    FOREIGN KEY(user_id) REFERENCES customer(user_id), 
+    ticket_id int PRIMARY KEY AUTO_INCREMENT,
+    user_id int,
+    status varchar(10) NOT NULL,
+    start_date date NOT NULL,
+    start_time time NOT NULL,
+    branch_id int,
+    FOREIGN KEY(user_id) REFERENCES customer(user_id),
     FOREIGN KEY(branch_id) REFERENCES branch(branch_id));
 
 alter table ticket AUTO_INCREMENT=1001;
@@ -85,7 +85,6 @@ alter table service_order AUTO_INCREMENT=1001;
 
 
 -- Stored Procedures
-use emission_test_db;
 drop procedure if exists register_new_customer;
 drop procedure if exists get_todayso;
 drop procedure if exists show_staff_profile;
@@ -117,7 +116,7 @@ BEGIN
 		INSERT INTO `useracc`(`email`,`password`,`NIC`,`first_name`,`last_name`,`user_type`) VALUES (email,password,NIC,first_name,last_name,"customer");
 		INSERT INTO `customer`(`user_id`,`license_number`) VALUES (LAST_INSERT_ID(),license_number);
         INSERT INTO `contact_no`(`user_id`,`contact_no`) VALUES (LAST_INSERT_ID(),contact_no);
-        
+
         SELECT `user_id`,`first_name`,`last_name`,`user_type`,`email` FROM `useracc` WHERE `user_id`=LAST_INSERT_ID();
     COMMIT;
 
@@ -130,7 +129,7 @@ DELIMITER $$
   CREATE PROCEDURE get_todayso()
     BEGIN
        SELECT `service_order_id`,`NIC`,`first_name`,`last_name`,`vehicle_number`,`start_date`,`end_date`, `status`
-       FROM useracc INNER JOIN service_order 
+       FROM useracc INNER JOIN service_order
        ON `useracc`.user_id=`service_order`.user_id
        WHERE DATE(start_date) = CURDATE();
     END$$
@@ -150,7 +149,7 @@ BEGIN
 	START TRANSACTION;
 		INSERT INTO service_order(user_id,vehicle_number,start_date,status) VALUES (user_id,vehicle_number,start_date,"Open");
 		INSERT INTO invoice(service_order_id,payment_amount) VALUES (LAST_INSERT_ID(),payment_amount);
-        
+
         SELECT service_order_id,invoice_id FROM invoice WHERE invoice_id=LAST_INSERT_ID();
     COMMIT ;
 END $$
@@ -290,7 +289,7 @@ START TRANSACTION;
     ALTER TABLE `useracc` AUTO_INCREMENT = 1;
     INSERT INTO `useracc` (`email`, `password`, `NIC`, `first_name`, `last_name`, `user_type`) VALUES ('administrator@gmail.com', '$2b$10$zrlbiOTdiRh/wx0Gnu4naOtau5KsZeq4dxKfxbXm6fC8vmh0Xm1Be', '972654000V', 'Admin', 'Super', 'admin');
     INSERT INTO `adminacc` (`user_id`, `admin_id`) VALUES ('1', '1');
-    INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('1', '0770000000');	
+    INSERT INTO `contact_no` (`user_id`, `contact_no`) VALUES ('1', '0770000000');
 COMMIT;
 
 -- Insert Queries
@@ -369,4 +368,3 @@ INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1002', '4
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1003', '400');
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1004', '400');
 INSERT INTO `invoice` ( `service_order_id`, `payment_amount`) VALUES ('1005', '400');
-
