@@ -31,6 +31,7 @@ exports.getTicketPage = async (req, res) => {
 
   res.render("../views/ticket/createTicket.ejs", data);
 };
+
 exports.getTimes = async (req, res) => {
   var result = await ticket.GetTime(req.query.branch_id, req.query.start_date);
   if (result.connectionError)

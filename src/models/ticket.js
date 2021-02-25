@@ -91,6 +91,7 @@ class Ticket {
       resolve(obj);
     });
   }
+
   async Close(data) {
     //validate the ticket id
 
@@ -138,28 +139,35 @@ class Ticket {
     });
   }
 
-  async autoCancel(data) {
-    setTimeout(closeTicket(data), 600000);
-  }
+  // async autoCancel(data) {
+  //   setTimeout(closeTicket(data), 600000);
+  // }
 
-  async closeTicket(data) {
-    //call update function of database class
-    const result = await _database
-      .get(this)
-      .update(
-        "ticket",
-        ["status", "closed", "end_time", getDate()],
-        ["ticket_id", "=", data.ticket_id]
-      );
+  // async closeTicket(data) {
+  //   //call update function of database class
+  //   const result = await _database
+  //     .get(this)
+  //     .update(
+  //       "ticket",
+  //       ["status", "closed", "end_time", getDate()],
+  //       ["ticket_id", "=", data.ticket_id]
+  //     );
+ 
+    
+  //   return new Promise((resolve) => {
+  //     let obj = {
+  //       connectionError: _database.get(this).connectionError,
+  //     };
+  //     result.error ? (obj.error = true) : (obj.error = false);
 
-    return new Promise((resolve) => {
-      let obj = {
-        connectionError: _database.get(this).connectionError,
-      };
-      result.error ? (obj.error = true) : (obj.error = false);
-      resolve(obj);
-    });
-  }
+  //     resolve(obj);
+  //   });
+    
+  // }
+
+
+
+
 }
 
 module.exports = Ticket;
