@@ -96,6 +96,7 @@ exports.getTodayTicketData = async (req, res) => {
 };
 
 exports.confirmTicket = async (req, res) => {
+  
   const data = req.query.ticket_id;
 
   const result = await ticket.Close(data);

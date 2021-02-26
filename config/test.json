@@ -2,7 +2,7 @@
   "database_credentials": {
     "host": "localhost",
     "user": "root",
-    "database": "emission_test_db",
+    "database": "emission_test_db_testing",
     "password": "Lahiru7*"
   },
   "email_transporter_credentials": {
