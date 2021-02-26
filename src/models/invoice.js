@@ -51,7 +51,7 @@ class Invoice {
   async createInvoice(data) {
     let valid = await _validate.get(this)(data);
     if (valid.error) {
-      return new Promise((resolve) => resolve({ validationError: result }));
+      return new Promise((resolve) => resolve({ validationError: valid }));
     }
 
     //Call create function of DB
@@ -131,6 +131,10 @@ class Invoice {
 
   //Search invoice
   async getSOUser(data) {
+    let valid = await _validateSO.get(this)({service_order_id:data});
+    if (valid.error) {
+      return new Promise((resolve) => resolve({ validationError: valid }));
+    }
     const result = await _database
       .get(this)
       .readMultipleTable(
@@ -156,7 +160,7 @@ class Invoice {
       };
 
       if (result.error) {
-        obj.error = false;
+        obj.error = true;
       } else {
         obj.error = false;
         obj.result = result.result;

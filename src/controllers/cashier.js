@@ -7,7 +7,7 @@ const invoiceModel = new Invoice();
 const SOModel = new ServiceOrder();
 
 exports.home = async (req, res) => {
-  res.render("./common/staff_home_page.ejs", {
+  res.status(200).render("./common/staff_home_page.ejs", {
     usertype: "cashier",
     activepage: "Home",
     title: "Cashier Home",

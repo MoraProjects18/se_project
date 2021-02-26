@@ -9,6 +9,7 @@ const staff = new Staff();
 exports.showProfile = async (req, res) => {
   // user_id has to be given as parameter. It has to be fetched from token.
   const result = await staff.show_profile(req["user"]["user_id"]);
+  console.log("Show profile",result);
   if (result.validationError)
     return res.status(400).render("common/errorpage", {
       title: "Error",
@@ -29,7 +30,7 @@ exports.showProfile = async (req, res) => {
     });
 
   const user_type = req.user.user_type.toLowerCase();
-  res.render("staff/staff_profile", {
+  res.status(200).render("staff/staff_profile", {
     staff: result.result[0][0],
     staff1: result.result[1][0],
     usertype: user_type,
