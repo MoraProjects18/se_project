@@ -28,8 +28,14 @@ exports.getreporthtml = async (req, res) => {
   const so_result = await report.get_SO(SO_id);
 
   var test_resu = await report.get_test(SO_id);
-
-  if (test_resu.length != 0 && !test_resu.error) {
+  if(so_result.error==true){
+    res.render("./common/errorpage.ejs", {
+      title: "Emission Report Error",
+      status: 502,
+      message: "Service Order Does not Exist",
+    });
+  }
+  else if (test_resu.length != 0 && !test_resu.error) {
     res.render("./reportissuer/template.ejs", {
       reportdata: test_resu,
       SO_id: SO_id,
