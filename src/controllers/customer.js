@@ -282,6 +282,7 @@ exports.getUserTicket = async (req, res) => {
 
 exports.cancelTicket = async (req, res) => {
   const data = req.body;
+  console.log(data);
 
   const result = await ticket.Close(data.ticket_id);
   if (result.connectionError)
@@ -298,4 +299,5 @@ exports.cancelTicket = async (req, res) => {
       message: "Bad Request",
     });
   res.status(200).redirect(`/customer/ticketDetails`);
+  
 };
