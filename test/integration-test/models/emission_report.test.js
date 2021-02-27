@@ -3,6 +3,7 @@ const Database= require("../../../src/database/database");
 const emissionreport = new EmissionReport();
 const database = new Database();
 
+describe("Emission Report", () => {
 describe("Get SO details", () => {
     it("should return Service Order Data when success", async () => {
         const result = await emissionreport.get_SO_details();
@@ -57,7 +58,6 @@ describe("Get Test Results", () => {
     it("should return Test Results when Success", async () => {
         const SO_id=1001;
         const result = await emissionreport.get_test(SO_id);
-       // console.log(result);
         expect(result).toHaveProperty("center");
         expect(result).toMatchObject({service_order_id: SO_id});
         expect(result).toHaveProperty("test_No");
@@ -80,9 +80,10 @@ describe("Get Test Results", () => {
 
 
 describe("Get PDF file", () => {
-    jest.setTimeout(10000);
+    jest.setTimeout(15000);
     it("should return PDF", async () => {
         const result = await emissionreport.get_report_pdf();
         expect(result).toEqual(expect.anything());
       });
+});
 });

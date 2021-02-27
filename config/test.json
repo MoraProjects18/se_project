@@ -37,6 +37,6 @@
     "17:00"
   ],
   "closing_period": "1",
-  "site_name": "http://localhost:3000",
+  "site_name": "https://emission-test-center-se.herokuapp.com",
   "existing_emission_system_url": "https://existing-eco-system.herokuapp.com"
 }
