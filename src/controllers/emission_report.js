@@ -28,24 +28,30 @@ exports.getreporthtml = async (req, res) => {
   const so_result = await report.get_SO(SO_id);
 
   var test_resu = await report.get_test(SO_id);
-
-  if (test_resu.length != 0 && !test_resu.error) {
-    res.render("./reportissuer/template.ejs", {
+  if(so_result.error==true){
+    res.status(400).render("./common/errorpage.ejs", {
+      title: "Emission Report Error",
+      status: 400,
+      message: "Service Order Does not Exist",
+    });
+  }
+  else if (test_resu.length != 0 && !test_resu.error) {
+    res.status(200).render("./reportissuer/template.ejs", {
       reportdata: test_resu,
       SO_id: SO_id,
       so_data: so_result,
       test_completed: "yes",
     });
   } else if (test_resu.error) {
-    res.render("./common/errorpage.ejs", {
+    res.status(502).render("./common/errorpage.ejs", {
       title: "Emission Report Error",
       status: 502,
       message: "Emission report database not connected!",
     });
   } else {
-    res.render("./common/errorpage.ejs", {
+    res.status(422).render("./common/errorpage.ejs", {
       title: "Emission Report Error",
-      status: 400,
+      status: 422,
       message: "Emission Test is not completed!",
     });
   }
@@ -63,6 +69,7 @@ exports.getreportpdf = async (req, res) => {
       var state_test = "Failed";
     }
     var update_so = await report.update_so_state(SO_id, state_test);
+    res.status(200);
     res.contentType("application/pdf");
     res.send(pdf);
   } else if (test_resu.error) {
@@ -72,9 +79,9 @@ exports.getreportpdf = async (req, res) => {
       message: "Emission report database not connected!",
     });
   } else {
-    res.render("./common/errorpage.ejs", {
+    res.status(422).render("./common/errorpage.ejs", {
       title: "Emission Report Error",
-      status: 400,
+      status: 422,
       message: "Emission Test is not completed!",
     });
   }
@@ -84,6 +91,7 @@ exports.postreport = async (req, res) => {
   var SO_id = req.body["SO_id"];
 
   var pdfurl = "/reportissuer/get_report/" + SO_id + "/pdf";
+  res.status(302);
   res.redirect(pdfurl);
 };
 
@@ -91,6 +99,7 @@ exports.viewreport = async (req, res) => {
   var SO_id = req.body["SO_id"];
 
   var htmlurl = "/reportissuer/get_report/" + SO_id + "/html";
+  res.status(302);
   res.redirect(htmlurl);
 };
 
