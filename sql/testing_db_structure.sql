@@ -1,7 +1,7 @@
 -- Sechema of the database
 
 drop database if exists emission_test_db_testing;
-create database emission_test_db;
+create database emission_test_db_testing;
 
 use emission_test_db_testing;
 

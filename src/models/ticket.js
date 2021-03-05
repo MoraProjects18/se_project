@@ -33,9 +33,7 @@ class Ticket {
       })
     );
 
-    _validateID.set(this, (object) => {
-      return _schemaID.get(this).validate(object);
-    });
+
   }
 
   async Initiate(data) {
@@ -54,6 +52,7 @@ class Ticket {
       let obj = {
         connectionError: _database.get(this).connectionError,
       };
+
       result.error ? (obj.error = true) : (obj.error = false);
       resolve(obj);
     });
@@ -79,7 +78,7 @@ class Ticket {
     const resultdata = await _database
       .get(this)
       .call("get_timeslots", [branch_id, start_date]);
-
+ 
     return new Promise((resolve) => {
       let obj = {
         connectionError: _database.get(this).connectionError,
@@ -138,28 +137,7 @@ class Ticket {
     });
   }
 
-  async autoCancel(data) {
-    setTimeout(closeTicket(data), 600000);
-  }
 
-  async closeTicket(data) {
-    //call update function of database class
-    const result = await _database
-      .get(this)
-      .update(
-        "ticket",
-        ["status", "closed", "end_time", getDate()],
-        ["ticket_id", "=", data.ticket_id]
-      );
-
-    return new Promise((resolve) => {
-      let obj = {
-        connectionError: _database.get(this).connectionError,
-      };
-      result.error ? (obj.error = true) : (obj.error = false);
-      resolve(obj);
-    });
-  }
 }
 
 module.exports = Ticket;
