@@ -83,6 +83,33 @@ describe("/ticket", () => {
         })
     })
 
+    describe("/todayTicketData ", () => {
+        describe("/ GET", () => {
+
+            it("should return 401 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicketData")
+                    
+
+                expect(res.status).toBe(401);
+            });
+        })
+    })
+
+    describe("/todayTicket ", () => {
+        describe("/ GET", () => {
+
+            it("should return 401 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicket")
+                    
+
+                expect(res.status).toBe(401);
+            });
+        })
+    })
+
+
 
 
     
