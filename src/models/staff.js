@@ -40,6 +40,10 @@ class Staff {
     });
   }
 
+  get databaseConnection(){
+    return _database.get(this);
+  }
+
   async register(data) {
     //validate data
 
