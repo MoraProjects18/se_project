@@ -51,7 +51,7 @@ describe("Ticket Model", () => {
 
         it("When branch_id is invalid should return error" , async () => {
 
-            const data = {
+            let data = {
                 user_id : 2,
                 status : "Open",
                 branch_id: 5,
@@ -91,7 +91,7 @@ describe("Ticket Model", () => {
 
     describe("Close", () => {
         it("When Ticket ID is valid should return error false " , async () => {
-            const ticket_id = 1011;
+            let ticket_id = 1011;
 
 
             const res = await ticket.Close(ticket_id);
@@ -105,12 +105,15 @@ describe("Ticket Model", () => {
 
     describe("User Ticket", () => {
         it("When User ID is valid should return error false " , async () => {
-            const user_id = 2;
+            let user_id = 2;
             const res = await ticket.UserTicket(user_id);
             expect(res).toHaveProperty("error", false);
-            
-
+            expect(res).toHaveProperty("connectionError", false);
+            expect(res).toHaveProperty("resultData");
+           
         })
+
+
 
     })
 

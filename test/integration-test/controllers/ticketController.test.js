@@ -37,14 +37,17 @@ describe("/ticket", () => {
 
     describe("/ConfirmTicket ", () => {
         describe("/ GET", () => {
-            const ticket_id = 1013;
+            
             it("should return 302 when redirection successfull", async () => {
+                let ticket_id = 1013;
                 const res = await request(server)
                     .get('/ticket/confirmTicket?ticket_id='+ticket_id)
                     
 
                 expect(res.status).toBe(302);
             });
+
+
         })
     })
 
@@ -60,6 +63,8 @@ describe("/ticket", () => {
                 expect(res.status).toBe(200);
             });
         })
+
+
     })
 
 
@@ -80,34 +85,107 @@ describe("/ticket", () => {
 
                 expect(res.status).toBe(302);
             });
-        })
-    })
 
-    describe("/todayTicketData ", () => {
-        describe("/ GET", () => {
 
-            it("should return 401 when staff token is not set", async () => {
+            it("should return 401 when create ticket call without user token set", async () => {
                 const res = await request(server)
-                    .get("/receptionist/ticket/todayTicketData")
-                    
+                    .post("/ticket/create" )
+                    .send({
+                        user_id : 2,
+                        status : "Open",
+                        branch_id: 1,
+                        start_date: Date.parse('2017-02-14'),
+                        start_time:"01:30"
+                    })
 
                 expect(res.status).toBe(401);
             });
+
         })
     })
 
-    describe("/todayTicket ", () => {
-        describe("/ GET", () => {
+    // describe("/todayTicketData ", () => {
+    //     describe("/ GET", () => {
 
-            it("should return 401 when staff token is not set", async () => {
-                const res = await request(server)
-                    .get("/receptionist/ticket/todayTicket")
+    //         it("should return 401 when staff token is not set", async () => {
+    //             const res = await request(server)
+    //                 .get("/receptionist/ticket/todayTicketData")
                     
 
-                expect(res.status).toBe(401);
-            });
-        })
-    })
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+    // describe("/todayTicket ", () => {
+    //     describe("/ GET", () => {
+
+    //         it("should return 401 when staff token is not set", async () => {
+    //             const res = await request(server)
+    //                 .get("/receptionist/ticket/todayTicket")
+                    
+
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+    // describe("/createTicket ", () => {
+    //     describe("/ GET", () => {
+
+    //         it("should return 401 when customer token is not set", async () => {
+    //             const res = await request(server)
+    //                 .get("/customer//createTicket")
+                    
+
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+
+    // describe("/createTicket ", () => {
+    //     describe("/ GET", () => {
+
+    //         it("should return 401 when customer token is not set", async () => {
+    //             const res = await request(server)
+    //                 .get("/customer/createTicket")
+                    
+
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+
+    // describe("/cancelTicket ", () => {
+    //     describe("/ POST", () => {
+
+    //         it("should return 401 when customer token is not set", async () => {
+    //             const res = await request(server)
+    //                 .post("/customer/cancelTicket")
+                    
+
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+    // describe("/ticketDetails ", () => {
+    //     describe("/ GET", () => {
+
+    //         it("should return 401 when customer token is not set", async () => {
+    //             const res = await request(server)
+    //                 .get("/customer/ticketDetails")
+                    
+
+    //             expect(res.status).toBe(401);
+    //         });
+    //     })
+    // })
+
+
+    
 
 
 
