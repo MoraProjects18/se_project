@@ -35,7 +35,24 @@ describe("/cashier", () => {
         const res = await request(server).get('/cashier/invoice')
         expect(res.status).toBe(401);
     });
+
+    
+
     describe("/home ", () => {
+        it("should return 403 forbidden when token is not valid", async () => {
+            const payload = {
+                user_id : 7,
+                first_name : "cashier1",
+                last_name : "1cashier",
+                user_type : "guest"
+            }
+            const token = jwt.sign(payload, "BRpGcRf_nLyj0");
+            const res = await request(server)
+                .get('/cashier/home')
+                .set("Cookie",[`ets-auth-token=${token}`] )
+            expect(res.status).toBe(403);
+        });
+
         describe("/ GET", () => {
             it("should return 200 Token is set", async () => {
                 const res = await request(server)
@@ -92,7 +109,7 @@ describe("/cashier", () => {
                 expect(res.status).toBe(400);
             });
 
-            it("should return 400 when service order is not found for given invoice_id", async () => {
+            it("should return 400 when invoice order is not found for given invoice_id", async () => {
                 const res = await request(server)
                     .post('/cashier/invoice')
                     .set("Cookie",[`ets-auth-token=${token}`] )
@@ -102,41 +119,6 @@ describe("/cashier", () => {
             });
 
         })
-
-        // describe("Crete invoie" ,() => {
-        //     it("should return 200 when invoice_id is valid", async () => {
-        //         const data = {
-        //             service_order_id : 1002,
-        //             payment_amount : 850,
-        //         }
-        //         const res = await request(server)
-        //             .post('/cashier/invoice')
-        //             .set("Cookie",[`ets-auth-token=${token}`] )
-        //             .send({invoice_id : 1001})
-
-        //         expect(res.status).toBe(200);
-
-        //     });
-
-        //     it("should return 400 invalid request when invoice_id is invalid", async () => {
-        //         const res = await request(server)
-        //             .post('/cashier/invoice')
-        //             .set("Cookie",[`ets-auth-token=${token}`] )
-        //             .send({invoice_id : "avsb"})
-
-        //         expect(res.status).toBe(400);
-        //     });
-
-        //     it("should return 400 when service order is not found for given invoice_id", async () => {
-        //         const res = await request(server)
-        //             .post('/cashier/invoice')
-        //             .set("Cookie",[`ets-auth-token=${token}`] )
-        //             .send({invoice_id : "5000"})
-
-        //         expect(res.status).toBe(400);
-        //     });
-
-        // })
 
         describe("/pay POST", () => {
             it("should return 200 when service_order_id is valid", async () => {

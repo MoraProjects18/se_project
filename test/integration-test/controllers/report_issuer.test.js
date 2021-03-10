@@ -34,13 +34,29 @@ describe("/reportissuer", () => {
     });
 
     describe("/home ", () => {
-            it("should return 200 Token is set", async () => {
-                const res = await request(server)
-                    .get('/reportissuer/home')
-                    .set("Cookie",[`ets-auth-token=${token}`] )
+        it("should return 403 forbidden when token is not valid", async () => {
+            const payload = {
+                user_id : 7,
+                first_name : "cashier1",
+                last_name : "1cashier",
+                user_type : "guest"
+            }
+            const token = jwt.sign(payload, "BRpGcRf_nLyj0");
+            const res = await request(server)
+                .get('/reportissuer/home')
+                .set("Cookie",[`ets-auth-token=${token}`] )
+            expect(res.status).toBe(403);
+        });
 
-                expect(res.status).toBe(200);
-            });
+        it("should return 200 Token is set", async () => {
+            const res = await request(server)
+                .get('/reportissuer/home')
+                .set("Cookie",[`ets-auth-token=${token}`] )
+
+            expect(res.status).toBe(200);
+        });
+
+        
     });
 
     describe("/report" ,() => {

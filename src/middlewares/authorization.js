@@ -53,17 +53,17 @@ exports.isCustomerRole = (req, res, next) => {
   }
 };
 
-exports.isStaffRole = (req, res, next) => {
-  if (req.user["user_type"] === "staff") {
-    next();
-  } else {
-    res.status(403).render("common/errorpage", {
-      title: "Error",
-      status: "403",
-      message: "Forbidden",
-    });
-  }
-};
+// exports.isStaffRole = (req, res, next) => {
+//   if (req.user["user_type"] === "staff") {
+//     next();
+//   } else {
+//     res.status(403).render("common/errorpage", {
+//       title: "Error",
+//       status: "403",
+//       message: "Forbidden",
+//     });
+//   }
+// };
 
 exports.isCashierRole = (req, res, next) => {
   if (req.user["user_type"] === "cashier") {
@@ -125,14 +125,14 @@ exports.isEmailVerified = (req, res, next) => {
   }
 };
 
-exports.isAlreadyLogin = (req, res, next) => {
-  if (!req.cookies["ets-auth-token"]) {
-    next();
-  } else {
-    res.status(400).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "You have already logged in",
-    });
-  }
-};
+// exports.isAlreadyLogin = (req, res, next) => {
+//   if (!req.cookies["ets-auth-token"]) {
+//     next();
+//   } else {
+//     res.status(400).render("common/errorpage", {
+//       title: "Error",
+//       status: "400",
+//       message: "You have already logged in",
+//     });
+//   }
+// };
