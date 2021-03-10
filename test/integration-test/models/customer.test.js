@@ -5,8 +5,6 @@ const customer = new Customer();
 const database = new Database();
 const _ = require("lodash");
 
-//jest.setTimeout(120000);
-
 describe("register", () => {
   let originalValue;
 
