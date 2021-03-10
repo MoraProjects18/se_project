@@ -9,6 +9,7 @@ describe("/ticket", () => {
 
     beforeAll( (done) => {
         server = require('../../../src/app');
+         done();
     })
     beforeEach(() => {
         server = require('../../../src/app');
