@@ -28,25 +28,25 @@ describe("/guest", () => {
     describe("/home ", () => {
         it("should return 200", async () => {
             const res = await request(server)
-                .get('/')
+                .get('/home/')
 
             expect(res.status).toBe(200);
         });
 
-        it("should return 200", async () => {
+        it("should return redirection status 302", async () => {
             const res = await request(server)
-                .get('/').set("Cookie",[`ets-auth-token=${token}`] )
+                .get('/home/').set("Cookie",[`ets-auth-token=${token}`] )
 
-            expect(res.status).toBe(200);
+            expect(res.status).toBe(302);
         });
 
-        it("should return 403 when the user is not a guest user", async () => {
-            const token = jwt.sign({user_type:"not-guest"}, "BRpGcRf_nLyj0");
+        it("should return 400 when the token is not valid", async () => {
+            const token = "wrong-token";
 
             const res = await request(server)
-                .get('/').set("Cookie",[`ets-auth-token=${token}`] )
+                .get('/home/').set("Cookie",[`ets-auth-token=${token}`] )
 
-            expect(res.status).toBe(403);
+            expect(res.status).toBe(400);
         });
     })
 

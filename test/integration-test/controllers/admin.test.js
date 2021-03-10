@@ -51,6 +51,20 @@ describe("/admin", () => {
     });
 
     describe("/home GET", () => {
+        it("should return 403 forbidden when token is not valid", async () => {
+            const payload = {
+                user_id : 7,
+                first_name : "cashier1",
+                last_name : "1cashier",
+                user_type : "guest"
+            }
+            const token = jwt.sign(payload, "BRpGcRf_nLyj0");
+            const res = await request(server)
+                .get('/admin/home')
+                .set("Cookie",[`ets-auth-token=${token}`] )
+            expect(res.status).toBe(403);
+        });
+
         it("should return 200 when token is set", async () => {
             const res = await request(server)
                                 .get('/admin/home')
