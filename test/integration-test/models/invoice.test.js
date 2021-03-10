@@ -6,6 +6,7 @@ const db = new Database();
 
 describe("Invoice Model", () => {
     const invoice = new Invoice();
+
     describe("create invoice", () => {
         it("When successfuly inserted should return error false " , async () => {
             const data = {
@@ -29,7 +30,7 @@ describe("Invoice Model", () => {
 
         it("When service order is invalid should return error" , async () => {
             const data = {
-                service_order_id: 1010,
+                service_order_id: 1500,
                 payment_amount : 850,
             }
 

@@ -8,29 +8,29 @@ const User = require("../models/user");
 const user = new User();
 const config = require("config");
 
-exports.getTicketPage = async (req, res) => {
-  var result = await ticket.GetBranch();
+// exports.getTicketPage = async (req, res) => {
+//   var result = await ticket.GetBranch();
 
-  if (result.connectionError)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "500",
-      message: "Internal Server Error",
-    });
+//   if (result.connectionError)
+//     return res.status(500).render("common/errorpage", {
+//       title: "Error",
+//       status: "500",
+//       message: "Internal Server Error",
+//     });
 
-  if (result.error)
-    return res.status(400).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "Bad Request",
-    });
-  data = {
-    dataFound: false,
-    branch: result.result,
-  };
+//   if (result.error)
+//     return res.status(400).render("common/errorpage", {
+//       title: "Error",
+//       status: "400",
+//       message: "Bad Request",
+//     });
+//   data = {
+//     dataFound: false,
+//     branch: result.result,
+//   };
 
-  res.render("../views/ticket/createTicket.ejs", data);
-};
+//   res.render("../views/ticket/createTicket.ejs", data);
+// };
 exports.getTimes = async (req, res) => {
   var result = await ticket.GetTime(req.query.branch_id, req.query.start_date);
   if (result.connectionError)

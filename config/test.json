@@ -3,7 +3,7 @@
     "host": "localhost",
     "user": "root",
     "database": "emission_test_db_testing",
-    "password": "7019$DIL$c@t"
+    "password": ""
   },
   "email_transporter_credentials": {
     "host": "smtp.gmail.com",

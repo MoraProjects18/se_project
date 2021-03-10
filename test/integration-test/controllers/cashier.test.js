@@ -101,6 +101,41 @@ describe("/cashier", () => {
 
         })
 
+        // describe("Crete invoie" ,() => {
+        //     it("should return 200 when invoice_id is valid", async () => {
+        //         const data = {
+        //             service_order_id : 1002,
+        //             payment_amount : 850,
+        //         }
+        //         const res = await request(server)
+        //             .post('/cashier/invoice')
+        //             .set("Cookie",[`ets-auth-token=${token}`] )
+        //             .send({invoice_id : 1001})
+
+        //         expect(res.status).toBe(200);
+
+        //     });
+
+        //     it("should return 400 invalid request when invoice_id is invalid", async () => {
+        //         const res = await request(server)
+        //             .post('/cashier/invoice')
+        //             .set("Cookie",[`ets-auth-token=${token}`] )
+        //             .send({invoice_id : "avsb"})
+
+        //         expect(res.status).toBe(400);
+        //     });
+
+        //     it("should return 400 when service order is not found for given invoice_id", async () => {
+        //         const res = await request(server)
+        //             .post('/cashier/invoice')
+        //             .set("Cookie",[`ets-auth-token=${token}`] )
+        //             .send({invoice_id : "5000"})
+
+        //         expect(res.status).toBe(400);
+        //     });
+
+        // })
+
         describe("/pay POST", () => {
             it("should return 200 when service_order_id is valid", async () => {
                 const res = await request(server)

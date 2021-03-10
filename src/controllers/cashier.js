@@ -240,21 +240,21 @@ exports.closeServiceOrder = async (req, res) => {
   res.status(200).send({ message: "Service Order Closed" });
 };
 
-exports.createInvoice = async (req, res) => {
-  const result = await invoiceModel.createInvoice(req.body);
-  if (result.validationError)
-    return res.status(400).send(result.validationError);
-  if (result.connectionError)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "500",
-      message: "Internal Server Error",
-    });
-  if (result.error)
-    return res.status(500).render("common/errorpage", {
-      title: "Error",
-      status: "400",
-      message: "Bad Request",
-    });
-  res.status(200).send("New invoice is added!");
-};
+// exports.createInvoice = async (req, res) => {
+//   const result = await invoiceModel.createInvoice(req.body);
+//   if (result.validationError)
+//     return res.status(400).send(result.validationError);
+//   if (result.connectionError)
+//     return res.status(500).render("common/errorpage", {
+//       title: "Error",
+//       status: "500",
+//       message: "Internal Server Error",
+//     });
+//   if (result.error)
+//     return res.status(500).render("common/errorpage", {
+//       title: "Error",
+//       status: "400",
+//       message: "Bad Request",
+//     });
+//   res.status(200).send("New invoice is added!");
+// };

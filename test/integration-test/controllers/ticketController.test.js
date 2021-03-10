@@ -104,31 +104,61 @@ describe("/ticket", () => {
         })
     })
 
-    // describe("/todayTicketData ", () => {
-    //     describe("/ GET", () => {
+    describe("/todayTicketData ", () => {
+        describe("/ GET", () => {
 
-    //         it("should return 401 when staff token is not set", async () => {
-    //             const res = await request(server)
-    //                 .get("/receptionist/ticket/todayTicketData")
+            it("should return 401 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicketData")
                     
 
-    //             expect(res.status).toBe(401);
-    //         });
-    //     })
-    // })
+                expect(res.status).toBe(401);
+            });
+        })
+    })
 
-    // describe("/todayTicket ", () => {
-    //     describe("/ GET", () => {
+    describe("/todayTicket ", () => {
+        describe("/ GET", () => {
+            const payload = {
+                user_id: 8,
+                first_name: "receptionist1",
+                last_name: "1receptionist",
+                user_type: "receptionist",
+              };
+              let token;
+              const data = {
+                NIC: "972654889V"
+              }
+            
+              beforeEach(() => {
+                server = require("../../../src/app");
+            
+                token = jwt.sign(payload, config.get("jwtPrivateKey"));
+              });
+            
+              afterEach(() => {
+                server.close();
+              });
 
-    //         it("should return 401 when staff token is not set", async () => {
-    //             const res = await request(server)
-    //                 .get("/receptionist/ticket/todayTicket")
+
+            it("should return 401 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicket")
                     
 
-    //             expect(res.status).toBe(401);
-    //         });
-    //     })
-    // })
+                expect(res.status).toBe(401);
+            });
+
+
+            it("should return 200 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicket").set("Cookie", [`ets-auth-token=${token}`])
+                    
+
+                expect(res.status).toBe(200);
+            });
+        })
+    })
 
     // describe("/createTicket ", () => {
     //     describe("/ GET", () => {
