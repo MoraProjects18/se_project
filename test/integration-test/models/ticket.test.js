@@ -1,6 +1,8 @@
 const Database= require("../../../src/database/database");
 const Ticket = require("../../../src/models/ticket");
 
+jest.setTimeout(60000);
+
 const db = new Database();
 const ticket = new Ticket();
 const database = new Database();

@@ -1,6 +1,8 @@
 const User = require("../../../src/models/user");
 const user = new User();
 
+jest.setTimeout(60000);
+
 describe("login", () => {
   let data;
   let originalFunc;

@@ -3,6 +3,8 @@ const request = require("supertest");
 const jwt = require("jsonwebtoken");
 let server;
 
+jest.setTimeout(60000);
+
 
 describe("/reportissuer", () => {
     const payload = {
@@ -35,16 +37,6 @@ describe("/reportissuer", () => {
             it("should return 200 Token is set", async () => {
                 const res = await request(server)
                     .get('/reportissuer/home')
-                    .set("Cookie",[`ets-auth-token=${token}`] )
-
-                expect(res.status).toBe(200);
-            });
-    });
-
-    describe("/profile ", () => {
-            it("should return 200 with Token is valid", async () => {
-                const res = await request(server)
-                    .get('/reportissuer/profile')
                     .set("Cookie",[`ets-auth-token=${token}`] )
 
                 expect(res.status).toBe(200);
@@ -92,7 +84,6 @@ describe("/reportissuer", () => {
 
 
     describe("/get_report/:id/pdf" ,() => {
-        jest.setTimeout(15000);
         it("should return 200 for successful PDF report", async () => {
             const SO_id=1001;
             const res = await request(server)
@@ -106,13 +97,13 @@ describe("/reportissuer", () => {
             const res = await request(server)
                 .get('/reportissuer/get_report/'+SO_id+'/pdf')
                 .set("Cookie",[`ets-auth-token=${token}`] )
-            
+
             expect(res.status).toBe(422);
         });
     });
 
-    
-    
+
+
     describe("/view_final_report" ,() => {
         it("should return 302 when redirection successfull", async () => {
             const res = await request(server)

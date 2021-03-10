@@ -7,6 +7,8 @@ const Database = require("../../../src/database/database")
 const db = new Database();
 let server ;
 
+jest.setTimeout(60000);
+
 describe("/cashier", () => {
     const payload = {
         user_id : 7,
@@ -184,7 +186,7 @@ describe("/cashier", () => {
             });
         })
 
-        
+
     })
 
     describe("/searchInvoiceBySO ", () => {
@@ -219,5 +221,5 @@ describe("/cashier", () => {
     })
 
 
-    
+
 })

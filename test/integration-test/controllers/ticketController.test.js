@@ -1,4 +1,4 @@
-  
+
 const ticketC = require("../../../src/controllers/ticketController");
 const request = require("supertest");
 const { iteratee } = require("lodash");
@@ -7,6 +7,8 @@ const config = require("config");
 const Database = require("../../../src/database/database")
 const db = new Database();
 let server ;
+
+jest.setTimeout(60000);
 
 describe("/ticket", () => {
     const payload = {
@@ -28,7 +30,7 @@ describe("/ticket", () => {
     afterEach(() => {
         server.close();
     });
-  
+
     it("should return 401 when token is not set", async () => {
         const res = await request(server).post('/ticket/create')
         expect(res.status).toBe(401);
@@ -37,12 +39,12 @@ describe("/ticket", () => {
 
     describe("/ConfirmTicket ", () => {
         describe("/ GET", () => {
-            
+
             it("should return 302 when redirection successfull", async () => {
                 let ticket_id = 1013;
                 const res = await request(server)
                     .get('/ticket/confirmTicket?ticket_id='+ticket_id)
-                    
+
 
                 expect(res.status).toBe(302);
             });
@@ -58,7 +60,7 @@ describe("/ticket", () => {
             it("should return 200 with when valid branch_id and start_date", async () => {
                 const res = await request(server)
                     .get("/ticket/gettimeslot?branch_id="+branch_id+"&start_date="+start_date)
-                    
+
 
                 expect(res.status).toBe(200);
             });
@@ -106,13 +108,41 @@ describe("/ticket", () => {
 
     describe("/todayTicketData ", () => {
         describe("/ GET", () => {
+            jest.setTimeout(15000);
+            const payload = {
+                user_id: 8,
+                first_name: "receptionist1",
+                last_name: "1receptionist",
+                user_type: "receptionist",
+              };
+              let token;
+              const data = {
+                NIC: "972654889V"
+              }
 
+              beforeEach(() => {
+                server = require("../../../src/app");
+
+                token = jwt.sign(payload, config.get("jwtPrivateKey"));
+              });
+
+              afterEach(() => {
+                server.close();
+              });
             it("should return 401 when staff token is not set", async () => {
                 const res = await request(server)
                     .get("/receptionist/ticket/todayTicketData")
-                    
+
 
                 expect(res.status).toBe(401);
+            });
+
+            it("should return 200 when staff token is not set", async () => {
+                const res = await request(server)
+                    .get("/receptionist/ticket/todayTicketData").set("Cookie", [`ets-auth-token=${token}`])
+
+
+                expect(res.status).toBe(200);
             });
         })
     })
@@ -129,13 +159,13 @@ describe("/ticket", () => {
               const data = {
                 NIC: "972654889V"
               }
-            
+
               beforeEach(() => {
                 server = require("../../../src/app");
-            
+
                 token = jwt.sign(payload, config.get("jwtPrivateKey"));
               });
-            
+
               afterEach(() => {
                 server.close();
               });
@@ -144,7 +174,7 @@ describe("/ticket", () => {
             it("should return 401 when staff token is not set", async () => {
                 const res = await request(server)
                     .get("/receptionist/ticket/todayTicket")
-                    
+
 
                 expect(res.status).toBe(401);
             });
@@ -153,7 +183,7 @@ describe("/ticket", () => {
             it("should return 200 when staff token is not set", async () => {
                 const res = await request(server)
                     .get("/receptionist/ticket/todayTicket").set("Cookie", [`ets-auth-token=${token}`])
-                    
+
 
                 expect(res.status).toBe(200);
             });
@@ -166,7 +196,7 @@ describe("/ticket", () => {
     //         it("should return 401 when customer token is not set", async () => {
     //             const res = await request(server)
     //                 .get("/customer//createTicket")
-                    
+
 
     //             expect(res.status).toBe(401);
     //         });
@@ -180,7 +210,7 @@ describe("/ticket", () => {
     //         it("should return 401 when customer token is not set", async () => {
     //             const res = await request(server)
     //                 .get("/customer/createTicket")
-                    
+
 
     //             expect(res.status).toBe(401);
     //         });
@@ -194,7 +224,7 @@ describe("/ticket", () => {
     //         it("should return 401 when customer token is not set", async () => {
     //             const res = await request(server)
     //                 .post("/customer/cancelTicket")
-                    
+
 
     //             expect(res.status).toBe(401);
     //         });
@@ -207,7 +237,7 @@ describe("/ticket", () => {
     //         it("should return 401 when customer token is not set", async () => {
     //             const res = await request(server)
     //                 .get("/customer/ticketDetails")
-                    
+
 
     //             expect(res.status).toBe(401);
     //         });
@@ -215,10 +245,10 @@ describe("/ticket", () => {
     // })
 
 
-    
 
 
 
 
-    
+
+
 })

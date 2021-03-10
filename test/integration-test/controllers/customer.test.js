@@ -3,6 +3,8 @@ const request = require("supertest");
 const jwt = require("jsonwebtoken");
 let server ;
 
+jest.setTimeout(60000);
+
 describe("/customer", () => {
 
     const payload = {
@@ -26,7 +28,7 @@ describe("/customer", () => {
     afterEach(() => {
         server.close();
     })
-  
+
     describe("/cancelTicket ", () => {
 
         describe("/ POST", () => {
@@ -39,13 +41,13 @@ describe("/customer", () => {
                 expect(res.status).toBe(302);
             });
 
-            
+
         })
 
     })
 
-   
-  
 
-    
+
+
+
 })

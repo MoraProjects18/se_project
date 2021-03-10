@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 let server;
 
+jest.setTimeout(60000);
+
 describe("GET /staff/profile",() => {
   const data = {
     user_id:7,

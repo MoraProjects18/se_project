@@ -3,6 +3,8 @@ const Database= require("../../../src/database/database");
 const emissionreport = new EmissionReport();
 const database = new Database();
 
+jest.setTimeout(60000);
+
 describe("Emission Report", () => {
 describe("Get SO details", () => {
     it("should return Service Order Data when success", async () => {
@@ -80,7 +82,6 @@ describe("Get Test Results", () => {
 
 
 describe("Get PDF file", () => {
-    jest.setTimeout(15000);
     it("should return PDF", async () => {
         const result = await emissionreport.get_report_pdf();
         expect(result).toEqual(expect.anything());

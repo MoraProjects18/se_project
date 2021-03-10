@@ -7,6 +7,8 @@ const Database = require("../../../src/database/database")
 const db = new Database();
 let server ;
 
+jest.setTimeout(60000);
+
 describe("/guest", () => {
 
     beforeEach(() => {
@@ -27,5 +29,5 @@ describe("/guest", () => {
 
 
     })
-    
+
 })

@@ -3,6 +3,8 @@ const Database= require("../../../src/database/database");
 
 const db = new Database();
 
+jest.setTimeout(60000);
+
 
 describe("Invoice Model", () => {
     const invoice = new Invoice();

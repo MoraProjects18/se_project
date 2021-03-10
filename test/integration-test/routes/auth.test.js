@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 let server;
 
+jest.setTimeout(60000);
+
 describe("POST /auth/login",() => {
   const data = {
     email:"pasindu@gmail.com",

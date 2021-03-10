@@ -6,6 +6,8 @@ let server;
 const Database = require("../../../src/database/database");
 const database = new Database();
 
+jest.setTimeout(60000);
+
 describe("GET /receptionist/home", () => {
   const payload = {
     user_id: 8,
@@ -458,6 +460,7 @@ describe("POST /receptionist/addvehicle", () => {
 
     expect(res.status).toBe(200);
 
+    console.log(data);
     await database.delete("vehicle", ["registration_number", "=", data.registration_number]);
   });
 

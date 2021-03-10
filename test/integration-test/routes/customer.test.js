@@ -7,6 +7,8 @@ let server;
 const Database = require("../../../src/database/database");
 const database = new Database();
 
+jest.setTimeout(60000);
+
 describe("GET /customer/home", () => {
   const payload = {
     user_id: 3,
@@ -73,7 +75,7 @@ describe("POST /customer/register", () => {
     email: "dilshan99news@gmail.com",
     password: "@Password1",
     NIC: "990041091V",
-    license_number: "123456B7",
+    license_number: "12345687",
     contact_no: "0727469834",
   };
 

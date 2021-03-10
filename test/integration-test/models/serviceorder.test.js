@@ -3,6 +3,8 @@ const database = new Database();
 const ServiceOrder = require("../../../src/models/serviceorder");
 const serviceOrder = new ServiceOrder();
 
+jest.setTimeout(60000);
+
 describe("Initiate", () => {
   let data = {
     user_id: 3,

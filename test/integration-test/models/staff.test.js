@@ -3,6 +3,8 @@ const database = new Database();
 const Staff = require("../../../src/models/staff");
 const staff = new Staff();
 
+jest.setTimeout(60000);
+
 const data = {
   employee_id: "1000",
   first_name: "Kalhara",
@@ -58,7 +60,7 @@ describe("register", () => {
     expect(result).toHaveProperty("connectionError", false);
     expect(result).toHaveProperty("error", false);
 
-    removeUser();
+    await removeUser();
   });
 });
 
