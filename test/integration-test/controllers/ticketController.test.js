@@ -78,10 +78,10 @@ describe("/ticket", () => {
                     .post("/ticket/create" )
                     .set("Cookie",[`ets-auth-token=${token}`] )
                     .send({
-                        user_id : 2,
+                        user_id : 3,
                         status : "Open",
                         branch_id: 1,
-                        start_date: Date.parse('2017-02-14'),
+                        start_date: '2021-04-14',
                         start_time:"01:30"
                     })
 
