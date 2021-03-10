@@ -51,6 +51,10 @@ class ServiceOrder {
     });
   }
 
+  get databaseConnection(){
+    return _database.get(this);
+  }
+
   async Initiate(data) {
     let result = await _validate.get(this)(data);
     if (result.error)
