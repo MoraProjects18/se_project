@@ -461,5 +461,5 @@ describe("POST /receptionist/addvehicle", () => {
     await database.delete("vehicle", ["registration_number", "=", data.registration_number]);
   });
 
-  
+
 });

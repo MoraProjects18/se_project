@@ -12,7 +12,7 @@ describe("register", () => {
     const data = {};
 
     const result = await customer.register(data);
-    
+
     expect(result).toHaveProperty("validationError");
   });
 

@@ -18,7 +18,7 @@ describe("Invoice Model", () => {
             expect(res).toHaveProperty("error", false);
             await db.delete("invoice",["invoice_id","=",data.invoice_id])
         })
-        
+
         it("When data is missing should return error" , async () => {
             const data = {
                 service_order_id: 1001,
@@ -50,7 +50,7 @@ describe("Invoice Model", () => {
             expect(res).toHaveProperty("error", false);
             expect(res.result[0]).toHaveProperty("invoice_id", data.invoice_id);
         })
-        
+
         it("When invoice_id is invalid should return error" , async () => {
             const data = {
                 invoice_id: "sdfsd",
@@ -62,7 +62,7 @@ describe("Invoice Model", () => {
 
         it("When invoice_id is not in database should return empty array" , async () => {
             const data = {
-                invoice_id: 1050,
+                invoice_id: 1050000,
             }
 
             const res = await invoice.getInvoice(data);
@@ -80,7 +80,7 @@ describe("Invoice Model", () => {
             expect(res).toHaveProperty("error", false);
             expect(res.result[0]).toHaveProperty("invoice_id", data.service_order_id);
         })
-        
+
         it("When service_order_id is invalid should return error" , async () => {
             const data = {
                 service_order_id: "sdfsd",
@@ -92,7 +92,7 @@ describe("Invoice Model", () => {
 
         it("When service_order_id is not in database should return empty array as result" , async () => {
             const data = {
-                service_order_id: 1050,
+                service_order_id: 1050000,
             }
             const res = await invoice.getInvoiceByServiceOrder(data);
             expect(res.result).toHaveLength(0);
@@ -100,15 +100,15 @@ describe("Invoice Model", () => {
     });
 
     describe("get service order users", () => {
-        
+
         it("When correct service_order_id is inserted should return service order and user " , async () => {
-            
+
             service_order_id = 1001;
             const res = await invoice.getSOUser(service_order_id);
             expect(res).toHaveProperty("error", false);
             expect(res.result[0]).toHaveProperty("service_order_id", service_order_id);
         })
-        
+
         it("When service_order_id is invalid should return error" , async () => {
             service_order_id = "sdfasf";
             const res = await invoice.getSOUser(service_order_id);
@@ -116,7 +116,7 @@ describe("Invoice Model", () => {
         })
 
         it("When service_order_id is not in database shoud return error as result" , async () => {
-            service_order_id = 1050;
+            service_order_id = 1050000;
             const res = await invoice.getSOUser(service_order_id);
             expect(res.result).toHaveLength(0);
         })

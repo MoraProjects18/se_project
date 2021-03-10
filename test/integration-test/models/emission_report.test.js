@@ -32,7 +32,7 @@ describe("update SO State", () => {
             ["status", "Paid"],
             ["service_order_id", "=", So_id]
             );
-    });   
+    });
 });
 
 
@@ -43,7 +43,7 @@ describe("Get Service Order", () => {
       });
 
       it("should return Error when SO does not exist", async () => {
-        const result = await emissionreport.get_SO(1009);
+        const result = await emissionreport.get_SO(100000);
         expect(result).toMatchObject({error: true});
       });
 
@@ -69,7 +69,7 @@ describe("Get Test Results", () => {
     it("should return Empty List when test is not completed", async () => {
         const SO_id=1003;
         const result = await emissionreport.get_test(SO_id);
-        expect(result).toEqual([]);  
+        expect(result).toEqual([]);
       });
 
     it("should return error when an error occured in API url", async () => {

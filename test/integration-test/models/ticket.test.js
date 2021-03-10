@@ -1,10 +1,9 @@
-<<<<<<< HEAD
-
 const Database= require("../../../src/database/database");
 const Ticket = require("../../../src/models/ticket");
 
 const db = new Database();
-
+const ticket = new Ticket();
+const database = new Database();
 
 describe("Ticket Model", () => {
     const ticket = new Ticket();
@@ -15,7 +14,7 @@ describe("Ticket Model", () => {
                 user_id : 2,
                 status : "Open",
                 branch_id: 1,
-                start_date: Date.parse('2017-02-14'),
+                start_date: '2021-10-14',
                 start_time:"01:30"
             }
 
@@ -23,7 +22,7 @@ describe("Ticket Model", () => {
             expect(res).toHaveProperty("error", false);
             await db.delete("ticket",["ticket_id","=",data.ticket_id])
         })
-        
+
         it("When data is missing should return error" , async () => {
             const data = {
                 user_id : 2,
@@ -73,7 +72,7 @@ describe("Ticket Model", () => {
             expect(res).toHaveProperty("error", false);
 
         })
-        
+
     })
 
 
@@ -100,7 +99,7 @@ describe("Ticket Model", () => {
 
         })
 
-        
+
     })
 
 
@@ -111,7 +110,7 @@ describe("Ticket Model", () => {
             expect(res).toHaveProperty("error", false);
             expect(res).toHaveProperty("connectionError", false);
             expect(res).toHaveProperty("resultData");
-           
+
         })
 
 
@@ -124,23 +123,11 @@ describe("Ticket Model", () => {
             const branch_id = 2;
             const res = await ticket.TodayTicket(branch_id);
             expect(res).toHaveProperty("error", false);
-            
+
         })
 
     })
-
-
-
-
-
-
-
 })
-=======
-const Ticket = require("../../../src/models/ticket");
-const Database= require("../../../src/database/database");
-const ticket = new Ticket();
-const database = new Database();
 
 describe("close ticket", () => {
 
@@ -154,18 +141,17 @@ describe("close ticket", () => {
 
 
   it("should return error false object with when success", async () => {
-      const data = '4' ;   
+      const data = '4' ;
 
       const result = await ticket.Close(data);
 
       expect(result.error).toBe(false);
-      expect(result.connectionError).toBe(false); 
-      
+      expect(result.connectionError).toBe(false);
+
     await database.update("ticket", ["status", "Open"], ["ticket_id", "=", data]);
-    
-      
-  });   
-    
-    
+
+
+  });
+
+
 });
->>>>>>> test-lahiru

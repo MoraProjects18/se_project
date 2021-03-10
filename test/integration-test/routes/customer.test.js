@@ -70,7 +70,7 @@ describe("POST /customer/register", () => {
   const data = {
     first_name: "Dilshan",
     last_name: "Senarath",
-    email: "dilshan@gmail.com",
+    email: "dilshan99news@gmail.com",
     password: "@Password1",
     NIC: "990041091V",
     license_number: "123456B7",
