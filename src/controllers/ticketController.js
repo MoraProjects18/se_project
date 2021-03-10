@@ -95,6 +95,7 @@ exports.getTodayTicketData = async (req, res) => {
 };
 
 exports.confirmTicket = async (req, res) => {
+  
   const data = req.query.ticket_id;
 
   const result = await ticket.Close(data);
@@ -113,4 +114,5 @@ exports.confirmTicket = async (req, res) => {
     });
   if (result.error) return res.status(400).send("Bad Request!");
   res.status(200).redirect(`/receptionist/ticket/todayTicket`);
+  
 };

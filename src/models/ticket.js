@@ -90,6 +90,7 @@ class Ticket {
       resolve(obj);
     });
   }
+
   async Close(data) {
     //validate the ticket id
 
