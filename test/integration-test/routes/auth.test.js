@@ -36,7 +36,7 @@ describe("POST /auth/login",() => {
     expect(res.status).toBe(401);
   });
 
-  it("give 200 OK status code when the login is succesful", async () => {
+  it("give 302 status code when the login is succesful", async () => {
     const res = await request(server).post('/auth/login').send(data);
 
     expect(res.status).toBe(302);
@@ -69,7 +69,7 @@ describe("GET /auth/logout",() => {
     expect(res.status).toBe(401);
   });
 
-  it("give 401 status code when there is no authorize token", async () => {
+  it("give 400 status code when the authorize token is incorrect", async () => {
     const token = "dsds";
 
     const res = await request(server).get('/auth/logout').set('Cookie',[`ets-auth-token=${token}`]).send();
@@ -77,7 +77,7 @@ describe("GET /auth/logout",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the logout is succesful", async () => {
+  it("give 302 status code when the logout is succesful", async () => {
     const res = await request(server).get('/auth/logout').set('Cookie',[`ets-auth-token=${token}`]).send();
 
     expect(res.status).toBe(302);

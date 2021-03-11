@@ -3,7 +3,7 @@
     "host": "localhost",
     "user": "root",
     "database": "emission_test_db",
-    "password":"Lahiru7*"
+    "password":"7019$DIL$c@t"
   },
   "email_transporter_credentials": {
     "host": "smtp.gmail.com",
@@ -17,4 +17,3 @@
   "site_name": "http://localhost:3000",
   "existing_emission_system_url":"https://existing-eco-system.herokuapp.com"
 }
-

@@ -118,7 +118,7 @@ describe("POST /customer/register", () => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the registration is success", async () => {
+  it("give 302 status code when the registration is success", async () => {
     const res = await request(server).post("/customer/register").send(data);
 
     expect(res.status).toBe(302);
@@ -196,7 +196,7 @@ describe("GET /customer/register/confirm/:email", () => {
     expect(res.status).toBe(406);
   });
 
-  it("give 200 OK status code when the confirmation is success", async () => {
+  it("give 302 status code when the confirmation is success", async () => {
     const res = await request(server).get(`/customer/register/confirm/${email}?id=${encryptedId}`).send();
 
     expect(res.status).toBe(302);
@@ -318,7 +318,7 @@ describe("POST /customer/edit_profile",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the profile editing is success", async () => {
+  it("give 302 status code when the profile editing is success", async () => {
     const res = await request(server).post('/customer/edit_profile').set('Cookie',[`ets-auth-token=${token}`]).send(data);
 
     expect(res.status).toBe(302);
@@ -382,7 +382,7 @@ describe("POST /customer/change_pass",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the password change is success", async () => {
+  it("give 302 status code when the password change is success", async () => {
     const res = await request(server).post('/customer/change_pass').set('Cookie',[`ets-auth-token=${token}`]).send(data);
 
     expect(res.status).toBe(302);
