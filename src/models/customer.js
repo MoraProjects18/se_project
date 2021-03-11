@@ -29,6 +29,10 @@ class Customer extends User {
     });
   }
 
+  get databaseConnection(){
+    return _database.get(this);
+  }
+
   async register(data) {
     //validate data
     let result = await _validate.get(this)(

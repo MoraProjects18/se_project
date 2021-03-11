@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll --verbose  --coverage",
     "start": "nodemon src/app.js"
   },
   "author": "",
@@ -32,5 +32,9 @@
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "puppeteer": "^5.5.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
   }
 }

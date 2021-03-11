@@ -1,0 +1,505 @@
+{
+  "id": "0f9d03a9-eb08-4745-90c6-d7309ad8b0f5",
+  "version": "2.0",
+  "name": "Customer Profile Details and Password Change Workflow",
+  "url": "https://emission-test-center-se.herokuapp.com",
+  "tests": [{
+    "id": "1303b801-a9db-41d8-87a9-e0176dbbb558",
+    "name": "Customer Profile Details and Password Change Workflow",
+    "commands": [{
+      "id": "1a20579f-d736-4d5b-a93b-f18f44109f43",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "99e9a0c1-c7ee-40dc-8370-b12aca909fe2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d20ce1f6-bdec-4fd7-ae77-26b4162e10d2",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac70c891-22bf-4891-a51c-149cff3ed44e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b510a1c-54d0-4f2b-8950-306550b64fd3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Profile",
+      "targets": [
+        ["linkText=Profile", "linkText"],
+        ["css=.nav-item:nth-child(5) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Profile')]", "xpath:link"],
+        ["xpath=(//a[@id='deactive'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/customer/profile')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Profile')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "07dffb69-16d0-4edf-bbc0-6e124cb638ad",
+      "comment": "",
+      "command": "click",
+      "target": "id=contact_no",
+      "targets": [
+        ["id=contact_no", "id"],
+        ["name=contact_no", "name"],
+        ["css=#contact_no", "css:finder"],
+        ["xpath=//input[@id='contact_no']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40ede942-bd30-429a-a1b4-8c508549e77d",
+      "comment": "",
+      "command": "type",
+      "target": "id=contact_no",
+      "targets": [
+        ["id=contact_no", "id"],
+        ["name=contact_no", "name"],
+        ["css=#contact_no", "css:finder"],
+        ["xpath=//input[@id='contact_no']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "07723431"
+    }, {
+      "id": "ea82d85f-8ecf-4e5b-a7e2-0754dfdc3926",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(3) > .col:nth-child(2) > .form-group",
+      "targets": [
+        ["css=.row:nth-child(3) > .col:nth-child(2) > .form-group", "css:finder"],
+        ["xpath=//div[3]/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae1939bc-9479-4f91-b146-5b2b1d1c0811",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["css=#save", "css:finder"],
+        ["xpath=//button[@id='save']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3ded6f2-be6c-49de-944c-b78cc87f485e",
+      "comment": "",
+      "command": "click",
+      "target": "id=contact_no",
+      "targets": [
+        ["id=contact_no", "id"],
+        ["name=contact_no", "name"],
+        ["css=#contact_no", "css:finder"],
+        ["xpath=//input[@id='contact_no']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0f3e71f-72f6-40f4-9254-76af4b4d13db",
+      "comment": "",
+      "command": "type",
+      "target": "id=contact_no",
+      "targets": [
+        ["id=contact_no", "id"],
+        ["name=contact_no", "name"],
+        ["css=#contact_no", "css:finder"],
+        ["xpath=//input[@id='contact_no']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "0772343111"
+    }, {
+      "id": "2f94d526-9c0e-4285-b203-fb529badbf7d",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["css=#save", "css:finder"],
+        ["xpath=//button[@id='save']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c65879bf-f6b3-4b5d-9814-cfbb5b9db8e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d8f365b-95e5-4e09-88ca-46f7b3160ea0",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "R"
+    }, {
+      "id": "3bdf72cd-b5e5-460e-884f-3b1bdf714e31",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["css=#save", "css:finder"],
+        ["xpath=//button[@id='save']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d63a368-a55e-48e2-a735-db5066bfc672",
+      "comment": "",
+      "command": "click",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92e1ef66-cc94-40ea-9933-34e770d680a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=last_name",
+      "targets": [
+        ["id=last_name", "id"],
+        ["name=last_name", "name"],
+        ["css=#last_name", "css:finder"],
+        ["xpath=//input[@id='last_name']", "xpath:attributes"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "Rathnayake"
+    }, {
+      "id": "37348604-714f-47c6-adbd-0a90a995c074",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dd2e8c5-395c-4dd4-abac-bc7c7583548e",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "C"
+    }, {
+      "id": "5b58ec3c-4741-4f17-b6f4-bebb230d5cf3",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["css=#save", "css:finder"],
+        ["xpath=//button[@id='save']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "06f2a03b-b306-4b34-9d77-fa17ed56eb58",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c140bc01-2543-4ac7-a77e-3f3e417a089e",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_name",
+      "targets": [
+        ["id=first_name", "id"],
+        ["name=first_name", "name"],
+        ["css=#first_name", "css:finder"],
+        ["xpath=//input[@id='first_name']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Charuka"
+    }, {
+      "id": "5eed4bb3-26de-453a-a1c4-8ae621c53f96",
+      "comment": "",
+      "command": "click",
+      "target": "id=save",
+      "targets": [
+        ["id=save", "id"],
+        ["css=#save", "css:finder"],
+        ["xpath=//button[@id='save']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "aeb38620-def3-4e04-839a-71085793f255",
+      "comment": "",
+      "command": "click",
+      "target": "name=current_password",
+      "targets": [
+        ["name=current_password", "name"],
+        ["css=.col-12 > .row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=//input[@name='current_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b6af404-7c51-4bfe-b894-07661784ca1f",
+      "comment": "",
+      "command": "type",
+      "target": "name=current_password",
+      "targets": [
+        ["name=current_password", "name"],
+        ["css=.col-12 > .row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=//input[@name='current_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "@Password1"
+    }, {
+      "id": "dd631728-f672-4228-8b57-5598f97b8845",
+      "comment": "",
+      "command": "click",
+      "target": "id=new_password",
+      "targets": [
+        ["id=new_password", "id"],
+        ["name=new_password", "name"],
+        ["css=#new_password", "css:finder"],
+        ["xpath=//input[@id='new_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b868a5bc-9d7d-43dd-8de5-704c1700dc5b",
+      "comment": "",
+      "command": "type",
+      "target": "id=new_password",
+      "targets": [
+        ["id=new_password", "id"],
+        ["name=new_password", "name"],
+        ["css=#new_password", "css:finder"],
+        ["xpath=//input[@id='new_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "66736490-ae50-43e9-a995-031dacc5ceb3",
+      "comment": "",
+      "command": "click",
+      "target": "id=confirm_password",
+      "targets": [
+        ["id=confirm_password", "id"],
+        ["name=confirm_password", "name"],
+        ["css=#confirm_password", "css:finder"],
+        ["xpath=//input[@id='confirm_password']", "xpath:attributes"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e0e5fc4-5b8b-4e9a-b2f6-6ea1f93e0f8a",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirm_password",
+      "targets": [
+        ["id=confirm_password", "id"],
+        ["name=confirm_password", "name"],
+        ["css=#confirm_password", "css:finder"],
+        ["xpath=//input[@id='confirm_password']", "xpath:attributes"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "3f90def7-e7f4-479e-b80b-a1d44cfd96e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=change",
+      "targets": [
+        ["id=change", "id"],
+        ["css=#change", "css:finder"],
+        ["xpath=//button[@id='change']", "xpath:attributes"],
+        ["xpath=//form[2]/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Change Password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3c8f927-116b-4850-8668-38d8abb8ca48",
+      "comment": "",
+      "command": "click",
+      "target": "name=current_password",
+      "targets": [
+        ["name=current_password", "name"],
+        ["css=.col-12 > .row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=//input[@name='current_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb6a88b4-0aa1-47ba-bd26-ab3f1043ddb3",
+      "comment": "",
+      "command": "type",
+      "target": "name=current_password",
+      "targets": [
+        ["name=current_password", "name"],
+        ["css=.col-12 > .row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=//input[@name='current_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "@Password1"
+    }, {
+      "id": "35f84aa3-8a2b-4196-aedf-19c7ab788c3f",
+      "comment": "",
+      "command": "click",
+      "target": "id=new_password",
+      "targets": [
+        ["id=new_password", "id"],
+        ["name=new_password", "name"],
+        ["css=#new_password", "css:finder"],
+        ["xpath=//input[@id='new_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "be30db5e-af49-4587-a5a6-6faa8816eb40",
+      "comment": "",
+      "command": "type",
+      "target": "id=new_password",
+      "targets": [
+        ["id=new_password", "id"],
+        ["name=new_password", "name"],
+        ["css=#new_password", "css:finder"],
+        ["xpath=//input[@id='new_password']", "xpath:attributes"],
+        ["xpath=//form[2]/div/div/div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": "@Password1"
+    }, {
+      "id": "154edf50-aff3-4d79-856c-f71d37851d14",
+      "comment": "",
+      "command": "click",
+      "target": "id=confirm_password",
+      "targets": [
+        ["id=confirm_password", "id"],
+        ["name=confirm_password", "name"],
+        ["css=#confirm_password", "css:finder"],
+        ["xpath=//input[@id='confirm_password']", "xpath:attributes"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17f32430-c710-4251-9591-13434663f729",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirm_password",
+      "targets": [
+        ["id=confirm_password", "id"],
+        ["name=confirm_password", "name"],
+        ["css=#confirm_password", "css:finder"],
+        ["xpath=//input[@id='confirm_password']", "xpath:attributes"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "@Password1"
+    }, {
+      "id": "ab519f8b-62c7-4174-a32e-57661c7d8d77",
+      "comment": "",
+      "command": "click",
+      "target": "id=change",
+      "targets": [
+        ["id=change", "id"],
+        ["css=#change", "css:finder"],
+        ["xpath=//button[@id='change']", "xpath:attributes"],
+        ["xpath=//form[2]/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Change Password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "93f7de58-b739-423a-a2fa-cb417e1519aa",
+      "comment": "",
+      "command": "click",
+      "target": "id=signout",
+      "targets": [
+        ["id=signout", "id"],
+        ["linkText=Log out", "linkText"],
+        ["css=#signout", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@id='signout']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/logout')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ed417543-17b1-4b93-9198-01c4e0da630a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1303b801-a9db-41d8-87a9-e0176dbbb558"]
+  }],
+  "urls": ["https://emission-test-center-se.herokuapp.com/"],
+  "plugins": []
+}

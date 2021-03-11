@@ -318,7 +318,7 @@ exports.postvehicle = async (req, res) => {
     .send({ status: "success", message: "Vehicle Added successfully" });
 };
 
-function notExpired(date) {
+const notExpired = (date) => {
   const max_days = 180; //6 months
   var start = new Date(date).getTime();
   var today = new Date().getTime();
@@ -329,3 +329,5 @@ function notExpired(date) {
     return false;
   }
 }
+
+exports.notExpired = notExpired;

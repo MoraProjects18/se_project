@@ -36,7 +36,7 @@ app.use("/admin", adminRouter);
 app.use("/customer", customerRouter);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+const server = app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get("/", (req, res) => {
   res.redirect("/home");
@@ -49,3 +49,5 @@ app.get("/*", (req, res) => {
     message: "Page Not Found",
   });
 });
+
+module.exports = server;

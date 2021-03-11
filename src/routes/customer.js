@@ -31,13 +31,7 @@ router.post(
 router.get("/register", customerController.getRegisterPage);
 router.post("/register", customerController.registerUser);
 router.get("/register/confirm/:email", customerController.confirmMail);
-router.get(
-  "/home",
-  authorization.tokenAuthorize,
-  authorization.isCustomerRole,
-  authorization.isEmailVerified,
-  customerController.home
-);
+router.get("/home",authorization.tokenAuthorize, authorization.isCustomerRole, authorization.isEmailVerified, customerController.home);
 
 router.get(
   "/createTicket",
@@ -52,6 +46,7 @@ router.post(
   authorization.isCustomerRole,
   customerController.cancelTicket
 );
+
 
 router.get(
   "/ticketDetails",
