@@ -1,0 +1,144 @@
+{
+  "id": "d4c33637-eb03-4709-a8ed-b1236eadd8a9",
+  "version": "2.0",
+  "name": "Customer View Ticket Details Workflow",
+  "url": "https://emission-test-center-se.herokuapp.com",
+  "tests": [{
+    "id": "1a699453-35ba-4f80-8079-eb85f1ab1a9c",
+    "name": "Customer View Ticket Details Workflow",
+    "commands": [{
+      "id": "8136db32-9ab5-4c23-b05e-90992f86568c",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aef2b56a-f993-4fcb-8bc5-b6df4ca220a4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56961659-0b87-4e09-9ef6-b58b136a305f",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae160da3-229f-434f-8604-97dd9160608e",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "be8569b2-c633-4917-9a64-55dce4f13bfa",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d38f2c4-7037-4f2c-8e9d-1153b85e7435",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8c12c0a-00ba-4450-b9a6-f07ee247001e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68819e8d-1105-4e61-86a6-9f742bf60eb0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Tickets Details",
+      "targets": [
+        ["linkText=Tickets Details", "linkText"],
+        ["css=.nav-item:nth-child(4) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Tickets Details')]", "xpath:link"],
+        ["xpath=(//a[@id='deactive'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/customer/ticketDetails')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Tickets Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a13e1a9e-4ddd-49b8-a5bf-555cde148493",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//tbody[@id='Ticket_table_body']/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Athurugiriya')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c076c37-557f-48cf-a78a-8d972d23280c",
+      "comment": "",
+      "command": "click",
+      "target": "id=signout",
+      "targets": [
+        ["id=signout", "id"],
+        ["linkText=Log out", "linkText"],
+        ["css=#signout", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@id='signout']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/logout')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5b95057e-3969-4c3b-8b66-58a60d16728a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1a699453-35ba-4f80-8079-eb85f1ab1a9c"]
+  }],
+  "urls": ["https://emission-test-center-se.herokuapp.com/"],
+  "plugins": []
+}

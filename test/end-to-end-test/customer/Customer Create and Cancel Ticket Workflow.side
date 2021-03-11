@@ -1,0 +1,211 @@
+{
+  "id": "d18f4212-e4d1-4104-8ca4-c2bc992915f1",
+  "version": "2.0",
+  "name": "Customer Create and Cancel Ticket Workflow",
+  "url": "https://emission-test-center-se.herokuapp.com",
+  "tests": [{
+    "id": "2475a72c-2646-45bf-ae0a-59b673de7e02",
+    "name": "Customer Create and Cancel Ticket Workflow",
+    "commands": [{
+      "id": "616ac7fe-7b5b-4a49-94e0-82a6fa3b023c",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f0eda09-3b33-402a-b420-14e60d7ab0c8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7f0df27e-0b27-46c6-ae20-ae04e1ae3e32",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b7c1609-c7fa-4489-8a4c-9278a8748063",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "531a6ed5-1cce-463b-bd89-a5afce4d28eb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "201ae176-529c-437a-91c6-1ef8d0846154",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Create Ticket",
+      "targets": [
+        ["linkText=Create Ticket", "linkText"],
+        ["css=.nav-item:nth-child(3) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Create Ticket')]", "xpath:link"],
+        ["xpath=(//a[@id='deactive'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/customer/createTicket')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Create Ticket')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e23324aa-1bfc-4245-8639-b661f92eba60",
+      "comment": "",
+      "command": "click",
+      "target": "id=branch_id",
+      "targets": [
+        ["id=branch_id", "id"],
+        ["name=branch_id", "name"],
+        ["css=#branch_id", "css:finder"],
+        ["xpath=//select[@id='branch_id']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "980add1c-28ef-4460-afb4-e181165c46a9",
+      "comment": "",
+      "command": "select",
+      "target": "id=branch_id",
+      "targets": [],
+      "value": "label=Avissawella"
+    }, {
+      "id": "5fe17a71-908f-4b58-8a3b-f36e4f12102b",
+      "comment": "",
+      "command": "click",
+      "target": "id=branch_id",
+      "targets": [
+        ["id=branch_id", "id"],
+        ["name=branch_id", "name"],
+        ["css=#branch_id", "css:finder"],
+        ["xpath=//select[@id='branch_id']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "131c90e7-c042-41eb-8610-e06fdbc14de2",
+      "comment": "",
+      "command": "click",
+      "target": "id=start_date",
+      "targets": [
+        ["id=start_date", "id"],
+        ["name=start_date", "name"],
+        ["css=#start_date", "css:finder"],
+        ["xpath=//input[@id='start_date']", "xpath:attributes"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94131f09-e848-47ea-8f57-014dd3ed555c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > .xdsoft_day_of_week5 > div",
+      "targets": [
+        ["css=tr:nth-child(2) > .xdsoft_day_of_week5 > div", "css:finder"],
+        ["xpath=//tr[2]/td[6]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82801b53-4632-411b-b664-30063e073c2d",
+      "comment": "",
+      "command": "click",
+      "target": "id=start_time",
+      "targets": [
+        ["id=start_time", "id"],
+        ["name=start_time", "name"],
+        ["css=#start_time", "css:finder"],
+        ["xpath=//input[@id='start_time']", "xpath:attributes"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c9844b2-14da-422c-b34b-6d21ab4d4a3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.active .xdsoft_time:nth-child(1)",
+      "targets": [
+        ["css=.active .xdsoft_time:nth-child(1)", "css:finder"],
+        ["xpath=//div[3]/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48909a0d-aa5f-4705-af87-41f70e932284",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//button[@id='submit']", "xpath:attributes"],
+        ["xpath=//div[5]/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1a6df57-2948-4298-9cd1-4efb173a5557",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) .btn",
+      "targets": [
+        ["css=tr:nth-child(3) .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[3]", "xpath:attributes"],
+        ["xpath=//tbody[@id='Ticket_table_body']/tr[3]/td[5]/form/button", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[5]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4067bbc-037a-4568-9247-26a64146c90c",
+      "comment": "",
+      "command": "click",
+      "target": "id=signout",
+      "targets": [
+        ["id=signout", "id"],
+        ["linkText=Log out", "linkText"],
+        ["css=#signout", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@id='signout']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/logout')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "66a8abf8-d59e-467d-90ef-dc1f87d9aecf",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2475a72c-2646-45bf-ae0a-59b673de7e02"]
+  }],
+  "urls": ["https://emission-test-center-se.herokuapp.com/"],
+  "plugins": []
+}
