@@ -46,7 +46,7 @@ describe("GET /staff/profile",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the logout is succesful", async () => {
+  it("give 200 OK status code when the profile data is succesfully retrieved", async () => {
     const res = await request(server).get('/staff/profile').set('Cookie',[`ets-auth-token=${token}`]).send();
 
     expect(res.status).toBe(200);
@@ -87,7 +87,7 @@ describe("POST /staff/edit_profile",() => {
   });
 
 
-  it("give 200 OK status code when the profile edit is succesful", async () => {
+  it("give 302 status code when the profile edit is succesful", async () => {
     const res = await request(server).post('/staff/edit_profile').set('Cookie',[`ets-auth-token=${token}`]).send(data);
 
     expect(res.status).toBe(302);
@@ -125,7 +125,7 @@ describe("POST /staff/change_pass",() => {
     server.close();
   })
 
-  it("give 400 status code when the provided password is invalid", async () => {
+  it("give 400 status code when the provided new password is invalid", async () => {
     const temp = {...data};
     temp.new_password = "";
 
@@ -134,7 +134,7 @@ describe("POST /staff/change_pass",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 400 status code when the provided password is invalid", async () => {
+  it("give 400 status code when the provided current password is incorrect", async () => {
     const temp = {...data};
     temp.current_password = "wrong-password";
 
@@ -143,7 +143,7 @@ describe("POST /staff/change_pass",() => {
     expect(res.status).toBe(400);
   });
 
-  it("give 200 OK status code when the password change is success", async () => {
+  it("give 302 status code when the password change is success", async () => {
     const res = await request(server).post('/staff/change_pass').set('Cookie',[`ets-auth-token=${token}`]).send(data);
 
     expect(res.status).toBe(302);
