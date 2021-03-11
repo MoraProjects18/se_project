@@ -1,0 +1,381 @@
+{
+  "id": "4d8d6934-9af1-427f-93cc-69ca27c0f1ea",
+  "version": "2.0",
+  "name": "Report Issuer Report Printing Flow",
+  "url": "https://emission-test-center-se.herokuapp.com",
+  "tests": [{
+    "id": "77cba32a-ff06-4991-b5d2-1f126149fd83",
+    "name": "Report Issuer Printing Emission Report",
+    "commands": [{
+      "id": "e087a5ca-bd9d-4597-9f12-415846ed6e33",
+      "comment": "",
+      "command": "open",
+      "target": "/reportissuer/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7e40eb57-74aa-4e57-a7cd-7d2e88011260",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x728",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3b2801c-c402-49a3-9fcb-26ce725b8bdd",
+      "comment": "",
+      "command": "click",
+      "target": "id=signout",
+      "targets": [
+        ["id=signout", "id"],
+        ["linkText=Log out", "linkText"],
+        ["css=#signout", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@id='signout']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/logout')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "815d0fb0-0b54-4dbf-9b7f-dce0505bcd06",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa33a9a1-7523-4a9b-96db-2a3c9300eae7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1496f362-8465-4c41-a525-0298697d9e24",
+      "comment": "",
+      "command": "click",
+      "target": "id=deactive",
+      "targets": [
+        ["id=deactive", "id"],
+        ["linkText=Issue Report", "linkText"],
+        ["css=.nav-item:nth-child(2) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Issue Report')]", "xpath:link"],
+        ["xpath=//a[@id='deactive']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/reportissuer/report')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Issue Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffbc48e5-a3f1-43d2-84d4-370f9693297f",
+      "comment": "",
+      "command": "click",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6066cd40-5fe0-485a-9936-8e6540637863",
+      "comment": "",
+      "command": "type",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1001"
+    }, {
+      "id": "ebe6278b-e58b-4fee-8c73-3e44c9f819d5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col:nth-child(2) > .btn",
+      "targets": [
+        ["css=.col:nth-child(2) > .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Print Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "5679bda7-ca28-4e18-8623-ea1d8d06abcc",
+    "name": "Report Issuer entering Incomplete SO order ID",
+    "commands": [{
+      "id": "eea54b69-331d-4440-b19f-9d6cdeab9dd5",
+      "comment": "",
+      "command": "open",
+      "target": "/reportissuer/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dbc869e3-b118-4d6a-812d-7ee06f09eeb4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x728",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23eff38a-95c1-42fd-b56e-0fb357478fd3",
+      "comment": "",
+      "command": "click",
+      "target": "id=signout",
+      "targets": [
+        ["id=signout", "id"],
+        ["linkText=Log out", "linkText"],
+        ["css=#signout", "css:finder"],
+        ["xpath=//a[contains(text(),'Log out')]", "xpath:link"],
+        ["xpath=//a[@id='signout']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/logout')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "184f7466-ac16-46be-b453-e0f41aa9780b",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f91cc748-42b2-49c5-9f1b-b1556dc46ebc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49e12d16-1012-4dbc-8364-4785195fd2ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=deactive",
+      "targets": [
+        ["id=deactive", "id"],
+        ["linkText=Issue Report", "linkText"],
+        ["css=.nav-item:nth-child(2) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Issue Report')]", "xpath:link"],
+        ["xpath=//a[@id='deactive']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/reportissuer/report')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Issue Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "16489a6a-bdef-4b40-9ce7-fd52fed3ed14",
+      "comment": "",
+      "command": "click",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9caacc94-94e6-4425-b119-bb64764ae6a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1002"
+    }, {
+      "id": "455eefa1-16e0-44e5-a866-9d55d1afbcc4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col:nth-child(1) > .btn",
+      "targets": [
+        ["css=.col:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'View Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf679ab7-7c60-4e41-8a6b-78f17ed987b2",
+      "comment": "",
+      "command": "click",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "86386ef1-b42b-415a-b765-98dec8774647",
+    "name": "Report Issuer entering Incomplete SO order ",
+    "commands": [{
+      "id": "1b3db28c-c706-482c-9cdd-ec0c6a3a9467",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e888be01-edaf-48e0-a141-7b907b4d3363",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1366x728",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9829227f-2dc2-42e5-bf26-0eda9c231652",
+      "comment": "",
+      "command": "click",
+      "target": "id=signin",
+      "targets": [
+        ["id=signin", "id"],
+        ["linkText=Login", "linkText"],
+        ["css=#signin", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[@id='signin']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad72f49d-af3a-4bc0-ac51-c5b5a7121f3e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61b0bf9e-82ad-4b1d-a805-68cee3e73468",
+      "comment": "",
+      "command": "click",
+      "target": "id=deactive",
+      "targets": [
+        ["id=deactive", "id"],
+        ["linkText=Issue Report", "linkText"],
+        ["css=.nav-item:nth-child(2) > #deactive", "css:finder"],
+        ["xpath=//a[contains(text(),'Issue Report')]", "xpath:link"],
+        ["xpath=//a[@id='deactive']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarTogglerDemo02']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/reportissuer/report')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Issue Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fd15d44-971f-4468-9bca-532024099451",
+      "comment": "",
+      "command": "click",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28430dc8-4037-42a6-aee9-2d602718ad80",
+      "comment": "",
+      "command": "type",
+      "target": "id=exampleDataList",
+      "targets": [
+        ["id=exampleDataList", "id"],
+        ["name=SO_id", "name"],
+        ["css=#exampleDataList", "css:finder"],
+        ["xpath=//input[@id='exampleDataList']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1003"
+    }, {
+      "id": "3c46631a-101b-4a33-84a9-e054363c0b6d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col:nth-child(1) > .btn",
+      "targets": [
+        ["css=.col:nth-child(1) > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'View Report')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3938942-d205-4a50-9aee-914441286bf9",
+      "comment": "",
+      "command": "click",
+      "target": "id=back",
+      "targets": [
+        ["id=back", "id"],
+        ["css=#back", "css:finder"],
+        ["xpath=//button[@id='back']", "xpath:attributes"],
+        ["xpath=//div[@id='notfound']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'GO BACK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "73f2273c-099c-43fa-8758-925ecd2b51dd",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["77cba32a-ff06-4991-b5d2-1f126149fd83"]
+  }],
+  "urls": ["https://emission-test-center-se.herokuapp.com/"],
+  "plugins": []
+}
